@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for file in ~/.dotfiles/bash_additions/*; do
+	# Dont include urself stoopid
+	[ $file != "/home/amit/.dotfiles/bash_additions/all" ] && [ -x $file ] && source $file
+done
+unset file

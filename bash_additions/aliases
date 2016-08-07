@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Clearing screen
+alias c="echo -ne '\033c'"
+alias cl="c;l"
+alias ccd="c;cd"
+
+# Navigation
+alias b="cd - >/dev/null && l" # b stands for back
+
+# Interactive commands
+alias mv="mv -i"  # "m" - never forget
+alias cp="cp -i"
+
+# Move up quickly
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# Shortcuts for apt
+alias install='sudo apt install'
+alias uninstall='sudo apt remove'
+alias update='sudo apt update && sudo apt full-upgrade'
+
+# Shutting down
+alias S="sudo shutdown now"
+alias R="sudo reboot now"
+alias exe="chmod +x"
+
+# Misc
+alias e="exit"
+alias py="python3"
+alias eb="c; exec bash"
+
+rmd () {
+    tmp=`mktemp tmp.XXX.html`
+    pandoc $1 >$tmp
+    chromium-browser $tmp
+    rm $tmp
+}
+

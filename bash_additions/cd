@@ -1,0 +1,70 @@
+#!/bin/bash
+
+cd ()
+{
+	# Pass all arguments to cd
+	builtin cd "$@"
+	# Get return value
+	RV=$?
+	# If its not 0, just get out, it already printed message
+	[ $RV = 0 ] || return $RV
+	# If everything OK, print ls
+	ls -CF
+	# If in ~, then print global todo's
+	[ -a .todo_global ] && devtodo -G
+	# If there is a todo in the directory, print it
+	[ -a .todo ] && devtodo
+
+	# The -a's return 1, so gotta return 0
+	return 0
+}
+
+cdb ()
+{
+    USAGE="Usage: cdb [-c|-g|-d|-l] [bookmark]" ;
+    if  [ ! -e ~/.cd_bookmarks ] ; then
+        mkdir ~/.cd_bookmarks
+    fi
+
+    case $1 in
+        # create bookmark
+        -c) shift
+            if [ ! -f ~/.cd_bookmarks/$1 ] ; then
+                echo "cd `pwd`" > ~/.cd_bookmarks/"$1" ;
+            else
+                echo "Bookmark already exists."
+                return 1
+            fi
+            ;;
+        # goto bookmark
+        -g) shift
+            if [ -f ~/.cd_bookmarks/$1 ] ; then
+                source ~/.cd_bookmarks/"$1"
+            else
+                echo "Bookmark does not exist." ;
+                return 1
+            fi
+            ;;
+        # delete bookmark
+        -d) shift
+            if [ -f ~/.cd_bookmarks/$1 ] ; then
+                rm ~/.cd_bookmarks/"$1" ;
+            else
+                echo "No such bookmark." ;
+                return 1
+            fi
+            ;;
+        # list bookmarks
+        -l) shift
+            ls -CF ~/.cd_bookmarks/ ;
+            ;;
+         *) echo "$USAGE" ;
+            return 1
+            ;;
+    esac
+}
+
+g () {
+    [[ $1 == "" ]] && cdb -l || cdb -g $1
+}
+

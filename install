@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ln -s ~/.dotfiles/vimrc ~/.vimrc
+echo 'source ~/.dotfiles/bash_additions/all' >> ~/.bashrc

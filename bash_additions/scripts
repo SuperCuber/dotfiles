@@ -1,0 +1,5 @@
+#!/bin/bash
+
+path="/home/amit/.scripts/"
+PATH=`$path/man/add_cmds $path`
+unset path
