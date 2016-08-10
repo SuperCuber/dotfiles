@@ -40,9 +40,8 @@ set wildmenu
 set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set ruler
 set cmdheight=2
-set hid " TODO CHECK
-set backspace=eol,start,indent " TODO check
-set whichwrap+=<,>,h,l " TODO check
+set backspace=eol,indent
+set whichwrap+=<,>,h,l
 set ignorecase
 set smartcase
 set hlsearch
@@ -50,7 +49,6 @@ set incsearch
 set lazyredraw 
 set magic
 set showmatch 
-set mat=2 " TODO check
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -70,7 +68,7 @@ set relativenumber
 set number
 set gdefault
 set showcmd
-set clipboard=unnamedplus " Note: May want to change to unnamed
+set clipboard=unnamed
 set mouse=nvc
 """""""""""""""""""""""""
 " => Maps               "
