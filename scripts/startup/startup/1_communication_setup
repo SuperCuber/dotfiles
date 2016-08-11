@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Sleep a bit so can xmessage
+sleep 1
+
+# Confirm setup communication
+
+xmessage -buttons No:0,Yes:1 -timeout 5 -nearmouse "Setup communication?" && exit
+
+# Void all output
+
+exec 2>/dev/null
+exec >/dev/null
+
+# Mail
+
+(
+chromium-browser --user-data-dir "mail.google.com/mail/u/0" "mail.google.com/mail/u/1" &
+sleep 2
+wmctrl -r chromium -t 1
+wmctrl -r chromium -b remove,maximized_vert,maximized_horz
+wmctrl -r chromium -e 0,683,0,683,674
+) &
+
+# Skype
+
+(
+/opt/skype_unofficial_client/skype &
+sleep 2
+wmctrl -r skype -t 1
+wmctrl -r skype -b remove,maximized_vert_maximized_horz
+wmctrl -r skype -e 0,0,0,-1,673
+) &

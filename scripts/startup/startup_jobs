@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sleep 1
+
+for file in /home/amit/.scripts/startup/startup/*; do
+    $file &
+done
+
+exit 0

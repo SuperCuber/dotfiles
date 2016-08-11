@@ -1,0 +1,32 @@
+#!/bin/bash
+
+toDetach="false"
+
+if [[ $1 == "" ]]; then
+    arg="m"
+else
+    arg="$1"
+fi
+
+case $arg in
+m) #Menu
+    cmd="cat `cmd_dir`/short/m | grep ') #' | grep -v grep | tr ') #' ' \t '";;
+e) #Edit
+    cmd="vim `which m`" ;;
+p) #Pycharm
+    cmd="pycharm-community"
+    toDetach="true" ;;
+c) #Chrome
+    cmd="chromium-browser --user-data-dir"
+    toDetach="true" ;;
+t) #Terminator
+    cmd="terminator"
+    toDetach="true" ;;
+esac
+
+
+if [[ $toDetach == "true" ]]; then
+    bash -c "$cmd" &>/dev/null &
+else
+    bash -c "$cmd"
+fi

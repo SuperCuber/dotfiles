@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd $1
+
+path=$PATH
+for folder in *; do
+  path="$1$folder:$path"
+done
+
+echo $path

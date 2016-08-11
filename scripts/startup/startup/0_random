@@ -1,0 +1,7 @@
+#!/bin/bash
+
+guake &>/dev/null &
+terminator --layout=todo --command="todo -G; sleep 5; e" --title="TODOs" &>/dev/null &
+screensaver_handler 60 &
+numlockx
+( sleep 3; sudo rfkill block bluetooth; ) &

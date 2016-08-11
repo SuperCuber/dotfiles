@@ -1,0 +1,1 @@
+ttyecho -n /dev/tty$1 $2

@@ -1,0 +1,6 @@
+#!/bin/bash
+for i in $@; do
+    ( sleep $i; echo -n $i' ' ) &
+done
+wait
+echo

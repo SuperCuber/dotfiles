@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Finding maximum value
+max=0
+for i in $@; do
+	if ((max<i)); then
+		max=$i
+	fi
+done
+
+# Copying $@
+numbers=( "$@" )
+# Getting max index
+let num=$#
+let num--
+# Iterate over numbers and divide each by max
+for i in $(seq 0 $num); do
+	numbers[`echo $i`]=`echo "scale=10; ${numbers[i]}/$max" | bc`
+done
+
+for i in $(seq 0 $num); do
+	(
+		# Sleep from $numbers, but echo from $@
+		sleep ${numbers[i]}
+		let i++
+		echo -n "${!i} "
+	) &
+done
+
+wait
+echo

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo openvt -s -w -- bash -c "`echo $@`"

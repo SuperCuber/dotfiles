@@ -1,0 +1,35 @@
+cowsay -n <<EOF | lolcat
+                  TPUT CODES                
+                                            
+COLOR              ADD: tput bold;          
+Black         0    Dark Gray                
+Red           1    Light Red                
+Green         2    Light Green              
+Yellow        3    Light Yellow             
+Blue          4    Light Blue               
+Magenta       5    Light Magenta            
+Cyan          6    Light Cyan               
+Light Gray    7    White                    
+                                            
+FORMAT                               CONTROL
+Foreground Color (text):             setf   
+Foreground Color using ANSI escape:  setaf  
+Background Color:                    setb   
+Background Color using ANSI escape:  setab  
+Bold (change/brighten colors):       bold   
+Half-Bright:                         dim    
+Reverse:                             rev    
+Begin Underline:                     smul   
+End Underline:                       rmul   
+Enter Standout (bold on rxvt):       smso   
+Exit Standout:                       rmso   
+Clear:                              smcup   
+Clear:                              clear   
+Reset screen size:                  reset   
+Restore:                            rmcup   
+All Attributes Off:                  sgr0   
+Tput's Default Settings:       setaf default
+                                            
+man tput   man 1 tput                       
+
+EOF

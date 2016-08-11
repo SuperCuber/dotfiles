@@ -1,0 +1,2 @@
+random $1 | head -c-1 | base64 -w 0
+echo

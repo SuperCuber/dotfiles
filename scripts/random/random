@@ -1,0 +1,2 @@
+head -q -c $1 /dev/urandom
+echo

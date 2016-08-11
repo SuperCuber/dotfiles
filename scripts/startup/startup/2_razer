@@ -1,0 +1,15 @@
+#!/bin/bash
+
+razercfg -r 1
+
+while read val; do
+    echo $val | xargs razercfg
+done <<EOF
+-r 1
+-l all:on
+-m Scrollwheel:breathing
+-m GlowingLogo:breathing
+-c Scrollwheel:ff0000
+-c GlowingLogo:ff0000
+EOF
+
