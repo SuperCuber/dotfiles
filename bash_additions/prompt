@@ -64,7 +64,7 @@ _display_prompt_end ()
 
     _transition $color $COMMAND_TEXT_BG
 
-    echo -n " \\[$(tput sgr0)\\]"
+    echo -n "\\[$(tput sgr0)\\] "
 }
 
 
