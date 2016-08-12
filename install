@@ -4,8 +4,12 @@ cd ~
 mv dotfiles .dotfiles
 
 ln -s .dotfiles/vimrc .vimrc
+
 ln -s .dotfiles/bash_additions .bash_additions
 ln -s .dotfiles/scripts .scripts
+
+ln -s .dotfiles/i3 .i3/config
+ln -s .dotfiles/i3status .i3status.conf
 
 echo '' >> .bashrc
 echo 'source ~/.dotfiles/bash_additions/all' >> .bashrc
