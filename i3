@@ -12,7 +12,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # => Shortcuts          #
 #########################
 bindsym $mod+t      exec i3-sensible-terminal
-bindsym $mod+b      exec chromium-browser
+bindsym $mod+c      exec chromium-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
