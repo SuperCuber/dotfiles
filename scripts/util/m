@@ -10,7 +10,7 @@ fi
 
 case $arg in
 m) #Menu
-    cmd="cat `cmd_dir`/short/m | grep ') #' | grep -v grep | tr ') #' ' \t '";;
+    cmd="cat `cmd_dir`/util/m | grep ') #' | grep -v grep | tr ') #' ' \t '";;
 e) #Edit
     cmd="vim `which m`" ;;
 p) #Pycharm
