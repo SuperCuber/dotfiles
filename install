@@ -1,15 +1,36 @@
 #!/bin/bash
 
-cd ~
-mv dotfiles .dotfiles
+# Declaration
+die () {
+    echo Failed to $1
+    exit 1
+}
 
-ln -s .dotfiles/vim/vimrc .vimrc
+FILE_LOCATION=( "vim/vimrc" "bash_additions" "scripts" "i3/config" "i3/statusbar" )
+LINK_LOCATION=( ".vimrc" ".bash_additions" ".scripts" ".i3/config" ".i3status.conf" )
+AMOUNT_FILES=${#LINK_LOCATION[@]}
+(( AMOUNT_FILES-- ))
 
-ln -s .dotfiles/bash_additions .bash_additions
-ln -s .dotfiles/scripts .scripts
+PREFIX="~/.dotfiles/"
 
-ln -s .dotfiles/i3/config .i3/config
-ln -s .dotfiles/i3/statusbar .i3status.conf
+# Action
+cd ~ # Just in case
+#mv ~/dotfiles "~/.dotfiles" || die "move dotfiles to .dotfiles" TODO uncomment
 
-echo '' >> .bashrc
-echo 'source ~/.dotfiles/bash_additions/all' >> .bashrc
+for i in `seq 0 $AMOUNT_FILES`; do
+    file=$PREFIX${FILE_LOCATION[$i]}
+    link=${LINK_LOCATION[$i]}
+    if [! -f "$file" ]; then
+        echo ln -s "$file" "~/$link"
+        # TODO remove echo
+    else
+        if [! -d "$OLD_FILES_DIR" ]; then
+            mkdir "$OLD_FILES_DIR" || die "make directory for old files"
+        fi
+        mv "$file" "$OLD_FILES_DIR/$file" || die "move $file to old files directory"
+    fi
+done
+exit
+
+echo '' >> .bashrc || die "change .bashrc"
+echo 'source ~/.dotfiles/bash_additions/all' >> .bashrc || die "change .bashrc"
