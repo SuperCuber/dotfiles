@@ -3,4 +3,7 @@
     <note priority="medium" time="1471108081">
         remember that this is a seperate branch
     </note>
+    <note priority="medium" time="1471169229">
+        issue: makes symlinks inside the folder itself, wtf
+    </note>
 </todo>
