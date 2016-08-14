@@ -10,23 +10,23 @@ FILE_LOCATION=( "vim/vimrc" "bash_additions" "scripts" "i3/config" "i3/statusbar
 LINK_LOCATION=( ".vimrc" ".bash_additions" ".scripts" ".i3/config" ".i3status.conf" )
 AMOUNT_FILES=${#LINK_LOCATION[@]}
 (( AMOUNT_FILES-- ))
-PREFIX="~/.dotfiles/"
+PREFIX=~/.dotfiles/
+OLD_FILES_DIR=.old_files
 
 # Action
-cd ~ # Just in case
-mv ~/dotfiles "~/.dotfiles" || die "move dotfiles to .dotfiles"
+cd ~ || die "cd to ~"
+mv dotfiles .dotfiles || die "move dotfiles to .dotfiles"
 
 for i in `seq 0 $AMOUNT_FILES`; do
-    file=$PREFIX${FILE_LOCATION[$i]}
-    link=${LINK_LOCATION[$i]}
-    if [! -f "$file" ]; then
-        ln -s "$file" "~/$link"
-    else
-        if [! -d "$OLD_FILES_DIR" ]; then
+    file="$PREFIX${FILE_LOCATION[$i]}"
+    link="${LINK_LOCATION[$i]}"
+    if ! ln -s "$file" "$link" 2>/dev/null; then
+        if [ ! -d "$OLD_FILES_DIR" ]; then
             mkdir "$OLD_FILES_DIR" || die "make directory for old files"
         fi
-        mv "$file" "$OLD_FILES_DIR/$file" || die "move $file to old files directory"
+        mv "$link" "$OLD_FILES_DIR/$link" || die "move $link to old files directory"
     fi
+    ln -s "$file" "$link" || die "to create link from $link to $file"
 done
 exit
 
