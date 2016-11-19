@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Get interface
+IF=wlo1
+# Check if down, if it is, then display "down"
+if [[ "$(cat /sys/class/net/$IF/operstate)" = 'down' ]]; then
+  echo down # full text
+  echo down # short text
+  echo \#FF0000 # color
+  exit
+fi
+
+# Do some more stuff
+case $1 in
+  -4)
+    AF=inet ;;
+  -6)
+    AF=inet6 ;;
+  *)
+    AF=inet6? ;;
+esac
+
+# if no interface is found, use the first device with a global scope
+IPADDR=$(ip addr show $IF | perl -n -e "/$AF ([^\/]+).* scope global/ && print \$1 and exit")
+
+QUALITY=$(grep $IF /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
+
+NAME=$(iwgetid -r)
+echo "$NAME $IPADDR $QUALITY%" # full text

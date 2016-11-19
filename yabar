@@ -1,0 +1,88 @@
+bar-list = ["bar"];
+
+bar: {
+    font: "Deja Vu Sans Mono, FontAwesome Bold 8";
+    block-list: [ "workspace", "ping", "wifi", "battery" ,"ya_date" ];
+    position: "top";
+    height: 24;
+    background-color-argb:0x0;
+    underline-size: 2;
+    overline-size: 2;
+
+    ya_date: {
+        exec: "YABAR_DATE";
+        align: "right";
+        fixed-size: 160;
+        interval: 1;
+        underline-color-rgb:0xC02942;
+        internal-prefix: " ";
+        internal-option1: "%a %d %b, %I:%M:%S";
+    }
+
+    workspace: {
+        exec: "~/.scripts/list_workspaces.py";
+        fixed-size: 220
+        pango-markup: true;
+        type: "persist";
+        align: "left"
+        interval: 1;
+        underline-color-argb:0x70FF0000;
+    }
+
+    ping: {
+        exec: "~/.dotfiles/i3/blockscripts/ping"
+        type: "periodic";
+        interval: 5;
+        align: "right";
+        fixed-size: 80;
+        underline-color-rgb:0x000000;
+    }
+
+    wifi: {
+        exec: "~/.dotfiles/i3/blockscripts/wifi"
+        type: "periodic";
+        interval: 5;
+        align: "right";
+        fixed-size: 200;
+        underline-color-rgb:0xFF0000;
+    }
+
+    ya_cpu: {
+        exec: "YABAR_CPU";
+        align: "right";
+        fixed-size: 60;
+        interval: 1;
+        internal-prefix: " ";
+        internal-suffix: "%";
+        underline-color-rgb:0xE97F02;
+    }
+
+    ya_mem: {
+        exec: "YABAR_MEMORY";
+        align: "right";
+        fixed-size: 80;
+        interval: 1;
+        underline-color-rgb:0xFA6900;
+        internal-prefix: " ";
+    }
+
+    battery: {
+        exec: "~/.dotfiles/i3/blockscripts/battery";
+        type: "periodic"
+        align: "right";
+        fixed-size: 110;
+        interval: 30;
+        underline-color-rgb:0xECD078;
+    }
+
+    volume: {
+        exec: "~/.dotfiles/i3/blockscripts/volume"
+        type: "once"
+        align: "right";
+        underline-color-rgb:0x000000;
+        fixed-size: 50;
+    }
+
+}
+
+# vim:ft=conf:

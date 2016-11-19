@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# True if sourced
+if [[ "$0" = "$BASH_SOURCE" ]]; then
+	echo u stoopid, use "."
+	exit 1
+fi
+
+if [[ $1 == "" ]]; then
+    sudo nice -n -20 stress -c 4
+else
+    sudo nice -n -20 stress -c 4 -t $1
+fi

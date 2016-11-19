@@ -1,0 +1,268 @@
+"==> Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" Completion
+Plugin 'davidhalter/jedi-vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'Valloric/YouCompleteMe'
+" NeoBundle can do it automagically... :/
+
+" Custom motions
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'tommcdo/vim-exchange'
+
+" Colorscheme
+Plugin 'morhetz/gruvbox'
+" Plugin 'jacoborus/tender.vim'
+Plugin 'jnurmine/Zenburn'
+Plugin 'chriskempson/vim-tomorrow-theme'
+
+" Misc
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'mhinz/vim-startify'
+
+call vundle#end()
+filetype plugin indent on
+"<==
+
+"==> Options
+syntax enable 
+
+" Wildmenu
+set wildmenu
+set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+
+" Searching
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set showmatch
+set gdefault
+
+" Drawing
+set lazyredraw
+set noerrorbells
+
+" Backups
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Tabs
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+
+" Numbering
+set relativenumber
+set number
+
+" List
+set listchars=tab:»·,trail:·
+set list
+
+" Misc
+set showcmd
+set clipboard=unnamed
+set mouse=nvc
+set history=500
+set scrolloff=7
+set backspace=eol,indent
+set whichwrap=h,l
+set laststatus=2
+"<==
+
+"==> Maps
+" Escaping from insert
+inoremap jk <Esc>
+inoremap JK <Esc>
+
+" Leader
+let g:mapleader = ","
+
+" Remove highlights from search
+nmap <silent> <leader><cr> :noh<cr>
+" Close current buffer and its containing tab
+nmap <silent> <leader>bd :Bclose<cr>:tabclose<cr>gT
+" Open vimrc
+nmap <silent> <leader>e :e ~/.vimrc<cr>
+" Save
+nmap <leader>w :w<cr>
+" Open [s]cribble
+nnoremap <leader>s :Startify<cr>
+
+" Run current program with python
+nnoremap <leader>p3 :!python3 %<cr>
+nnoremap <leader>p2 :!python2 %<cr>
+nnoremap <leader>pp :!python3 % 
+" pp in case I need arguments,
+" Notice the trailing space before EOL and lack of <cr>
+
+" Quit
+nnoremap <leader>q :q<cr>
+" Kill
+nnoremap <leader>k :q!<cr>
+
+" [S]plit line (sister to [J]oin lines)
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
+
+" Space to toggle folds.
+nnoremap <Space> za
+"<==
+
+"==> Autocmds and cmds
+command! Bclose call <SID>BufcloseCloseIt()
+
+" Automatically enter table mode for my special todo.md
+au BufRead ~/usr/doc/todo.md call HandleTodoFile()
+au BufRead ~/usr/doc/hours.md call HandleTableFile()
+
+" Automatically get Eclim shortcuts on java files
+au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
+au BufRead *.java inoremap . .<C-x><C-u>
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
+
+au BufWritePost ~/.vimrc source ~/.vimrc
+"<==
+
+"==> Functions
+"==> Close buffer
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
+"<==
+
+"==> Handle table file
+function! HandleTableFile()
+    normal ,tm
+
+    nmap <buffer> <C-j> }\|
+    nmap <buffer> <C-k> {\|
+    nmap <buffer> <C-l> ]\|
+    nmap <buffer> <C-h> [\|
+
+    nmap <buffer> <leader>f G0xi\|jk``
+
+    call Colorscheme("gruvbox") " Nice orange table
+endfunction
+"<==
+
+"==> Handle todo file
+function! HandleTodoFile()
+    call HandleTableFile()
+
+    imap <buffer> <TAB> <C-o>o\| \| \| \|<C-o>2[\|<C-o>]\|<C-o>rX<C-o>[\|
+
+    nmap <buffer> <leader>v fXrV
+    " TODO: think of a mnemonic for this, or extract to a function
+    nmap <buffer> <leader>c f*rV
+endfunction
+"<==
+
+"==> Colorscheme
+function! Colorscheme(colscheme)
+    set background=dark
+
+    exec "colo ".a:colscheme
+
+    " Same background as terminal would do
+    highlight NonText ctermbg=none
+    highlight Normal ctermbg=none
+
+endfunction
+"<==
+
+"==> Vimrc fold text
+function! VimrcFoldText()
+    let line = getline(v:foldstart)
+    return v:folddashes . line[3:]
+endfunction
+"<==
+
+"<==
+
+"==> HardTime
+let g:hardtime_allow_different_key = 1
+let g:hardtime_default_on = 1
+let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+"<==
+
+"==> Colorscheme
+call Colorscheme("Tomorrow-Night")
+"<==
+
+"==> UltiSnips
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+
+" For automatic stuff
+let g:snips_author="Amit Gold"
+let g:snips_email="amit.gold00@gmail.com"
+let g:snips_github="https://www.github.com/supercuber"
+
+" Automatic filetype for vim
+autocmd BufRead ~/.vimrc UltiSnipsAddFiletypes vimrc.vim
+"<==
+
+"==> Supertab (Eclim)
+let g:SuperTabClosePreviewOnPopupClose = 1
+"<==
+
+"==> Jedi-vim
+let g:jedi#use_splits_not_buffers = "left"
+"<==
+
+"==> Startify
+let g:startify_list_order = ['commands', 'bookmarks', 'dir', 'sessions']
+let g:startify_bookmarks = []
+
+hi StartifyBracket ctermfg=240
+hi StartifyFile    ctermfg=147
+hi StartifyFooter  ctermfg=240
+hi StartifyHeader  ctermfg=114
+hi StartifyNumber  ctermfg=215
+hi StartifyPath    ctermfg=245
+hi StartifySlash   ctermfg=240
+hi StartifySpecial ctermfg=240
+"<==
+
+"==> YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "/home/amit/.vim/ycm_extra_conf.py"
+let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'h': 1}
+"<==
+
+" vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()

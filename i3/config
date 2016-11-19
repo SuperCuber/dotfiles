@@ -1,0 +1,226 @@
+#==> General
+set $mod Mod4
+font pango:DejaVu Sans Mono 9
+floating_modifier $mod
+#<==
+
+#==> Shortcuts
+# Lock
+bindsym Mod1+l exec --no-startup-id ~/bin/i3lock-extra -s -p
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Rofimenu
+bindsym $mod+d exec --no-startup-id "~/.scripts/rofimenu"
+
+# Quake terminal
+bindsym $mod+q exec "xfce4-terminal --drop-down"
+#<==
+
+#==> Scratchpad
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+#<==
+
+#==> Focus
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Vertical and horizontal are stupid, wtf
+# split in horizontal orientation
+bindsym $mod+b split v
+
+# split in vertical orientation
+bindsym $mod+v split h
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+#<==
+
+#==> Layout
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+#<==
+
+#==> Workspaces
+set $work0 "0 "
+set $work1 "1 "
+set $work2 "2 "
+set $work3 "3 "
+set $work4 "4 "
+set $work5 "5 "
+
+# switch to workspace
+bindsym $mod+Shift+d workspace $work0
+bindsym $mod+1 workspace $work1
+bindsym $mod+2 workspace $work2
+bindsym $mod+3 workspace $work3
+bindsym $mod+4 workspace $work4
+bindsym $mod+5 workspace $work5
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $work1; workspace $work1
+bindsym $mod+Shift+2 move container to workspace $work2; workspace $work2
+bindsym $mod+Shift+3 move container to workspace $work3; workspace $work3
+bindsym $mod+Shift+4 move container to workspace $work4; workspace $work4
+bindsym $mod+Shift+5 move container to workspace $work5; workspace $work5
+#<==
+
+#==> Assigns
+assign [title="Supermenu"] → $work0
+assign [class="Xfce4-terminal"] → $work1
+
+assign [class="Firefox"] → $work2
+assign [class="Tor Browser"] → $work2
+
+assign [class="Ghetto Skype"] → $work3
+assign [class="discord"] → $work3
+assign [class="Thunderbird"] → $work3
+
+assign [class="Minecraft"] → $work4
+#<==
+
+#==> Reload
+# Restart
+bindsym $mod+Shift+r restart
+#<==
+
+#==> Resize
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+# back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+#<==
+
+#==> Colors
+# I don't care about text, no text
+# class                   border  backgr. text    indicator
+client.focused            #404040 #404040 #000000 #404040
+client.unfocused          #101010 #101010 #000000 #101010
+client.focused_inactive   #202020 #202020 #000000 #202020
+client.urgent             #700000 #700000 #000000 #700000
+#<==
+
+#==> Gaps
+for_window [class="^.*"] border pixel 0
+gaps inner 10
+smart_gaps on
+smart_borders on
+
+set $mode_gaps Gaps: (o)uter, (i)nner
+set $mode_gaps_outer Outer Gaps: +|-|0
+set $mode_gaps_inner Inner Gaps: +|-|0
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner all plus 5
+        bindsym minus gaps inner all minus 5
+        bindsym 0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer all plus 5
+        bindsym minus gaps outer all minus 5
+        bindsym 0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+#<==
+
+#==> Bar
+
+# bar {
+#     i3bar_command i3bar -t
+#     position top
+#     status_command i3blocks
+#     bindsym button4 nop
+#     bindsym button5 nop
+#     font pango:Ubuntu, Awesome 9
+#     colors {
+#         background #00000000
+#         separator  #000080
+#         statusline #00A5FF
+#         # class              border    backgr.   text
+#         focused_workspace    #007FD400 #00000000 #007FD4
+#         inactive_workspace   #00000000 #00000000 #007FD4
+#         urgent_workspace     #00000000 #00000000 #900000
+#     }
+# }
+
+#<==
+
+#==> Marks
+bindsym $mod+m exec --no-startup-id i3-input -F 'mark %s' -P 'Mark name: '
+bindsym $mod+g exec --no-startup-id i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+#<==
+
+#==> Autostart
+exec --no-startup-id feh --bg-scale ~/usr/archive/img/background/dots.jpg
+
+exec --no-startup-id xrdb ~/.Xresources
+
+exec --no-startup-id conky
+exec --no-startup-id conky -c ~/.conkyrc2
+
+exec --no-startup-id ~/bin/clean_tmp
+
+exec --no-startup-id /usr/bin/compton
+
+exec --no-startup-id i3-msg workspace $work1
+
+exec_always --no-startup-id ybar_wrapper
+#<==
+
+# vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:

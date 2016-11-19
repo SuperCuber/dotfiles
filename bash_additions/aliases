@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# ls
+alias l="ls -FL"
+alias ll="ls -Ahl"
+alias la="ls -a"
+
+# Clearing screen
+alias c="echo -ne '\033c'"
+alias cl="c;l"
+alias cll="c;ll"
+alias ccd="c;cd"
+alias cvi="c;vi"
+
+# Navigation
+alias b="cd - >/dev/null && l" # b stands for back
+
+# Interactive commands
+alias mv="mv -i"  # "m" - never forget
+alias cp="cp -i"
+
+# Move up quickly
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
+
+# Shortcuts for apt
+alias install='pacaur -S'
+alias uninstall='pacaur -Rns'
+alias update='pacaur -Syu'
+
+# Sudo
+alias fucking=sudo
+alias please=sudo
+
+# Misc
+alias e="exit"
+alias py="python3"
+alias eb="c; exec bash"

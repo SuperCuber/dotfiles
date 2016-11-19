@@ -1,0 +1,10 @@
+snippet sout "Println" b
+System.out.println($0);
+endsnippet
+
+snippet todo "Add a todo" b
+`!p
+from snippet_helpers import get_todo_one, get_todo_two
+snip.rv = get_todo_one("//")`$1`!p
+snip.rv = get_todo_two(t[1])`${0:todo} `date +'%F %T'`
+endsnippet

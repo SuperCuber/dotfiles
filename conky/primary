@@ -1,0 +1,65 @@
+background yes
+
+font 7x13
+use_xft true
+xftfont pango:Ubuntu Mono:size=8
+
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_argb_visual true
+double_buffer yes
+use_spacer left
+if_up_strictness address
+
+update_interval 1
+
+alignment top_right
+gap_x 20
+gap_y 30
+
+TEXT
+${alignc}${color red}CPU:${color white} ${cpu}%
+
+
+
+
+
+
+
+
+${alignc}${top name 1} ${top cpu 1}
+${alignc}${top name 2} ${top cpu 2}
+${alignc}${top name 3} ${top cpu 3}
+${alignc}${top name 4} ${top cpu 4}
+${alignc}${top name 5} ${top cpu 5}
+
+${alignc}${color red}Memory:${color white} ${memperc}%
+${alignc}${mem}/${memmax}
+
+
+
+
+${alignc}${top_mem name 1} ${top_mem mem_res 1}
+${alignc}${top_mem name 2} ${top_mem mem_res 2}
+${alignc}${top_mem name 3} ${top_mem mem_res 3}
+${alignc}${top_mem name 4} ${top_mem mem_res 4}
+${alignc}${top_mem name 5} ${top_mem mem_res 5}
+
+${alignc}${color red}Swap:${color white} ${swapperc}%
+${alignc}${swap}/${swapmax}
+${swapbar}
+
+${alignc}${color red}Filesystem:${color white} ${fs_used_perc}%
+${alignc}${fs_used}/${fs_size}
+${fs_bar}
+
+${alignc}${color red}Entropy:${color white} ${entropy_perc}%
+${alignc}${entropy_avail}/${entropy_poolsize}
+${entropy_bar}
+
+${alignc}${color red}Battery:${color white}
+${alignc}${battery_short}
+${battery_bar}
+

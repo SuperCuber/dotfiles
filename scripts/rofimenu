@@ -1,0 +1,27 @@
+#!/usr/bin/python -B
+# -*- coding: utf-8 -*-
+
+from subprocess import Popen, PIPE
+from os import system
+
+# Gitignored :>
+from rofimenu_options import MENU
+
+def select(action):
+    system(action + " </dev/null >/dev/null 2>&1 &")
+
+
+def main():
+    menu = Popen("rofi -dmenu -i -p '$ '", stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
+    inp = "\n".join(key for key,value in MENU)
+    out, err = menu.communicate(input=bytes(inp, "ascii"))
+
+    selection = str(out, "ascii")[:-1]  # Remove \n
+    for key, value in MENU:
+        if selection == key: select(value)
+    else:
+        select(selection)
+
+if __name__ == "__main__":
+    main()
+
