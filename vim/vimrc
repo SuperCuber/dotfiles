@@ -22,7 +22,6 @@ Plugin 'tommcdo/vim-exchange'
 " Colorscheme
 Plugin 'morhetz/gruvbox'
 " Plugin 'jacoborus/tender.vim'
-Plugin 'jnurmine/Zenburn'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 " Misc
