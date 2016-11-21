@@ -70,6 +70,10 @@ set number
 set listchars=tab:»·,trail:·
 set list
 
+" Splits
+set splitright
+set splitbelow
+
 " Misc
 set showcmd
 set clipboard=unnamed
