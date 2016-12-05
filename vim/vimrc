@@ -26,6 +26,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 " Misc
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'mhinz/vim-startify'
+Plugin 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
 
 call vundle#end()
 filetype plugin indent on
@@ -268,6 +269,10 @@ hi StartifySpecial ctermfg=240
 "==> YouCompleteMe
 let g:ycm_global_ycm_extra_conf = "/home/amit/.vim/ycm_extra_conf.py"
 let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'h': 1}
+"<==
+
+"==> Localvimrc
+let g:localvimrc_persistent=2
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
