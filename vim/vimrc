@@ -21,7 +21,6 @@ Plugin 'tommcdo/vim-exchange'
 
 " Colorscheme
 Plugin 'morhetz/gruvbox'
-" Plugin 'jacoborus/tender.vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
 
 " Misc
@@ -129,6 +128,7 @@ nnoremap <Space> za
 
 "==> Autocmds and cmds
 command! Bclose call <SID>BufcloseCloseIt()
+command! Term !xfce4-terminal
 
 " Automatically enter table mode for my special todo.md
 au BufRead ~/usr/doc/todo.md call HandleTodoFile()
@@ -137,6 +137,8 @@ au BufRead ~/usr/doc/hours.md call HandleTableFile()
 " Automatically get Eclim shortcuts on java files
 au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
 au BufRead *.java inoremap . .<C-x><C-u>
+
+au BufRead *.asm set ft=tasm
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
 
