@@ -1,22 +1,16 @@
-# Fading
-fading = true;            # Fade windows during opacity changes.
-fade-in-step = 0.03;        # Opacity change between steps while fading in. (default 0.028).
-fade-out-step = 0.03;        # Opacity change between steps while fading out. (default 0.03).
-fade-exclude = [ ];        # Exclude conditions for fading.
+fading = true;
+fade-in-step = 0.03;
+fade-out-step = 0.03;
 
-# Other
-backend = "xrender"        # Backend to use: "xrender" or "glx". GLX backend is typically
-                # much faster but depends on a sane driver.
-paint-on-overlay = true;    # Painting on X Composite overlay window. Recommended.
-focus-exclude = ["n:a:Conky"];    # A list of conditions of windows that should always be considered
-                # focused.
+focus-exclude = ["g:e:conky", "g:e:Rofi"];
+shadow-exclude = ["g:e:conky", "g:e:Rofi"];
 
-# Window type settings
+inactive-opacity = 0.5;
+shadow = true;
+clear-shadow = true;
+no-dock-shadow = true;
+
 wintypes:
 {
   tooltip = { fade = true; shadow = false; opacity = 0.75; focus = true; };
-  # fade: Fade the particular type of windows.
-  # shadow: Give those windows shadow
-  # opacity: Default opacity for the type of windows.
-  # focus: Whether to always consider windows of this type focused.
 };
