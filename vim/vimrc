@@ -217,12 +217,6 @@ endfunction
 
 "<==
 
-"==> HardTime
-let g:hardtime_allow_different_key = 1
-let g:hardtime_default_on = 1
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-"<==
-
 "==> Colorscheme
 call Colorscheme("Tomorrow-Night")
 "<==
