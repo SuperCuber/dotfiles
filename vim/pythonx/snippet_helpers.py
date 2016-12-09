@@ -1,3 +1,4 @@
+from subprocess import check_output
 def tidy(lst):
     return list(sorted(lst.split()))
 
@@ -18,6 +19,10 @@ def complete(t):
     return [ opt[len(t):] for opt in TODO_OPTIONS if opt.startswith(t) ]
 
 
+def command(cmd):
+    return str(check_output(cmd, shell=True).strip(), "ascii")
+
+
 def get_todo_one(header):
     print(TODO_OPTIONS)
     return header + "TODO("
@@ -28,3 +33,6 @@ def get_todo_two(text):
     print(completions)
     return display(completions) + "): "
 
+
+def get_todo_three():
+    return command("date +'%F %T'") + " (" + command("uname -n") + ")"
