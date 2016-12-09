@@ -18,6 +18,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
 Plugin 'tommcdo/vim-exchange'
+Plugin 'tommcdo/vim-lion'
 
 " Colorscheme
 Plugin 'morhetz/gruvbox'
