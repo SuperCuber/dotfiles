@@ -2,15 +2,16 @@ fading = true;
 fade-in-step = 0.03;
 fade-out-step = 0.03;
 
-focus-exclude = ["g:e:conky", "g:e:Rofi"];
-shadow-exclude = ["g:e:conky", "g:e:Rofi"];
+focus-exclude = [
+    "name ~= 'i3lock'",
+    "name ~= 'conky'"
+]
 
 inactive-opacity = 0.5;
-shadow = true;
-clear-shadow = true;
-no-dock-shadow = true;
+# clear-shadow = true;
+# no-dock-shadow = true;
 
 wintypes:
 {
-  tooltip = { fade = true; shadow = false; opacity = 0.75; focus = true; };
+  tooltip = { fade = true; shadow = false; opacity = 1.0; focus = true; };
 };
