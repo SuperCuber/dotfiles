@@ -63,3 +63,5 @@ ${alignc}${color red}Battery:${color white}
 ${alignc}${battery_short}
 ${battery_bar}
 
+${alignc}${color red}Uptime:${color white}
+${alignc}${uptime}
