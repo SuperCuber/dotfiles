@@ -224,7 +224,7 @@ exec --no-startup-id /usr/bin/compton
 
 exec --no-startup-id i3-msg workspace $work1
 
-exec_always --no-startup-id ybar_wrapper
+exec_always --no-startup-id polybar example
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
