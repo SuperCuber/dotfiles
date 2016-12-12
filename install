@@ -17,8 +17,8 @@ confirm() {
     [ $value = "y.*" ] && return 1 || return 0
 }
 
-FILE_LOCATION=( "vim/vimrc" "bash_additions" "scripts" "i3/config" "i3/statusbar" "vim/UltiSnips" "Xresources" "todorc" "conky/primary" "conky/secondary" "compton" "rainbow-bash" "yabar" "dir_colors")
-LINK_LOCATION=( ".vimrc" ".bash_additions" ".scripts" ".i3/config" ".i3blocks.conf" ".vim/UltiSnips" ".Xresources" ".todorc" ".conkyrc" ".conkyrc2" ".compton.conf" ".rainbow-bash" ".config/yabar/yabar.conf" ".dir_colors" )
+FILE_LOCATION=( "vim/vimrc" "bash_additions" "scripts" "i3/config" "i3/statusbar" "vim/UltiSnips" "Xresources" "todorc" "conky/primary" "conky/secondary" "compton" "rainbow-bash" "polybar" "dir_colors")
+LINK_LOCATION=( ".vimrc" ".bash_additions" ".scripts" ".i3/config" ".i3blocks.conf" ".vim/UltiSnips" ".Xresources" ".todorc" ".conkyrc" ".conkyrc2" ".compton.conf" ".rainbow-bash" ".config/polybar/config" ".dir_colors" )
 AMOUNT_FILES=${#LINK_LOCATION[@]}
 (( AMOUNT_FILES-- ))
 PREFIX=~/.dotfiles/
