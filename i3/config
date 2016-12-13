@@ -106,6 +106,8 @@ assign [class="discord"] → $work3
 assign [class="Thunderbird"] → $work3
 
 assign [class="Minecraft"] → $work4
+
+assign [title="Eclipse"] → $work5
 #<==
 
 #==> Reload
