@@ -45,9 +45,10 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;0
-font-1 = unifont:size=6:heavy:fontformat=truetype;-2
-font-2 = siji:pixelsize=10;0
+font-0 = FontAwesome:size=10;0
+font-1 = fixed:pixelsize=10;0
+font-2 = unifont:size=6:heavy:fontformat=truetype;-2
+font-3 = siji:pixelsize=10;0
 
 modules-left = i3
 modules-center =
@@ -142,19 +143,19 @@ label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
-label-urgent = %index%!
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-label-visible = %index%
+label-visible = %name%
 label-visible-foreground = ${module/bspwm.label-empty-padding}
 label-visible-padding = ${module/bspwm.label-empty-padding}
 
