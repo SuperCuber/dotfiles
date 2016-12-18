@@ -1,5 +1,12 @@
 #!/bin/bash
 
-ans=`ping 8.8.8.8 -c 1 | head -n 2 | tail -n 1 | cut -d '=' -f 4`
+ans=`ping 8.8.8.8 -c 1 2>/dev/null`
+
+if (( $? == 0 )); then
+    ans=`echo $ans | head -n 2 | tail -n 1 | cut -d '=' -f 4`
+else
+    echo 0ms
+    exit 0
+fi
 
 echo $ans
