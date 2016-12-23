@@ -3,45 +3,29 @@ call plug#begin("~/.local/share/nvim/plugged")
 " Completion
 
 Plug 'davidhalter/jedi-vim'
-call plug#load('jedi-vim')
 Plug 'SirVer/ultisnips'
-call plug#load('ultisnips')
 Plug 'honza/vim-snippets'
-call plug#load('vim-snippets')
 Plug 'ervandew/supertab'
-call plug#load('supertab')
 Plug 'jiangmiao/auto-pairs'
-call plug#load('auto-pairs')
-" Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h']}
-" call plug#load('YouCompleteMe')
+Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h']}
 
 " Custom motions
 Plug 'tpope/vim-repeat'
-call plug#load('vim-repeat')
 Plug 'tpope/vim-surround'
-call plug#load('vim-surround')
 Plug 'tpope/vim-commentary'
-call plug#load('vim-commentary')
 Plug 'tommcdo/vim-exchange'
-call plug#load('vim-exchange')
 Plug 'tommcdo/vim-lion'
-call plug#load('vim-lion')
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
-call plug#load('gruvbox')
 Plug 'chriskempson/vim-tomorrow-theme'
-call plug#load('vim-tomorrow-theme')
 
 " Misc
 Plug 'dhruvasagar/vim-table-mode'
-call plug#load('vim-table-mode')
 Plug 'mhinz/vim-startify'
-call plug#load('vim-startify')
 Plug 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
-" call plug#load('vim-localvimrc')
 
-filetype plugin indent on
+call plug#end()
 "<==
 
 "==> Options
@@ -279,7 +263,6 @@ let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'h': 1}
 
 "==> Localvimrc
 let g:localvimrc_persistent=2
-call plug#load('vim-localvimrc')
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
