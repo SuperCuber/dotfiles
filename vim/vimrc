@@ -1,35 +1,46 @@
-"==> Vundle
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
+"==> Plug
+call plug#begin("~/.local/share/nvim/plugged")
 " Completion
-Plugin 'davidhalter/jedi-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
-Plugin 'jiangmiao/auto-pairs'
-" Plugin 'Valloric/YouCompleteMe'
-" NeoBundle can do it automagically... :/
+
+Plug 'davidhalter/jedi-vim'
+call plug#load('jedi-vim')
+Plug 'SirVer/ultisnips'
+call plug#load('ultisnips')
+Plug 'honza/vim-snippets'
+call plug#load('vim-snippets')
+Plug 'ervandew/supertab'
+call plug#load('supertab')
+Plug 'jiangmiao/auto-pairs'
+call plug#load('auto-pairs')
+" Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h']}
+" call plug#load('YouCompleteMe')
 
 " Custom motions
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'tommcdo/vim-exchange'
-Plugin 'tommcdo/vim-lion'
+Plug 'tpope/vim-repeat'
+call plug#load('vim-repeat')
+Plug 'tpope/vim-surround'
+call plug#load('vim-surround')
+Plug 'tpope/vim-commentary'
+call plug#load('vim-commentary')
+Plug 'tommcdo/vim-exchange'
+call plug#load('vim-exchange')
+Plug 'tommcdo/vim-lion'
+call plug#load('vim-lion')
 
 " Colorscheme
-Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+call plug#load('gruvbox')
+Plug 'chriskempson/vim-tomorrow-theme'
+call plug#load('vim-tomorrow-theme')
 
 " Misc
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'mhinz/vim-startify'
-Plugin 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
+Plug 'dhruvasagar/vim-table-mode'
+call plug#load('vim-table-mode')
+Plug 'mhinz/vim-startify'
+call plug#load('vim-startify')
+Plug 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
+" call plug#load('vim-localvimrc')
 
-call vundle#end()
 filetype plugin indent on
 "<==
 
@@ -268,6 +279,7 @@ let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'h': 1}
 
 "==> Localvimrc
 let g:localvimrc_persistent=2
+call plug#load('vim-localvimrc')
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
