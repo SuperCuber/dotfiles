@@ -4,7 +4,8 @@ fade-out-step = 0.03;
 
 focus-exclude = [
     "name ~= 'i3lock'",
-    "name ~= 'conky'"
+    "name ~= 'conky'",
+    "_NET_WM_NAME@:s = 'rofi'"
 ]
 
 inactive-opacity = 0.5;
