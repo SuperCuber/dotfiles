@@ -8,6 +8,7 @@ cd ()
     RV=$?
     # If its not 0, just get out, it already printed message
     [ $RV = 0 ] || return $RV
-    # If everything OK, print ls
+    # If everything OK, print ls and todo
     l
+    todo
 }
