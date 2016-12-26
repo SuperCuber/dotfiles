@@ -258,7 +258,6 @@ hi StartifySpecial ctermfg=240
 
 "==> YouCompleteMe
 let g:ycm_global_ycm_extra_conf = "/home/amit/.vim/ycm_extra_conf.py"
-let g:ycm_filetype_whitelist = {'c': 1, 'cpp': 1, 'h': 1}
 "<==
 
 "==> Localvimrc
