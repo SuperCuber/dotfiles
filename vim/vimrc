@@ -24,6 +24,7 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'mhinz/vim-startify'
 Plug 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
+Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
 "<==
