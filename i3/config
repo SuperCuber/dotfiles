@@ -213,7 +213,7 @@ bindsym $mod+g exec --no-startup-id i3-input -F '[con_mark=%s] focus' -P 'Go to 
 #<==
 
 #==> Autostart
-exec --no-startup-id feh --bg-scale ~/usr/archive/img/background/dots.jpg
+exec --no-startup-id ~/.scripts/wallpaper_handler
 
 exec --no-startup-id xrdb ~/.Xresources
 

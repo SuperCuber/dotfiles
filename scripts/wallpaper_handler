@@ -1,0 +1,12 @@
+#!/bin/bash
+
+directory=~/usr/archive/img/background
+
+trap "true" "SIGTERM"
+
+while true; do
+    file=$(ls $directory | sort -R | tail -1)
+    feh --bg-scale $directory/$file
+    sleep 300 &
+    wait
+done
