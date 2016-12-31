@@ -8,9 +8,9 @@
 ;=====================================================
 
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
+background = #000000FF
+background-alt = #000000FF
+foreground = #E0E0E0
 foreground-alt = #55
 primary = #ffb52a
 secondary = #e60053
@@ -34,10 +34,10 @@ foreground = ${colors.foreground}
 overline-size = 2
 overline-color = #f00
 underline-size = 2
-underline-color = #00f
+underline-color = #000000FF
 
 border-bottom = 2
-border-bottom-color = #333
+border-bottom-color = #000000FF
 
 spacing = 1
 padding-left = 0
