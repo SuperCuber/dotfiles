@@ -93,21 +93,10 @@ let g:mapleader = ","
 
 " Remove highlights from search
 nmap <silent> <leader><cr> :noh<cr>
-" Close current buffer and its containing tab
-nmap <silent> <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Open vimrc
 nmap <silent> <leader>e :e ~/.vimrc<cr>
 " Save
 nmap <leader>w :w<cr>
-" Open [s]cribble
-nnoremap <leader>s :Startify<cr>
-
-" Run current program with python
-nnoremap <leader>p3 :!python3 %<cr>
-nnoremap <leader>p2 :!python2 %<cr>
-nnoremap <leader>pp :!python3 % 
-" pp in case I need arguments,
-" Notice the trailing space before EOL and lack of <cr>
 
 " Quit
 nnoremap <leader>q :q<cr>
@@ -126,8 +115,7 @@ nnoremap <Space> za
 "<==
 
 "==> Autocmds and cmds
-command! Bclose call <SID>BufcloseCloseIt()
-command! Term !xfce4-terminal
+command! Te !xfce4-terminal
 
 " Automatically enter table mode for my special todo.md
 au BufRead ~/usr/doc/hours.md call HandleTableFile()
@@ -144,27 +132,6 @@ au BufWritePost ~/.vimrc source ~/.vimrc
 "<==
 
 "==> Functions
-"==> Close buffer
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-"<==
-
 "==> Handle table file
 function! HandleTableFile()
     normal ,tm
@@ -174,21 +141,7 @@ function! HandleTableFile()
     nmap <buffer> <C-l> ]\|
     nmap <buffer> <C-h> [\|
 
-    nmap <buffer> <leader>f G0xi\|jk``
-
     call Colorscheme("gruvbox") " Nice orange table
-endfunction
-"<==
-
-"==> Handle todo file
-function! HandleTodoFile()
-    call HandleTableFile()
-
-    imap <buffer> <TAB> <C-o>o\| \| \| \|<C-o>2[\|<C-o>]\|<C-o>rX<C-o>[\|
-
-    nmap <buffer> <leader>v fXrV
-    " TODO: think of a mnemonic for this, or extract to a function
-    nmap <buffer> <leader>c f*rV
 endfunction
 "<==
 
