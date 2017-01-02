@@ -7,6 +7,7 @@ from os import system
 # Gitignored :>
 from rofimenu_options import MENU
 
+
 def select(action):
     system(action + " </dev/null >/dev/null 2>&1 &")
 
@@ -18,7 +19,9 @@ def main():
 
     selection = str(out, "ascii")[:-1]  # Remove \n
     for key, value in MENU:
-        if selection == key: select(value)
+        if selection == key:
+            select(value)
+            break
     else:
         select(selection)
 
