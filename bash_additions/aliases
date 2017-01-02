@@ -41,4 +41,3 @@ alias please=sudo
 alias e="exit"
 alias py="python3"
 alias eb="c; exec bash"
-alias te="xfce4-terminal"
