@@ -20,6 +20,7 @@ Plug 'tommcdo/vim-lion'
 Plug 'morhetz/gruvbox'
 Plug 'chriskempson/vim-tomorrow-theme'
 
+
 " Misc
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'mhinz/vim-startify'
@@ -129,7 +130,6 @@ command! Bclose call <SID>BufcloseCloseIt()
 command! Term !xfce4-terminal
 
 " Automatically enter table mode for my special todo.md
-au BufRead ~/usr/doc/todo.md call HandleTodoFile()
 au BufRead ~/usr/doc/hours.md call HandleTableFile()
 
 " Automatically get Eclim shortcuts on java files
@@ -199,8 +199,8 @@ function! Colorscheme(colscheme)
     exec "colo ".a:colscheme
 
     " Same background as terminal would do
-    highlight NonText ctermbg=none
-    highlight Normal ctermbg=none
+    highlight NonText ctermbg=none guibg=none
+    highlight Normal ctermbg=none guibg=none
 
 endfunction
 "<==
@@ -211,7 +211,6 @@ function! VimrcFoldText()
     return v:folddashes . line[3:]
 endfunction
 "<==
-
 "<==
 
 "==> Colorscheme
