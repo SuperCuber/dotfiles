@@ -15,6 +15,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
+Plug 'wellle/targets.vim'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
