@@ -51,8 +51,8 @@ font-2 = unifont:size=6:heavy:fontformat=truetype;-2
 font-3 = siji:pixelsize=10;0
 
 modules-left = i3
-modules-center =
-modules-right = ping wifi volume battery date
+modules-center = xwindow
+modules-right = ping wifi volume xkeyboard battery date
 
 tray-position = right
 tray-padding = 2
@@ -80,11 +80,14 @@ interval = 5
 type = custom/script
 exec = ~/.dotfiles/i3/blockscripts/ping
 interval = 5
+label-maxlen = 10
 
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+label = %title:0:50:...%
+label-maxlen = 50
+format-underline = #ff0000
 
 [module/xkeyboard]
 type = internal/xkeyboard
