@@ -223,7 +223,11 @@ exec --no-startup-id /usr/bin/compton
 
 exec --no-startup-id i3-msg workspace $work1
 
-exec_always --no-startup-id polybar example
+exec --no-startup-id polybar example
+
+exec --no-startup-id pulseaudio --start
+
+exec --no-startup-id xfce4-power-manager
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
