@@ -43,8 +43,8 @@ ${top_mem name 5} $alignr ${top_mem mem_res 5}
 
 ${color2}Download ${color0}${alignr}${downspeedf eth0} KiB/s
 ${downspeedgraph wlo1 40,}
-${color2}Upload ${color0}${alignr}${upspeedf eth0} KiB/s 
-${upspeedgraph wlo1 40,} 
+${color2}Upload ${color0}${alignr}${upspeedf eth0} KiB/s
+${upspeedgraph wlo1 40,}
 ${color2}Local${color0}${alignr}${addrs}
 ${color2}Public${color0}${alignr}${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
 
