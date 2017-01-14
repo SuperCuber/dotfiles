@@ -40,7 +40,7 @@ printData(workspaceLine)
 
 def showWorkspaces(i3, e):
     if not e.change in [ 'init', 'focus', 'empty', 'rename', 'urgent' ]:
-        return 
+        return
 
     workspaces = i3.get_workspaces()
     workspaceLine = buildWorkspaceLine(workspaces)

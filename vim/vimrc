@@ -32,7 +32,7 @@ call plug#end()
 "<==
 
 "==> Options
-syntax enable 
+syntax enable
 
 " Wildmenu
 set wildmenu

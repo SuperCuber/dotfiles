@@ -192,7 +192,7 @@ EXEC 01;32
 
 # Stolen from some github thingie
 
-# documents 
+# documents
 *README               38;5;220;1
 *README.rst           38;5;220;1
 *LICENSE              38;5;220;1
@@ -208,7 +208,7 @@ EXEC 01;32
 *CHANGES              38;5;220;1
 .log                  38;5;190
 
-# markup 
+# markup
 .etx                  38;5;184
 .info                 38;5;184
 .markdown             38;5;184
@@ -228,7 +228,7 @@ EXEC 01;32
 .c++                  38;5;81
 .h++                  38;5;110
 
-# Build stuff 
+# Build stuff
 *Makefile             38;5;155
 *makefile             38;5;155
 

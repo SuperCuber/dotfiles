@@ -20,41 +20,41 @@ gap_x 20
 gap_y 30
 
 TEXT
-${alignc}${color red}CPU:${color white} ${cpu}%
+${alignc}CPU:${color white} ${cpu}%
 ${cpugraph cpu1 30,72}${cpugraph cpu2 30,72}${voffset -14}
 ${cpugraph cpu3 30,72}${cpugraph cpu4 30,72}
 ${font Ubuntu:size=10}${voffset -66}${color3}${goto 8}1 ${goto 80}2 ${goto 0} ${voffset 30} ${goto 8}3 ${goto 80}4
 
 
-${top name 1} $alignr ${top cpu 1}%
-${top name 2} $alignr ${top cpu 2}%
-${top name 3} $alignr ${top cpu 3}%
-${top name 4} $alignr ${top cpu 4}%
-${top name 5} $alignr ${top cpu 5}%
+${top name 1}${alignr}${top cpu 1}%
+${top name 2}${alignr}${top cpu 2}%
+${top name 3}${alignr}${top cpu 3}%
+${top name 4}${alignr}${top cpu 4}%
+${top name 5}${alignr}${top cpu 5}%
 
-${alignc}${color red}Memory:${color white} ${memperc}%
+${alignc}Memory:${color white} ${memperc}%
 ${alignc}${mem}/${memmax}
 ${memgraph cpu1 30,144}
-${top_mem name 1} $alignr ${top_mem mem_res 1}
-${top_mem name 2} $alignr ${top_mem mem_res 2}
-${top_mem name 3} $alignr ${top_mem mem_res 3}
-${top_mem name 4} $alignr ${top_mem mem_res 4}
-${top_mem name 5} $alignr ${top_mem mem_res 5}
+${top_mem name 1}${alignr}${top_mem mem_res 1}
+${top_mem name 2}${alignr}${top_mem mem_res 2}
+${top_mem name 3}${alignr}${top_mem mem_res 3}
+${top_mem name 4}${alignr}${top_mem mem_res 4}
+${top_mem name 5}${alignr}${top_mem mem_res 5}
 
-${color2}Download ${color0}${alignr}${downspeedf eth0} KiB/s
+Download ${color0}${alignr}${downspeedf eth0} KiB/s
 ${downspeedgraph wlo1 40,}
-${color2}Upload ${color0}${alignr}${upspeedf eth0} KiB/s
+Upload ${color0}${alignr}${upspeedf eth0} KiB/s
 ${upspeedgraph wlo1 40,}
-${color2}Local${color0}${alignr}${addrs}
-${color2}Public${color0}${alignr}${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
+Local${color0}${alignr}${addrs}
+Public${color0}${alignr}${execi 3600 wget -q -O /dev/stdout http://checkip.dyndns.org/ | cut -d : -f 2- | cut -d \< -f -1}
 
-${alignc}${color red}Swap:${color white} ${swapperc}%
+${alignc}Swap:${color white} ${swapperc}%
 ${alignc}${swap}/${swapmax}
 ${swapbar}
 
-${alignc}${color red}Filesystem:${color white} ${fs_used_perc}%
+${alignc}Filesystem:${color white} ${fs_used_perc}%
 ${alignc}${fs_used}/${fs_size}
 ${fs_bar}
 
-${alignc}${color red}Uptime:${color white}
+${alignc}Uptime:${color white}
 ${alignc}${uptime}
