@@ -4,15 +4,15 @@ fade-out-step = 0.03;
 
 focus-exclude = [
     "name ~= 'i3lock'",
-    "name ~= 'conky'",
     "_NET_WM_NAME@:s = 'rofi'"
 ]
 
 inactive-opacity = 0.5;
-# clear-shadow = true;
-# no-dock-shadow = true;
+mark-ovredir-focused = true;
 
 wintypes:
 {
   tooltip = { fade = true; shadow = false; opacity = 1.0; focus = true; };
 };
+
+# vim:ft=conf:
