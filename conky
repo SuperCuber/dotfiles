@@ -43,9 +43,9 @@ ${top_mem name 3}${alignr}${top_mem mem_res 3}
 ${top_mem name 4}${alignr}${top_mem mem_res 4}
 ${top_mem name 5}${alignr}${top_mem mem_res 5}
 
-${color red}Download ${color0}${alignr}${downspeedf eth0} KiB/s
+${color red}Download ${color0}${alignr}${downspeedf wlo1} KiB/s
 ${downspeedgraph wlo1 40,}
-${color red}Upload ${color0}${alignr}${upspeedf eth0} KiB/s
+${color red}Upload ${color0}${alignr}${upspeedf wlo1} KiB/s
 ${upspeedgraph wlo1 40,}
 
 ${alignc}${color red}Filesystem:${color white} ${fs_used_perc}%
