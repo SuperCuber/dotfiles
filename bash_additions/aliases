@@ -31,6 +31,7 @@ alias .8="cd ../../../../../../.."
 alias install='pacaur -S'
 alias uninstall='pacaur -Rns'
 alias update='pacaur -Syu'
+alias autoremove='pacman -Rns $(pacman -Qdtq)'
 
 # Misc
 alias e="exit"
