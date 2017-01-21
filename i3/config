@@ -68,20 +68,26 @@ bindsym $mod+a focus parent
 #<==
 
 #==> Workspaces
-set $work0 "0 "
 set $work1 "1 "
 set $work2 "2 "
 set $work3 "3 "
 set $work4 "4 "
 set $work5 "5 "
+set $work6 "6 "
+set $work7 "7 "
+set $work8 "8 "
+set $work9 "9 "
 
 # switch to workspace
-bindsym $mod+Shift+d workspace $work0
 bindsym $mod+1 workspace $work1
 bindsym $mod+2 workspace $work2
 bindsym $mod+3 workspace $work3
 bindsym $mod+4 workspace $work4
 bindsym $mod+5 workspace $work5
+bindsym $mod+6 workspace $work6
+bindsym $mod+7 workspace $work7
+bindsym $mod+8 workspace $work8
+bindsym $mod+9 workspace $work9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $work1; workspace $work1
@@ -89,6 +95,10 @@ bindsym $mod+Shift+2 move container to workspace $work2; workspace $work2
 bindsym $mod+Shift+3 move container to workspace $work3; workspace $work3
 bindsym $mod+Shift+4 move container to workspace $work4; workspace $work4
 bindsym $mod+Shift+5 move container to workspace $work5; workspace $work5
+bindsym $mod+Shift+6 move container to workspace $work6; workspace $work6
+bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
+bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
+bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 #<==
 
 #==> Assigns
@@ -210,23 +220,7 @@ bindsym $mod+g exec --no-startup-id i3-input -F '[con_mark=%s] focus' -P 'Go to 
 #<==
 
 #==> Autostart
-exec --no-startup-id ~/.scripts/wallpaper_handler
-
-exec --no-startup-id xrdb ~/.Xresources
-
-exec --no-startup-id conky
-
-exec --no-startup-id ~/bin/clean_tmp
-
-exec --no-startup-id /usr/bin/compton
-
-exec --no-startup-id i3-msg workspace $work1
-
-exec --no-startup-id polybar example
-
-exec --no-startup-id pulseaudio --start
-
-exec --no-startup-id xfce4-power-manager
+exec --no-startup-id ~/.scripts/startup
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
