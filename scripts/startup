@@ -1,10 +1,14 @@
-#!/bin/bash
-~/.scripts/wallpaper_handler &
-xrdb ~/.Xresources &
-conky &
-~/bin/clean_tmp &
-/usr/bin/compton &
-# i3-msg workspace $work1 &
-polybar example &
-pulseaudio --start &
-xfce4-power-manager &
+#!/usr/bin/env bash
+while read line; do
+    eval $line &
+done <<EOF
+~/.scripts/wallpaper_handler
+xrdb ~/.Xresources
+conky
+~/bin/clean_tmp
+/usr/bin/compton
+polybar example
+pulseaudio --start
+xfce4-power-manager
+EOF
+disown -a
