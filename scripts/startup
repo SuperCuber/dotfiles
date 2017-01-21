@@ -1,0 +1,10 @@
+#!/bin/bash
+~/.scripts/wallpaper_handler &
+xrdb ~/.Xresources &
+conky &
+~/bin/clean_tmp &
+/usr/bin/compton &
+# i3-msg workspace $work1 &
+polybar example &
+pulseaudio --start &
+xfce4-power-manager &
