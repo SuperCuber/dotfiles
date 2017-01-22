@@ -9,4 +9,5 @@ while true; do
     feh --bg-scale $directory/$file
     sleep 300 &
     wait
+    kill %1
 done
