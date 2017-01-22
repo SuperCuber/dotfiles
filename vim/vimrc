@@ -118,14 +118,9 @@ nnoremap <Space> za
 "==> Autocmds and cmds
 command! Te !xfce4-terminal
 
-" Automatically enter table mode for my special todo.md
-au BufRead ~/usr/doc/hours.md call HandleTableFile()
-
 " Automatically get Eclim shortcuts on java files
 au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
 au BufRead *.java inoremap . .<C-x><C-u>
-
-au BufRead *.asm set ft=tasm
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
 
@@ -133,19 +128,6 @@ au BufWritePost ~/.vimrc source ~/.vimrc
 "<==
 
 "==> Functions
-"==> Handle table file
-function! HandleTableFile()
-    normal ,tm
-
-    nmap <buffer> <C-j> }\|
-    nmap <buffer> <C-k> {\|
-    nmap <buffer> <C-l> ]\|
-    nmap <buffer> <C-h> [\|
-
-    call Colorscheme("gruvbox") " Nice orange table
-endfunction
-"<==
-
 "==> Colorscheme
 function! Colorscheme(colscheme)
     set background=dark
