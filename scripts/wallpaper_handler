@@ -4,10 +4,12 @@ directory=~/usr/archive/img/background
 
 trap "true" "SIGTERM"
 
+files=$(ls $directory | sort -R)
 while true; do
-    file=$(ls $directory | sort -R | tail -1)
-    feh --bg-scale $directory/$file
-    sleep 300 &
-    wait
-    kill %1
+    for file in $files; do
+        feh --bg-scale $directory/$file
+        sleep 300 &
+        wait
+        kill %1
+    done
 done
