@@ -232,4 +232,4 @@ EXEC 01;32
 *Makefile             38;5;155
 *makefile             38;5;155
 
-# vim: ft=dircolors:fdm=marker:et:sw=2:
+# vim: ft=dircolors:

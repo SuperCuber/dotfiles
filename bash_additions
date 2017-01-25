@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # ls
+alias ls="ls --color=auto"
 alias l="ls -FL"
 alias ll="ls -Ahl"
 alias la="ls -a"
@@ -36,3 +37,21 @@ alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
 # Misc
 alias e="exit"
 alias eb="c; exec bash"
+
+# CD
+cd ()
+{
+    # Pass all arguments to cd
+    builtin cd "$@"
+    # Get return value
+    RV=$?
+    # If its not 0, just get out, it already printed message
+    [ $RV = 0 ] || return $RV
+    # If everything OK, print ls and todo
+    l
+    todo
+}
+
+# Prompt
+source ~/.dotfiles/prompt
+eval `dircolors`
