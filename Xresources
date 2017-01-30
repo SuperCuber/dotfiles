@@ -1,6 +1,6 @@
 rofi.padding: 200
 rofi.fullscreen: true
-rofi.font: Consola Mono Book 20
+rofi.font: Ubuntu Mono 20
 rofi.color-window: argb:aa181818, argb:aa181818, #1818181
 rofi.color-normal: argb:0095C7AE, #8fa1b3, argb:0095C7AE, argb:55101218, #95C7AE
 rofi.separator-style: none
