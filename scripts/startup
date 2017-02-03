@@ -6,9 +6,10 @@ done <<EOF
 xrdb ~/.Xresources
 conky
 ~/bin/clean_tmp
-/usr/bin/compton
+while true; do sleep 0.2; /usr/bin/compton; done
 polybar example
 pulseaudio --start
 xfce4-power-manager
+setxkbmap -layout us,il -option grp:alt_shift_toggle
 EOF
 disown -a
