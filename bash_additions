@@ -56,4 +56,4 @@ PATH="~/.scripts:~/bin:$PATH"
 
 # Prompt
 source ~/.dotfiles/prompt
-eval `dircolors`
+eval `dircolors ~/.dir_colors`
