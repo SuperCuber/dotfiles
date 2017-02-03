@@ -123,7 +123,7 @@ au BufRead *.java inoremap . .<C-x><C-u>
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
 
-au BufWritePost ~/.vimrc source ~/.vimrc
+au BufReadPost *.hdl set ft=hdl
 "<==
 
 "==> Functions
