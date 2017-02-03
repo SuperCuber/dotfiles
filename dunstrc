@@ -1,0 +1,42 @@
+[global]
+    format = "%a: %s %b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = 60;
+
+    word_wrap = yes
+
+    geometry = "0x0-10+10"
+    transparency = 0
+
+    idle_threshold = 20
+
+    separator_height = 2;
+
+    separator_color = auto
+
+    padding = 1
+    horizontal_padding = 9
+
+
+[shortcuts]
+    close = mod1+space
+    close_all = mod1+ctrl+x
+    history = mod1+grave
+
+[urgency_low]
+    background = "#404040"
+    foreground = "#CCCCCC"
+    timeout = 10
+
+[urgency_normal]
+    background = "#859900"
+    foreground = "#DDDDDD"
+    timeout = 10
+
+[urgency_critical]
+    background = "#dc322f"
+    foreground = "#DDDDDD"
+    timeout = 0
