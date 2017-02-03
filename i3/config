@@ -214,11 +214,6 @@ mode "$mode_gaps_outer" {
 
 #<==
 
-#==> Marks
-bindsym $mod+m exec --no-startup-id i3-input -F 'mark %s' -P 'Mark name: '
-bindsym $mod+g exec --no-startup-id i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
-#<==
-
 #==> Autostart
 exec --no-startup-id ~/.scripts/startup
 #<==
