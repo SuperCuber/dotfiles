@@ -5,6 +5,6 @@ TERMINAL=xfce4-terminal
 if (( $# == 0 )); then
     $TERMINAL
 else
-    # Notice $@ vs $* here - I wan't everything after "te" to be passed as a command.
+    # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
     $TERMINAL -e "$*"
 fi
