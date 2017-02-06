@@ -1,7 +1,4 @@
-# Zsh options
-setopt PROMPT_SUBST
-autoload -U colors && colors
-
+#==> Aliases
 # Path
 export PATH=$PATH:~/bin
 export PATH=$PATH:~/.scripts
@@ -43,24 +40,10 @@ alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
 # Misc
 alias e="exit"
 alias eb="c; exec zsh"
-eval `dircolors ~/.dir_colors`
+alias x="startx"
+#<==
 
-# CD
-cd ()
-{
-    # Pass all arguments to cd
-    builtin cd "$@"
-    # Get return value
-    RV=$?
-    # If its not 0, just get out, it already printed message
-    [ $RV = 0 ] || return $RV
-    # If everything OK, print ls and todo
-    l
-    todo
-}
-
-# Prompt
-
+#==> Prompt
 #;Colors
 CLR_RED="110;23;8"
 CLR_GREEN="27;119;55"
@@ -131,3 +114,29 @@ PS1="%{$(get_exit_code_color)%} %{$(get_exit_code)$(get_exit_code_color_2)%}$SEP
 %{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$USERNAME_COLOR" 1)%} %n%{$(to_rgb "$USERNAME_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)$SEPARATOR%}\
 %{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)%} %~%{$RESET_COLORS$(to_rgb "$PATH_COLOR" 0)$SEPARATOR%}
 %{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PROMPT_COLOR" 1)%} %(!.#.$) %{$RESET_COLORS$(to_rgb "$PROMPT_COLOR" 0)%}%{$SEPARATOR%G%}%{$RESET_COLORS%} "
+#<==
+
+#==> Misc
+# Zsh options
+setopt PROMPT_SUBST
+autoload -U colors && colors
+
+# Dircolors
+eval `dircolors ~/.dir_colors`
+
+# CD
+cd ()
+{
+    # Pass all arguments to cd
+    builtin cd "$@"
+    # Get return value
+    RV=$?
+    # If its not 0, just get out, it already printed message
+    [ $RV = 0 ] || return $RV
+    # If everything OK, print ls and todo
+    l
+    todo
+}
+#<==
+
+# vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
