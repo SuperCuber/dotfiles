@@ -1,3 +1,8 @@
+#==> Zsh options
+setopt PROMPT_SUBST
+autoload -U colors && colors
+#<==
+
 #==> Aliases
 # Path
 export PATH=$PATH:~/bin
@@ -117,10 +122,6 @@ PS1="%{$(get_exit_code_color)%} %{$(get_exit_code)$(get_exit_code_color_2)%}$SEP
 #<==
 
 #==> Misc
-# Zsh options
-setopt PROMPT_SUBST
-autoload -U colors && colors
-
 # Dircolors
 eval `dircolors ~/.dir_colors`
 
@@ -137,6 +138,8 @@ cd ()
     l
     todo
 }
+
+c;todo
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
