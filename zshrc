@@ -43,7 +43,7 @@ alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
 # Misc
 alias e="exit"
 alias eb="c; exec zsh"
-eval `dircolors`
+eval `dircolors ~/.dir_colors`
 
 # CD
 cd ()
@@ -74,7 +74,7 @@ CLR_BLACK="0;0;0"
 EXIT_OK="$CLR_GREEN"
 EXIT_ERROR="$CLR_RED"
 # User
-USERNAME="$CLR_CYAN"
+USERNAME_COLOR="$CLR_CYAN"
 # Path
 PATH_COLOR="$CLR_BLACK"
 # Prompt
@@ -105,7 +105,7 @@ get_exit_code_color_2(){
     else
         echo -en `to_rgb $EXIT_ERROR 0` # Red
     fi
-    echo -en `to_rgb $USERNAME 1` # Cyan bg
+    echo -en `to_rgb $USERNAME_COLOR 1` # Cyan bg
     return $RV
 }
 
@@ -120,13 +120,14 @@ to_rgb() {
 
 RESET_COLORS=$reset_color
 SEPARATOR=""
+# SEPARATOR="\342\226\210\356\202\260"
 
 
 # Exit code
 # Username
 # Path
 # Prompt
-PS1="%{$(get_exit_code_color)%} %{$(get_exit_code)$(get_exit_code_color_2)$SEPARATOR%}\
-%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$USERNAME" 1)%} %u%{$(to_rgb "$USERNAME" 0)$(to_rgb "$PATH_COLOR" 1)$SEPARATOR%}\
+PS1="%{$(get_exit_code_color)%} %{$(get_exit_code)$(get_exit_code_color_2)%}$SEPARATOR\
+%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$USERNAME_COLOR" 1)%} %n%{$(to_rgb "$USERNAME_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)$SEPARATOR%}\
 %{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)%} %~%{$RESET_COLORS$(to_rgb "$PATH_COLOR" 0)$SEPARATOR%}
-%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PROMPT_COLOR" 1)%} %(!.#.$) %{$RESET_COLORS$(to_rgb "$PROMPT_COLOR" 0)%}$SEPARATOR%{$RESET_COLORS%} "
+%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PROMPT_COLOR" 1)%} %(!.#.$) %{$RESET_COLORS$(to_rgb "$PROMPT_COLOR" 0)%}%{$SEPARATOR%G%}%{$RESET_COLORS%} "

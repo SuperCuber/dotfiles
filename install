@@ -39,9 +39,4 @@ for i in `seq 0 $AMOUNT_FILES`; do
     # -f = replace existing, -n = treat as normal if its a directory
 done
 
-cat >>.bashrc <<EOF || die "change .bashrc"
-
-source ~/.dotfiles/bash_additions
-EOF
-
 echo "Success!"
