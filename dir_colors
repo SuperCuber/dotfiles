@@ -237,7 +237,4 @@ EXEC                  01;32
 .o                    38;5;8
 *~                    38;5;8
 
-# Dircolors
-*dir_colors           07;30;1
-
 # vim: ft=dircolors:
