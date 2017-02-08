@@ -7,7 +7,7 @@ xrdb ~/.Xresources
 conky
 ~/bin/clean_tmp
 while true; do sleep 0.2; /usr/bin/compton; done
-polybar example
+sleep 1; polybar example
 pulseaudio --start
 xfce4-power-manager
 setxkbmap -layout us,il -option grp:alt_shift_toggle
