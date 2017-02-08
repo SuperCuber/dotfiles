@@ -108,16 +108,15 @@ to_rgb() {
 
 RESET_COLORS=$reset_color
 SEPARATOR=""
-# SEPARATOR="\342\226\210\356\202\260"
 
 
 # Exit code
 # Username
 # Path
 # Prompt
-PS1="%{$(get_exit_code_color)%} %{$(get_exit_code)$(get_exit_code_color_2)%}$SEPARATOR\
-%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$USERNAME_COLOR" 1)%} %n%{$(to_rgb "$USERNAME_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)$SEPARATOR%}\
-%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)%} %~%{$RESET_COLORS$(to_rgb "$PATH_COLOR" 0)$SEPARATOR%}
+PS1="%{$(get_exit_code_color)%} %{$(get_exit_code) $(get_exit_code_color_2)%}$SEPARATOR\
+%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$USERNAME_COLOR" 1)%} %n %{$(to_rgb "$USERNAME_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)$SEPARATOR%}\
+%{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PATH_COLOR" 1)%} %~ %{$RESET_COLORS$(to_rgb "$PATH_COLOR" 0)$SEPARATOR%}
 %{$(to_rgb "$TEXT_COLOR" 0)$(to_rgb "$PROMPT_COLOR" 1)%} %(!.#.$) %{$RESET_COLORS$(to_rgb "$PROMPT_COLOR" 0)%}%{$SEPARATOR%G%}%{$RESET_COLORS%} "
 #<==
 
