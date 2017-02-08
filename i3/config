@@ -214,8 +214,4 @@ mode "$mode_gaps_outer" {
 
 #<==
 
-#==> Autostart
-exec --no-startup-id ~/.scripts/startup
-#<==
-
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
