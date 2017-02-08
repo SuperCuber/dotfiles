@@ -4,10 +4,6 @@ autoload -U colors && colors
 #<==
 
 #==> Aliases
-# Path
-export PATH=$PATH:~/bin
-export PATH=$PATH:~/.scripts
-
 # ls
 alias ls="ls --color=auto"
 alias l="ls -FL"
@@ -109,7 +105,6 @@ to_rgb() {
 RESET_COLORS=$reset_color
 SEPARATOR=""
 
-
 # Exit code
 # Username
 # Path
@@ -123,6 +118,8 @@ PS1="%{\$(get_exit_code_color)%} %{\$(get_exit_code) \$(get_exit_code_color_2)%}
 #==> Misc
 # Dircolors
 eval `dircolors ~/.dir_colors`
+
+export PATH=~/bin:~/.scripts:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 
 # CD
 cd ()
