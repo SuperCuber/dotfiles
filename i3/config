@@ -192,26 +192,4 @@ mode "$mode_gaps_outer" {
 
 #<==
 
-#==> Bar
-
-# bar {
-#     i3bar_command i3bar -t
-#     position top
-#     status_command i3blocks
-#     bindsym button4 nop
-#     bindsym button5 nop
-#     font pango:Ubuntu, Awesome 9
-#     colors {
-#         background #00000000
-#         separator  #000080
-#         statusline #00A5FF
-#         # class              border    backgr.   text
-#         focused_workspace    #007FD400 #00000000 #007FD4
-#         inactive_workspace   #00000000 #00000000 #007FD4
-#         urgent_workspace     #00000000 #00000000 #900000
-#     }
-# }
-
-#<==
-
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
