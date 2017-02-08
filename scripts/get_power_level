@@ -1,1 +1,0 @@
-upower -d | grep percentage | head -n 1 | tr -s ' ' | cut -f 3 -d ' ' | head -c -2
