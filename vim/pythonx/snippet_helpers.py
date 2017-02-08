@@ -1,4 +1,6 @@
 from subprocess import check_output
+
+
 def tidy(lst):
     return list(sorted(lst.split()))
 
