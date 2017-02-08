@@ -1,6 +1,6 @@
 #==> General
 set $mod Mod4
-font pango:DejaVu Sans Mono 9
+font pango:Ubuntu Mono 9
 floating_modifier $mod
 #<==
 
@@ -62,9 +62,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 #<==
 
 #==> Workspaces
