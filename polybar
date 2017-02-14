@@ -47,6 +47,7 @@ module-margin-right = 2
 
 font-0 = FontAwesome:size=10;0
 font-1 = Ubuntu Mono:pixelsize=9;0
+font-2 = Wuncon Siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = xwindow
@@ -56,17 +57,6 @@ tray-position = right
 tray-padding = 2
 tray-transparent = true
 tray-background = #0063ff00
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
 
 [module/wifi]
 type = custom/script
@@ -85,14 +75,11 @@ label-maxlen = 10
 type = internal/xwindow
 label = %title:0:50:...%
 label-maxlen = 50
-format-underline = #00000000
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-underline = #00000000
-format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 
 label-layout = %layout%
@@ -100,19 +87,6 @@ label-layout = %layout%
 label-indicator-padding = 2
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-mount-1 = /home
-mount-2 = /invalid/mountpoint
-
-label-mounted = %mountpoint%: %percentage_free%
-
-label-unmounted = %mountpoint%: not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3
@@ -158,37 +132,15 @@ bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
 
-[module/wlan]
-type = internal/network
-interface = wlo1
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-format-disconnected-underline = ${self.format-connected-underline}
-
-label-connected = %essid%
-label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 5
 
 date = "%d-%m-%Y "
-
-time = %H:%M
+time = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #000a6cf5
 
 label = %date% %time%
 
@@ -225,7 +177,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 95
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #00ffb52a
@@ -247,49 +199,5 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-label-open =  power
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 ; vim:ft=dosini
