@@ -11,5 +11,6 @@ sleep 1; polybar example
 pulseaudio --start
 xfce4-power-manager
 setxkbmap -layout us,il -option grp:alt_shift_toggle
+dunst
 EOF
 disown -a
