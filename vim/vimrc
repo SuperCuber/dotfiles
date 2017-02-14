@@ -18,8 +18,9 @@ Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
 
 " Colorscheme
-Plug 'morhetz/gruvbox'
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'sjl/badwolf'
+Plug 'jnurmine/Zenburn'
 
 " Misc
 Plug 'dhruvasagar/vim-table-mode'
@@ -149,7 +150,8 @@ endfunction
 "<==
 
 "==> Colorscheme
-call Colorscheme("Tomorrow-Night")
+" call Colorscheme("zenburn")
+colors badwolf
 "<==
 
 "==> UltiSnips
