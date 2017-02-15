@@ -201,4 +201,6 @@ let g:ycm_global_ycm_extra_conf = "/home/amit/.vim/ycm_extra_conf.py"
 let g:localvimrc_persistent=2
 "<==
 
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
