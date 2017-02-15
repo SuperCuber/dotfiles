@@ -65,17 +65,19 @@ bindsym $mod+a focus parent
 #<==
 
 #==> Workspaces
+set $work0 "0 "
 set $work1 "1 "
 set $work2 "2 "
 set $work3 "3 "
-set $work4 "4 "
-set $work5 "5 "
+set $work4 "4 "
+set $work5 "5 "
 set $work6 "6 "
 set $work7 "7 "
 set $work8 "8 "
 set $work9 "9 "
 
 # switch to workspace
+bindsym $mod+0 workspace $work0
 bindsym $mod+1 workspace $work1
 bindsym $mod+2 workspace $work2
 bindsym $mod+3 workspace $work3
@@ -87,6 +89,7 @@ bindsym $mod+8 workspace $work8
 bindsym $mod+9 workspace $work9
 
 # move focused container to workspace
+bindsym $mod+Shift+0 move container to workspace $work0; workspace $work0
 bindsym $mod+Shift+1 move container to workspace $work1; workspace $work1
 bindsym $mod+Shift+2 move container to workspace $work2; workspace $work2
 bindsym $mod+Shift+3 move container to workspace $work3; workspace $work3
@@ -105,12 +108,12 @@ assign [class="Xfce4-terminal"] → $work1
 assign [class="Firefox"] → $work2
 assign [class="Tor Browser"] → $work2
 
-assign [class="Ghetto Skype"] → $work3
 assign [class="discord"] → $work3
 assign [class="Thunderbird"] → $work3
 
-assign [class="Minecraft"] → $work4
+assign [class="Ghetto Skype"] → $work4
 
+assign [class="Minecraft"] → $work5
 assign [title="Eclipse"] → $work5
 #<==
 
