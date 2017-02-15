@@ -99,6 +99,8 @@ bindsym $mod+Shift+6 move container to workspace $work6; workspace $work6
 bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
 bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
+
+exec --no-startup-id i3-msg workspace $work1
 #<==
 
 #==> Assigns
@@ -167,27 +169,27 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
     bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_inner" {
     bindsym plus  gaps inner all plus 5
-        bindsym minus gaps inner all minus 5
-        bindsym 0     gaps inner all set 0
+    bindsym minus gaps inner all minus 5
+    bindsym 0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_outer" {
     bindsym plus  gaps outer all plus 5
-        bindsym minus gaps outer all minus 5
-        bindsym 0     gaps outer all set 0
+    bindsym minus gaps outer all minus 5
+    bindsym 0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 #<==
