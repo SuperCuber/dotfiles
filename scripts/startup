@@ -1,16 +1,14 @@
-#!/usr/bin/env bash
-while read line; do
-    eval $line &
-done <<EOF
-~/.scripts/wallpaper_handler
-xrdb ~/.Xresources
-conky
-~/bin/clean_tmp
-while true; do sleep 0.2; /usr/bin/compton; done
-sleep 1; polybar example
-pulseaudio --start
-xfce4-power-manager
-setxkbmap -layout us,il -option grp:alt_shift_toggle
-dunst
-EOF
+#!/usr/bin/env zsh
+
+~/.scripts/wallpaper_handler &
+xrdb ~/.Xresources &
+conky &
+~/bin/clean_tmp &
+while true; do sleep 0.2; /usr/bin/compton; done &
+(sleep 1 && polybar example) &
+pulseaudio --start &
+xfce4-power-manager &
+setxkbmap -layout us,il -option grp:alt_shift_toggle &
+dunst &
+
 disown -a
