@@ -170,15 +170,15 @@ EXEC                  01;32
 .cgm                  01;35
 .emf                  01;35
 
-# Document files
+# Binary documents
 .pdf                  00;32
 .ps                   00;32
-.diff                 00;32
 .doc                  00;32
 
-# Plaintext system files
+# Plaintext documents
 .patch                00;31
 .log                  00;31
+.diff                 00;31
 
 # Audio formats
 .aac                  00;36
