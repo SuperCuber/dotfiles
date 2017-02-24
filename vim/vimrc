@@ -1,19 +1,23 @@
 "==> Plug
 call plug#begin("~/.local/share/nvim/plugged")
-" Completion
 
-Plug 'davidhalter/jedi-vim'
+" Snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" Deocomplete
 Plug 'ervandew/supertab'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi', {'for': ['python']}
+Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp', 'h']}
+
+" Other completion
 Plug 'jiangmiao/auto-pairs'
-Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h']}
 
 " Custom motions
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
 
@@ -25,7 +29,6 @@ Plug 'jnurmine/Zenburn'
 " Misc
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'mhinz/vim-startify'
-Plug 'embear/vim-localvimrc'  " (removing, don't forget:) localvimrc config section, ~/.localvimrc_persistent
 Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
@@ -83,6 +86,7 @@ set backspace=eol,indent
 set whichwrap=h,l
 set laststatus=2
 set colorcolumn=80,120
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "<==
 
 "==> Maps
@@ -171,10 +175,6 @@ let g:snips_github="https://www.github.com/supercuber"
 autocmd BufRead ~/.vimrc UltiSnipsAddFiletypes vimrc.vim
 "<==
 
-"==> Supertab (Eclim)
-let g:SuperTabClosePreviewOnPopupClose = 1
-"<==
-
 "==> Jedi-vim
 let g:jedi#use_splits_not_buffers = "left"
 "<==
@@ -193,14 +193,10 @@ hi StartifySlash   ctermfg=240
 hi StartifySpecial ctermfg=240
 "<==
 
-"==> YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "/home/amit/.vim/ycm_extra_conf.py"
+"==> Deocomplete + friends
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/lib/clang'
 "<==
-
-"==> Localvimrc
-let g:localvimrc_persistent=2
-"<==
-
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
