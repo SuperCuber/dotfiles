@@ -18,7 +18,7 @@ bindsym $mod+q exec "xfce4-terminal --drop-down"
 bindsym $mod+w exec "xfce4-terminal --drop-down -e wicd-curses"
 
 # Screenshot
-bindsym $mod+s exec "maim -s ~/tmp/$(date +%F-%T).png"
+bindsym $mod+s exec --no-startui-id "maim -s ~/tmp/$(date +%F-%T).png"
 
 #<==
 
