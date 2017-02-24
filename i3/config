@@ -16,6 +16,10 @@ bindsym $mod+q exec "xfce4-terminal --drop-down"
 
 # Wicd
 bindsym $mod+w exec "xfce4-terminal --drop-down -e wicd-curses"
+
+# Screenshot
+bindsym $mod+s exec "maim -s ~/tmp/$(date +%F-%T).png"
+
 #<==
 
 #==> Scratchpad
