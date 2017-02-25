@@ -2,6 +2,7 @@
 set $mod Mod4
 font pango:Ubuntu Mono 9
 floating_modifier $mod
+set $exec exec --no-startup-id
 #<==
 
 #==> Shortcuts
@@ -9,17 +10,16 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 # Rofimenu
-bindsym $mod+d exec --no-startup-id "~/.scripts/rofimenu"
+bindsym $mod+d $exec "~/.scripts/rofimenu"
 
 # Quake terminal
-bindsym $mod+q exec "xfce4-terminal --drop-down"
+bindsym $mod+q $exec "xfce4-terminal --drop-down"
 
 # Wicd
-bindsym $mod+w exec "xfce4-terminal --drop-down -e wicd-curses"
+bindsym $mod+w $exec "xfce4-terminal --drop-down -e wicd-curses"
 
 # Screenshot
-bindsym $mod+s exec --no-startui-id "maim -s ~/tmp/$(date +%F-%T).png"
-
+bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 #<==
 
 #==> Scratchpad
@@ -104,7 +104,7 @@ bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
 bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 
-exec --no-startup-id i3-msg workspace $work1
+$exec --no-startup-id i3-msg workspace $work1
 #<==
 
 #==> Assigns
