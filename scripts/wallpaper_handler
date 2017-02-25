@@ -2,7 +2,7 @@
 
 directory=~/usr/archive/img/background
 
-trap "true" "SIGTERM"
+trap true SIGTERM
 
 files=$(ls $directory | sort -R)
 while true; do
