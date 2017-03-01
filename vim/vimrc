@@ -175,9 +175,9 @@ let g:snips_github="https://www.github.com/supercuber"
 autocmd BufRead ~/.vimrc UltiSnipsAddFiletypes vimrc.vim
 "<==
 
-#==> Supertab
+"==> Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
-#<==
+"<==
 
 "==> Startify
 let g:startify_list_order = ['commands', 'bookmarks', 'dir', 'sessions']
