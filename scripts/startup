@@ -3,6 +3,7 @@
 ~/.scripts/wallpaper_handler &
 xrdb ~/.Xresources &
 conky &
+conky -c ~/.dotfiles/tonky &
 ~/bin/clean_tmp &
 while true; do sleep 0.2; /usr/bin/compton; done &
 (sleep 1 && polybar example) &

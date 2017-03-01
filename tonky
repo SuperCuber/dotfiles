@@ -1,0 +1,23 @@
+background no
+
+font 7x13
+use_xft true
+xftfont pango:Ubuntu Mono:size=10
+
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_argb_visual true
+double_buffer yes
+use_spacer left
+if_up_strictness address
+
+update_interval 1
+
+alignment bottom_left
+
+TEXT
+${color red}TODO:
+
+${color white}${exec todo -G | cut -d' ' -f 3-}
