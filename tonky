@@ -20,4 +20,4 @@ alignment bottom_left
 TEXT
 ${color red}TODO:
 
-${color white}${exec todo -G | cut -d' ' -f 3-}
+${color white}${exec todo -G | tr -s ' ' | cut -d' ' -f 2-}
