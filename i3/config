@@ -1,4 +1,5 @@
 #==> General
+# Super (aka Windoze) key
 set $mod Mod4
 font pango:Ubuntu Mono 9
 floating_modifier $mod
@@ -21,6 +22,7 @@ bindsym $mod+w $exec "xfce4-terminal --drop-down -e wicd-curses"
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 
+# Terminal
 bindsym $mod+Return $exec "xfce4-terminal"
 #<==
 
@@ -106,23 +108,21 @@ bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
 bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 
-$exec --no-startup-id i3-msg workspace $work1
+$exec i3-msg workspace $work1
 #<==
 
 #==> Assigns
-assign [title="Supermenu"] → $work0
-assign [class="Xfce4-terminal"] → $work1
+assign [class="Xfce4-terminal"] $work1
 
-assign [class="Firefox"] → $work2
-assign [class="Tor Browser"] → $work2
+assign [class="Firefox"] $work2
 
-assign [class="discord"] → $work3
-assign [class="Thunderbird"] → $work3
+assign [class="discord"] $work3
+assign [class="Thunderbird"] $work3
 
-assign [class="Ghetto Skype"] → $work4
+assign [class="Ghetto Skype"] $work4
 
-assign [class="Minecraft"] → $work5
-assign [title="Eclipse"] → $work5
+assign [class="Minecraft"] $work5
+assign [title="Eclipse"] $work5
 #<==
 
 #==> Reload
@@ -134,20 +134,18 @@ bindsym $mod+Shift+e reload
 #==> Resize
 # resize window (you can also use the mouse for that)
 mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
-
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
+    # Pressing left will shrink the window's width.
+    # Pressing right will grow the window's width.
+    # Pressing up will shrink the window's height.
+    # Pressing down will grow the window's height.
     bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-# back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -165,8 +163,8 @@ client.urgent             #700000 #700000 #000000 #700000
 #==> Gaps
 for_window [class="^.*"] border pixel 0
 gaps inner 10
-smart_gaps on
-smart_borders on
+smart_gaps yes
+smart_borders yes
 
 set $mode_gaps Gaps: (o)uter, (i)nner
 set $mode_gaps_outer Outer Gaps: +|-|0
