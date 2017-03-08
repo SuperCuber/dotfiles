@@ -18,6 +18,6 @@ update_interval 30
 alignment bottom_left
 
 TEXT
-${color red}TODO:
+${color darkred}TODO:
 
-${color white}${exec todo -G | tr -s ' ' | cut -d' ' -f 2-}
+${color darkgray}${exec todo -G | tr -s ' ' | cut -d' ' -f 2-}
