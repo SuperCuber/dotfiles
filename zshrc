@@ -136,7 +136,7 @@ cd ()
     todo
 }
 
-c;todo
+c
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
