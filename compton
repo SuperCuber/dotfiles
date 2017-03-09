@@ -3,6 +3,10 @@ fade-in-step = 0.03;
 fade-out-step = 0.03;
 
 use-ewmh-active-win = true;
+blur-background = true;
+blur-kern = "5x5box"
+backend = "glx";
+blur-background-exclude = "focused";
 
 focus-exclude = [
     "name ~= 'i3lock'",
