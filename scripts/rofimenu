@@ -13,9 +13,10 @@ def select(action):
 
 
 def main():
-    menu = Popen("rofi -dmenu -i -p '$ '", stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
     inp = "\n".join(key for key,value in MENU)
-    out, err = menu.communicate(input=bytes(inp, "ascii"))
+    inp = bytes(inp, "ascii")
+    menu = Popen("rofi -dmenu -i -p '$ '", stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True)
+    out, err = menu.communicate(input=inp)
 
     selection = str(out, "ascii")[:-1]  # Remove \n
     for key, value in MENU:
