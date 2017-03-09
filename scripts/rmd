@@ -1,6 +1,0 @@
-#!/bin/bash
-
-tmp=`mktemp tmp.XXX.html`
-pandoc $1 >$tmp
-firefox $tmp
-rm $tmp
