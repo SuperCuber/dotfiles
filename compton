@@ -2,6 +2,8 @@ fading = true;
 fade-in-step = 0.03;
 fade-out-step = 0.03;
 
+use-ewmh-active-win = true;
+
 focus-exclude = [
     "name ~= 'i3lock'",
     "_NET_WM_NAME@:s = 'rofi'"
