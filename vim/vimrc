@@ -154,8 +154,8 @@ endfunction
 "<==
 
 "==> Colorscheme
-" call Colorscheme("zenburn")
-colors zenburn
+call Colorscheme("zenburn")
+" colors zenburn
 "<==
 
 "==> UltiSnips
