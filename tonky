@@ -20,4 +20,4 @@ alignment bottom_left
 TEXT
 ${color darkred}TODO:
 
-${color darkgray}${exec todo -G | tr -s ' ' | cut -d' ' -f 2-}
+${color darkgray}${exec todo -G | sed 's/  / / ; s/^ //'}

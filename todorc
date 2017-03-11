@@ -1,2 +1,2 @@
-filter -children
+filter +children
 global-database $HOME/.todo
