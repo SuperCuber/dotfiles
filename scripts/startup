@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-~/.scripts/wallpaper_handler &
+# ~/.scripts/wallpaper_handler &
+~/.fehbg
 xrdb ~/.Xresources &
 conky &
 conky -c ~/.dotfiles/tonky &
