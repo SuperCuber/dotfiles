@@ -2,6 +2,7 @@
 
 # ~/.scripts/wallpaper_handler &
 ~/.fehbg
+numlockx
 xrdb ~/.Xresources &
 conky &
 conky -c ~/.dotfiles/tonky &
