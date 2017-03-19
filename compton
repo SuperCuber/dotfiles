@@ -6,7 +6,10 @@ use-ewmh-active-win = true;
 blur-background = true;
 blur-kern = "5x5box"
 backend = "glx";
-blur-background-exclude = "focused";
+blur-background-exclude = [
+    "focused",
+    "name ~= 'slop'"
+];
 
 focus-exclude = [
     "name ~= 'i3lock'",
