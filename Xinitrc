@@ -11,5 +11,7 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+TZ='UTC-3'; export TZ
+
 ~/.scripts/startup >/dev/null 2>&1
 exec i3

@@ -24,6 +24,9 @@ bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 
 # Terminal
 bindsym $mod+Return $exec "xfce4-terminal"
+
+# Time
+bindsym $mod+Shift+d $exec popup_time
 #<==
 
 #==> Scratchpad
