@@ -40,7 +40,7 @@ alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
 
 # Misc
 alias e="exit"
-alias eb="c; exec zsh"
+alias eb="exec zsh"
 alias x="startx"
 alias vsp="vi -O"
 #<==
@@ -119,8 +119,6 @@ PS1="%{\$(get_exit_code_color)%} %{\$(get_exit_code) \$(get_exit_code_color_2)%}
 #==> Misc
 # Dircolors
 eval `dircolors ~/.dir_colors`
-
-export PATH=~/bin:~/.scripts:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
 
 # CD
 cd ()
