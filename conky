@@ -13,7 +13,7 @@ double_buffer yes
 use_spacer left
 if_up_strictness address
 
-update_interval 1
+update_interval 0.5
 
 alignment top_right
 gap_x 20
