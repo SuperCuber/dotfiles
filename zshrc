@@ -41,7 +41,7 @@ alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
 # Misc
 alias e="exit"
 alias eb="exec zsh"
-alias x="startx"
+alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
