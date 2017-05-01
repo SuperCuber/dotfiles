@@ -155,7 +155,8 @@ endfunction
 
 "==> Colorscheme
 call Colorscheme("zenburn")
-" colors zenburn
+au BufEnter *.py call Colorscheme("Tomorrow-Night")
+au BufLeave *.py call Colorscheme("zenburn")
 "<==
 
 "==> UltiSnips
@@ -197,6 +198,7 @@ hi StartifySpecial ctermfg=240
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/lib/clang'
+let g:deoplete#complete_method = 'omnifunc'
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=VimrcFoldText()
