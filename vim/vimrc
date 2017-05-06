@@ -103,8 +103,6 @@ nmap <silent> <leader><cr> :noh<cr>
 nmap <silent> <leader>e :e ~/.vimrc<cr>
 " Save
 nmap <space> :w<cr>
-" Training
-nmap <leader>w iStoopid<esc>
 
 " Quit
 nnoremap <leader>q :q<cr>
@@ -155,8 +153,10 @@ endfunction
 
 "==> Colorscheme
 call Colorscheme("zenburn")
-au BufEnter *.py call Colorscheme("Tomorrow-Night")
-au BufLeave *.py call Colorscheme("zenburn")
+:autocmd BufEnter,FileType *
+\   if &ft ==# 'python' | call Colorscheme("Tomorrow-Night") |
+\   else | call Colorscheme("zenburn") |
+\   endif
 "<==
 
 "==> UltiSnips
