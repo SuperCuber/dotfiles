@@ -100,7 +100,7 @@ let g:mapleader = ","
 " Remove highlights from search
 nmap <silent> <leader><cr> :noh<cr>
 " Open vimrc
-nmap <silent> <leader>e :e ~/.vimrc<cr>
+nmap <silent> <leader>e :e ~/.dotfiles/vim/vimrc<cr>
 " Save
 nmap <space> :w<cr>
 
