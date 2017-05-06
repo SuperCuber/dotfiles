@@ -1,7 +1,9 @@
+# Fading
 fading = true;
 fade-in-step = 0.03;
 fade-out-step = 0.03;
 
+# Blur
 use-ewmh-active-win = true;
 blur-background = true;
 blur-kern = "5x5box"
@@ -19,9 +21,27 @@ focus-exclude = [
 inactive-opacity = 0.5;
 mark-ovredir-focused = true;
 
+# Wintypes
 wintypes:
 {
   tooltip = { fade = true; shadow = false; opacity = 1.0; focus = true; };
 };
+
+# Shadow
+shadow = true;
+
+no-dock-shadow = true;
+no-dnd-shadow = true;
+clear-shadow = true;
+
+shadow-radius = 10;
+shadow-offset-x = -5;
+shadow-offset-y = 0;
+shadow-opacity = 0.8;
+shadow-red = 0.05;
+shadow-green = 0.05;
+shadow-blue = 0.05;
+shadow-exclude = "!I3_FLOATING_WINDOW@:c";
+shadow-ignore-shaped = true;
 
 # vim:ft=conf:
