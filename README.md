@@ -23,5 +23,4 @@ Packages/executables needed:
 - rofi
 - wicd-patched
 - zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps
-
-[dotter](http://www.github.com/SuperCuber/dotter)
+- [dotter](http://www.github.com/SuperCuber/dotter)
