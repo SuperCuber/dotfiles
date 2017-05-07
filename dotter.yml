@@ -4,7 +4,7 @@ files:
   compton: ~/.compton.conf
   conky: ~/.conkyrc
   dir_colors: ~/.dir_colors
-  i3/config: ~/.i3/config
+  i3: ~/.i3/config
   polybar: ~/.config/polybar/config
   scripts: ~/.scripts
   terminal: ~/.config/xfce4/terminal/terminalrc

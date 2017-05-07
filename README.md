@@ -6,7 +6,6 @@ Packages/executables needed:
 
 - zsh
 - bash (TODO: move scripts to zsh)
-- polybar
 - i3-gaps
 - netcat
 - firefox
