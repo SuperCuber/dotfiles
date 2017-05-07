@@ -1,15 +1,15 @@
 files:
-    vim/vimrc    : "~/.config/nvim/init.vim"
-    scripts      : "~/.scripts"
-    i3/config    : "~/.i3/config"
-    vim/UltiSnips: "~/.vim/UltiSnips"
-    vim/pythonx  : "~/.vim/pythonx"
-    Xresources   : "~/.Xresources"
-    Xinitrc      : "~/.xinitrc"
-    todorc       : "~/.todorc"
-    conky        : "~/.conkyrc"
-    compton      : "~/.compton.conf"
-    polybar      : "~/.config/polybar/config"
-    dir_colors   : "~/.dir_colors"
-    zshrc        : "~/.zshrc"
-    terminal     : "~/.config/xfce4/terminal/terminalrc"
+  Xinitrc: ~/.xinitrc
+  Xresources: ~/.Xresources
+  compton: ~/.compton.conf
+  conky: ~/.conkyrc
+  dir_colors: ~/.dir_colors
+  i3/config: ~/.i3/config
+  polybar: ~/.config/polybar/config
+  scripts: ~/.scripts
+  terminal: ~/.config/xfce4/terminal/terminalrc
+  todorc: ~/.todorc
+  vim/UltiSnips: ~/.vim/UltiSnips
+  vim/pythonx: ~/.vim/pythonx
+  vim/vimrc: ~/.config/nvim/init.vim
+  zshrc: ~/.zshrc
