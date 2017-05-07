@@ -5,7 +5,6 @@ files:
   conky: ~/.conkyrc
   dir_colors: ~/.dir_colors
   i3: ~/.i3/config
-  polybar: ~/.config/polybar/config
   scripts: ~/.scripts
   terminal: ~/.config/xfce4/terminal/terminalrc
   todorc: ~/.todorc
