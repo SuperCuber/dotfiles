@@ -46,14 +46,19 @@ alias vsp="vi -O"
 #<==
 
 #==> Prompt
-#;Colors
-CLR_RED="110;23;8"
-CLR_GREEN="27;119;55"
-CLR_YELLOW="67;109;7"
-CLR_BLUE="7;59;74"
-CLR_CYAN="45;103;120"
-CLR_WHITE="255;255;255"
-CLR_BLACK="0;0;0"
+
+translate_color(){
+    echo "print(';'.join(str(int(part, 16)) for part in ('$1'[1:3], '$1'[3:5], '$1'[5:])))" | python
+}
+
+# Colors
+CLR_RED=`translate_color "{{ color_red }}"`
+CLR_GREEN=`translate_color "{{ color_green }}"`
+CLR_YELLOW=`translate_color "{{ color_yellow }}"`
+CLR_BLUE=`translate_color "{{ color_blue }}"`
+CLR_CYAN=`translate_color "{{ color_cyan }}"`
+CLR_WHITE=`translate_color "{{ color_foreground }}"`
+CLR_BLACK=`translate_color "{{ color_black }}"`
 
 # Exit
 EXIT_OK="$CLR_GREEN"

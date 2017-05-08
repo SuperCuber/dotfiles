@@ -1,0 +1,40 @@
+[colors]
+foreground = {{ color_foreground }}
+background = {{ color_background }}
+
+# Colors Dark -> Light
+# Shades
+color0  = {{ color_black }}
+color8  = {{ color_dark_gray }}
+color7  = {{ color_light_gray }}
+color15 = {{ color_white }}
+
+# Reds
+color1  = {{ color_red }}
+color9  = {{ color_light_red }}
+
+# Greens
+color2  = {{ color_green }}
+color10 = {{ color_light_green }}
+
+# Yellows
+color3  = {{ color_yellow }}
+color11 = {{ color_light_yellow }}
+
+# Blues
+color4  = {{ color_blue }}
+color12 = {{ color_light_blue }}
+
+# Purples
+color5  = {{ color_purple }}
+color13 = {{ color_light_purple }}
+
+# Cyans
+color6  = {{ color_cyan }}
+color14 = {{ color_light_cyan }}
+
+[options]
+font = {{ iconfont }} Regular {{ fontsize }}
+font = {{ monofont }} Regular {{ fontsize }}
+audible_bell = false
+scrollback_lines = 999999

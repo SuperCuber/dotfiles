@@ -118,7 +118,7 @@ noremap L $
 "<==
 
 "==> Autocmds and cmds
-command! Te !xfce4-terminal
+command! Te !{{ terminal }}
 
 " Automatically get Eclim shortcuts on java files
 au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
@@ -168,9 +168,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
 " For automatic stuff
-let g:snips_author="Amit Gold"
-let g:snips_email="amit.gold00@gmail.com"
-let g:snips_github="https://www.github.com/supercuber"
+let g:snips_author="{{ full_name }}"
+let g:snips_email="{{ email }}"
+let g:snips_github="{{ github }}"
 
 " Automatic filetype for vim
 autocmd BufRead ~/.vimrc UltiSnipsAddFiletypes vimrc.vim

@@ -1,10 +1,8 @@
 #!/bin/bash
 
-TERMINAL=xfce4-terminal
-
 if (( $# == 0 )); then
-    $TERMINAL
+    {{ terminal }}
 else
     # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
-    $TERMINAL -e "$*"
+    {{ terminal }}
 fi

@@ -14,16 +14,16 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d $exec "~/.scripts/rofimenu"
 
 # Quake terminal
-bindsym $mod+q $exec "xfce4-terminal --drop-down"
+bindsym $mod+q $exec "{{ drop_down_terminal }} --drop-down"
 
 # Wicd
-bindsym $mod+w $exec "xfce4-terminal --drop-down -e wicd-curses"
+bindsym $mod+w $exec "{{ drop_down_terminal }} --drop-down -e wicd-curses"
 
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 
 # Terminal
-bindsym $mod+Return $exec "xfce4-terminal"
+bindsym $mod+Return $exec "{{ terminal }}"
 
 # Time
 bindsym $mod+Shift+d $exec popup_time
