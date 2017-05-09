@@ -115,7 +115,7 @@ $exec i3-msg workspace $work1
 #<==
 
 #==> Assigns
-assign [class="Xfce4-terminal"] $work1
+assign [title="{{ terminal }}"] $work1
 
 assign [class="Firefox"] $work2
 
