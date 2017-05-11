@@ -4,5 +4,5 @@ if (( $# == 0 )); then
     {{ terminal }}
 else
     # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
-    {{ terminal }} "$*"
+    {{ terminal }} -e "$@"
 fi
