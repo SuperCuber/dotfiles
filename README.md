@@ -4,6 +4,7 @@ Feel free to fork and/or pull request if you see anything that can be changed/im
 
 Packages/executables needed:
 
+- [dotter](http://www.github.com/SuperCuber/dotter)
 - zsh
 - bash (TODO: move scripts to zsh)
 - i3-gaps
@@ -22,4 +23,3 @@ Packages/executables needed:
 - rofi
 - wicd-patched
 - zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps
-- [dotter](http://www.github.com/SuperCuber/dotter)
