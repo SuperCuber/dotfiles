@@ -13,6 +13,7 @@ files:
   vim/vimrc: ~/.config/nvim/init.vim
   zshrc: ~/.zshrc
   termite: ~/.config/termite/config
+  dunstrc: ~/.config/dunst/dunstrc
 variables:
   terminal: termite
   drop_down_terminal: xfce4-terminal
