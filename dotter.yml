@@ -41,4 +41,5 @@ variables:
   color_foreground: "#dedede"
   iconfont: FontAwesome
   monofont: Fira Mono
+  regfont: Ubuntu
   fontsize: "10"
