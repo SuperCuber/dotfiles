@@ -1,7 +1,7 @@
 #==> General
 # Super (aka Windoze) key
 set $mod Mod4
-font pango:Ubuntu Mono 9
+font pango:{{ monofont }} {{ fontsize }}
 floating_modifier $mod
 set $exec exec --no-startup-id
 #<==

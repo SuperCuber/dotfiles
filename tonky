@@ -2,7 +2,7 @@ background yes
 
 font 7x13
 use_xft true
-xftfont pango:Ubuntu Mono:size=10
+xftfont pango:{{ monofont }}:size={{ fontsize }}
 
 total_run_times 0
 own_window yes

@@ -1,5 +1,5 @@
 [Configuration]
-FontName=Fira Mono 10
+FontName={{ monofont }} {{ fontsize }}
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
