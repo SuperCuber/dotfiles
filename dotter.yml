@@ -3,6 +3,7 @@ files:
   Xresources: ~/.Xresources
   compton: ~/.compton.conf
   conky: ~/.conkyrc
+  tonky: ~/.conkyrc2
   dir_colors: ~/.dir_colors
   i3: ~/.i3/config
   scripts: ~/.scripts
