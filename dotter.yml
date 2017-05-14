@@ -17,7 +17,7 @@ files:
   dunstrc: ~/.config/dunst/dunstrc
 variables:
   terminal: termite
-  drop_down_terminal: xfce4-terminal
+  drop_down_terminal: "xfce4-terminal --drop-down"
   email: amit.gold00@gmail.com
   full_name: Amit Gold
   github: https://www.github.com/SuperCuber

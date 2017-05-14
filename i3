@@ -14,10 +14,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d $exec "~/.scripts/rofimenu"
 
 # Quake terminal
-bindsym $mod+q $exec "{{ drop_down_terminal }} --drop-down"
+bindsym $mod+q $exec "{{ drop_down_terminal }}"
 
 # Wicd
-bindsym $mod+w $exec "{{ drop_down_terminal }} --drop-down -e wicd-curses"
+bindsym $mod+w $exec "{{ drop_down_terminal }} -e wicd-curses"
 
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
