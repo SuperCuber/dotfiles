@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if (( $# == 0 )); then
-    {{ terminal }}
+    {{ terminal }} & disown
 else
     # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
-    {{ terminal }} -e "$@"
+    {{ terminal }} -e "$@" & disown
 fi
