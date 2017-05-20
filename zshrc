@@ -139,6 +139,9 @@ cd ()
     todo
 }
 
+# Terminal color
+TERM=xterm-256color
+
 c
 #<==
 
