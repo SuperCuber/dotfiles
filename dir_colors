@@ -203,8 +203,8 @@ EXEC                  01;32
 *makefile             38;5;155
 
 # Unimportant
-.pyc                  38;5;8
-.o                    38;5;8
-*~                    38;5;8
+.pyc                  38;5;7
+.o                    38;5;7
+*~                    38;5;7
 
 # vim: ft=dircolors:
