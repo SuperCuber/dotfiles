@@ -14,6 +14,9 @@ Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp', 'h']}
 " Other completion
 Plug 'jiangmiao/auto-pairs'
 
+" Language specific
+Plug 'rust-lang/rust.vim'
+
 " Custom motions
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
