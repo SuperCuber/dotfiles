@@ -1,5 +1,9 @@
 #==> Zsh options
 setopt PROMPT_SUBST
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+autoload -Uz compinit
+compinit
 #<==
 
 #==> Aliases
@@ -51,7 +55,7 @@ alias vsp="vi -O"
 # Prompt
 PS1="%F{8}%(?.%K{2}.%K{1}) %? \
 %F{0}%K{7} %n \
-%F{7}%K{8} %~ \
+%K{8}%F{8}[%F{7}%~%F{8}]\
 %F{15}%(!.%K{1} # .$ )%f%k "
 #<==
 
