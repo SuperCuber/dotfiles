@@ -15,7 +15,8 @@ Plug 'zchee/deoplete-clang', {'for': ['c', 'cpp', 'h']}
 Plug 'jiangmiao/auto-pairs'
 
 " Language specific
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': ['rust']}
+Plug 'racer-rust/vim-racer'
 
 " Custom motions
 Plug 'tpope/vim-repeat'
@@ -155,11 +156,11 @@ endfunction
 "<==
 
 "==> Colorscheme
-call Colorscheme("zenburn")
-:autocmd BufEnter,FileType *
-\   if &ft ==# 'python' | call Colorscheme("Tomorrow-Night") |
-\   else | call Colorscheme("zenburn") |
-\   endif
+call Colorscheme("Tomorrow-Night")
+" :autocmd BufEnter,FileType *
+" \   if &ft ==# 'python' | call Colorscheme("Tomorrow-Night") |
+" \   else | call Colorscheme("zenburn") |
+" \   endif
 "<==
 
 "==> UltiSnips
