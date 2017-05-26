@@ -45,20 +45,11 @@ alias vsp="vi -O"
 #<==
 
 #==> Prompt
-get_exit_code_color(){
-    RV=$?
-    if (( $RV == 0 )); then
-        tput setab 2
-    else
-        tput setab 1
-    fi
-    return $RV
-}
-
 # Exit code
+# Username
 # Path
 # Prompt
-PS1="%F{8}%{\$(get_exit_code_color)%} %? \
+PS1="%F{8}%(?.%K{2}.%K{1}) %? \
 %F{0}%K{7} %n \
 %F{7}%K{8} %~ \
 %F{15}%(!.%K{1} # .$ )%f%k "
