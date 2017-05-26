@@ -1,7 +1,4 @@
 #!/bin/sh
 
-TZ='UTC-3'; export TZ
-PATH=~/bin:~/.scripts:$PATH; export PATH
-
 ~/.scripts/startup >/dev/null 2>&1
 exec i3
