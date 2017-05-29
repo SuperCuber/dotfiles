@@ -1,5 +1,5 @@
 rofimenu_options.py
 vim/pythonx/__pycache__
 dotter
-secrets.yml
+dotter_settings/secrets.toml
 dotter_cache
