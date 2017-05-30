@@ -1,22 +1,22 @@
 #!/bin/bash
 
 print(){
-    tput setaf $1
-    tput setab $2
-    echo ${@:3}
+    tput setaf 0
+    tput setab $1
+    echo ${@:2}
     tput sgr0
 }
 
 info(){
-    print 0 4 "$*"
+    print 4 "$*"
 }
 
 success(){
-    print 0 2 "$*"
+    print 2 "$*"
 }
 
 fail(){
-    print 0 1 "$*"
+    print 1 "$*"
 }
 
 task(){
@@ -34,7 +34,14 @@ main(){
             fail Error.
         }
         read action
-        actions "$action" || break
+        actions "$action" || {
+            tput setaf 0
+            tput setab 3
+            echo Reminders:
+            reminders
+            tput sgr0
+            break
+        }
     done
     return 0
 }
