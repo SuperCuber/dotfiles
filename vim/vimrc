@@ -134,19 +134,6 @@ au BufReadPost *.hdl set ft=hdl
 "<==
 
 "==> Functions
-"==> Colorscheme
-function! Colorscheme(colscheme)
-    set background=dark
-
-    exec "colo ".a:colscheme
-
-    " Same background as terminal would do
-    highlight NonText ctermbg=none guibg=none
-    highlight Normal ctermbg=none guibg=none
-
-endfunction
-"<==
-
 "==> Vimrc fold text
 function! VimrcFoldText()
     let line = getline(v:foldstart)
@@ -156,11 +143,7 @@ endfunction
 "<==
 
 "==> Colorscheme
-call Colorscheme("Tomorrow-Night")
-" :autocmd BufEnter,FileType *
-" \   if &ft ==# 'python' | call Colorscheme("Tomorrow-Night") |
-" \   else | call Colorscheme("zenburn") |
-" \   endif
+ colo Tomorrow-Night
 "<==
 
 "==> UltiSnips
