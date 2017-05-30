@@ -34,7 +34,11 @@ main(){
             fail Error.
         }
         read action
-        actions "$action" || {
+        [ -z $action ] && continue
+        actions "$action" && {
+            success Done
+            read
+        } || {
             tput setaf 0
             tput setab 3
             echo Reminders:
