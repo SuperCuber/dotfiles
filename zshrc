@@ -49,14 +49,12 @@ alias vsp="vi -O"
 #<==
 
 #==> Prompt
-# Exit code
-# Username
-# Path
-# Prompt
-PS1="%(?..%F{8}%K{1} %? )\
-%F{0}%K{7} %n \
-%K{8}%F{8}[%F{7}%~%F{8}]\
-%F{15}%(!.%K{1} # .$ )%f%k "
+PS1_EXIT_CODE="%F{0}%(?.%K{15}.%F{0}%K{1}) %? "
+PS1_USERNAME="%F{8}%K{7} %n "
+PS1_PATH="%F{7}%K{8} %~ "
+PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
+
+PS1="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH$PS1_PROMPT"
 #<==
 
 #==> Misc
