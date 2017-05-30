@@ -4,5 +4,5 @@ if (( $# == 0 )); then
     {{ terminal }} & disown
 else
     # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
-    {{ terminal }} -e "$@" & disown
+    {{ terminal }} -e "$*" & disown
 fi
