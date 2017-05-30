@@ -28,7 +28,7 @@ main(){
     while true; do
         clear
         tasks && {
-            success -n Done
+            success -n "Done [$(help)]:"
             echo -n " "
         } || {
             fail Error.
