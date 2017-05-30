@@ -211,4 +211,7 @@ EXEC                  01;32
 .bk                   38;5;7
 .lock                 38;5;7
 
+# Special
+*dev_loop             38;5;40
+
 # vim: ft=dircolors:

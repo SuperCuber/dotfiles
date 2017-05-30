@@ -1,0 +1,52 @@
+#!/bin/bash
+
+print(){
+    tput setaf $1
+    tput setab $2
+    echo ${@:3}
+    tput sgr0
+}
+
+info(){
+    print 0 4 "$*"
+}
+
+success(){
+    print 0 2 "$*"
+}
+
+fail(){
+    print 0 1 "$*"
+}
+
+task(){
+    info "Running $1..."
+    eval $2
+}
+
+main(){
+    while true; do
+        clear
+        tasks && {
+            success -n Done
+            echo -n " "
+        } || {
+            fail Error.
+        }
+        read action
+        actions "$action" || break
+    done
+    return 0
+}
+
+loop_file=$1
+if [ -z $loop_file ]; then
+    loop_file=dev_loop
+fi
+
+source $loop_file 2>/dev/null || {
+    fail "Couldn't source $loop_file"
+    exit 1
+}
+
+main
