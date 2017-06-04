@@ -27,7 +27,7 @@ TERM                  xterm*
 # Normal files
 NORMAL                0
 RESET                 0
-DIR                   01;34
+DIR                   34
 LINK                  target
 
 # Special files
@@ -43,7 +43,7 @@ SETUID                37;41
 SETGID                30;43
 CAPABILITY            30;41
 STICKY_OTHER_WRITABLE 30;42
-OTHER_WRITABLE        34;42
+OTHER_WRITABLE        32
 STICKY                37;44
 
 EXEC                  01;32
