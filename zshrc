@@ -36,10 +36,10 @@ alias .7="cd ../../../../../.."
 alias .8="cd ../../../../../../.."
 
 # Shortcuts for installing
-alias install='pacaur -S'
-alias uninstall='pacaur -Rns'
-alias update='pacaur -Syu'
-alias autoremove='sudo pacman -Rns $(pacman -Qdtq)'
+alias install='{{ install }}'
+alias uninstall='{{ uninstall }}'
+alias update='{{ update }}'
+alias autoremove='{{ autoremove }}'
 
 # Misc
 alias e="exit"
