@@ -1,6 +1,8 @@
 # Screenshots:
 ![Prompt Showcase](/img/prompt_showcase.png)
 ![Prompt Long Path](/img/prompt_long_path.png)
+![Floating Terminal](/img/floating_terminal.png)
+![Tiled terminals with opacity](/img/tiled_terminals_with_opacity.png)
 
 # Packages/executables needed:
 - [dotter](http://www.github.com/SuperCuber/dotter)
