@@ -1,5 +1,6 @@
 # Screenshots:
 ![Prompt Showcase](/img/prompt_showcase.png)
+
 ![Prompt Long Path](/img/prompt_long_path.png)
 
 # Packages/executables needed:
