@@ -22,6 +22,10 @@ bindsym $mod+w $exec "{{ drop_down_terminal }} -e wicd-curses"
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 
+# Record
+bindsym Print $exec "ffmpeg -f x11grab -s {{ screen_size }} -framerate 60 -i :0.0 ~/tmp/$(date +%F-%T).webm"
+bindsym ctrl+Print $exec "pkill ffmpeg"
+
 # Terminal
 bindsym $mod+Return $exec "{{ terminal }}"
 
