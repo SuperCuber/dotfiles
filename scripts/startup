@@ -8,7 +8,7 @@ setxkbmap -layout us,il -option grp:alt_shift_toggle
 xrdb ~/.Xresources &
 conky &
 conky -c ~/.conkyrc2 &
-while true; do sleep 0.2; /usr/bin/compton; done &
+/usr/bin/compton &
 pulseaudio --start &
 xfce4-power-manager &
 dunst &
