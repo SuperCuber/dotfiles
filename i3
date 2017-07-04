@@ -13,12 +13,6 @@ bindsym $mod+Shift+q kill
 # Rofimenu
 bindsym $mod+d $exec "~/.scripts/rofimenu"
 
-# Quake terminal
-bindsym $mod+q $exec "{{ drop_down_terminal }}"
-
-# Wicd
-bindsym $mod+w $exec "{{ drop_down_terminal }} -e wicd-curses"
-
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
 
@@ -80,16 +74,16 @@ bindsym $mod+a focus parent
 #<==
 
 #==> Workspaces
-set $work0 "0 "
-set $work1 "1 "
-set $work2 "2 "
-set $work3 "3 "
-set $work4 "4 "
-set $work5 "5 "
-set $work6 "6 "
-set $work7 "7 "
-set $work8 "8 "
-set $work9 "9 "
+set $work0 "0"
+set $work1 "1"
+set $work2 "2"
+set $work3 "3"
+set $work4 "4"
+set $work5 "5"
+set $work6 "6"
+set $work7 "7"
+set $work8 "8"
+set $work9 "9"
 
 # switch to workspace
 bindsym $mod+0 workspace $work0
@@ -159,16 +153,20 @@ bindsym $mod+r mode "resize"
 #<==
 
 #==> Colors
-# I don't care about text, no text
-# class                   border  backgr. text    indicator
-client.focused            #404040 #404040 #000000 #404040
-client.unfocused          #101010 #101010 #000000 #101010
-client.focused_inactive   #202020 #202020 #000000 #202020
-client.urgent             #700000 #700000 #000000 #700000
+set $focused "{{ color_light_gray }}"
+set $unfocused "{{ color_background }}"
+set $focused_inactive "{{ color_dark_gray }}"
+set $urgent "#700000"
+
+#class                  border            backgr.           text         indicator
+client.focused          $focused          $focused          #000000      $focused
+client.unfocused        $unfocused        $unfocused        #000000      $unfocused
+client.focused_inactive $focused_inactive $focused_inactive #000000      $focused_inactive
+client.urgent           $urgent           $urgent           #000000      $urgent
 #<==
 
 #==> Gaps
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 2
 gaps inner 10
 smart_gaps yes
 smart_borders yes

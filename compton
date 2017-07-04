@@ -5,7 +5,7 @@ fade-out-step = 0.03;
 
 # Blur
 use-ewmh-active-win = true;
-blur-background = true;
+blur-background = false;
 blur-kern = "5x5box"
 backend = "glx";
 blur-background-exclude = [
@@ -18,7 +18,6 @@ focus-exclude = [
     "_NET_WM_NAME@:s = 'rofi'"
 ]
 
-inactive-opacity = 0.5;
 mark-ovredir-focused = true;
 
 # Wintypes
