@@ -27,8 +27,6 @@ Plug 'wellle/targets.vim'
 
 " Colorscheme
 Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'sjl/badwolf'
-Plug 'jnurmine/Zenburn'
 
 " Misc
 Plug 'dhruvasagar/vim-table-mode'
@@ -99,6 +97,8 @@ set colorcolumn=80,120
 " Escaping from insert
 inoremap jk <Esc>
 inoremap JK <Esc>
+inoremap kj <Esc>
+inoremap KJ <Esc>
 
 " Leader
 let g:mapleader = ","
