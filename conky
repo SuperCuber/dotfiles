@@ -19,14 +19,14 @@ alignment top_right
 gap_x 20
 gap_y 30
 
-maximum_width 160
+maximum_width 180
 minimum_size 160
 
 TEXT
 ${alignc}${color pink}CPU:${color white} ${cpu}%
-${cpugraph cpu1 30,80}${cpugraph cpu2 30,80}${voffset -14}
-${cpugraph cpu3 30,80}${cpugraph cpu4 30,80}
-${voffset -68}${color3}${goto 8}1 ${goto 88}2 ${goto 0} ${voffset 30} ${goto 8}3 ${goto 88}4${voffset 8}
+${cpugraph cpu1 30,90}${cpugraph cpu2 30,90}${voffset -18}
+${cpugraph cpu3 30,90}${cpugraph cpu4 30,90}
+${voffset -70}${color3}${goto 8}1 ${goto 98}2 ${goto 0} ${voffset 30} ${goto 8}3 ${goto 98}4${voffset 8}
 
 ${top name 1}${alignr}${top cpu 1}%
 ${top name 2}${alignr}${top cpu 2}%
@@ -36,7 +36,7 @@ ${top name 5}${alignr}${top cpu 5}%
 
 ${alignc}${color pink}Memory:${color white} ${memperc}%
 ${alignc}${mem}/${memmax}
-${memgraph cpu1 30,160}
+${memgraph cpu1 30,180}
 ${top_mem name 1}${alignr}${top_mem mem_res 1}
 ${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${top_mem name 3}${alignr}${top_mem mem_res 3}
