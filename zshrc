@@ -65,7 +65,7 @@ eval `dircolors ~/.dir_colors`
 cd ()
 {
     # Pass all arguments to cd
-    builtin cd "$@" || return $RV
+    builtin cd "$@" || return $?
     # If everything OK, print ls and todo
     l
     todo
