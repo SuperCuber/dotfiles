@@ -2,6 +2,7 @@
 setopt PROMPT_SUBST
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu select=0
 autoload -Uz compinit
 compinit
 #<==
