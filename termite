@@ -34,7 +34,6 @@ color6  = {{ color_cyan }}
 color14 = {{ color_light_cyan }}
 
 [options]
-font = {{ iconfont }} Regular {{ fontsize }}
 font = {{ monofont }} Regular {{ fontsize }}
 audible_bell = false
 scrollback_lines = 999999
