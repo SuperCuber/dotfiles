@@ -3,7 +3,7 @@
 
 ![Prompt Long Path](/img/prompt_long_path.png)
 ![Floating Terminal](/img/floating_terminal.png)
-![Tiled terminals with opacity](/img/tiled_terminals_with_opacity.png)
+![Tiled terminals](/img/tiled_terminals.png)
 
 # Home folder structure
 (This is supposed to be `tree`-like output but is obviously edited)
