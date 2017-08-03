@@ -31,7 +31,6 @@ Plug 'wellle/targets.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 
 " Misc
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'mhinz/vim-startify'
 Plug 'yuttie/comfortable-motion.vim'
 
@@ -82,6 +81,7 @@ set splitbelow
 
 " Misc
 set showcmd
+set noshowmatch
 set clipboard=unnamed
 set mouse=nvc
 set history=500
@@ -90,9 +90,7 @@ set backspace=eol,indent
 set whichwrap=h,l
 set laststatus=2
 set colorcolumn=80,120
-		:set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-		  \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
-		  \,sm:block-blinkwait175-blinkoff150-blinkon175
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 "<==
 
 "==> Maps
@@ -133,28 +131,24 @@ au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
 au BufRead *.java inoremap . .<C-x><C-u>
 
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
-
-au BufReadPost *.hdl set ft=hdl
 "<==
 
 "==> Functions
-"==> Vimrc fold text
 function! VimrcFoldText()
     let line = getline(v:foldstart)
     return v:folddashes . line[3:]
 endfunction
 "<==
-"<==
 
 "==> Colorscheme
- colo Tomorrow-Night
+colo Tomorrow-Night
 "<==
 
 "==> UltiSnips
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
@@ -183,6 +177,8 @@ hi StartifyNumber  ctermfg=215
 hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
 hi StartifySpecial ctermfg=240
+
+let g:startify_fortune_use_unicode = 1
 "<==
 
 "==> Deocomplete + friends
