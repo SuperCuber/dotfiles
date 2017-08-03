@@ -1,4 +1,6 @@
 "==> Plug
+set runtimepath+=~/.vim
+
 call plug#begin("~/.local/share/nvim/plugged")
 
 " Snippets
