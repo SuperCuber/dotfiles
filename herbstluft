@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+
+#==> General
+Mod=Mod4
+hc() {
+    herbstclient "$@"
+}
+hc emit_hook reload
+hc keyunbind --all
+hc unrule -F
+#<==
+
+#==> Shortcuts
+hc keybind $Mod-Shift-q close
+hc keybind $Mod-Shift-r reload
+
+# Terminal
+hc keybind $Mod-Return spawn {{ terminal }}
+
+# Rofimenu
+hc keybind $Mod-d spawn ~/.scripts/rofimenu
+
+# Screenshot
+hc keybind $Mod-s spawn /usr/bin/maim -s ~/tmp/$(date +%F-%T).png
+
+# Record
+hc keybind Print spawn ffmpeg -f x11grab -s {{ screen_size }} -framerate 60 -i :0.0 ~/tmp/$(date +%F-%T).webm
+hc keybind ctrl-Print spawn pkill ffmpeg
+
+# Time
+hc keybind $Mod-Shift-d spawn popup_time
+#<==
+
+#==> Layout
+# Focus
+hc keybind $Mod-h     focus left
+hc keybind $Mod-j     focus down
+hc keybind $Mod-k     focus up
+hc keybind $Mod-l     focus right
+
+# Move
+hc keybind $Mod-Shift-h     shift left
+hc keybind $Mod-Shift-j     shift down
+hc keybind $Mod-Shift-k     shift up
+hc keybind $Mod-Shift-l     shift right
+
+# Resize
+resizestep=0.05
+hc keybind $Mod-Control-h       resize left +$resizestep
+hc keybind $Mod-Control-j       resize down +$resizestep
+hc keybind $Mod-Control-k       resize up +$resizestep
+hc keybind $Mod-Control-l       resize right +$resizestep
+
+# Split
+hc keybind $Mod-b       split   bottom  0.5
+hc keybind $Mod-v       split   right   0.5
+
+# Explode
+hc keybind $Mod-Control-space split explode
+
+# Modes
+hc keybind $Mod-Space floating toggle
+hc keybind $Mod-f fullscreen toggle
+hc keybind $Mod-p pseudotile toggle
+
+# Remove frame
+hc keybind $Mod-q remove
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Mod-shift-space                                                           \
+            or , and . compare tags.focus.curframe_wcount = 2                   \
+                     . cycle_layout +1 vertical horizontal max vertical grid    \
+               , cycle_layout +1
+#<==
+
+#==> Tags
+tag_names=( {1..9} )
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Mod-$key" use_index "$i"
+        hc keybind "$Mod-Shift-$key" move_index "$i"
+    fi
+done
+#<==
+
+#==> Mouse
+hc mouseunbind --all
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
+#<==
+
+#==> Colors
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+hc set frame_border_active_color '#222222'
+hc set frame_border_normal_color '#101010'
+hc set frame_bg_normal_color '#565656'
+hc set frame_bg_active_color '#345F0C'
+hc set frame_border_width 1
+hc set always_show_frame 1
+hc set frame_bg_transparent 1
+hc set frame_transparent_width 5
+hc set frame_gap 4
+
+hc attr theme.active.color '#9fbc00'
+hc attr theme.normal.color '#454545'
+hc attr theme.urgent.color orange
+hc attr theme.inner_width 1
+hc attr theme.inner_color black
+hc attr theme.border_width 3
+hc attr theme.floating.border_width 4
+hc attr theme.floating.outer_width 1
+hc attr theme.floating.outer_color black
+hc attr theme.active.inner_color '#3E4A00'
+hc attr theme.active.outer_color '#3E4A00'
+hc attr theme.background_color '#141414'
+
+hc set window_gap 0
+hc set frame_padding 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 1
+hc set mouse_recenter_gap 0
+#<==
+
+#==> Rules
+hc rule focus=on # normally focus new clients
+
+hc rule title={{ terminal }} tag=1
+
+hc rule class=Firefox tag=2
+
+hc rule class=discord tag=3
+hc rule class=Thunderbird tag=3
+
+hc rule class="Ghetto Skype" tag=4
+
+hc rule class=Minecraft tag=5
+hc rule title=Eclipse tag=5
+
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+#<==
+
+#==> Misc
+hc unlock
+herbstclient set tree_style '╾│ ├└╼─┐'
+#<==
+
+# vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:

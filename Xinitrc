@@ -1,4 +1,4 @@
 #!/bin/sh
 
 ~/.scripts/startup >/dev/null 2>&1
-exec i3
+exec herbstluftwm
