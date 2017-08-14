@@ -1,3 +1,6 @@
+# Start tmux
+[ -z $TMUX ] && [ ! -z $DISPLAY ] && hash tmux &>/dev/null && exec tmux
+
 #==> Zsh options
 setopt PROMPT_SUBST
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
