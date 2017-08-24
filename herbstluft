@@ -117,7 +117,7 @@ hc set mouse_recenter_gap 0
 
 hc attr theme.active.color '{{ color_light_gray }}'
 hc attr theme.normal.color '{{ color_background }}'
-hc attr theme.urgent.color red
+hc attr theme.urgent.color '{{ color_red }}'
 hc attr theme.inner_width 0
 hc attr theme.border_width 2
 hc attr theme.floating.border_width 2
