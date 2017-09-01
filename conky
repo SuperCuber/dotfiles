@@ -43,10 +43,10 @@ ${top_mem name 3}${alignr}${top_mem mem_res 3}
 ${top_mem name 4}${alignr}${top_mem mem_res 4}
 ${top_mem name 5}${alignr}${top_mem mem_res 5}
 
-${color pink}Download ${color0}${alignr}${downspeedf wlo1} KiB/s
-${downspeedgraph wlo1 40,}
-${color pink}Upload ${color0}${alignr}${upspeedf wlo1} KiB/s
-${upspeedgraph wlo1 40,}
+${color pink}Download ${color0}${alignr}${downspeedf {{ network_interface }}} KiB/s
+${downspeedgraph {{ network_interface }} 40,}
+${color pink}Upload ${color0}${alignr}${upspeedf {{ network_interface }}} KiB/s
+${upspeedgraph {{ network_interface }} 40,}
 
 ${alignc}${color pink}Filesystem:${color white} ${fs_used_perc}%
 ${alignc}${fs_used}/${fs_size}
