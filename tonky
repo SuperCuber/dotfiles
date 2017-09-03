@@ -15,7 +15,9 @@ if_up_strictness address
 
 update_interval 30
 
-alignment bottom_left
+alignment top_left
+gap_x 20
+gap_y 20
 
 TEXT
 ${color darkred}TODO:
