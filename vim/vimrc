@@ -91,6 +91,7 @@ set whichwrap=h,l
 set laststatus=2
 set colorcolumn=80,120
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+set statusline=%f\ %y%1*%m%*
 "<==
 
 "==> Maps
@@ -104,11 +105,11 @@ inoremap KJ <Esc>
 let g:mapleader = ","
 
 " Remove highlights from search
-nmap <silent> <leader><cr> :noh<cr>
+nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc
-nmap <silent> <leader>e :e ~/.dotfiles/vim/vimrc<cr>
+nnoremap <silent> <leader>e :e ~/.dotfiles/vim/vimrc<cr>
 " Save
-nmap <space> :w<cr>
+nnoremap <space> :w<cr>
 
 " Quit
 nnoremap <leader>q :q<cr>
@@ -142,6 +143,7 @@ endfunction
 
 "==> Colorscheme
 colo Tomorrow-Night
+highlight User1 ctermfg=222 ctermbg=1
 "<==
 
 "==> UltiSnips
