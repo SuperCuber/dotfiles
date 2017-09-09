@@ -35,16 +35,21 @@ main(){
         }
         read action
         [ -z $action ] && continue
-        actions "$action" && {
-            success Done
-        } || {
+        actions "$action"
+        RV=$?
+        if [ $RV == 130 ]; then
             tput setaf 0
             tput setab 3
             echo Reminders:
             reminders
             tput sgr0
             break
-        }
+        elif [ $RV == 0 ]; then
+            success Done
+        else
+            fail Error.
+            read
+        fi
     done
     return 0
 }
@@ -54,7 +59,7 @@ if [ -z $loop_file ]; then
     loop_file=dev_loop
 fi
 
-source $loop_file 2>/dev/null || {
+source $loop_file || {
     fail "Couldn't source $loop_file"
     exit 1
 }
