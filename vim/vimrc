@@ -1,5 +1,6 @@
 "==> Plug
 set runtimepath+=~/.vim
+set runtimepath+=~/.vim/pythonx
 
 call plug#begin("~/.local/share/nvim/plugged")
 
@@ -130,8 +131,6 @@ command! Te !te
 " Automatically get Eclim shortcuts on java files
 au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
 au BufRead *.java inoremap . .<C-x><C-u>
-
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif " Return to last edit position when opening files
 "<==
 
 "==> Functions
