@@ -46,7 +46,7 @@ STICKY_OTHER_WRITABLE 30;42
 OTHER_WRITABLE        32
 STICKY                37;44
 
-EXEC                  01;32
+EXEC                  3;32
 
 # Archives or compressed
 .tar                  01;31
