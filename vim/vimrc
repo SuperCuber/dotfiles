@@ -131,6 +131,9 @@ command! Te !te
 " Automatically get Eclim shortcuts on java files
 au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
 au BufRead *.java inoremap . .<C-x><C-u>
+
+" Set .html.hbs to html
+au BufRead *.html.hbs set ft=html
 "<==
 
 "==> Functions
