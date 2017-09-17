@@ -200,9 +200,11 @@ EXEC                  3;32
 .asm                  38;5;98
 .rs                   38;5;94
 
-# Makefile
+# {Make,Just}file
 *Makefile             38;5;155
 *makefile             38;5;155
+*Justfile             38;5;155
+*justfile             38;5;155
 
 # Unimportant
 .pyc                  38;5;7
