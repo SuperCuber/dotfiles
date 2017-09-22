@@ -44,9 +44,7 @@ main(){
             reminders
             tput sgr0
             break
-        elif [ $RV == 0 ]; then
-            success Done
-        else
+        elif [ $RV != 0 ]; then
             fail Error.
             read
         fi
