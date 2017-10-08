@@ -42,11 +42,8 @@ alias uninstall='{{ uninstall }}'
 alias update='{{ update }}'
 alias autoremove='{{ autoremove }}'
 
-# Just
-alias j=just
-alias .j='just --justfile ~/.justfile --working-directory .'
-
 # Misc
+alias j=just
 alias e="exit"
 alias eb="exec zsh"
 alias x="exec startx"
