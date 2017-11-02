@@ -36,7 +36,7 @@ ${top name 5}${alignr}${top cpu 5}%
 
 ${alignc}${color pink}Memory:${color white} ${memperc}%
 ${alignc}${mem}/${memmax}
-${memgraph cpu1 30, ffffff ff0000 -t}
+${memgraph cpu1 30,160 ffffff ff0000 -t}
 ${top_mem name 1}${alignr}${top_mem mem_res 1}
 ${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${top_mem name 3}${alignr}${top_mem mem_res 3}
