@@ -21,10 +21,13 @@ gap_y 20
 
 TEXT
 ${alignc}${color pink}CPU:${color white} ${cpu}%
-${cpugraph cpu1 30,90}${cpugraph cpu2 30,90}${voffset -18}
-${cpugraph cpu3 30,90}${cpugraph cpu4 30,90}
-${voffset -70}${color3}${goto 8}1 ${goto 98}2 ${goto 0} ${voffset 30} ${goto 8}3 ${goto 98}4${voffset 8}
 
+${voffset -14}${cpugraph cpu1 30, ffffff ff0000 -t}
+${voffset -14}${cpugraph cpu2 30, ffffff ff0000 -t}
+${voffset -14}${cpugraph cpu3 30, ffffff ff0000 -t}
+${voffset -14}${cpugraph cpu4 30, ffffff ff0000 -t}
+
+${voffset -28}
 ${top name 1}${alignr}${top cpu 1}%
 ${top name 2}${alignr}${top cpu 2}%
 ${top name 3}${alignr}${top cpu 3}%
@@ -33,7 +36,7 @@ ${top name 5}${alignr}${top cpu 5}%
 
 ${alignc}${color pink}Memory:${color white} ${memperc}%
 ${alignc}${mem}/${memmax}
-${memgraph cpu1 30,180}
+${memgraph cpu1 30, ffffff ff0000 -t}
 ${top_mem name 1}${alignr}${top_mem mem_res 1}
 ${top_mem name 2}${alignr}${top_mem mem_res 2}
 ${top_mem name 3}${alignr}${top_mem mem_res 3}
@@ -48,6 +51,9 @@ ${upspeedgraph {{ network_interface }} 40,}
 ${alignc}${color pink}Filesystem:${color white} ${fs_used_perc}%
 ${alignc}${fs_used}/${fs_size}
 ${fs_bar}
+
+${if_existing /sys/class/power_supply/BAT0/uevent} ${alignc}${color pink}Battery:${color white} ${battery_percent}%
+${battery_bar} ${endif}
 
 ${alignc}${color pink}Uptime:${color white}
 ${alignc}${uptime}
