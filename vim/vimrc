@@ -32,7 +32,7 @@ Plug 'wellle/targets.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 
 " Misc
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()

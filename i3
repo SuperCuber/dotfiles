@@ -11,7 +11,7 @@ set $exec exec --no-startup-id
 bindsym $mod+Shift+q kill
 
 # Rofimenu
-bindsym $mod+d $exec "~/.scripts/rofimenu"
+bindsym $mod+d $exec "rofi -show run"
 
 # Screenshot
 bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
@@ -71,6 +71,9 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# move workspace to next screen
+bindsym $mod+p move workspace to output left
 #<==
 
 #==> Workspaces
@@ -166,10 +169,10 @@ client.urgent           $urgent           $urgent           #000000      $urgent
 #<==
 
 #==> Gaps
-for_window [class="^.*"] border pixel 2
-gaps inner 10
-smart_gaps yes
-smart_borders yes
+#for_window [class="^.*"] border pixel 2
+#gaps inner 10
+#smart_gaps yes
+#smart_borders yes
 
 set $mode_gaps Gaps: (o)uter, (i)nner
 set $mode_gaps_outer Outer Gaps: +|-|0
@@ -202,5 +205,7 @@ mode "$mode_gaps_outer" {
 }
 
 #<==
+
+$exec ~/.screenlayout/default.sh
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:
