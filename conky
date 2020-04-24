@@ -17,7 +17,7 @@ update_interval 0.5
 
 alignment top_right
 gap_x 20
-gap_y 20
+gap_y 40
 
 TEXT
 ${alignc}${color pink}CPU:${color white} ${cpu}%

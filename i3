@@ -169,7 +169,7 @@ client.urgent           $urgent           $urgent           #000000      $urgent
 #<==
 
 #==> Gaps
-#for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 2
 #gaps inner 10
 #smart_gaps yes
 #smart_borders yes
@@ -206,6 +206,6 @@ mode "$mode_gaps_outer" {
 
 #<==
 
-$exec ~/.screenlayout/default.sh
+$exec ~/.scripts/startup
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:

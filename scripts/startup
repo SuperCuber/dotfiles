@@ -1,16 +1,15 @@
 #!/usr/bin/env zsh
 
 numlockx
-setxkbmap -layout us,il,us -variant ,,dvorak -option grp:alt_shift_toggle
-~/bin/clean_tmp
-~/.fehbg
-
+setxkbmap -layout us,il -option grp:alt_shift_toggle
+~/.screenlayout/default.sh &
+~/.fehbg &
 xrdb ~/.Xresources &
 conky &
 conky -c ~/.conkyrc2 &
-/usr/bin/compton &
+compton &
 pulseaudio --start &
-xfce4-power-manager &
 dunst &
+polybar default &
 
 disown -a

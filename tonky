@@ -17,7 +17,7 @@ update_interval 30
 
 alignment top_left
 gap_x 20
-gap_y 20
+gap_y 40
 
 TEXT
 ${color darkred}TODO:
