@@ -16,6 +16,7 @@ if_up_strictness address
 update_interval 0.5
 
 alignment top_right
+xinerama_head 2
 gap_x 20
 gap_y 40
 
