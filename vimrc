@@ -19,6 +19,7 @@ Plug 'chriskempson/vim-tomorrow-theme'
 
 " Misc
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'preservim/nerdtree'
 
 call plug#end()
 "<==
@@ -121,11 +122,8 @@ endfunction
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+nmap <F2> <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f <Plug>(coc-format-selected)
-nmap <leader>f <Plug>(coc-format-selected)
-"
 " Map function and class text objects
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -182,11 +180,11 @@ nnoremap <silent> <leader><cr> :noh<cr>
 nnoremap <silent> <leader>e :e $MYVIMRC<cr>
 " Save
 nnoremap <space> :w<cr>
+" Open NERDTree
+nnoremap <C-N> :NERDTreeToggle<cr>
 
 " Quit
 nnoremap <leader>q :q<cr>
-" Kill
-nnoremap <leader>k :q!<cr>
 
 " [S]plit line (sister to [J]oin lines)
 nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
@@ -204,7 +202,10 @@ au BufRead *.java inoremap . .<C-x><C-u>
 " Set .html.hbs to html
 au BufRead *.html.hbs set ft=html
 
-au VimEnter * if exists('g:GuiLoaded') | exe 'GuiPopupmenu 0' | endif
+au VimEnter * if exists('g:GuiLoaded')
+            \ | exe 'GuiPopupmenu 0'
+            \ | exe 'GuiFont Consolas:h14'
+            \ | endif
 "<==
 
 "==> Colorscheme
