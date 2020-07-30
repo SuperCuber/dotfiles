@@ -181,13 +181,13 @@ nnoremap <silent> <leader>e :e $MYVIMRC<cr>
 " Save
 nnoremap <space> :w<cr>
 " Open NERDTree
-nnoremap <C-N> :NERDTreeToggle<cr>
+nnoremap <silent> <C-N> :NERDTreeToggle<cr>
 
 " Quit
 nnoremap <leader>q :q<cr>
 
 " [S]plit line (sister to [J]oin lines)
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
 " Easier to type, and I never use the default behavior.
 noremap H ^
