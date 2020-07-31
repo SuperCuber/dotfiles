@@ -6,6 +6,7 @@ call plug#begin("~/.local/share/nvim/plugged")
 
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'cespare/vim-toml'
 
 " Custom motions
 Plug 'tpope/vim-repeat'

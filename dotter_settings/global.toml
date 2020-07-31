@@ -9,6 +9,9 @@ polybar = "~/.config/polybar/config"
 tonky = "~/.conkyrc2"
 # Local variables: network_interface, screen_size, terminal,
 
+[i3.variables]
+rofi_font_size = 20
+
 [zsh.files]
 zprofile = "~/.zprofile"
 zshrc = "~/.zshrc"
@@ -48,5 +51,5 @@ color_white = "#9e9e9e"
 color_yellow = "#f4bf75"
 monofont = "Fira Mono"
 regfont = "Ubuntu"
-fontsize = "10"
+fontsize = 10
 
