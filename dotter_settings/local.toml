@@ -1,0 +1,12 @@
+packages = ["i3", "zsh", "xfce4_terminal", "vim", "graphics"]
+
+[i3.variables]
+network_interface = "enp0s20f0u1"
+screen_size = "2560x1440"
+terminal = "xfce4-terminal"
+
+[zsh.variables]
+install = "sudo apt install"
+uninstall = "sudo apt remove"
+update = "sudo apt update && sudo apt dist-upgrade"
+autoremove = "sudo apt autoremove"
