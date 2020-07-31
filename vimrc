@@ -171,6 +171,9 @@ inoremap JK <Esc>
 inoremap kj <Esc>
 inoremap KJ <Esc>
 
+" Leave terminal
+tnoremap <Esc> <C-\><C-n>
+
 " Leader
 let g:mapleader = ","
 
