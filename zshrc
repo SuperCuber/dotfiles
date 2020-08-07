@@ -70,7 +70,8 @@ cd ()
     builtin cd "$@" || return $?
     # If everything OK, print ls and todo
     l
-    todo
+    test -x todo && todo
+    return 0
 }
 
 # Terminal color
