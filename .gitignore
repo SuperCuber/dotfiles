@@ -1,4 +1,5 @@
 rofimenu_options.py
 
 dotter_settings/local.toml
-dotter_cache
+dotter_settings/cache/
+dotter_settings/cache.toml
