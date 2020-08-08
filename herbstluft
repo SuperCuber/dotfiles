@@ -15,7 +15,7 @@ hc keybind $Mod-Shift-q close
 hc keybind $Mod-Shift-r reload
 
 # Terminal
-hc keybind $Mod-Return spawn {{ terminal }}
+hc keybind $Mod-Return spawn {{terminal}}
 
 # Rofimenu
 hc keybind $Mod-d spawn ~/.scripts/rofimenu
@@ -24,7 +24,7 @@ hc keybind $Mod-d spawn ~/.scripts/rofimenu
 hc keybind $Mod-s spawn bash -c '/usr/bin/maim -s ~/tmp/$(date +%F-%T).png'
 
 # Record
-hc keybind Print spawn bash -c 'ffmpeg -f x11grab -s {{ screen_size }} -framerate 60 -i :0.0 ~/tmp/$(date +%F-%T).webm'
+hc keybind Print spawn bash -c 'ffmpeg -f x11grab -s {{screen_size}} -framerate 60 -i :0.0 ~/tmp/$(date +%F-%T).webm'
 hc keybind ctrl-Print spawn pkill ffmpeg
 
 # Time
@@ -100,8 +100,8 @@ hc mousebind $Mod-Button3 resize
 #==> Colors
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
-hc set frame_border_active_color '{{ color_light_gray }}'
-hc set frame_border_normal_color '{{ color_background }}'
+hc set frame_border_active_color '{{colors.background_bright}}'
+hc set frame_border_normal_color '{{color_background}}'
 hc set frame_border_width 2
 hc set always_show_frame 0
 hc set frame_bg_transparent 1
@@ -115,9 +115,9 @@ hc set smart_window_surroundings 1
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
 
-hc attr theme.active.color '{{ color_light_gray }}'
-hc attr theme.normal.color '{{ color_background }}'
-hc attr theme.urgent.color '{{ color_red }}'
+hc attr theme.active.color '{{colors.background_bright}}'
+hc attr theme.normal.color '{{colors.background}}'
+hc attr theme.urgent.color '{{colors.accent}}'
 hc attr theme.inner_width 0
 hc attr theme.border_width 2
 hc attr theme.floating.border_width 2
@@ -127,7 +127,7 @@ hc attr theme.floating.outer_width 0
 #==> Rules
 hc rule focus=on # normally focus new clients
 
-hc rule title={{ terminal }} tag=1
+hc rule title={{terminal}} tag=1
 
 hc rule class=Firefox tag=2
 

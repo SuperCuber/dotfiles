@@ -2,7 +2,7 @@ background yes
 
 font 7x13
 use_xft true
-xftfont pango:{{ monofont }}:size={{ fontsize }}
+xftfont pango:{{font.monospace}}:size={{font.size}}
 
 total_run_times 0
 own_window yes

@@ -1,39 +1,39 @@
 [colors]
-foreground = {{ color_foreground }}
-background = {{ color_background }}
+foreground = {{colors.text}}
+background = {{colors.background}}
 
 # Colors Dark -> Light
 # Shades
-color0  = {{ color_black }}
-color8  = {{ color_dark_gray }}
-color7  = {{ color_light_gray }}
-color15 = {{ color_white }}
+color0  = {{colors16.black}}
+color8  = {{colors16.dark_gray}}
+color7  = {{colors16.light_gray}}
+color15 = {{colors16.white}}
 
 # Reds
-color1  = {{ color_red }}
-color9  = {{ color_light_red }}
+color1  = {{colors16.red}}
+color9  = {{colors16.light_red}}
 
 # Greens
-color2  = {{ color_green }}
-color10 = {{ color_light_green }}
+color2  = {{colors16.green}}
+color10 = {{colors16.light_green}}
 
 # Yellows
-color3  = {{ color_yellow }}
-color11 = {{ color_light_yellow }}
+color3  = {{colors16.yellow}}
+color11 = {{colors16.light_yellow}}
 
 # Blues
-color4  = {{ color_blue }}
-color12 = {{ color_light_blue }}
+color4  = {{colors16.blue}}
+color12 = {{colors16.light_blue}}
 
 # Purples
-color5  = {{ color_purple }}
-color13 = {{ color_light_purple }}
+color5  = {{colors16.purple}}
+color13 = {{colors16.light_purple}}
 
 # Cyans
-color6  = {{ color_cyan }}
-color14 = {{ color_light_cyan }}
+color6  = {{colors16.cyan}}
+color14 = {{colors16.light_cyan}}
 
 [options]
-font = {{ monofont }} Regular {{ fontsize }}
+font = {{font.monospace}} Regular {{font.size}}
 audible_bell = false
 scrollback_lines = 999999

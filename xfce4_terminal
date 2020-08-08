@@ -1,5 +1,5 @@
 [Configuration]
-FontName={{ monofont }} {{ fontsize }}
+FontName={{font.monospace}} {{font.size}}
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -31,8 +31,8 @@ ShortcutsNoHelpkey=TRUE
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE
 DropdownKeepOpenDefault=TRUE
-ColorPalette=rgb(0,0,0);rgb(251,48,41);rgb(0,205,0);rgb(205,205,0);rgb(0,0,205);rgb(205,0,205);rgb(0,205,205);rgb(229,229,229);rgb(127,127,127);rgb(255,0,0);rgb(0,255,0);rgb(255,255,0);rgb(92,92,255);rgb(255,0,255);rgb(0,255,255);rgb(255,255,255)
-ColorForeground=#eeeeeeeeecec
-ColorBackground=#2a2a2a2a2a2a
-ColorCursor=#4e4e9a9a0606
-
+ColorPalette={{color_rgb colors16.black}};{{color_rgb colors16.red}};{{color_rgb colors16.green}};{{color_rgb colors16.yellow}};{{color_rgb colors16.blue}};{{color_rgb colors16.purple}};{{color_rgb colors16.cyan}};{{color_rgb colors16.light_gray}};{{color_rgb colors16.dark_gray}};{{color_rgb colors16.light_red}};{{color_rgb colors16.light_green}};{{color_rgb colors16.light_yellow}};{{color_rgb colors16.light_blue}};{{color_rgb colors16.light_purple}};{{color_rgb colors16.light_cyan}};{{color_rgb colors16.white}}
+ColorForeground=#{{colors.text}}
+ColorBackground=#{{colors.background}}
+ColorCursor=#{{colors.text_bright}}
+ColorCursorUseDefault=FALSE

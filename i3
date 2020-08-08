@@ -1,7 +1,7 @@
 #==> General
 # Super (aka Windoze) key
 set $mod Mod4
-font pango:{{ monofont }} {{ fontsize }}
+font pango:{{font.monospace}} {{font.size}}
 floating_modifier $mod
 set $exec exec --no-startup-id
 #<==
@@ -156,10 +156,10 @@ bindsym $mod+r mode "resize"
 #<==
 
 #==> Colors
-set $focused "{{ color_light_gray }}"
-set $unfocused "{{ color_background }}"
-set $focused_inactive "{{ color_dark_gray }}"
-set $urgent "#700000"
+set $focused "#{{colors.background_bright}}"
+set $unfocused "#{{colors.background}}"
+set $focused_inactive "#{{colors.background}}"
+set $urgent "#{{colors.accent}}"
 
 #class                  border            backgr.           text         indicator
 client.focused          $focused          $focused          #000000      $focused

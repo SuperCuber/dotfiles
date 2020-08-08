@@ -3,7 +3,7 @@ conky.config = {
     update_interval = 0.5,
     total_run_times = 0,
 
-    font = "pango:{{monofont}}:size={{fontsize}}",
+    font = "pango:{{font.monospace}}:size={{font.size}}",
     use_xft = true,
     use_spacer = "left",
 
@@ -30,7 +30,7 @@ ${voffset -{{conky_graph_gap}}}${cpugraph cpu2 {{conky_graph_height}},{{conky_wi
 ${voffset -{{conky_graph_gap}}}${cpugraph cpu3 {{conky_graph_height}},{{conky_width}} ffffff ff0000 -t}
 ${voffset -{{conky_graph_gap}}}${cpugraph cpu4 {{conky_graph_height}},{{conky_width}} ffffff ff0000 -t}
 
-${voffset -{{math conky_graph_gap "+" fontsize}}}
+${voffset -{{math conky_graph_gap "+" font.size}}}
 ${top name 1}${alignr}${top cpu 1}%
 ${top name 2}${alignr}${top cpu 2}%
 ${top name 3}${alignr}${top cpu 3}%
