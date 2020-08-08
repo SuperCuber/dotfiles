@@ -76,6 +76,7 @@ cd ()
 
 # Terminal color
 TERM=xterm-256color
+export PATH=$HOME/.scripts:$PATH
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]

@@ -3,8 +3,6 @@ color_rgb = "dotter_settings/helpers/color_rgb.rhai"
 
 [i3.files]  # requires "graphics"
 dunstrc = "~/.config/dunst/dunstrc"
-Xinitrc = "~/.xinitrc"
-# Xresources = "~/.Xresources"  # rofi
 rofi = "~/.config/rofi/config.rasi"
 compton = "~/.compton.conf"
 conky = "~/.conkyrc"

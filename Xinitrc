@@ -1,4 +1,0 @@
-#!/bin/sh
-
-~/.scripts/startup >~/tmp/startup.log 2>&1
-exec i3
