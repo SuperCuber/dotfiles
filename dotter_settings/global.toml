@@ -13,7 +13,15 @@ tonky = "~/.conkyrc2"
 # Local variables: network_interface, screen_size, terminal,
 
 [i3.variables]
+# Rofi
 rofi_font_size = 20
+rofi_padding = 200
+
+# Conky
+conky_graph_gap = 20
+conky_graph_height = 40
+conky_width = 250
+battery_uevent = "/sys/class/power_supply/BAT0/uevent"
 
 [zsh.files]
 zprofile = "~/.zprofile"
@@ -54,5 +62,4 @@ color_white = "#9e9e9e"
 color_yellow = "#f4bf75"
 monofont = "Fira Mono"
 regfont = "Ubuntu"
-fontsize = 10
-
+fontsize = 12
