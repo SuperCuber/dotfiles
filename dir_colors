@@ -27,7 +27,7 @@ TERM                  xterm*
 # Normal files
 NORMAL                0
 RESET                 0
-DIR                   34
+DIR                   01;34
 LINK                  target
 
 # Special files
