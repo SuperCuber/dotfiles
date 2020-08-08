@@ -1,24 +1,15 @@
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+alert = #{{colors.accent}}
 
 [bar/default]
-;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
 radius = 6.0
 fixed-center = true
 bottom = true
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background = #{{colors.background}}
+foreground = #{{colors.text}}
 
 line-size = 3
 line-color = #f00
@@ -32,9 +23,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = mono:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = {{font.monospace}}:pixelsize={{font.size}};1
 
 modules-left = i3
 modules-center = xwindow
@@ -52,45 +41,40 @@ label = %title%
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+format = <label-state>
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.foreground}
+label-focused-background = #{{colors.background_alt}}
+label-focused-underline= #{{colors.text}}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 2
+label-unfocused-padding = ${self.label-focused-padding}
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.foreground-alt}
+label-visible-background = #{{colors.background_alt}}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = ${self.label-focused-padding}
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = "CPU "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = #{{colors.text_muted}}
 label = %percentage:2:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = "MEM "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-foreground = #{{colors.text_muted}}
 label = %percentage_used:2:2%%
 
 [module/date]
@@ -102,56 +86,26 @@ date = "%Y-%m-%d"
 time = %H:%M:%S
 label = %date% %time%
 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "TIME "
+format-prefix-foreground = #{{colors.text_muted}}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
-label-volume = "%{F#555}VOL %{F-}%percentage%%"
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = #{{colors.text_muted}}
 
-format-prefix-foreground = ${colors.foreground-alt}
-label-volume-foreground = ${colors.foreground}
+label-volume = "%percentage%%"
+label-volume-foreground = #{{colors.text}}
 
-label-muted = muted
-label-muted-foreground = #666
+format-muted-prefix = "VOL "
+format-muted-prefix-foreground = #{{colors.text_muted}}
 
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+label-muted = Muted
+label-muted-foreground = #{{colors.text_muted}}
 
 [settings]
 screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
