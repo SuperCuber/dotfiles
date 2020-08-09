@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+numlockx
+setxkbmap -layout us,il -option grp:alt_shift_toggle
+~/.screenlayout/default.sh &
+~/.fehbg &
+xrdb ~/.Xresources &
+conky &
+conky -c ~/.conkyrc2 &
+compton &
+pulseaudio --start &
+dunst &
+polybar default &
+
+disown -a
