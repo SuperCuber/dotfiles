@@ -172,8 +172,16 @@ inoremap JK <Esc>
 inoremap kj <Esc>
 inoremap KJ <Esc>
 
+" Enter terminal
+nnoremap <C-CR> :T<cr>
 " Leave terminal
 tnoremap <Esc> <C-\><C-n>
+
+" Move around windows
+nnoremap <M-h> <C-W>h
+nnoremap <M-j> <C-W>j
+nnoremap <M-k> <C-W>k
+nnoremap <M-l> <C-W>l
 
 " Leader
 let g:mapleader = ","
@@ -206,10 +214,19 @@ au BufRead *.java inoremap . .<C-x><C-u>
 " Set .html.hbs to html
 au BufRead *.html.hbs set ft=html
 
+" Turn off ugly gui popupmenu on windows neovim
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
             \ | exe 'GuiFont Consolas:h14'
             \ | endif
+
+" Automatically enter into insert mode on terminal
+au TermOpen * startinsert
+au WinEnter term://* startinsert
+
+" Open a terminal and maybe run a command in it
+command! -nargs=* T split | terminal <args>
+command! -nargs=* VT vsplit | terminal <args>
 "<==
 
 "==> Colorscheme
