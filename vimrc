@@ -67,7 +67,6 @@ set list
 set splitright
 set splitbelow
 
-
 " Neovim-specific
 if has('nvim')
     set modelineexpr
@@ -173,9 +172,11 @@ inoremap kj <Esc>
 inoremap KJ <Esc>
 
 " Enter terminal
-nnoremap <C-CR> :T<cr>
+nnoremap <C-CR> :T<CR>
 " Leave terminal
 tnoremap <Esc> <C-\><C-n>
+" Exit terminal (does effectively nothing on *sh, in cmd saves 3 <cr>s)
+tnoremap <C-d> exit<CR><C-\><C-n><C-w>c
 
 " Move around windows
 nnoremap <M-h> <C-W>h
@@ -207,22 +208,18 @@ noremap L $
 "<==
 
 "==> Autocmds and cmds
-" Automatically get Eclim shortcuts on java files
-au BufRead *.java nnoremap <leader>i :JavaImportOrganize<CR>
-au BufRead *.java inoremap . .<C-x><C-u>
-
-" Set .html.hbs to html
-au BufRead *.html.hbs set ft=html
-
 " Turn off ugly gui popupmenu on windows neovim
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
             \ | exe 'GuiFont Consolas:h14'
             \ | endif
 
-" Automatically enter into insert mode on terminal
-au TermOpen * startinsert
-au WinEnter term://* startinsert
+" Enter insert mode when entering terminal
+augroup TerminalInsert
+    au!
+    au TermOpen * startinsert
+    au WinEnter term://* startinsert
+augroup END
 
 " Open a terminal and maybe run a command in it
 command! -nargs=* T split | terminal <args>
