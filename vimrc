@@ -7,6 +7,7 @@ call plug#begin("~/.local/share/nvim/plugged")
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 " Custom motions
 Plug 'tpope/vim-repeat'
@@ -72,6 +73,18 @@ if has('nvim')
     set modelineexpr
 endif
 
+" next = step over, step = step in, finish = step out
+" frameup/framedown means move up/down the call stack
+let g:nvimgdb_config_override = {
+  \ 'key_until':      '<f4>',
+  \ 'key_continue':   '<f5>',
+  \ 'key_next':       '<f10>',
+  \ 'key_step':       '<f11>',
+  \ 'key_finish':     '<f12>',
+  \ 'key_breakpoint': '<f8>',
+  \ 'key_frameup':    '<c-o>',
+  \ 'key_framedown':  '<c-i>',
+  \ }
 "==>Misc
 
 " Always show the signcolumn, otherwise it would shift the text each time
@@ -206,9 +219,12 @@ nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 " Easier to type, and I never use the default behavior.
 noremap H ^
 noremap L $
+
+" NVim-GDB - debug rust
+nnoremap <silent> <leader>rd :RustDebug<cr>
 "<==
 
-"==> Autocmds and cmds
+"==> Commands, Autocommands, Functions
 " Turn off ugly gui popupmenu on windows neovim
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
@@ -225,6 +241,19 @@ augroup END
 " Open a terminal and maybe run a command in it
 command! -nargs=* T split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
+
+function! s:RustBinaryLocation()
+    let output = system("cargo locate-project")
+    let parts = split(output, "/")[1:-2]
+    " Assumes the crate's folder name is the same as executable name
+    let path =  "/" . join(parts, "/") . "/target/debug/" . parts[-1]
+    if has("win32")
+        let path = path . ".exe"
+    endif
+    return path
+endfunction
+
+command! -nargs=0 RustDebug execute "!cargo build" | execute "GdbStart rust-gdb -q " . s:RustBinaryLocation()
 "<==
 
 "==> Colorscheme
