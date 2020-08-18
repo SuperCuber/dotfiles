@@ -171,7 +171,7 @@ inoremap kj <Esc>
 inoremap KJ <Esc>
 
 " Enter terminal
-nnoremap <C-CR> :T<CR>
+nnoremap <C-t> :T<CR>
 " Leave terminal
 tnoremap <Esc> <C-\><C-n>
 " Exit terminal (does effectively nothing on *sh, in cmd saves 3 <cr>s)
@@ -196,7 +196,9 @@ nnoremap <space> :w<cr>
 nnoremap <silent> <C-N> :NERDTreeToggle<cr>
 
 " Quit
-nnoremap <leader>q :q<cr>
+nnoremap <silent> <leader>q :q<cr>
+" Kill
+nnoremap <silent> <leader>k :q!<cr>
 
 " [S]plit line (sister to [J]oin lines)
 nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
