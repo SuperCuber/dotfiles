@@ -7,7 +7,9 @@ call plug#begin("~/.local/share/nvim/plugged")
 " Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+if !has("win32")
+    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+endif
 
 " Custom motions
 Plug 'tpope/vim-repeat'
@@ -221,7 +223,9 @@ noremap H ^
 noremap L $
 
 " NVim-GDB - debug rust
-nnoremap <silent> <leader>rd :RustDebug<cr>
+if !has("win32")
+    nnoremap <silent> <leader>rd :RustDebug<cr>
+endif
 "<==
 
 "==> Commands, Autocommands, Functions
@@ -242,18 +246,17 @@ augroup END
 command! -nargs=* T split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 
-function! s:RustBinaryLocation()
-    let output = system("cargo locate-project")
-    let parts = split(output, "/")[1:-2]
-    " Assumes the crate's folder name is the same as executable name
-    let path =  "/" . join(parts, "/") . "/target/debug/" . parts[-1]
-    if has("win32")
-        let path = path . ".exe"
-    endif
-    return path
-endfunction
+if !has("win32")
+    function! s:RustBinaryLocation()
+        let output = system("cargo locate-project")
+        let parts = split(output, "/")[1:-2]
+        " Assumes the crate's folder name is the same as executable name
+        let path =  "/" . join(parts, "/") . "/target/debug/" . parts[-1]
+        return path
+    endfunction
 
-command! -nargs=0 RustDebug execute "!cargo build" | execute "GdbStart rust-gdb -q " . s:RustBinaryLocation()
+    command! -nargs=0 RustDebug execute "!cargo build" | execute "GdbStart rust-gdb -q " . s:RustBinaryLocation()
+endif
 "<==
 
 "==> Colorscheme
