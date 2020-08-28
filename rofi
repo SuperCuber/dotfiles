@@ -1,9 +1,56 @@
 configuration {
-	font: "Ubuntu 20";
-	padding: 200;
-	separator-style: "none";
-	hide-scrollbar: true;
 	fullscreen: true;
-	color-normal: "#00000000, #bbbbbb, #00000000, #33333333, #ffffff";
-	color-window: "#00000000, #00000000, #00000000";
+}
+
+* {
+	font: "{{font.regular}} {{rofi_font_size}}";
+    background-color: #{{colors.background}};
+    text-color: #{{colors.text}};
+}
+
+// Window
+
+window {
+    padding: {{rofi_padding}};
+    background-color: #00000000;
+}
+
+mainbox {
+    border-color: #{{colors.background_bright}};
+    border: 3;
+}
+
+// Input
+
+inputbar {
+    border-color: #{{colors.background_bright}};
+    border: 0 0 3 0;
+    children: [prompt, textbox-prompt-colon, entry];
+}
+
+prompt {
+    text-color: #{{colors.text_muted}};
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+    margin: 0px 10px 0px 0px;
+    text-color: #{{colors.text_muted}};
+}
+
+entry {
+    text-color: #{{colors.text_bright}};
+}
+
+// Items
+
+listview {
+    spacing: 0px;
+    border: 0;
+}
+
+element selected {
+    background-color: #{{colors.background_alt}};
+    text-color: #{{colors.text_bright}};
 }
