@@ -257,6 +257,9 @@ if !has("win32")
 
     command! -nargs=0 RustDebug execute "!cargo build" | execute "GdbStart rust-gdb -q " . s:RustBinaryLocation()
 endif
+
+" Handlebars templates are actually html
+au BufReadPost *.html.hbs set filetype=html
 "<==
 
 "==> Colorscheme

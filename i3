@@ -116,17 +116,14 @@ $exec i3-msg workspace $work1
 #<==
 
 #==> Assigns
-assign [title="{{ terminal }}"] $work1
-
 assign [class="Firefox"] $work2
 
 assign [class="discord"] $work3
 assign [class="Thunderbird"] $work3
 
-assign [class="Ghetto Skype"] $work4
-
-assign [class="Minecraft"] $work5
-assign [title="Eclipse"] $work5
+assign [class="Minecraft"] $work4
+assign [class="minecraft-launcher"] $work4
+assign [title="Eclipse"] $work4
 #<==
 
 #==> Reload
