@@ -34,7 +34,7 @@ dir_colors = "~/.dir_colors"
 [termite.files]  # requires "graphics"
 termite = "~/.config/termite/config"
 
-[xfce4_terminal.files]  # Doesn't require "graphics" but should
+[xfce4_terminal.files]  # requires "graphics"
 xfce4_terminal = "~/.config/xfce4/terminal/terminalrc"
 xfce4_terminal_accels = "~/.config/xfce4/terminal/accels.scm"
 
