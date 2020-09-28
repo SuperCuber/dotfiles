@@ -24,6 +24,7 @@ Plug 'chriskempson/vim-tomorrow-theme'
 " Misc
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'preservim/nerdtree'
+Plug 'romainl/vim-qf'
 
 call plug#end()
 "<==
