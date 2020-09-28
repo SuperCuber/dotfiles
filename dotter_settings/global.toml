@@ -9,7 +9,7 @@ conky = "~/.conkyrc"
 i3 = "~/.i3/config"
 polybar = "~/.config/polybar/config"
 tonky = "~/.conkyrc2"
-# Local variables: network_interface, screen_size, terminal,
+# Local variables: network_interface, screen_size, terminal, primary_screen, secondary_screen
 
 [i3.variables]
 # Rofi

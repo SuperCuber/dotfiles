@@ -112,7 +112,8 @@ bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
 bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 
-$exec i3-msg workspace $work1
+{{#if primary_screen }}workspace $work1 output {{ primary_screen }}{{else}}workspace $work1{{/if}}
+{{#if secondary_screen }}workspace $work0 output {{ secondary_screen }}{{/if}}
 #<==
 
 #==> Assigns
