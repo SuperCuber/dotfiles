@@ -112,8 +112,24 @@ bindsym $mod+Shift+7 move container to workspace $work7; workspace $work7
 bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 
-{{#if primary_screen }}workspace $work1 output {{ primary_screen }}{{else}}workspace $work1{{/if}}
-{{#if secondary_screen }}workspace $work0 output {{ secondary_screen }}{{/if}}
+# initial workspace configuration
+{{#if primary_screen~}}
+workspace $work1 output {{ primary_screen }}
+workspace "-1" output {{ primary_screen }}
+{{~else~}}
+workspace $work1
+{{~/if}}
+{{#if secondary_screen~}}
+workspace $work2 output {{ secondary_screen }}
+workspace "-2" output {{ secondary_screen }}
+{{~/if}}
+
+# oh no someone's looking at my screen
+{{#if (and primary_screen secondary_screen)~}}
+bindsym $mod+q workspace "-1"; workspace "-2"
+{{~else~}}
+bindsym $mod+q workspaace "-1"
+{{~/if}}
 #<==
 
 #==> Assigns
