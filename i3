@@ -120,7 +120,6 @@ workspace "-1" output {{ primary_screen }}
 workspace $work1
 {{~/if}}
 {{#if secondary_screen~}}
-workspace $work2 output {{ secondary_screen }}
 workspace "-2" output {{ secondary_screen }}
 {{~/if}}
 
