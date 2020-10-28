@@ -37,11 +37,17 @@ alias .6="cd ../../../../.."
 alias .7="cd ../../../../../.."
 alias .8="cd ../../../../../../.."
 
-# Shortcuts for installing
+# Package management
 alias install='{{ install }}'
 alias uninstall='{{ uninstall }}'
 alias update='{{ update }}'
 alias autoremove='{{ autoremove }}'
+
+# Git
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gc="git commit"
 
 # Misc
 alias e="exit"

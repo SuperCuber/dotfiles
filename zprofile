@@ -1,3 +1,6 @@
+{{#if cd_location~}}
+builtin cd {{cd_location}}
+{{/if~}}
 {{#if load_rc~}}
 {{#if zsh~}}
 test -f ~/.zshrc && . ~/.zshrc

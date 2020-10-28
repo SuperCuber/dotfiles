@@ -23,6 +23,7 @@ conky_width = 250
 battery_uevent = "/sys/class/power_supply/BAT0/uevent"
 
 [shell.files]
+# Optional local variables: load_rc, cd_location
 todorc = "~/.todorc"
 tmux = "~/.tmux.conf"
 scripts = "~/.scripts"
