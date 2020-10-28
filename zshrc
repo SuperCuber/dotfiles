@@ -7,8 +7,8 @@ zstyle ':completion:*' menu select=0
 autoload -Uz compinit
 compinit
 #<==
-{{~/if~}}
 
+{{/if~}}
 #==> Aliases
 # ls
 alias ls="ls --color=auto"
@@ -56,7 +56,7 @@ alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
-{{~#if zsh~}}
+{{#if zsh~}}
 #==> ZSH Prompt
 PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
 PS1_USERNAME="%F{8}%K{7} %n "
@@ -65,8 +65,8 @@ PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
 
 PS1="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH$PS1_PROMPT"
 #<==
-{{~/if~}}
 
+{{/if~}}
 #==> Misc
 # Dircolors
 eval `dircolors ~/.dir_colors`
