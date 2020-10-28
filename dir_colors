@@ -145,7 +145,7 @@ EXEC                  3;32
 .doc                  00;32
 .docx                 00;32
 
-# Plaintext documents
+# Technical plaintext files
 .patch                00;31
 .log                  00;31
 .diff                 00;31
@@ -178,6 +178,18 @@ EXEC                  3;32
 *VERSION              38;5;220;1
 *NOTICE               38;5;220;1
 *CHANGES              38;5;220;1
+*README.md            38;5;220;1
+*LICENSE.md           38;5;220;1
+*COPYING.md           38;5;220;1
+*INSTALL.md           38;5;220;1
+*COPYRIGHT.md         38;5;220;1
+*AUTHORS.md           38;5;220;1
+*HISTORY.md           38;5;220;1
+*CONTRIBUTORS.md      38;5;220;1
+*PATENTS.md           38;5;220;1
+*VERSION.md           38;5;220;1
+*NOTICE.md            38;5;220;1
+*CHANGES.md           38;5;220;1
 
 # Markup
 .etx                  38;5;184
