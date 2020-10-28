@@ -1,8 +1,12 @@
 #!/bin/bash
 
+{{#if terminal~}}
 if (( $# == 0 )); then
     {{ terminal }} &>/dev/null & disown
 else
     # Notice $@ vs $* here - I want everything after "te" to be passed as a command.
     {{ terminal }} &>/dev/null -e "$*" & disown
 fi
+{{~else~}}
+echo not defined
+{{~/if}}

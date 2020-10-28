@@ -8,6 +8,7 @@ fn reverse(string) {
 
 fn hexToNum(hex) {
     let base = 16;
+    // Maps have to have strings as keys even though this should be a character.
     let hexValue = #{
         "0": 0,
         "1": 1,
@@ -31,7 +32,7 @@ fn hexToNum(hex) {
     let power = 0;
     let num = 0;
     for char in reverse(hex) {
-        num += hexValue["" + char] * (base~power);
+        num += hexValue[char.to_string()] * (base~power);
         power += 1;
     }
 
