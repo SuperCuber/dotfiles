@@ -1,7 +1,9 @@
 [helpers]
 color_rgb = "dotter_settings/helpers/color_rgb.rhai"
 
-[i3.files]  # requires "graphics"
+[i3.files]
+# requires "graphics"
+# Local variables: network_interface, screen_size, terminal, primary_screen, secondary_screen
 dunstrc = "~/.config/dunst/dunstrc"
 rofi = "~/.config/rofi/config.rasi"
 compton = "~/.compton.conf"
@@ -9,32 +11,53 @@ conky = "~/.conkyrc"
 i3 = "~/.i3/config"
 polybar = "~/.config/polybar/config"
 tonky = "~/.conkyrc2"
-# Local variables: network_interface, screen_size, terminal, primary_screen, secondary_screen
 
 [i3.variables]
 # Rofi
 rofi_font_size = 20
 rofi_padding = 200
-
 # Conky
 conky_graph_gap = 20
 conky_graph_height = 40
 conky_width = 250
 battery_uevent = "/sys/class/power_supply/BAT0/uevent"
 
-[zsh.files]
-zprofile = "~/.zprofile"
-zshrc = "~/.zshrc"
+[shell.files]
 todorc = "~/.todorc"
 tmux = "~/.tmux.conf"
 scripts = "~/.scripts"
 dir_colors = "~/.dir_colors"
-# Local variables: install, uninstall, update, autoremove
 
-[termite.files]  # requires "graphics"
+[shell.variables]
+install = "echo not defined"
+uninstall = "echo not defined"
+update = "echo not defined"
+autoremove = "echo not defined"
+
+[zsh.files]
+# requires "shell"
+# Local variables: install, uninstall, update, autoremove
+zprofile = "~/.zprofile"
+zshrc = "~/.zshrc"
+
+[zsh.variables]
+zsh = true
+
+[bash.files]
+# Local variables: install, uninstall, update, autoremove
+# Conflicts with zsh
+zprofile = "~/.bash_profile"
+zshrc = "~/.bashrc"
+
+[bash.variables]
+zsh = false
+
+[termite.files]
+# requires "graphics"
 termite = "~/.config/termite/config"
 
-[xfce4_terminal.files]  # requires "graphics"
+[xfce4_terminal.files]
+# requires "graphics"
 xfce4_terminal = "~/.config/xfce4/terminal/terminalrc"
 xfce4_terminal_accels = "~/.config/xfce4/terminal/accels.scm"
 

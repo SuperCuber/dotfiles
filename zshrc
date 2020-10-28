@@ -1,3 +1,4 @@
+{{#if zsh~}}
 #==> Zsh options
 setopt PROMPT_SUBST
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -6,6 +7,7 @@ zstyle ':completion:*' menu select=0
 autoload -Uz compinit
 compinit
 #<==
+{{~/if}}
 
 #==> Aliases
 # ls
@@ -18,7 +20,6 @@ alias la="ls -a"
 alias c="echo -ne '\033c'"
 alias cl="c;l"
 alias cll="c;ll"
-alias ccd="c;cd"
 
 # Navigation
 alias b="cd - >/dev/null && l" # b stands for back
@@ -43,14 +44,14 @@ alias update='{{ update }}'
 alias autoremove='{{ autoremove }}'
 
 # Misc
-alias j=just
 alias e="exit"
 alias eb="exec zsh"
 alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
-#==> Prompt
+{{#if zsh~}}
+#==> ZSH Prompt
 PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
 PS1_USERNAME="%F{8}%K{7} %n "
 PS1_PATH="%F{7}%K{8} %(5~@.../%3~@%~) "
@@ -58,6 +59,7 @@ PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
 
 PS1="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH$PS1_PROMPT"
 #<==
+{{~/if}}
 
 #==> Misc
 # Dircolors
