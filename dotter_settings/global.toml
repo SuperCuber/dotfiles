@@ -35,7 +35,7 @@ update = "echo not defined"
 autoremove = "echo not defined"
 
 [zsh.files]
-# requires "shell"
+# requires "shell", conflicts with "bash"
 # Local variables: install, uninstall, update, autoremove
 zprofile = "~/.zprofile"
 zshrc = "~/.zshrc"
@@ -44,8 +44,8 @@ zshrc = "~/.zshrc"
 zsh = true
 
 [bash.files]
+# requires "shell", conflicts with "zsh"
 # Local variables: install, uninstall, update, autoremove
-# Conflicts with zsh
 zprofile = "~/.bash_profile"
 zshrc = "~/.bashrc"
 
