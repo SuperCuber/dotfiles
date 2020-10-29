@@ -26,7 +26,7 @@
 - rofi
 - wicd-patched: for wifi
 - zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps: pdf viewer
-- maim, slop: screenshots
+- owo, xclip: fast screenshot upload
 
 ## Shell/Development
 - zsh
@@ -36,8 +36,8 @@
 - devtodo
 - htop
 - ack/silver searcher/ripgrep
+- fzf: either properly installed or downloaded by fzf.vim
 - delta: better git diff viewer
-- owo, xclip: fast screenshot upload
 
 ---
 
