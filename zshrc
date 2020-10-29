@@ -45,10 +45,11 @@ alias autoremove='{{ autoremove }}'
 
 # Git
 alias g="git"
-alias gs="git status"
-alias gd="git diff"
-alias ga="git add"
-alias gc="git commit"
+alias gs="git s"
+alias gd="git d"
+alias gds="git ds"
+alias ga="git a"
+alias gc="git c"
 
 # Misc
 alias e="exit"
