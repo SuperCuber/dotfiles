@@ -80,8 +80,17 @@ cd ()
     builtin cd "$@" || return $?
     # If everything OK, print ls and todo
     l
-    test -x todo && todo
+    type todo >/dev/null && todo
     return 0
+}
+
+cat ()
+{
+    if type bat >/dev/null; then
+        bat $*
+    else
+        cat $*
+    fi
 }
 
 # Terminal color
