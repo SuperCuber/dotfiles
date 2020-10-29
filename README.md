@@ -6,42 +6,35 @@
 ![Tiled terminals](/img/tiled_terminals.png)
 
 # Home folder structure
-(This is supposed to be `tree`-like output but is obviously edited)
 ```
 /home/username
-|-- bin              = binary files, added to $PATH
-|-- downloads        = default downloads folder
-|-- tmp              = cleared at every boot, much like /tmp
-`-- usr              = my "real" home
-    |-- archive      = files rarely accessed
-    |   |-- img      = images
-    |   |-- ...      = a folder per programming language
-    |   `-- template = templates like Makefiles and similar
-    |-- doc          = documents
-    |   |-- archive  = rarely accessed documents
-    |   `-- ...      = a folder per section
-    `-- src          = source code
-        `-- ...      = a folder per programming language
-
+├── downloads = default downloads folder
+├── tmp       = cleared at every boot, much like /tmp
+└── src       = source code
+    └── ...   = a folder per language
 ```
 
 # Software needed for best experience
+## General
 - [dotter](http://www.github.com/SuperCuber/dotter)
-- zsh
 - i3/i3-gaps
-- firefox
-- ack/silver searcher/ripgrep
-- devtodo
 - discord
+- firefox
 - dunst
 - feh
-- htop
 - xflock/i3lock-fancy
-- maim, slop
-- neovim
 - rofi
 - wicd-patched: for wifi
 - zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps: pdf viewer
+- maim, slop: screenshots
+
+## Shell/Development
+- zsh
+- neovim
+- [devloop](http://www.github.com/SuperCuber/devloop)
+- devtodo
+- htop
+- ack/silver searcher/ripgrep
 - delta: better git diff viewer
 
 ---
