@@ -13,6 +13,10 @@
 {{#if delta~}}
 [delta]
     line-numbers = true
+    hunk-header-style = omit
+    syntax-theme = zenburn
+    file-style = bold yellow ul
+    file-decoration-style = none
 
 {{/if~}}
 [help]
