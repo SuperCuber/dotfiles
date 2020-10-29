@@ -26,6 +26,10 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'preservim/nerdtree'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-fugitive'
+if !has("win32")
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+endif
 
 call plug#end()
 "<==
@@ -228,6 +232,10 @@ noremap L $
 if !has("win32")
     nnoremap <silent> <leader>rd :RustDebug<cr>
 endif
+
+if !has("win32")
+    nnoremap <silent> <leader>f :Files<cr>
+endif
 "<==
 
 "==> Commands, Autocommands, Functions
@@ -262,6 +270,11 @@ endif
 
 " Handlebars templates are actually html
 au BufReadPost *.html.hbs set filetype=html
+
+augroup FzfTerminal
+    au! FileType fzf
+    au FileType fzf tnoremap <Esc> <C-c>
+augroup END
 "<==
 
 "==> Colorscheme
