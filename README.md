@@ -25,26 +25,24 @@
 
 ```
 
-# Packages/executables needed
+# Software needed for best experience
 - [dotter](http://www.github.com/SuperCuber/dotter)
 - zsh
-- bash (TODO: move scripts to zsh)
-- i3-gaps
-- netcat
+- i3/i3-gaps
 - firefox
-- ack
+- ack/silver searcher/ripgrep
 - devtodo
 - discord
 - dunst
 - feh
 - htop
-- i3lock-fancy
+- xflock/i3lock-fancy
 - maim, slop
 - neovim
-- scp
 - rofi
-- wicd-patched
-- zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps
+- wicd-patched: for wifi
+- zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps: pdf viewer
+- delta: better git diff viewer
 
 ---
 

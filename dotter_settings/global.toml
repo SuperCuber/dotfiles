@@ -23,11 +23,12 @@ conky_width = 250
 battery_uevent = "/sys/class/power_supply/BAT0/uevent"
 
 [shell.files]
-# Optional local variables: load_rc, cd_location
+# Optional local variables: load_rc, cd_location, email+git_username, delta
 todorc = "~/.todorc"
 tmux = "~/.tmux.conf"
 scripts = "~/.scripts"
 dir_colors = "~/.dir_colors"
+git = "~/.gitconfig"
 
 [shell.variables]
 install = "echo not defined"

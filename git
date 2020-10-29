@@ -1,0 +1,32 @@
+{{#if (and email git_username)~}}
+[user]
+    email = {{email}}
+    name = {{git_username}}
+
+{{/if~}}
+[core]
+    autocrlf = input
+    {{~#if delta}}
+    pager = delta
+    {{~/if}}
+
+{{#if delta~}}
+[delta]
+    line-numbers = true
+
+{{/if~}}
+[help]
+    autocorrect = 20
+
+[alias]
+    # Same as shell aliases
+    s = status
+    d = diff
+    a = add
+    c = commit
+    # Until here
+    o = checkout
+    ps = push
+    pl = pull
+    lg = log --oneline --graph --decorate
+
