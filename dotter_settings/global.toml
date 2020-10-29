@@ -29,6 +29,7 @@ tmux = "~/.tmux.conf"
 scripts = "~/.scripts"
 dir_colors = "~/.dir_colors"
 git = "~/.gitconfig"
+bat = "~/.config/bat/config"
 
 [shell.variables]
 install = "echo not defined"

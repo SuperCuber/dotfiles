@@ -31,6 +31,7 @@
 ## Shell/Development
 - zsh
 - neovim
+- bat
 - [devloop](http://www.github.com/SuperCuber/devloop)
 - devtodo
 - htop
