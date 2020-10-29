@@ -14,11 +14,11 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d $exec "rofi -show run"
 
 # Screenshot
-bindsym $mod+s $exec "/usr/bin/maim -s ~/tmp/$(date +%F-%T).png"
-
-# Record
-bindsym Print $exec "ffmpeg -f x11grab -s {{ screen_size }} -framerate 60 -i :0.0 ~/tmp/$(date +%F-%T).webm"
-bindsym ctrl+Print $exec "pkill ffmpeg"
+{{#if owo_key~}}
+bindsym Print $exec "owo --screenshot --clipboard --associated-uploads --key {{owo_key}}"
+{{~else~}}
+bindsym Print $exec "i3-nagbar -m 'No owo key configured'"
+{{~/if}}
 
 # Terminal
 bindsym $mod+Return $exec "{{ terminal }}"

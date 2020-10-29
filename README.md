@@ -37,6 +37,7 @@
 - htop
 - ack/silver searcher/ripgrep
 - delta: better git diff viewer
+- owo, xclip: fast screenshot upload
 
 ---
 

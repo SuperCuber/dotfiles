@@ -4,6 +4,7 @@ color_rgb = "dotter_settings/helpers/color_rgb.rhai"
 [i3.files]
 # requires "graphics"
 # Local variables: network_interface, screen_size, terminal, primary_screen, secondary_screen
+# Optional local variables: owo_key
 dunstrc = "~/.config/dunst/dunstrc"
 rofi = "~/.config/rofi/config.rasi"
 compton = "~/.compton.conf"
