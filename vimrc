@@ -235,6 +235,8 @@ endif
 
 if !has("win32")
     nnoremap <silent> <leader>f :Files<cr>
+    " Stronger search
+    nnoremap <silent> <leader>/ :Ag<cr>
 endif
 "<==
 
