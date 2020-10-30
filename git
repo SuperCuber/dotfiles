@@ -24,7 +24,7 @@
 
 [alias]
     # Same as shell aliases
-    s = status -s
+    s = status -sb
     d = diff
     ds = diff --staged
     a = add
