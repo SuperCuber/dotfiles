@@ -59,7 +59,7 @@ alias glg="g lg"
 
 # Misc
 alias e="exit"
-alias eb="exec zsh"
+alias eb="exec {{#if zsh}}zsh{{else}}bash{{/if}}"
 alias x="exec startx"
 alias vsp="vi -O"
 #<==
