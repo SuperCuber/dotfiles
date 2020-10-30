@@ -99,6 +99,25 @@ cat ()
     fi
 }
 
+j ()
+{
+    if type fzf >/dev/null; then
+        if type fd >/dev/null; then
+            find_command='fd . ~ --type d'
+        else
+            # Settle for not hiding gitignored stuff
+            find_command='find ~ -type d'
+        fi
+        dir=$(eval $find_command | fzf --preview 'ls -FL --color=always {+1}')
+        fzf_return=$?
+        [ $fzf_return = 0 ] && cd $dir || return $fzf_return
+    else
+        echo fzf not installed
+    fi
+}
+
+# Navigate with fzf
+
 # Terminal color
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
