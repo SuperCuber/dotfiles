@@ -29,9 +29,8 @@
     ds = diff --staged
     a = add
     c = commit
-    # Until here
-    o = checkout
     ps = push
     pl = pull
     lg = log --oneline --graph --decorate
 
+# vim:ft=gitconfig

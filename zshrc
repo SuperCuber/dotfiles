@@ -50,6 +50,12 @@ alias gd="git d"
 alias gds="git ds"
 alias ga="git a"
 alias gc="git c"
+alias gca="git c -a"
+alias gcm="git c -m"
+alias gcam="git c -am"
+alias gps="g ps"
+alias gpl="g pl"
+alias glg="g lg"
 
 # Misc
 alias e="exit"
