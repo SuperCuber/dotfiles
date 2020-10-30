@@ -108,7 +108,7 @@ j ()
             # Settle for not hiding gitignored stuff
             find_command='find ~ -type d'
         fi
-        dir=$(eval $find_command | fzf --preview 'ls -FL --color=always {+1}')
+        dir=$(eval $find_command | fzf --preview 'tree -C -L 2 {+1}')
         fzf_return=$?
         [ $fzf_return = 0 ] && cd $dir || return $fzf_return
     else

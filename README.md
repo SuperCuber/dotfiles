@@ -31,12 +31,13 @@
 ## Shell/Development
 - zsh
 - neovim
-- bat
 - [devloop](http://www.github.com/SuperCuber/devloop)
 - devtodo
 - htop
 - ack/silver searcher/ripgrep
 - fzf: either properly installed or downloaded by fzf.vim
+- fd-find
+- bat: cat with wings
 - delta: better git diff viewer
 
 ---
