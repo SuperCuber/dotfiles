@@ -234,7 +234,8 @@ if !has("win32")
 endif
 
 if !has("win32")
-    nnoremap <silent> <leader>f :Files<cr>
+    nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
+    nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd . ~ --type d', 'sink': 'cd'}))<cr>
     " Stronger search
     nnoremap <silent> <leader>/ :Ag<cr>
 endif
