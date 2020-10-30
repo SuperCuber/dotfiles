@@ -106,7 +106,7 @@ endif
 
 set showcmd
 set noshowmatch
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 set mouse=nvc
 set history=500
 set scrolloff=7
