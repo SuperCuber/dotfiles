@@ -86,13 +86,13 @@ cd ()
     builtin cd "$@" || return $?
     # If everything OK, print ls and todo
     l
-    type todo >/dev/null && todo
+    type todo >/dev/null 2>&1 && todo
     return 0
 }
 
 cat ()
 {
-    if type bat >/dev/null; then
+    if type bat >/dev/null 2>&1; then
         bat $*
     else
         cat $*
@@ -101,8 +101,8 @@ cat ()
 
 j ()
 {
-    if type fzf >/dev/null; then
-        if type fd >/dev/null; then
+    if type fzf >/dev/null 2>&1; then
+        if type fd >/dev/null 2>&1; then
             find_command='fd . ~ --type d'
         else
             # Settle for not hiding gitignored stuff
