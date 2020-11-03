@@ -62,6 +62,7 @@ bindsym $mod+f fullscreen
 #==> Layout
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+e layout toggle split
+bindsym $mod+w layout stacked
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -173,12 +174,14 @@ set $focused "#{{colors.background_bright}}"
 set $unfocused "#{{colors.background}}"
 set $focused_inactive "#{{colors.background}}"
 set $urgent "#{{colors.accent}}"
+set $text "#{{colors.text}}"
 
-#class                  border            backgr.           text         indicator
-client.focused          $focused          $focused          #000000      $focused
-client.unfocused        $unfocused        $unfocused        #000000      $unfocused
-client.focused_inactive $focused_inactive $focused_inactive #000000      $focused_inactive
-client.urgent           $urgent           $urgent           #000000      $urgent
+# class                 border            background        text  indicator
+client.focused          $focused          $focused          $text $focused
+client.unfocused        $unfocused        $unfocused        $text $unfocused
+client.focused_inactive $focused_inactive $focused_inactive $text $focused_inactive
+client.urgent           $urgent           $urgent           $text $urgent
+client.background       #000000
 #<==
 
 #==> Gaps
