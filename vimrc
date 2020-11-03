@@ -38,20 +38,24 @@ call plug#end()
 syntax enable
 
 " Wildmenu
-set wildmenu
-set wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildmenu wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock
 
 " Searching
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch
-set showmatch
+set ignorecase smartcase
+set hlsearch incsearch
 set gdefault
 
 " Drawing
 set lazyredraw
-set noerrorbells
+set belloff=all
+set showcmd
+set scrolloff=7
+set statusline=%f\ %y%1*%m%*
+set laststatus=2
+
+" Inserting
+set backspace=eol,indent
+set whichwrap=h,l
 
 " Backups
 set nobackup
@@ -59,27 +63,36 @@ set nowritebackup
 set noswapfile
 
 " Tabs
-set expandtab
-set smarttab
-set shiftwidth=4
-set tabstop=4
+set expandtab smarttab shiftround
+set shiftwidth=4 tabstop=4
 
 " Numbering
-set relativenumber
-set number
+set relativenumber number
 
 " List
-set listchars=tab:»·,trail:·
-set list
+set list listchars=tab:»·,trail:·
 
 " Splits
-set splitright
-set splitbelow
+set splitright splitbelow
 
 " Neovim-specific
 if has('nvim')
     set modelineexpr
 endif
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Interact with X
+set clipboard=unnamed,unnamedplus
+set mouse=nvc
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 " next = step over, step = step in, finish = step out
 " frameup/framedown means move up/down the call stack
@@ -93,30 +106,6 @@ let g:nvimgdb_config_override = {
   \ 'key_frameup':    '<c-o>',
   \ 'key_framedown':  '<c-i>',
   \ }
-"==>Misc
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-set showcmd
-set noshowmatch
-set clipboard=unnamed,unnamedplus
-set mouse=nvc
-set history=500
-set scrolloff=7
-set backspace=eol,indent
-set whichwrap=h,l
-set laststatus=2
-set colorcolumn=80,120
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-set statusline=%f\ %y%1*%m%*
-"<==
 "<==
 
 "==> Coc
