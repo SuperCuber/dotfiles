@@ -182,16 +182,22 @@ inoremap KJ <Esc>
 
 " Enter terminal
 nnoremap <C-t> :T<CR>
-" Leave terminal
-tnoremap <Esc> <C-\><C-n>
 " Exit terminal (does effectively nothing on *sh, in cmd saves 3 <cr>s)
 tnoremap <C-d> exit<CR><C-\><C-n><C-w>c
 
 " Move around windows
-nnoremap <M-h> <C-W>h
-nnoremap <M-j> <C-W>j
-nnoremap <M-k> <C-W>k
-nnoremap <M-l> <C-W>l
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
 " Leader
 let g:mapleader = ","
@@ -262,11 +268,6 @@ endif
 
 " Handlebars templates are actually html
 au BufReadPost *.html.hbs set filetype=html
-
-augroup FzfTerminal
-    au! FileType fzf
-    au FileType fzf tnoremap <Esc> <C-c>
-augroup END
 "<==
 
 "==> Colorscheme
