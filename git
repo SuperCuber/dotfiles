@@ -3,6 +3,9 @@
     email = {{email}}
     name = {{git_username}}
 
+[credential]
+    helper = store
+
 {{/if~}}
 [core]
     autocrlf = input
