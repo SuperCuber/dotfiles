@@ -44,18 +44,19 @@ alias update='{{ update }}'
 alias autoremove='{{ autoremove }}'
 
 # Git
-alias g="git"
-alias gs="git s"
-alias gd="git d"
-alias gds="git ds"
-alias ga="git a"
-alias gc="git c"
-alias gca="git c -a"
-alias gcm="git c -m"
-alias gcam="git c -am"
-alias gps="g ps"
-alias gpl="g pl"
-alias glg="g lg"
+alias ga="git add"
+alias gb="git branch"
+alias gca="git commit -a"
+alias gcam="git commit -am"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias glg="g log --oneline --graph --decorate"
+alias go="git checkout"
+alias gpl="g pull"
+alias gps="g push"
+alias gs="git status -sb"
 
 # Misc
 alias e="exit"

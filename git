@@ -25,15 +25,4 @@
 [help]
     autocorrect = 20
 
-[alias]
-    # Same as shell aliases
-    s = status -sb
-    d = diff
-    ds = diff --staged
-    a = add
-    c = commit
-    ps = push
-    pl = pull
-    lg = log --oneline --graph --decorate
-
 # vim:ft=gitconfig
