@@ -74,6 +74,15 @@ PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
 PS1="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH$PS1_PROMPT"
 #<==
 
+{{else~}}
+#==> Bash Prompt
+PS1_EXIT_CODE='\[\033[38;5;0m\]\[\033[48;5;15m\] $? '
+PS1_USERNAME='\[\033[38;5;8m\]\[\033[48;5;7m\] \u '
+PS1_PATH='\[\033[38;5;7m\]\[\033[48;5;8m\] \w '
+PS1_PROMPT='\[$(tput bold)\]\[\033[48;5;0m\] \\$ '
+PS1="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH$PS1_PROMPT\[$(tput sgr0)\]"
+#<==
+
 {{/if~}}
 #==> Misc
 # Dircolors
