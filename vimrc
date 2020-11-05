@@ -26,10 +26,8 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'preservim/nerdtree'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-fugitive'
-if !has("win32")
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-endif
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "<==
@@ -228,12 +226,10 @@ if !has("win32")
     nnoremap <silent> <leader>rd :RustDebug<cr>
 endif
 
-if !has("win32")
-    nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
-    nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd . ~ --type d', 'sink': 'cd'}))<cr>
-    " Stronger search
-    nnoremap <silent> <leader>/ :Ag<cr>
-endif
+nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
+nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
+" Stronger search
+nnoremap <silent> <leader>/ :Ag<cr>
 "<==
 
 "==> Commands, Autocommands, Functions
