@@ -52,10 +52,10 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias glg="g log --oneline --graph --decorate"
+alias glg="git log --oneline --graph --decorate"
 alias go="git checkout"
-alias gpl="g pull"
-alias gps="g push"
+alias gpl="git pull"
+alias gps="git push"
 alias gs="git status -sb"
 
 # Misc
