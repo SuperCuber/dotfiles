@@ -1,5 +1,7 @@
-{{#if cd_location~}}
-builtin cd {{cd_location}}
+{{#if (and default_pwd cd_location)~}}
+if [ `pwd` = {{default_pwd}} ]; then
+    builtin cd {{cd_location}}
+fi
 {{/if~}}
 {{#if load_rc~}}
 {{#if zsh~}}
