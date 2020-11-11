@@ -1,14 +1,22 @@
 {{#if zsh~}}
 #==> Zsh options
+# Prompt
 setopt PROMPT_SUBST
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select=0
 autoload -Uz compinit
 compinit
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000000
+SAVEHIST=1000000000
+setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 #<==
 
 {{/if~}}
+
 #==> Aliases
 # ls
 alias ls="ls --color=auto"
@@ -67,6 +75,24 @@ alias vsp="vi -O"
 
 {{#if zsh~}}
 #==> ZSH Prompt
+function preexec() {
+  timer=$(($(date +%s%0N)/1000000))
+}
+
+function precmd() {
+  if [ $timer ]; then
+    now=$(($(date +%s%0N)/1000000))
+    elapsed=$(($now-$timer))
+
+    if [ $elapsed -ge 1000 ]; then
+        export RPROMPT="%F{cyan}${elapsed}ms %F"
+    else
+        export RPROMPT=""
+    fi
+    unset timer
+  fi
+}
+
 PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
 PS1_USERNAME="%F{8}%K{7} %n "
 PS1_PATH="%F{7}%K{8} %(5~@.../%3~@%~) "
