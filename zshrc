@@ -16,7 +16,6 @@ setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 #<==
 
 {{/if~}}
-
 #==> Aliases
 # ls
 alias ls="ls --color=auto"
@@ -135,7 +134,7 @@ cat ()
     fi
 }
 
-j ()
+j ()  # Navigate with fzf
 {
     if type fzf >/dev/null 2>&1; then
         if type fd >/dev/null 2>&1; then
@@ -151,8 +150,6 @@ j ()
         echo fzf not installed
     fi
 }
-
-# Navigate with fzf
 
 # Terminal color
 TERM=xterm-256color
