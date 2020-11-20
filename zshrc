@@ -18,10 +18,9 @@ setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 {{/if~}}
 #==> Aliases
 # ls
-alias ls="ls --color=auto"
-alias l="ls -FL"
-alias ll="ls -Ahl"
-alias la="ls -a"
+alias l="ls --color=auto -FL"
+alias ll="l -FLAhl"
+alias la="l -a"
 
 # Clearing screen
 alias c="echo -ne '\033c'"
@@ -143,7 +142,7 @@ j ()  # Navigate with fzf
             # Settle for not hiding gitignored stuff
             find_command='find ~ -type d'
         fi
-        dir=$(eval $find_command | fzf --preview 'tree -C -L 2 {+1}')
+        dir=$(eval $find_command | fzf --preview 'tree -CF -L 2 {+1}')
         fzf_return=$?
         [ $fzf_return = 0 ] && cd $dir || return $fzf_return
     else
