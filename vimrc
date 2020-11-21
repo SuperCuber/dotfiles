@@ -22,6 +22,7 @@ Plug 'wellle/targets.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 
 " Misc
+Plug 'voldikss/vim-floaterm'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'preservim/nerdtree'
 Plug 'romainl/vim-qf'
@@ -37,6 +38,7 @@ syntax enable
 
 " Wildmenu
 set wildmenu wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock
+set autochdir
 
 " Searching
 set ignorecase smartcase
@@ -45,7 +47,7 @@ set gdefault
 
 " Drawing
 set lazyredraw
-set belloff=all
+set noerrorbells belloff=all
 set showcmd
 set scrolloff=7
 set statusline=%f\ %y%1*%m%*
@@ -179,7 +181,8 @@ inoremap kj <Esc>
 inoremap KJ <Esc>
 
 " Enter terminal
-nnoremap <C-t> :T<CR>
+nnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
+tnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
 " Exit terminal (does effectively nothing on *sh, in cmd saves 3 <cr>s)
 tnoremap <C-d> exit<CR><C-\><C-n><C-w>c
 
@@ -188,10 +191,6 @@ tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -203,7 +202,9 @@ let g:mapleader = ","
 " Remove highlights from search
 nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc
-nnoremap <silent> <leader>e :e $MYVIMRC<cr>
+nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
+" Edit in subdirectories
+nnoremap <leader>e :e **/
 " Save
 nnoremap <space> :w<cr>
 " Open NERDTree
@@ -245,10 +246,6 @@ augroup TerminalInsert
     au TermOpen * startinsert
     au WinEnter term://* startinsert
 augroup END
-
-" Open a terminal and maybe run a command in it
-command! -nargs=* T split | terminal <args>
-command! -nargs=* VT vsplit | terminal <args>
 
 if !has("win32")
     function! s:RustBinaryLocation()
