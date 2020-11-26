@@ -106,6 +106,8 @@ let g:nvimgdb_config_override = {
   \ 'key_frameup':    '<c-o>',
   \ 'key_framedown':  '<c-i>',
   \ }
+
+let g:floaterm_wintype="normal"
 "<==
 
 "==> Coc
@@ -183,8 +185,8 @@ inoremap KJ <Esc>
 " Enter terminal
 nnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
 tnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
-" Exit terminal (does effectively nothing on *sh, in cmd saves 3 <cr>s)
-tnoremap <C-d> exit<CR><C-\><C-n><C-w>c
+" Exit terminal
+tnoremap <C-d> <CMD>q!<CR>
 
 " Move around windows
 tnoremap <A-h> <C-\><C-N><C-w>h
