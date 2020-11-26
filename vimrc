@@ -38,7 +38,6 @@ syntax enable
 
 " Wildmenu
 set wildmenu wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock
-set autochdir
 
 " Searching
 set ignorecase smartcase
