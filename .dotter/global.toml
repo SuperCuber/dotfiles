@@ -1,5 +1,5 @@
 [helpers]
-color_rgb = "dotter_settings/helpers/color_rgb.rhai"
+color_rgb = ".dotter/helpers/color_rgb.rhai"
 
 [i3.files]
 # requires "graphics"

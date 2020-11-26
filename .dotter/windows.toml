@@ -1,0 +1,12 @@
+[vim.files]
+vimrc = "~/AppData/Local/nvim/init.vim"
+
+[bash.files.zprofile]
+target = "~/.bash_profile"
+type = "template"
+prepend = """
+if [ `pwd` = /c/WINDOWS/system32 ]; then
+    builtin cd ~/Desktop
+fi
+. ~/.bashrc
+"""
