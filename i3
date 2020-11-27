@@ -23,8 +23,16 @@ bindsym Print $exec "i3-nagbar -m 'No owo key configured'"
 # Terminal
 bindsym $mod+Return $exec "{{ terminal }}"
 
-# Time
-bindsym $mod+Shift+d $exec popup_time
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 #<==
 
 #==> Scratchpad
