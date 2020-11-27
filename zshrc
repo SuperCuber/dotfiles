@@ -1,4 +1,4 @@
-{{#if zsh~}}
+{{#if dotter.packages.zsh~}}
 #==> Zsh options
 # Prompt
 setopt PROMPT_SUBST
@@ -71,7 +71,7 @@ alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
-{{#if zsh~}}
+{{#if dotter.packages.zsh~}}
 #==> ZSH Prompt
 function preexec() {
   timer=$(($(date +%s%0N)/1000000))
