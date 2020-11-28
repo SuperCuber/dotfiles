@@ -164,6 +164,10 @@ j ()  # Navigate with fzf
     fi
 }
 
+{{#if thefuck~}}
+eval $(thefuck --alias)
+{{/if~}}
+
 # Terminal color
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
