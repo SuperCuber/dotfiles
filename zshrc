@@ -23,9 +23,9 @@ alias ll="l -FLAhl"
 alias la="l -a"
 
 # Clearing screen
-alias c="echo -ne '\033c'"
-alias cl="c;l"
-alias cll="c;ll"
+alias c="echo -ne '\033c';"
+alias cl="c l"
+alias cll="c ll"
 
 # Navigation
 alias b="cd - >/dev/null && l" # b stands for back
