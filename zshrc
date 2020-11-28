@@ -66,24 +66,38 @@ alias gs="git status -sb"
 
 # Misc
 alias e="exit"
-alias eb="exec {{#if zsh}}zsh{{else}}bash{{/if}}"
+alias eb="exec {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}}"
 alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
 {{#if dotter.packages.zsh~}}
 #==> ZSH Prompt
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%d days ' $D
+  (( $H > 0 )) && printf '%d hours ' $H
+  (( $M > 0 )) && printf '%d minutes ' $M
+  (( $D > 0 || $H > 0 || $M > 0 )) && printf 'and '
+  printf '%d seconds\n' $S
+}
+
 function preexec() {
-  timer=$(($(date +%s%0N)/1000000))
+  timer=$(($(date +%s%0N)/1000000000))
 }
 
 function precmd() {
   if [ $timer ]; then
-    now=$(($(date +%s%0N)/1000000))
+    now=$(($(date +%s%0N)/1000000000))
     elapsed=$(($now-$timer))
+    elapsed_human=$(displaytime $elapsed)
 
-    if [ $elapsed -ge 1000 ]; then
-        export RPROMPT="%F{cyan}${elapsed}ms %F"
+    if [ $elapsed -ge 1 ]; then
+        export RPROMPT="%F{cyan}${elapsed_human} %F"
     else
         export RPROMPT=""
     fi
