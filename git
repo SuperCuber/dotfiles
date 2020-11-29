@@ -9,11 +9,11 @@
 {{/if~}}
 [core]
     autocrlf = input
-    {{~#if delta}}
+    {{~#if (is_executable "delta")}}
     pager = delta
     {{~/if}}
 
-{{#if delta~}}
+{{#if (is_executable "delta")~}}
 [delta]
     line-numbers = true
     hunk-header-style = omit

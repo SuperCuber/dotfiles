@@ -67,7 +67,6 @@ alias gs="git status -sb"
 # Misc
 alias e="exit"
 alias eb="exec {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}}"
-alias x="exec startx"
 alias vsp="vi -O"
 #<==
 
@@ -134,40 +133,34 @@ cd ()
     builtin cd "$@" || return $?
     # If everything OK, print ls and todo
     l
-    type todo >/dev/null 2>&1 && todo
-    return 0
+    {{#if (is_executable "todo")~}}
+    todo
+    {{/if~}}
 }
 
-cat ()
-{
-    if type bat >/dev/null 2>&1; then
-        bat $*
-    else
-        cat $*
-    fi
-}
+{{#if (is_executable "bat")~}}
+alias cat="bat"
 
+{{/if~}}
+{{#if (is_executable "fzf")~}}
 j ()  # Navigate with fzf
 {
-    if type fzf >/dev/null 2>&1; then
-        if type fd >/dev/null 2>&1; then
-            find_command='fd . ~ --type d'
-        else
-            # Settle for not hiding gitignored stuff
-            find_command='find ~ -type d'
-        fi
-        dir=$(eval $find_command | fzf --preview 'tree -CF -L 2 {+1}')
-        fzf_return=$?
-        [ $fzf_return = 0 ] && cd $dir || return $fzf_return
-    else
-        echo fzf not installed
-    fi
+    {{#if (is_executable fd)~}}
+    find_command='fd . ~ --type d'
+    {{else~}}
+    # Settle for not hiding gitignored stuff
+    find_command='find ~ -type d'
+    {{/if~}}
+    dir=$(eval $find_command | fzf --preview 'tree -CF -L 2 {+1}')
+    fzf_return=$?
+    [ $fzf_return = 0 ] && cd $dir || return $fzf_return
 }
 
-{{#if thefuck~}}
-eval $(thefuck --alias)
 {{/if~}}
+{{#if (is_executable "thefuck")~}}
+eval $(thefuck --alias)
 
+{{/if~}}
 # Terminal color
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
