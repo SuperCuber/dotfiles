@@ -136,7 +136,7 @@ workspace "-2" output {{ secondary_screen }}
 {{#if (and primary_screen secondary_screen)~}}
 bindsym $mod+q workspace "-1"; workspace "-2"
 {{~else~}}
-bindsym $mod+q workspaace "-1"
+bindsym $mod+q workspace "-1"
 {{~/if}}
 #<==
 
