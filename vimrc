@@ -4,19 +4,21 @@ set runtimepath+=~/.vim/pythonx
 
 call plug#begin("~/.local/share/nvim/plugged")
 
-" Completion
+" Completion/language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'cespare/vim-toml'
-if !has("win32")
-    Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
-endif
 
-" Custom motions
+" Custom motions/actions
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
+
+" Navigation
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Colorscheme
 Plug 'chriskempson/vim-tomorrow-theme'
@@ -24,20 +26,18 @@ Plug 'chriskempson/vim-tomorrow-theme'
 " Misc
 Plug 'voldikss/vim-floaterm'
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'preservim/nerdtree'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 call plug#end()
 "<==
 
-"==> Options
+"==> Settings
 syntax enable
 
 " Wildmenu
 set wildmenu wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock
+set path=.,**,,
 
 " Searching
 set ignorecase smartcase
@@ -92,20 +92,10 @@ endif
 set clipboard=unnamed,unnamedplus
 set mouse=nvc
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+"<==
 
-" next = step over, step = step in, finish = step out
-" frameup/framedown means move up/down the call stack
-let g:nvimgdb_config_override = {
-  \ 'key_until':      '<f4>',
-  \ 'key_continue':   '<f5>',
-  \ 'key_next':       '<f10>',
-  \ 'key_step':       '<f11>',
-  \ 'key_finish':     '<f12>',
-  \ 'key_breakpoint': '<f8>',
-  \ 'key_frameup':    '<c-o>',
-  \ 'key_framedown':  '<c-i>',
-  \ }
-
+"==> Plugin options
+" Floaterm
 let g:floaterm_wintype="normal"
 let g:floaterm_height=0.3
 "<==
@@ -209,8 +199,6 @@ nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
 nnoremap <leader>e :e **/
 " Save
 nnoremap <space> :w<cr>
-" Open NERDTree
-nnoremap <silent> <C-N> :NERDTreeToggle<cr>
 
 " Quit
 nnoremap <silent> <leader>q :q<cr>
@@ -223,11 +211,11 @@ nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 " Easier to type, and I never use the default behavior.
 noremap H ^
 noremap L $
+"<==
 
-" NVim-GDB - debug rust
-if !has("win32")
-    nnoremap <silent> <leader>rd :RustDebug<cr>
-endif
+"==> Plugin maps
+" Open NERDTree
+nnoremap <silent> <C-N> :NERDTreeToggle<cr>
 
 nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
 nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
@@ -249,25 +237,14 @@ augroup TerminalInsert
     au WinEnter term://* startinsert
 augroup END
 
-if !has("win32")
-    function! s:RustBinaryLocation()
-        let output = system("cargo locate-project")
-        let parts = split(output, "/")[1:-2]
-        " Assumes the crate's folder name is the same as executable name
-        let path =  "/" . join(parts, "/") . "/target/debug/" . parts[-1]
-        return path
-    endfunction
-
-    command! -nargs=0 RustDebug execute "!cargo build" | execute "GdbStart rust-gdb -q " . s:RustBinaryLocation()
-endif
-
 " Handlebars templates are actually html
 au BufReadPost *.html.hbs set filetype=html
 "<==
 
 "==> Colorscheme
 colo Tomorrow-Night
-highlight User1 ctermfg=222 ctermbg=1
+" Red plus on statusline when buffer is dirty
+highlight User1 ctermfg=222 ctermbg=1 guibg=red
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
