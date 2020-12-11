@@ -6,7 +6,7 @@ call plug#begin("~/.local/share/nvim/plugged")
 
 " Completion/language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'cespare/vim-toml'
+Plug 'sheerun/vim-polyglot'
 
 " Custom motions/actions
 Plug 'tpope/vim-repeat'
@@ -20,6 +20,7 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
+Plug 'unblevable/quick-scope'
 
 " Colorscheme
 Plug 'chriskempson/vim-tomorrow-theme'
@@ -100,6 +101,8 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Floaterm
 let g:floaterm_wintype="normal"
 let g:floaterm_height=0.3
+" Quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 "<==
 
 "==> Coc
@@ -199,6 +202,8 @@ nnoremap <silent> <leader><cr> :noh<cr>
 nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
 " Edit in subdirectories
 nnoremap <leader>e :e **/
+" Make
+nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 " Save
 nnoremap <space> :w<cr>
 
@@ -247,6 +252,9 @@ augroup END
 
 " Handlebars templates are actually html
 au BufReadPost *.html.hbs set filetype=html
+
+" Set makeprg for Rust
+au BufReadPost *.rs setlocal makeprg=cargo\ check\ -q\ --message-format=short
 "<==
 
 "==> Colorscheme
