@@ -15,10 +15,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
 
-" Navigation
+" Navigation/filesystem
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
 
 " Colorscheme
 Plug 'chriskempson/vim-tomorrow-theme'
@@ -28,6 +29,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-fugitive'
+Plug 'mbbill/undotree'
 
 call plug#end()
 "<==
@@ -221,6 +223,12 @@ nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<c
 nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
 " Stronger search
 nnoremap <silent> <leader>/ :Ag<cr>
+"<==
+
+"==> Vim-QF maps
+nmap <Home> <Plug>(qf_qf_previous)
+nmap <End>  <Plug>(qf_qf_next)
+:map <F5> <Plug>(qf_qf_toggle)
 "<==
 
 "==> Commands, Autocommands, Functions
