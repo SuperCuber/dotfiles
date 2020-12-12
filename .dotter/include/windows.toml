@@ -1,5 +1,6 @@
 [vim.files]
 vimrc = "~/AppData/Local/nvim/init.vim"
+coc_settings = "~/AppData/Local/nvim/coc-settings.json"
 
 [bash.files.zprofile]
 target = "~/.bash_profile"
