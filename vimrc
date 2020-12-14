@@ -22,6 +22,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'unblevable/quick-scope'
 
+" Org mode
+Plug 'hsitz/VimOrganizer'
+Plug 'vim-scripts/utl.vim'
+
 " Colorscheme
 Plug 'chriskempson/vim-tomorrow-theme'
 
@@ -234,6 +238,14 @@ nnoremap <silent> <leader>/ :Ag<cr>
 nmap <Home> <Plug>(qf_qf_previous)
 nmap <End>  <Plug>(qf_qf_next)
 :map <F5> <Plug>(qf_qf_toggle)
+"<==
+
+"==> VimOrganizer
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org  call org#SetOrgFileType()
+" let g:org_capture_file = '~/Dropbox/Org/0inbox.org'
+command! OrgCapture :call org#CaptureBuffer()
+command! OrgCaptureFile :call org#OpenCaptureFile()
 "<==
 
 "==> Commands, Autocommands, Functions
