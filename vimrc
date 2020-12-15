@@ -207,6 +207,8 @@ nnoremap <silent> <leader><cr> :noh<cr>
 nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
 " Edit in subdirectories
 nnoremap <leader>e :e **/
+" Swap to a buffer
+nnoremap <leader>b :b <c-d>
 " Make
 nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 " Save
