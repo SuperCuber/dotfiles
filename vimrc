@@ -238,9 +238,9 @@ nnoremap <silent> <leader>/ :Ag<cr>
 "<==
 
 "==> Vim-QF maps
-nmap <Home> <Plug>(qf_qf_previous)
-nmap <End>  <Plug>(qf_qf_next)
-:map <F5> <Plug>(qf_qf_toggle)
+nnoremap <Home> <Plug>(qf_qf_previous)
+nnoremap <End>  <Plug>(qf_qf_next)
+nnoremap <F5> <Plug>(qf_qf_toggle)
 "<==
 
 "==> VimOrganizer
