@@ -18,8 +18,8 @@ setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 {{/if~}}
 #==> Aliases
 # ls
-alias l="ls --color=auto -FL"
-alias ll="l -FLAhl"
+alias l="ls --color=auto -F"
+alias ll="l -FAhl"
 alias la="l -a"
 
 # Clearing screen
