@@ -205,8 +205,6 @@ let g:mapleader = ","
 nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc
 nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
-" Edit in subdirectories
-nnoremap <leader>e :e **/
 " Swap to a buffer
 nnoremap <leader>b :b <c-d>
 " Make
@@ -231,7 +229,7 @@ noremap L $
 " Open NERDTree
 nnoremap <silent> <C-N> :NERDTreeToggle<cr>
 
-nnoremap <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
+nnoremap <silent> <leader>e :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
 nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
 " Stronger search
 nnoremap <silent> <leader>/ :Ag<cr>
@@ -239,7 +237,7 @@ nnoremap <silent> <leader>/ :Ag<cr>
 
 "==> Vim-QF maps
 nnoremap <Home> <Plug>(qf_qf_previous)
-nnoremap <End>  <Plug>(qf_qf_next)
+nnoremap <End> <Plug>(qf_qf_next)
 nnoremap <F5> <Plug>(qf_qf_toggle)
 "<==
 
@@ -251,7 +249,16 @@ command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 "<==
 
-"==> Commands, Autocommands, Functions
+"==> Filetype-specific
+" Handlebars
+au BufReadPost *.html.hbs set filetype=html
+
+" Rust
+au BufReadPost *.rs setlocal makeprg=cargo\ check\ -q\ --message-format=short
+command! -nargs=* Cargo :FloatermNew Cargo <args>
+"<==
+
+"==> Autocommands
 " Turn off ugly gui popupmenu on windows neovim
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
@@ -264,12 +271,6 @@ augroup TerminalInsert
     au TermOpen * startinsert
     au WinEnter term://* startinsert
 augroup END
-
-" Handlebars templates are actually html
-au BufReadPost *.html.hbs set filetype=html
-
-" Set makeprg for Rust
-au BufReadPost *.rs setlocal makeprg=cargo\ check\ -q\ --message-format=short
 "<==
 
 "==> Colorscheme
