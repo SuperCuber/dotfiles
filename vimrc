@@ -13,6 +13,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
+Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 
 " Navigation/filesystem
@@ -20,7 +21,6 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'unblevable/quick-scope'
 
 " Org mode
 Plug 'hsitz/VimOrganizer'
@@ -106,8 +106,20 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 " Floaterm
 let g:floaterm_wintype="normal"
 let g:floaterm_height=0.3
+
 " Quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+"==> Sneak
+" Next match on repeat s
+let g:sneak#s_next = 1
+" Apply ; to f/t normally
+let g:sneak#f_reset = 1
+let g:sneak#t_reset = 1
+" Case insensitive
+let g:sneak_use_ic_scs = 1
+let g:sneak#prompt = 'Sneak >'
+"<==
 "<==
 
 "==> Coc
