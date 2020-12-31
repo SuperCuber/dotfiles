@@ -71,6 +71,13 @@ alias vsp="vi -O"
 #<==
 
 {{#if dotter.packages.zsh~}}
+# Prompt git integration
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM=verbose
+. ~/.git_prompt
+
 #==> ZSH Prompt
 function displaytime {
   local T=$1
@@ -93,9 +100,9 @@ PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
 PS1_USERNAME="%F{8}%K{7} %n "
 PS1_PATH="%F{7}%K{8} %(5~@.../%3~@%~) "
 PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
-PS1_GIT="%K{5} %s "
 
 PS1_PRE="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH"
+PS1_GIT="%%K{5} %s "
 PS1_POST="$PS1_PROMPT"
 
 function precmd() {
@@ -112,7 +119,7 @@ function precmd() {
     unset timer
   fi
   # Git Prompt
-  __git_ps1 "%n" ":%~$ " "|%s"
+  __git_ps1 "$PS1_PRE" "$PS1_POST" "$PS1_GIT"
 }
 #<==
 
@@ -121,15 +128,10 @@ function precmd() {
 PS1_EXIT_CODE='\[\033[38;5;0m\]\[\033[48;5;15m\] $? '
 PS1_USERNAME='\[\033[38;5;8m\]\[\033[48;5;7m\] \u '
 PS1_PATH='\[\033[38;5;7m\]\[\033[48;5;8m\] \w '
-PS1_GIT='\[\033[48;5;5m\] %s '
 
 PS1_PRE="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH"
+PS1_GIT='\[\033[48;5;5m\] %s '
 PS1_POST='\[$(tput bold)\]\[\033[48;5;0m\] \\$ \[$(tput sgr0)\]'
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM=verbose
 
 PROMPT_COMMAND="__git_ps1 '$PS1_PRE' '$PS1_POST' '$PS1_GIT'"
 #<==
