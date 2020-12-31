@@ -267,7 +267,7 @@ au BufReadPost *.html.hbs set filetype=html
 
 " Rust
 au BufReadPost *.rs setlocal makeprg=cargo\ check\ --release\ -q\ --message-format=short
-command! -nargs=* Cargo :FloatermNew Cargo <args>
+command! -nargs=* Cargo :FloatermNew cargo <args>
 "<==
 
 "==> Autocommands
