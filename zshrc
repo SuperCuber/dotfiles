@@ -70,7 +70,6 @@ alias eb="exec {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}}"
 alias vsp="vi -O"
 #<==
 
-{{#if dotter.packages.zsh~}}
 # Prompt git integration
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
@@ -78,6 +77,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
 . ~/.git_prompt
 
+{{#if dotter.packages.zsh~}}
 #==> ZSH Prompt
 function displaytime {
   local T=$1
