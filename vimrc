@@ -206,7 +206,7 @@ nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc
 nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
 " Swap to a buffer
-nnoremap <leader>b :b <c-d>
+nnoremap <leader>b :Buffers<cr>
 " Make
 nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 " Save
