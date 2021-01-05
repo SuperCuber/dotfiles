@@ -266,7 +266,7 @@ command! OrgCaptureFile :call org#OpenCaptureFile()
 au BufReadPost *.html.hbs set filetype=html
 
 " Rust
-au BufReadPost *.rs setlocal makeprg=cargo\ check\ --release\ -q\ --message-format=short
+au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
 command! -nargs=* Cargo :FloatermNew cargo <args>
 "<==
 
