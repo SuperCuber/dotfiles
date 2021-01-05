@@ -1,4 +1,3 @@
 {
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "rust-analyzer.updates.channel": "nightly"
+    "rust-analyzer.checkOnSave.command": "clippy"
 }
