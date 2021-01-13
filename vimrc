@@ -59,6 +59,7 @@ set scrolloff=7
 set statusline=%f\ %y%1*%m%*
 set laststatus=2
 set title
+set cursorline
 
 " Inserting
 set backspace=eol,indent
