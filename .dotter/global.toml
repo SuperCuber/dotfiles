@@ -50,6 +50,9 @@ zshrc = "~/.zshrc"
 zprofile = "~/.bash_profile"
 zshrc = "~/.bashrc"
 
+[cargo.files]
+cargo = "~/.cargo/config"
+
 [termite.files]
 # requires "graphics"
 termite = "~/.config/termite/config"
