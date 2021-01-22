@@ -60,6 +60,7 @@ set statusline=%f\ %y%1*%m%*
 set laststatus=2
 set title
 set cursorline
+set virtualedit=block
 
 " Inserting
 set backspace=eol,indent
