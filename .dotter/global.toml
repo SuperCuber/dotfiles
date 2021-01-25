@@ -1,8 +1,10 @@
 [helpers]
 color_rgb = ".dotter/helpers/color_rgb.rhai"
 
+[i3]
+depends = ["graphics"]
+
 [i3.files]
-# requires "graphics"
 # Local variables: network_interface, screen_size, terminal, primary_screen, secondary_screen
 # Optional local variables: owo_key
 dunstrc = "~/.config/dunst/dunstrc"
@@ -40,25 +42,35 @@ uninstall = "echo not defined"
 update = "echo not defined"
 autoremove = "echo not defined"
 
+[zsh]
+depends = ["shell"]
+
 [zsh.files]
-# requires "shell", conflicts with "bash"
+# conflicts with "bash"
 zprofile = "~/.zprofile"
 zshrc = "~/.zshrc"
 
+[bash]
+depends = ["shell"]
+
 [bash.files]
-# requires "shell", conflicts with "zsh"
+# conflicts with "zsh"
 zprofile = "~/.bash_profile"
 zshrc = "~/.bashrc"
 
 [cargo.files]
 cargo = "~/.cargo/config"
 
+[termite]
+depends = ["graphics"]
+
 [termite.files]
-# requires "graphics"
 termite = "~/.config/termite/config"
 
+[xfce4_terminal]
+depends = ["graphics"]
+
 [xfce4_terminal.files]
-# requires "graphics"
 xfce4_terminal = "~/.config/xfce4/terminal/terminalrc"
 xfce4_terminal_accels = "~/.config/xfce4/terminal/accels.scm"
 
