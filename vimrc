@@ -7,6 +7,10 @@ call plug#begin("~/.local/share/nvim/plugged")
 " Completion/language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+{{#if (eq dotter.os "unix")~}}
+Plug 'idanarye/vim-vebugger'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+{{/if~}}
 
 " Custom motions/actions
 Plug 'tpope/vim-repeat'
@@ -218,7 +222,7 @@ let g:mapleader = ","
 " Remove highlights from search
 nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc
-nnoremap <silent> <leader>rc :e $MYVIMRC<cr>
+nnoremap <silent> <leader>rc :e ~/.dotfiles/vimrc<cr>
 " Swap to a buffer
 nnoremap <leader>b :Buffers<cr>
 " Make
@@ -252,7 +256,6 @@ nnoremap <silent> <leader>/ :Ag<cr>
 "==> Vim-QF maps
 nnoremap <Home> <Plug>(qf_qf_previous)
 nnoremap <End> <Plug>(qf_qf_next)
-nnoremap <F5> <Plug>(qf_qf_toggle)
 "<==
 
 "==> VimOrganizer
@@ -263,6 +266,16 @@ command! OrgCapture :call org#CaptureBuffer()
 command! OrgCaptureFile :call org#OpenCaptureFile()
 "<==
 
+{{#if (eq dotter.os "unix")~}}
+"==> Vebugger options
+nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
+nnoremap <f9> :VBGcontinue<cr>
+nnoremap <f10> :VBGstepIn<cr>
+nnoremap <f11> :VBGstepOver<cr>
+nnoremap <f12> :VBGstepOut<cr>
+"<==
+
+{{/if~}}
 "==> Filetype-specific
 " Handlebars
 au BufReadPost *.html.hbs set filetype=html
@@ -272,6 +285,7 @@ au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-for
 command! -nargs=* Cargo :FloatermNew cargo <args>
 " Stronger `K`
 nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
+nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
 "<==
 
 "==> Autocommands
