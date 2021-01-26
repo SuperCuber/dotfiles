@@ -270,6 +270,8 @@ au BufReadPost *.html.hbs set filetype=html
 " Rust
 au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
 command! -nargs=* Cargo :FloatermNew cargo <args>
+" Stronger `K`
+nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
 "<==
 
 "==> Autocommands
