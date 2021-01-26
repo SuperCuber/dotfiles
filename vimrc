@@ -106,7 +106,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 "==> Plugin options
 " Floaterm
-let g:floaterm_wintype="normal"
+let g:floaterm_wintype="split"
 let g:floaterm_height=0.3
 
 " Quickscope
@@ -286,6 +286,8 @@ augroup TerminalInsert
     au!
     au TermOpen * startinsert
     au WinEnter term://* startinsert
+    au TermOpen * setlocal nonumber norelativenumber signcolumn=no
+    au WinEnter term://* setlocal nonumber norelativenumber signcolumn=no
 augroup END
 "<==
 
