@@ -21,11 +21,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'wellle/targets.vim'
 
 " Navigation/filesystem
-{{#if (eq dotter.os "unix")~}}
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-{{else~}}
-Plug 'preservim/nerdtree'
-{{/if~}}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
@@ -119,9 +114,6 @@ let g:floaterm_height=0.3
 
 " Quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-
-" CHADtree
-let g:chadtree_settings = { "theme.icon_glyph_set": "ascii" }
 
 "==> Sneak
 " Next match on repeat s
@@ -251,14 +243,6 @@ noremap L $
 "<==
 
 "==> Plugin maps
-{{#if (eq dotter.os "unix")~}}
-" Open CHADTree
-nnoremap <silent> <C-N> :CHADopen<cr>
-{{~else~}}
-" Open NERDTree
-nnoremap <silent> <C-N> :NERDTreeToggle<cr>
-{{/if}}
-
 nnoremap <silent> <leader>e :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
 nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
 " Stronger search
