@@ -288,7 +288,7 @@ nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
 " Turn off ugly gui popupmenu on windows neovim
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
-            \ | exe 'GuiFont Consolas:h14'
+            \ | exe 'GuiFont Hack:h14'
             \ | endif
 
 " Enter insert mode when entering terminal
