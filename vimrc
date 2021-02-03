@@ -38,6 +38,7 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'romainl/vim-qf'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 "<==
