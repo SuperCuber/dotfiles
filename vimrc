@@ -205,6 +205,7 @@ nnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
 tnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
 " Exit terminal
 tnoremap <C-d> <CMD>q!<CR>
+tnoremap <Esc> <C-\><C-N>
 
 " Move around windows
 tnoremap <A-h> <C-\><C-N><C-w>h
@@ -300,6 +301,10 @@ augroup TerminalInsert
     au TermOpen * setlocal nonumber norelativenumber signcolumn=no
     au WinEnter term://* setlocal nonumber norelativenumber signcolumn=no
 augroup END
+
+" In fzf windows, esc should go through to the fzf binary
+" and close the window (instead of being mapped to going to normal mode)
+au FileType fzf tnoremap <buffer> <esc> <esc>
 "<==
 
 "==> Colorscheme
