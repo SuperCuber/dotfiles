@@ -91,8 +91,9 @@ let g:mapleader = ","
 
 " Remove highlights from search
 nnoremap <silent> <leader><cr> :noh<cr>
-" Open vimrc
-nnoremap <silent> <leader>rc :e ~/.dotfiles/vimrc<cr>
+" Open vimrc editing workspace
+nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
+nnoremap <silent> <leader>src :source $MYVIMRC<cr>
 " Make
 nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 " Save
