@@ -94,8 +94,6 @@ nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc editing workspace
 nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
 nnoremap <silent> <leader>src :source $MYVIMRC<cr>
-" Make
-nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 " Save
 nnoremap <space> :w<cr>
 
@@ -123,9 +121,20 @@ Plug 'sheerun/vim-polyglot'
 " Handlebars
 au BufReadPost *.html.hbs set filetype=html
 
+" Make (only used when no language-specific binding is found) (execute is needed)
+nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
+
 "==> Rust
-" Rust
-au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
+au BufReadPost *.rs call SetRustMappings()
+au BufEnter *.rs call SetRustMappings()
+
+function SetRustMappings()
+  nnoremap <buffer> <leader>m :Dispatch cargo clippy --release -q --message-format=short<cr>
+  nnoremap <buffer> <leader>t :Dispatch cargo test<cr>
+  nnoremap <buffer> <leader>r :Cargo run -- 
+  nnoremap <buffer> <leader>d :silent !cargo build<cr>:VBGstartGDB target/debug/
+endfunction
+
 command! -nargs=* Cargo :FloatermNew cargo <args>
 "<==
 
@@ -134,7 +143,6 @@ command! -nargs=* Cargo :FloatermNew cargo <args>
 Plug 'idanarye/vim-vebugger'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
 nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
 nnoremap <f9> :VBGcontinue<cr>
 nnoremap <f10> :VBGstepIn<cr>
@@ -251,9 +259,10 @@ nnoremap <silent> <leader>/ :Ag<cr>
 Plug 'voldikss/vim-floaterm'
 let g:floaterm_wintype="vsplit"
 let g:floaterm_width=0.3
+let g:floaterm_autohide=0
 
 " Enter terminal
-nnoremap <C-t> :FloatermToggle<CR>
+nnoremap <C-t> :FloatermNew<CR>
 " Kill terminal
 tnoremap <C-d> <CMD>q!<CR>
 " Leave terminal
