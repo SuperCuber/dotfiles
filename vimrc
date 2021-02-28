@@ -1,49 +1,8 @@
-"==> Plug
+" Plug
 set runtimepath+=~/.vim
-set runtimepath+=~/.vim/pythonx
-
 call plug#begin("~/.local/share/nvim/plugged")
 
-" Completion/language
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-{{#if (eq dotter.os "unix")~}}
-Plug 'idanarye/vim-vebugger'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-{{/if~}}
-
-" Custom motions/actions
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tommcdo/vim-lion'
-Plug 'justinmk/vim-sneak'
-Plug 'wellle/targets.vim'
-
-" Navigation/filesystem
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
-
-" Org mode
-Plug 'hsitz/VimOrganizer'
-Plug 'vim-scripts/utl.vim'
-
-" Colorscheme
-Plug 'chriskempson/vim-tomorrow-theme'
-
-" Misc
-Plug 'voldikss/vim-floaterm'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'romainl/vim-qf'
-Plug 'tpope/vim-fugitive'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-unimpaired'
-
-call plug#end()
-"<==
-
-"==> Settings
+"==> Non-Plugin Settings
 syntax enable
 
 " Wildmenu
@@ -106,29 +65,88 @@ endif
 set clipboard=unnamed,unnamedplus
 set mouse=nvc
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+
+" Turn off ugly gui popupmenu on windows neovim and setup font
+au VimEnter * if exists('g:GuiLoaded')
+            \ | exe 'GuiPopupmenu 0'
+            \ | exe 'GuiFont Hack:h14'
+            \ | endif
 "<==
 
-"==> Plugin options
-" Floaterm
-let g:floaterm_wintype="split"
-let g:floaterm_height=0.3
+"==> Non-Plugin Mappings
+" Escaping from insert
+inoremap jk <Esc>
+inoremap JK <Esc>
+inoremap kj <Esc>
+inoremap KJ <Esc>
 
-" Quickscope
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+" Move around windows
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 
-"==> Sneak
-" Next match on repeat s
-let g:sneak#s_next = 1
-" Apply ; to f/t normally
-let g:sneak#f_reset = 1
-let g:sneak#t_reset = 1
-" Case insensitive
-let g:sneak_use_ic_scs = 1
-let g:sneak#prompt = 'Sneak >'
+" Leader
+let g:mapleader = ","
+
+" Remove highlights from search
+nnoremap <silent> <leader><cr> :noh<cr>
+" Open vimrc
+nnoremap <silent> <leader>rc :e ~/.dotfiles/vimrc<cr>
+" Make
+nnoremap <leader>m :silent make\|redraw!\|cc<CR>
+" Save
+nnoremap <space> :w<cr>
+
+" Quit
+nnoremap <silent> <leader>q :q<cr>
+" Kill
+nnoremap <silent> <leader>k :q!<cr>
+
+" [S]plit line (sister to [J]oin lines)
+nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+
+" Easier to type, and I never use the default behavior.
+noremap H ^
+noremap L $
 "<==
+
+"==> Filetype-specific
+" Handlebars
+au BufReadPost *.html.hbs set filetype=html
+
+" Rust
+au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
+command! -nargs=* Cargo :FloatermNew cargo <args>
+" Stronger `K`
+nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
+nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
 "<==
 
+" Async compiling/testing
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
+
+"==> Completion/Language
+" Support for various languages
+Plug 'sheerun/vim-polyglot'
+
+{{#if (eq dotter.os "unix")~}}
+"==> Vebugger
+Plug 'idanarye/vim-vebugger'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
+nnoremap <f9> :VBGcontinue<cr>
+nnoremap <f10> :VBGstepIn<cr>
+nnoremap <f11> :VBGstepOver<cr>
+nnoremap <f12> :VBGstepOut<cr>
+"<==
+
+{{/if~}}
 "==> Coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " :CocDiagnostics to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -192,125 +210,87 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 "<==
-
-"==> Maps
-" Escaping from insert
-inoremap jk <Esc>
-inoremap JK <Esc>
-inoremap kj <Esc>
-inoremap KJ <Esc>
-
-" Enter terminal
-nnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
-tnoremap <silent> <C-t> <CMD>FloatermToggle<CR>
-" Exit terminal
-tnoremap <C-d> <CMD>q!<CR>
-tnoremap <Esc> <C-\><C-N>
-
-" Move around windows
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" Leader
-let g:mapleader = ","
-
-" Remove highlights from search
-nnoremap <silent> <leader><cr> :noh<cr>
-" Open vimrc
-nnoremap <silent> <leader>rc :e ~/.dotfiles/vimrc<cr>
-" Swap to a buffer
-nnoremap <leader>b :Buffers<cr>
-" Make
-nnoremap <leader>m :silent make\|redraw!\|cc<CR>
-" Save
-nnoremap <space> :w<cr>
-
-" Quit
-nnoremap <silent> <leader>q :q<cr>
-" Kill
-nnoremap <silent> <leader>k :q!<cr>
-
-" [S]plit line (sister to [J]oin lines)
-nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
-
-" Easier to type, and I never use the default behavior.
-noremap H ^
-noremap L $
 "<==
 
-"==> Plugin maps
+"==> Custom motions/actions
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tommcdo/vim-lion'
+Plug 'wellle/targets.vim'
+
+"==> Sneak
+Plug 'justinmk/vim-sneak'
+" Next match on repeat s
+let g:sneak#s_next = 1
+" Apply ; to f/t normally
+let g:sneak#f_reset = 1
+let g:sneak#t_reset = 1
+" Case insensitive
+let g:sneak_use_ic_scs = 1
+let g:sneak#prompt = 'Sneak >'
+"<==
+"<==
+
+"==> Navigation/filesystem
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+
+" FZF
 nnoremap <silent> <leader>e :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
 nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
+" Swap to a buffer
+nnoremap <leader>b :Buffers<cr>
 " Stronger search
 nnoremap <silent> <leader>/ :Ag<cr>
 "<==
 
-"==> Vim-QF maps
-nnoremap <Home> <Plug>(qf_qf_previous)
-nnoremap <End> <Plug>(qf_qf_next)
-"<==
+"==> Terminal
+" TODO: is floaterm even used anymore or can this be merged into non-plugin
+" mappings?
+Plug 'voldikss/vim-floaterm'
+let g:floaterm_wintype="split"
+let g:floaterm_height=0.3
 
-"==> VimOrganizer
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
-au BufEnter *.org  call org#SetOrgFileType()
-" let g:org_capture_file = '~/Dropbox/Org/0inbox.org'
-command! OrgCapture :call org#CaptureBuffer()
-command! OrgCaptureFile :call org#OpenCaptureFile()
-"<==
-
-{{#if (eq dotter.os "unix")~}}
-"==> Vebugger options
-nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
-nnoremap <f9> :VBGcontinue<cr>
-nnoremap <f10> :VBGstepIn<cr>
-nnoremap <f11> :VBGstepOver<cr>
-nnoremap <f12> :VBGstepOut<cr>
-"<==
-
-{{/if~}}
-"==> Filetype-specific
-" Handlebars
-au BufReadPost *.html.hbs set filetype=html
-
-" Rust
-au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
-command! -nargs=* Cargo :FloatermNew cargo <args>
-" Stronger `K`
-nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
-nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
-"<==
-
-"==> Autocommands
-" Turn off ugly gui popupmenu on windows neovim
-au VimEnter * if exists('g:GuiLoaded')
-            \ | exe 'GuiPopupmenu 0'
-            \ | exe 'GuiFont Hack:h14'
-            \ | endif
-
-" Enter insert mode when entering terminal
-augroup TerminalInsert
-    au!
-    au TermOpen * startinsert
-    au WinEnter term://* startinsert
-    au TermOpen * setlocal nonumber norelativenumber signcolumn=no
-    au WinEnter term://* setlocal nonumber norelativenumber signcolumn=no
-augroup END
+" Enter terminal
+nnoremap <C-t> :vsp +terminal<cr>
+" Kill terminal
+tnoremap <C-d> <CMD>q!<CR>
+" Leave terminal
+tnoremap <Esc> <C-\><C-N>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
 
 " In fzf windows, esc should go through to the fzf binary
 " and close the window (instead of being mapped to going to normal mode)
 au FileType fzf tnoremap <buffer> <esc> <esc>
 "<==
 
+"==> Org mode
+Plug 'hsitz/VimOrganizer'
+Plug 'vim-scripts/utl.vim'
+
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org  call org#SetOrgFileType()
+"<==
+
+"==> Misc Plugins
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+"<==
+
 "==> Colorscheme
-colo Tomorrow-Night
+Plug 'chriskempson/vim-tomorrow-theme'
 " Red plus on statusline when buffer is dirty
 highlight User1 ctermfg=222 ctermbg=1 guibg=red
 "<==
+
+call plug#end()
+" Has to be called after end
+colo Tomorrow-Night
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
