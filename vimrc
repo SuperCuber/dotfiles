@@ -111,18 +111,6 @@ noremap H ^
 noremap L $
 "<==
 
-"==> Filetype-specific
-" Handlebars
-au BufReadPost *.html.hbs set filetype=html
-
-" Rust
-au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
-command! -nargs=* Cargo :FloatermNew cargo <args>
-" Stronger `K`
-nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
-nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
-"<==
-
 " Async compiling/testing
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
@@ -131,11 +119,21 @@ Plug 'radenling/vim-dispatch-neovim'
 " Support for various languages
 Plug 'sheerun/vim-polyglot'
 
+" Handlebars
+au BufReadPost *.html.hbs set filetype=html
+
+"==> Rust
+" Rust
+au BufReadPost *.rs setlocal makeprg=cargo\ clippy\ --release\ -q\ --message-format=short
+command! -nargs=* Cargo :FloatermNew cargo <args>
+"<==
+
 {{#if (eq dotter.os "unix")~}}
 "==> Vebugger
 Plug 'idanarye/vim-vebugger'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
+nnoremap <f5> :silent !cargo build<cr>:VBGstartGDB target/debug/
 nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
 nnoremap <f9> :VBGcontinue<cr>
 nnoremap <f10> :VBGstepIn<cr>
@@ -159,6 +157,8 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Stronger `K` - specific to rust
+nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
