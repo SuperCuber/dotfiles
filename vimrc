@@ -247,14 +247,12 @@ nnoremap <silent> <leader>/ :Ag<cr>
 "<==
 
 "==> Terminal
-" TODO: is floaterm even used anymore or can this be merged into non-plugin
-" mappings?
 Plug 'voldikss/vim-floaterm'
-let g:floaterm_wintype="split"
-let g:floaterm_height=0.3
+let g:floaterm_wintype="vsplit"
+let g:floaterm_width=0.3
 
 " Enter terminal
-nnoremap <C-t> :vsp +terminal<cr>
+nnoremap <C-t> :FloatermToggle<CR>
 " Kill terminal
 tnoremap <C-d> <CMD>q!<CR>
 " Leave terminal
@@ -263,6 +261,11 @@ tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
+
+augroup TerminalInsert
+    au!
+    au TermOpen * setlocal nonumber norelativenumber signcolumn=no
+augroup END
 
 " In fzf windows, esc should go through to the fzf binary
 " and close the window (instead of being mapped to going to normal mode)
