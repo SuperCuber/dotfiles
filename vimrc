@@ -286,14 +286,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 "<==
 
-"==> Colorscheme
+"==> Colorscheme (+ plug#end)
 Plug 'chriskempson/vim-tomorrow-theme'
+call plug#end()
+" This has to happen after plug#end
+colorscheme Tomorrow-Night
 " Red plus on statusline when buffer is dirty
 highlight User1 ctermfg=222 ctermbg=1 guibg=red
 "<==
-
-call plug#end()
-" Has to be called after end
-colo Tomorrow-Night
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
