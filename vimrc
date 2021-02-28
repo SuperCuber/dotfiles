@@ -92,7 +92,11 @@ let g:mapleader = ","
 " Remove highlights from search
 nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc editing workspace
+{{#if (eq dotter.os "unix")~}}
 nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
+{{~else~}}
+execute "nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd " . $HOMEPATH . "\\.dotfiles<cr>dotter watch -v<cr><A-h>"
+{{/if~}}
 nnoremap <silent> <leader>src :source $MYVIMRC<cr>
 " Save
 nnoremap <space> :w<cr>
