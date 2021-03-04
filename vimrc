@@ -114,13 +114,13 @@ noremap H ^
 noremap L $
 "<==
 
-" Async compiling/testing
-Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
-
 "==> Completion/Language
 " Support for various languages
 Plug 'sheerun/vim-polyglot'
+
+" Async compiling/testing
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 
 " Handlebars
 au BufReadPost *.html.hbs set filetype=html
@@ -294,6 +294,39 @@ Plug 'vim-scripts/utl.vim'
 
 au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
 au BufEnter *.org  call org#SetOrgFileType()
+"<==
+
+"==> Statusline
+Plug 'itchyny/lightline.vim'
+set noshowmode
+let g:lightline = {}
+let g:lightline.active = {
+	  \ 'left': [ [ 'mode', 'paste' ],
+	  \           [ 'relativepath' ],
+	  \           [ 'readonly' , 'modified' ] ],
+	  \ 'right': [ [ 'lineinfo' ],
+	  \           [ 'filetype' ] ],
+	  \ }
+let g:lightline.inactive = {
+	  \ 'left': [ [ 'relativepath' ] ],
+	  \ 'right': [ [ 'lineinfo' ] ] }
+let g:lightline.colorscheme = 'Tomorrow_Night'
+let g:lightline.mode_map = {
+	  \ 'n'      : 'N',
+	  \ 'c'      : 'N',
+	  \ 'i'      : 'I',
+	  \ 't'      : 'T',
+	  \ 'R'      : 'R',
+	  \ 'v'      : 'V',
+	  \ 'V'      : 'VL',
+	  \ "\<C-v>" : 'VB',
+	  \ 's'      : 'S',
+	  \ 'S'      : 'SL',
+	  \ "\<C-s>" : 'SB',
+	  \ }
+let g:lightline.tab = {
+	  \ 'active': [ 'relativepath', 'modified' ],
+	  \ 'inactive': [ 'relativepath', 'modified' ] }
 "<==
 
 "==> Misc Plugins
