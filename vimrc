@@ -325,8 +325,8 @@ let g:lightline.mode_map = {
 	  \ "\<C-s>" : 'SB',
 	  \ }
 let g:lightline.tab = {
-	  \ 'active': [ 'relativepath', 'modified' ],
-	  \ 'inactive': [ 'relativepath', 'modified' ] }
+	  \ 'active': [ 'filename', 'modified' ],
+	  \ 'inactive': [ 'filename', 'modified' ] }
 "<==
 
 "==> Misc Plugins
