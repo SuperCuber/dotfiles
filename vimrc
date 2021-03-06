@@ -135,7 +135,7 @@ au BufEnter *.rs call SetRustMappings()
 function SetRustMappings()
   nnoremap <buffer> <leader>m :Dispatch cargo clippy --release -q --message-format=short<cr>
   nnoremap <buffer> <leader>t :Dispatch cargo test<cr>
-  nnoremap <buffer> <leader>r :Cargo run -- 
+  execute "nnoremap <buffer> <leader>r :Cargo run -- "
   {{~#if (eq dotter.os "unix")}}
   nnoremap <buffer> <leader>d :silent !cargo build<cr>:VBGstartGDB target/debug/
   {{~/if}}
@@ -258,7 +258,15 @@ nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type 
 " Swap to a buffer
 nnoremap <leader>b :Buffers<cr>
 " Stronger search
+{{#if (is_executable "rg")~}}
+nnoremap <silent> <leader>/ :Rg<cr>
+{{else~}}
+{{#if (is_executable "ag")~}}
 nnoremap <silent> <leader>/ :Ag<cr>
+{{else~}}
+nnoremap <silent> <leader>/ :echoerr "no rg or ag"<cr>
+{{/if~}}
+{{/if~}}
 "<==
 
 "==> Terminal
