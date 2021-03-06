@@ -348,8 +348,6 @@ Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
 " This has to happen after plug#end
 colorscheme Tomorrow-Night
-" Red plus on statusline when buffer is dirty
-highlight User1 ctermfg=222 ctermbg=1 guibg=red
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
