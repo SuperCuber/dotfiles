@@ -340,7 +340,10 @@ let g:lightline.tab = {
 "==> Misc Plugins
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
+Plug 'wellle/context.vim'
+Plug 'airblade/vim-rooter'
 "<==
 
 "==> Colorscheme (+ plug#end)
