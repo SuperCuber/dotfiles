@@ -1,9 +1,6 @@
 # Screenshots
-![Prompt Showcase](/img/prompt_showcase.png)
-
-![Prompt Long Path](/img/prompt_long_path.png)
-![Floating Terminal](/img/floating_terminal.png)
-![Tiled terminals](/img/tiled_terminals.png)
+![Shell](/img/shell.png)
+![Floating Terminals](/img/fun_terminals.png)
 
 # Home folder structure
 ```
