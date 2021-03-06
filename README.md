@@ -5,10 +5,11 @@
 # Home folder structure
 ```
 /home/username
-├── downloads = default downloads folder
-├── tmp       = cleared at every boot, much like /tmp
-└── src       = source code
-    └── ...   = a folder per language
+├── bin       = scripts and programs
+├── tmp       = downloads and temporary files
+├── src       = source code
+│   └── ...   = a folder per language
+└── archive   = documents and other rarely accessed files
 ```
 
 # Software needed for best experience
