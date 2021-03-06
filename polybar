@@ -14,7 +14,7 @@ modules-center = xwindow
 modules-right = pulseaudio memory cpu date
 
 tray-position = right
-tray-padding = 2
+tray-padding = 5
 
 [module/xwindow]
 type = internal/xwindow
