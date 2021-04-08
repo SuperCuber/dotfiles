@@ -128,6 +128,9 @@ au BufReadPost *.html.hbs set filetype=html
 " Make (only used when no language-specific binding is found) (execute is needed)
 nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
 
+" Format
+nnoremap <leader>f :Format<cr>
+
 "==> Rust
 au BufReadPost *.rs call SetRustMappings()
 au BufEnter *.rs call SetRustMappings()
