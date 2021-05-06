@@ -11,3 +11,6 @@ if [ "`pwd`" = /c/WINDOWS/system32 ]; then
 fi
 . ~/.bashrc
 """
+
+[bash.files]
+minttyrc = "~/.minttyrc"
