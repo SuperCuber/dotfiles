@@ -6,7 +6,7 @@ coc_settings = "~/AppData/Local/nvim/coc-settings.json"
 target = "~/.bash_profile"
 type = "template"
 prepend = """
-if [ `pwd` = /c/WINDOWS/system32 ]; then
+if [ "`pwd`" = /c/WINDOWS/system32 ]; then
     builtin cd ~/Desktop
 fi
 . ~/.bashrc
