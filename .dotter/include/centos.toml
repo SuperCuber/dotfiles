@@ -1,0 +1,5 @@
+[shell.variables]
+install = "sudo yum install"
+uninstall = "sudo yum remove"
+update = "sudo yum update"
+autoremove = "sudo yum autoremove"
