@@ -103,7 +103,7 @@ function preexec() {
 }
 
 PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
-PS1_USERNAME="%F{8}%K{7} %n "
+PS1_USERNAME="%F{8}%K{ {{user_color}}} %n "
 PS1_PATH="%F{7}%K{8} %(5~@.../%3~@%~) "
 PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
 
