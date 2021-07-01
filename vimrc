@@ -241,18 +241,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tommcdo/vim-lion'
 Plug 'wellle/targets.vim'
-
-"==> Sneak
-Plug 'justinmk/vim-sneak'
-" Next match on repeat s
-let g:sneak#s_next = 1
-" Apply ; to f/t normally
-let g:sneak#f_reset = 1
-let g:sneak#t_reset = 1
-" Case insensitive
-let g:sneak_use_ic_scs = 1
-let g:sneak#prompt = 'Sneak >'
-"<==
 "<==
 
 "==> Navigation/filesystem
@@ -348,6 +336,7 @@ let g:lightline.tab = {
 "==> Misc Plugins
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'tpope/vim-fugitive'
+nnoremap <leader>g <cmd>Git<cr>
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 "<==
