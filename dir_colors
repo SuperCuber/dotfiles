@@ -222,11 +222,15 @@ STICKY                30;43
 .py                   38;5;41
 .rs                   38;5;94
 
-# {Make,Just}file
+# [Tool]file
 *justfile             38;5;155
 *Justfile             38;5;155
 *makefile             38;5;155
 *Makefile             38;5;155
+*Dockerfile           38;5;155
+*dockerfile           38;5;155
+*Vagrantfile          38;5;155
+*vagrantfile          38;5;155
 
 # Unimportant
 *#                    38;5;243
