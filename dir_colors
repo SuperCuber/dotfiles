@@ -31,7 +31,7 @@ DIR                   01;34
 LINK                  target
 
 # Special files
-OTHER_WRITABLE        32
+OTHER_WRITABLE        01;36
 EXEC                  3;32
 MULTIHARDLINK         00
 FIFO                  01;35
@@ -144,17 +144,18 @@ STICKY                30;43
 .pdf                  00;32
 .ps                   00;32
 
-# Technical plaintext files
+# Technical plaintext
 .cfg                  00;31
 .diff                 00;31
 .ini                  00;31
 .json                 00;31
 .log                  00;31
+.nix                  00;31
 .patch                00;31
 .toml                 00;31
 .yml                  00;31
 
-# Audio formats
+# Audio
 .aac                  00;36
 .au                   00;36
 .flac                 00;36
@@ -183,29 +184,57 @@ STICKY                30;43
 .txt                  38;5;226
 
 # Documents
+*authors              38;5;226;1
 *AUTHORS              38;5;226;1
+*authors.md           38;5;226;1
 *AUTHORS.md           38;5;226;1
+*changes              38;5;226;1
 *CHANGES              38;5;226;1
+*changes.md           38;5;226;1
 *CHANGES.md           38;5;226;1
+*code_of_conduct      38;5;226;1
+*CODE_OF_CONDUCT      38;5;226;1
+*code_of_conduct.md   38;5;226;1
+*CODE_OF_CONDUCT.md   38;5;226;1
+*contributors         38;5;226;1
 *CONTRIBUTORS         38;5;226;1
+*contributors.md      38;5;226;1
 *CONTRIBUTORS.md      38;5;226;1
+*copying              38;5;226;1
 *COPYING              38;5;226;1
+*copying.md           38;5;226;1
 *COPYING.md           38;5;226;1
+*copyright            38;5;226;1
 *COPYRIGHT            38;5;226;1
+*copyright.md         38;5;226;1
 *COPYRIGHT.md         38;5;226;1
+*history              38;5;226;1
 *HISTORY              38;5;226;1
+*history.md           38;5;226;1
 *HISTORY.md           38;5;226;1
+*install              38;5;226;1
 *INSTALL              38;5;226;1
+*install.md           38;5;226;1
 *INSTALL.md           38;5;226;1
+*license              38;5;226;1
 *LICENSE              38;5;226;1
+*license.md           38;5;226;1
 *LICENSE.md           38;5;226;1
+*notice               38;5;226;1
 *NOTICE               38;5;226;1
+*notice.md            38;5;226;1
 *NOTICE.md            38;5;226;1
+*patents              38;5;226;1
 *PATENTS              38;5;226;1
+*patents.md           38;5;226;1
 *PATENTS.md           38;5;226;1
+*readme               38;5;226;1
 *README               38;5;226;1
+*readme.md            38;5;226;1
 *README.md            38;5;226;1
+*version              38;5;226;1
 *VERSION              38;5;226;1
+*version.md           38;5;226;1
 *VERSION.md           38;5;226;1
 
 # Code
@@ -221,6 +250,7 @@ STICKY                30;43
 .js                   38;5;185
 .py                   38;5;41
 .rs                   38;5;94
+.sh                   32
 
 # [Tool]file
 *justfile             38;5;155
