@@ -49,6 +49,7 @@ STICKY_OTHER_WRITABLE 30;43
 
 # Technical plaintext
 .cfg                  00;31
+.conf                 00;31
 .diff                 00;31
 .ini                  00;31
 .json                 00;31
@@ -223,8 +224,6 @@ STICKY_OTHER_WRITABLE 30;43
 *COPYRIGHT            38;5;226;1
 *copyright.md         38;5;226;1
 *COPYRIGHT.md         38;5;226;1
-*history              38;5;226;1
-*HISTORY              38;5;226;1
 *history.md           38;5;226;1
 *HISTORY.md           38;5;226;1
 *install              38;5;226;1
@@ -269,11 +268,13 @@ STICKY_OTHER_WRITABLE 30;43
 .html.hbs             38;5;10
 .ipynb                38;5;41
 .js                   38;5;185
+.mjs                  38;5;185
 .py                   38;5;41
 .rs                   38;5;94
 .s                    38;5;98
 .S                    38;5;98
 .sh                   32
+.ts                   38;5;185
 
 # Build files
 .cmake                38;5;154
@@ -282,12 +283,14 @@ STICKY_OTHER_WRITABLE 30;43
 *makefile             38;5;154;1
 *Makefile             38;5;154;1
 .mk                   38;5;154
+*profile              0
 
 # Unimportant
 *#                    38;5;243
 *~                    38;5;243
 *-bak                 38;5;243
 .bk                   38;5;243
+.d                    38;5;243
 .egg                  38;5;243
 .ld                   38;5;243
 .lock                 38;5;243
