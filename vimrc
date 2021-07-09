@@ -339,6 +339,7 @@ Plug 'tpope/vim-fugitive'
 nnoremap <leader>g <cmd>Git<cr>
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
+Plug 'kevinhwang91/nvim-bqf'
 "<==
 
 "==> Colorscheme (+ plug#end)
