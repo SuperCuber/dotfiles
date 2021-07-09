@@ -44,6 +44,9 @@ bindsym $mod+minus scratchpad show
 #<==
 
 #==> Focus
+focus_follows_mouse no
+mouse_warping none
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
