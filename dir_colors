@@ -31,68 +31,49 @@ DIR                   01;34
 LINK                  target
 
 # Special files
-OTHER_WRITABLE        01;36
-EXEC                  3;32
-MULTIHARDLINK         00
-FIFO                  01;35
-SOCK                  01;35
-DOOR                  01;35
 BLK                   40;33;01
-CHR                   40;33;01
-ORPHAN                01;05;37;41
-MISSING               01;05;37;41
-SETUID                30;43
-SETGID                30;43
 CAPABILITY            30;43
-STICKY_OTHER_WRITABLE 30;43
+CHR                   40;33;01
+DOOR                  01;35
+EXEC                  3;32
+FIFO                  01;35
+MISSING               01;05;37;41
+MULTIHARDLINK         00
+ORPHAN                01;05;37;41
+OTHER_WRITABLE        01;36
+SETGID                30;43
+SETUID                30;43
+SOCK                  01;35
 STICKY                30;43
+STICKY_OTHER_WRITABLE 30;43
 
-# Archives or compressed
-.7z                   38;5;202
-.ace                  38;5;202
-.alz                  38;5;202
-.arc                  38;5;202
-.arj                  38;5;202
-.bak                  38;5;202  # old copy of a file
-.bz2                  38;5;202
-.bz                   38;5;202
-.cab                  38;5;202
-.cpio                 38;5;202
-.deb                  38;5;202
-.dll                  38;5;202
-.dz                   38;5;202
-.ear                  38;5;202
-.gz                   38;5;202
-.jar                  38;5;202
-.lha                  38;5;202
-.lrz                  38;5;202
-.lz                   38;5;202
-.lz4                  38;5;202
-.lzh                  38;5;202
-.lzma                 38;5;202
-.lzo                  38;5;202
-.old                  38;5;202
-.pcap                 38;5;202
-.rar                  38;5;202
-.rpm                  38;5;202
-.rz                   38;5;202
-.sar                  38;5;202
-.t7z                  38;5;202
-.tar                  38;5;202
-.taz                  38;5;202
-.tbz2                 38;5;202
-.tbz                  38;5;202
-.tgz                  38;5;202
-.tlz                  38;5;202
-.txz                  38;5;202
-.tz                   38;5;202
-.tzo                  38;5;202
-.war                  38;5;202
-.xz                   38;5;202
-.z                    38;5;202
-.Z                    38;5;202
-.zip                  38;5;202
-.zoo                  38;5;202
+# Technical plaintext
+.cfg                  00;31
+.diff                 00;31
+.ini                  00;31
+.json                 00;31
+.log                  00;31
+.nix                  00;31
+.patch                00;31
+.toml                 00;31
+.xml                  00;31
+.yml                  00;31
+
+# Binary documents
+.doc                  00;32
+.docx                 00;32
+.pdf                  00;32
+.ps                   00;32
+
+# Keys
+.cer                  00;34
+.crt                  00;34
+.der                  00;34
+.gpg                  00;34
+.key                  00;34
+.pem                  00;34
+.pgp                  00;34
+.ppk                  00;34
 
 # Image formats
 .asf                  00;35
@@ -141,34 +122,6 @@ STICKY                30;43
 .xwd                  00;35
 .yuv                  00;35
 
-# Binary documents
-.doc                  00;32
-.docx                 00;32
-.pdf                  00;32
-.ps                   00;32
-
-# Technical plaintext
-.cfg                  00;31
-.diff                 00;31
-.ini                  00;31
-.json                 00;31
-.log                  00;31
-.nix                  00;31
-.patch                00;31
-.toml                 00;31
-.xml                  00;31
-.yml                  00;31
-
-# Keys
-.cer                  00;34
-.crt                  00;34
-.der                  00;34
-.gpg                  00;34
-.key                  00;34
-.pem                  00;34
-.pgp                  00;34
-.ppk                  00;34
-
 # Audio
 .aac                  00;36
 .au                   00;36
@@ -183,6 +136,53 @@ STICKY                30;43
 .opus                 00;36
 .ra                   00;36
 .wav                  00;36
+
+# Archives or compressed
+.7z                   38;5;202
+.ace                  38;5;202
+.alz                  38;5;202
+.arc                  38;5;202
+.arj                  38;5;202
+.bak                  38;5;202
+.bz2                  38;5;202
+.bz                   38;5;202
+.cab                  38;5;202
+.cpio                 38;5;202
+.deb                  38;5;202
+.dll                  38;5;202
+.dz                   38;5;202
+.ear                  38;5;202
+.gz                   38;5;202
+.jar                  38;5;202
+.lha                  38;5;202
+.lrz                  38;5;202
+.lz                   38;5;202
+.lz4                  38;5;202
+.lzh                  38;5;202
+.lzma                 38;5;202
+.lzo                  38;5;202
+.old                  38;5;202
+.pcap                 38;5;202
+.rar                  38;5;202
+.rpm                  38;5;202
+.rz                   38;5;202
+.sar                  38;5;202
+.t7z                  38;5;202
+.tar                  38;5;202
+.taz                  38;5;202
+.tbz2                 38;5;202
+.tbz                  38;5;202
+.tgz                  38;5;202
+.tlz                  38;5;202
+.txz                  38;5;202
+.tz                   38;5;202
+.tzo                  38;5;202
+.war                  38;5;202
+.xz                   38;5;202
+.z                    38;5;202
+.Z                    38;5;202
+.zip                  38;5;202
+.zoo                  38;5;202
 
 # Markup
 .etx                  38;5;226
