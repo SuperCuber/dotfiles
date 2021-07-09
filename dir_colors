@@ -54,11 +54,12 @@ STICKY                30;43
 .arc                  38;5;202
 .arj                  38;5;202
 .bak                  38;5;202  # old copy of a file
-.bz                   38;5;202
 .bz2                  38;5;202
+.bz                   38;5;202
 .cab                  38;5;202
 .cpio                 38;5;202
 .deb                  38;5;202
+.dll                  38;5;202
 .dz                   38;5;202
 .ear                  38;5;202
 .gz                   38;5;202
@@ -70,6 +71,8 @@ STICKY                30;43
 .lzh                  38;5;202
 .lzma                 38;5;202
 .lzo                  38;5;202
+.old                  38;5;202
+.pcap                 38;5;202
 .rar                  38;5;202
 .rpm                  38;5;202
 .rz                   38;5;202
@@ -77,8 +80,8 @@ STICKY                30;43
 .t7z                  38;5;202
 .tar                  38;5;202
 .taz                  38;5;202
-.tbz                  38;5;202
 .tbz2                 38;5;202
+.tbz                  38;5;202
 .tgz                  38;5;202
 .tlz                  38;5;202
 .txz                  38;5;202
@@ -153,7 +156,18 @@ STICKY                30;43
 .nix                  00;31
 .patch                00;31
 .toml                 00;31
+.xml                  00;31
 .yml                  00;31
+
+# Keys
+.cer                  00;34
+.crt                  00;34
+.der                  00;34
+.gpg                  00;34
+.key                  00;34
+.pem                  00;34
+.pgp                  00;34
+.ppk                  00;34
 
 # Audio
 .aac                  00;36
@@ -179,6 +193,7 @@ STICKY                30;43
 .nfo                  38;5;226
 .org                  38;5;226
 .pod                  38;5;226
+.rst                  38;5;226
 .tex                  38;5;226
 .textile              38;5;226
 .txt                  38;5;226
@@ -239,34 +254,42 @@ STICKY                30;43
 
 # Code
 .asm                  38;5;98
+.bat                  32
 .c                    38;5;81
 .c++                  38;5;81
+.cc                   38;5;81
 .cpp                  38;5;81
 .css                  38;5;186
+.exe                  32
 .h                    38;5;110
 .h++                  38;5;110
+.hh                   38;5;110
+.hpp                  38;5;110
 .html                 38;5;10
 .html.hbs             38;5;10
+.ipynb                38;5;41
 .js                   38;5;185
 .py                   38;5;41
 .rs                   38;5;94
+.s                    38;5;98
+.S                    38;5;98
 .sh                   32
 
-# [Tool]file
-*justfile             38;5;155
-*Justfile             38;5;155
-*makefile             38;5;155
-*Makefile             38;5;155
-*Dockerfile           38;5;155
-*dockerfile           38;5;155
-*Vagrantfile          38;5;155
-*vagrantfile          38;5;155
+# Build files
+.cmake                38;5;154
+*file                 38;5;154
+.make                 38;5;154
+*makefile             38;5;154;1
+*Makefile             38;5;154;1
+.mk                   38;5;154
 
 # Unimportant
 *#                    38;5;243
 *~                    38;5;243
 *-bak                 38;5;243
 .bk                   38;5;243
+.egg                  38;5;243
+.ld                   38;5;243
 .lock                 38;5;243
 .o                    38;5;243
 .pyc                  38;5;243
