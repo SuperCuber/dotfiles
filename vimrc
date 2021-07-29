@@ -95,7 +95,7 @@ nnoremap <silent> <leader><cr> :noh<cr>
 {{#if (eq dotter.os "unix")~}}
 nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
 {{else~}}
-execute "nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd " . $HOMEPATH . "\\.dotfiles<cr>dotter watch -v<cr><A-h>"
+execute "nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>" . $HOMEDRIVE . "<cr>cd " . $HOMEPATH . "\\.dotfiles<cr>dotter watch -v<cr><A-h>"
 {{/if~}}
 nnoremap <silent> <leader>src :source $MYVIMRC<cr>
 " Save
@@ -250,7 +250,7 @@ Plug 'tpope/vim-eunuch'
 
 " FZF
 nnoremap <silent> <leader>e :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
-nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': $HOME}))<cr>
+nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': {{#if vim_root_dir}}"{{vim_root_dir}}"{{else}}$HOME{{/if}}}))<cr>
 " Swap to a buffer
 nnoremap <leader>b :Buffers<cr>
 " Stronger search
