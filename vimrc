@@ -138,13 +138,22 @@ au BufEnter *.rs call SetRustMappings()
 function SetRustMappings()
   nnoremap <buffer> <leader>m :Dispatch cargo clippy --release -q --message-format=short<cr>
   nnoremap <buffer> <leader>t :Dispatch cargo test<cr>
-  execute "nnoremap <buffer> <leader>r :Cargo run -- "
+  execute "nnoremap <leader>r :Cargo run -- "
   {{~#if (eq dotter.os "unix")}}
   nnoremap <buffer> <leader>d :silent !cargo build<cr>:VBGstartGDB target/debug/
   {{~/if}}
 endfunction
 
 command! -nargs=* Cargo :FloatermNew cargo <args>
+"<==
+
+"==> Python
+au BufReadPost *.py call SetPythonMappings()
+au BufEnter *.py call SetPythonMappings()
+
+function SetPythonMappings()
+  execute "nnoremap <leader>r :!python3 % -- "
+endfunction
 "<==
 
 {{#if (eq dotter.os "unix")~}}
