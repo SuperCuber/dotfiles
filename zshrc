@@ -148,10 +148,13 @@ PROMPT_COMMAND="__git_ps1 '$PS1_PRE' '$PS1_POST' '$PS1_GIT'"
 eval `dircolors ~/.dir_colors`
 
 # CD
+{{#if (is_executable "zoxide")~}}
+eval "$(zoxide init {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}})"
+{{/if~}}
 cd ()
 {
     # Pass all arguments to cd
-    builtin cd "$@" || return $?
+    {{#if (is_executable "zoxide")}}z{{else}}builtin cd{{/if}} "$@" || return $?
     # If everything OK, print ls and todo
     l
     {{#if (is_executable "todo")~}}

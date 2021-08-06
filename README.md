@@ -37,6 +37,7 @@
 - fd-find
 - bat: cat with wings
 - delta: better git diff viewer
+- zoxide: better cd
 
 ---
 
