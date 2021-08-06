@@ -302,11 +302,8 @@ au FileType fzf tnoremap <buffer> <esc> <esc>
 "<==
 
 "==> Org mode
-Plug 'hsitz/VimOrganizer'
-Plug 'vim-scripts/utl.vim'
-
-au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
-au BufEnter *.org  call org#SetOrgFileType()
+Plug 'kristijanhusak/orgmode.nvim'
+lua require('orgmode').setup({})
 "<==
 
 "==> Statusline
