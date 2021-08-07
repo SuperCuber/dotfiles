@@ -303,7 +303,6 @@ au FileType fzf tnoremap <buffer> <esc> <esc>
 
 "==> Org mode
 Plug 'kristijanhusak/orgmode.nvim'
-lua require('orgmode').setup({})
 "<==
 
 "==> Statusline
@@ -353,6 +352,7 @@ Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
 " This has to happen after plug#end
 colorscheme Tomorrow-Night
+lua require('orgmode').setup({})
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
