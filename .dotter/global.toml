@@ -34,6 +34,7 @@ dir_colors = "~/.dir_colors"
 git = "~/.gitconfig"
 git_prompt = "~/.git_prompt"
 bat = "~/.config/bat/config"
+ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
 
 [shell.variables]
 # Local variables: install, uninstall, update, autoremove, user_color
