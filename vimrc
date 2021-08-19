@@ -27,8 +27,8 @@ set cursorline
 set virtualedit=block
 
 " Inserting
-set backspace=eol,indent
-set whichwrap=h,l
+set backspace=eol,indent,start
+set whichwrap=
 
 " Backups
 set nobackup
