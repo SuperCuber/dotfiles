@@ -4,6 +4,7 @@ call plug#begin("~/.local/share/nvim/plugged")
 
 "==> Non-Plugin Settings
 syntax enable
+set modelineexpr
 
 " Wildmenu
 set wildmenu wildignore=*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock
@@ -25,6 +26,7 @@ set laststatus=2
 set title titlestring=NVIM:\ %F
 set cursorline
 set virtualedit=block
+set signcolumn=number
 
 " Inserting
 set backspace=eol,indent,start
@@ -47,20 +49,6 @@ set list listchars=tab:»·,trail:·
 
 " Splits
 set splitright splitbelow
-
-" Neovim-specific
-if has('nvim')
-    set modelineexpr
-endif
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
 
 " Interact with X
 set clipboard=unnamed,unnamedplus
@@ -294,7 +282,7 @@ tnoremap <A-j> <C-\><C-N><C-w>j
 tnoremap <A-k> <C-\><C-N><C-w>k
 tnoremap <A-l> <C-\><C-N><C-w>l
 
-augroup TerminalInsert
+augroup OpenTerminal
     au!
     au TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup END
