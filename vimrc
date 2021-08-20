@@ -183,25 +183,6 @@ nnoremap <silent> <leader>* <cmd>Telescope grep_string<cr>
 nnoremap <silent> <leader>b <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>cd <cmd>call v:lua.cd_picker()<cr>
 
-lua << EOF
-_G.cd_picker = function()
-  require("telescope.pickers").new({}, {
-    prompt_title = "Change Directory",
-	finder = require("telescope.finders").new_oneshot_job({"fd", "-H", "-I", "--type", "d"}, {}),
-    previewer = nil,
-    sorter = require("telescope.config").values.file_sorter(opts),
-	attach_mappings = function(prompt_bufnr, map)
-		function change_directory()
-			require("telescope.actions").close(prompt_bufnr)
-			vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
-		end
-		map("i", "<cr>", change_directory)
-		return true
-	end
-  }):find()
-end
-EOF
-
 Plug 'tpope/vim-eunuch'
 "<==
 
@@ -398,6 +379,38 @@ vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
 vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
 EOF
+"<==
+
+"==> Telescope
+lua << EOF
+local actions = require("telescope.actions")
+require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close
+            }
+        }
+    }
+})
+_G.cd_picker = function()
+  require("telescope.pickers").new({}, {
+    prompt_title = "Change Directory",
+    finder = require("telescope.finders").new_oneshot_job({"fd", "-a", "--type", "d"}, {cwd = "{{#if vim_root_dir}}{{vim_root_dir}}{{else}}~{{/if}}"}),
+    previewer = nil,
+    sorter = require("telescope.config").values.file_sorter(opts),
+    attach_mappings = function(prompt_bufnr, map)
+        function change_directory()
+            actions.close(prompt_bufnr)
+            vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
+        end
+        map("i", "<cr>", change_directory)
+        return true
+    end
+  }):find()
+end
+EOF
+
 "<==
 "<==
 
