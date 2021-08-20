@@ -218,32 +218,32 @@ Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {}
 let g:lightline.active = {
-	  \ 'left': [ [ 'mode', 'paste' ],
-	  \           [ 'relativepath' ],
-	  \           [ 'readonly' , 'modified' ] ],
-	  \ 'right': [ [ 'lineinfo' ],
-	  \           [ 'filetype' ] ],
-	  \ }
+     \ 'left': [ [ 'mode', 'paste' ],
+     \           [ 'relativepath' ],
+     \           [ 'readonly' , 'modified' ] ],
+     \ 'right': [ [ 'lineinfo' ],
+     \           [ 'filetype' ] ],
+     \ }
 let g:lightline.inactive = {
-	  \ 'left': [ [ 'relativepath' ] ],
-	  \ 'right': [ [ 'lineinfo' ] ] }
+     \ 'left': [ [ 'relativepath' ] ],
+     \ 'right': [ [ 'lineinfo' ] ] }
 let g:lightline.colorscheme = 'Tomorrow_Night'
 let g:lightline.mode_map = {
-	  \ 'n'      : 'N',
-	  \ 'c'      : 'N',
-	  \ 'i'      : 'I',
-	  \ 't'      : 'T',
-	  \ 'R'      : 'R',
-	  \ 'v'      : 'V',
-	  \ 'V'      : 'VL',
-	  \ "\<C-v>" : 'VB',
-	  \ 's'      : 'S',
-	  \ 'S'      : 'SL',
-	  \ "\<C-s>" : 'SB',
-	  \ }
+     \ 'n'      : 'N',
+     \ 'c'      : 'N',
+     \ 'i'      : 'I',
+     \ 't'      : 'T',
+     \ 'R'      : 'R',
+     \ 'v'      : 'V',
+     \ 'V'      : 'VL',
+     \ "\<C-v>" : 'VB',
+     \ 's'      : 'S',
+     \ 'S'      : 'SL',
+     \ "\<C-s>" : 'SB',
+     \ }
 let g:lightline.tab = {
-	  \ 'active': [ 'filename', 'modified' ],
-	  \ 'inactive': [ 'filename', 'modified' ] }
+     \ 'active': [ 'filename', 'modified' ],
+     \ 'inactive': [ 'filename', 'modified' ] }
 "<==
 
 "==> Misc Plugins
@@ -385,13 +385,13 @@ EOF
 lua << EOF
 local actions = require("telescope.actions")
 require("telescope").setup({
-    defaults = {
-        mappings = {
-            i = {
-                ["<esc>"] = actions.close
-            }
+  defaults = {
+    mappings = {
+        i = {
+            ["<esc>"] = actions.close
         }
     }
+  }
 })
 _G.cd_picker = function()
   require("telescope.pickers").new({}, {
@@ -400,12 +400,12 @@ _G.cd_picker = function()
     previewer = nil,
     sorter = require("telescope.config").values.file_sorter(opts),
     attach_mappings = function(prompt_bufnr, map)
-        function change_directory()
-            actions.close(prompt_bufnr)
-            vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
-        end
-        map("i", "<cr>", change_directory)
-        return true
+      function change_directory()
+        actions.close(prompt_bufnr)
+        vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
+      end
+      map("i", "<cr>", change_directory)
+      return true
     end
   }):find()
 end
