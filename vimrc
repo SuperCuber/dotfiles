@@ -190,6 +190,7 @@ tnoremap <A-l> <C-\><C-N><C-w>l
 augroup OpenTerminal
     au!
     au TermOpen * setlocal nonumber norelativenumber signcolumn=no
+    au TermOpen * IndentBlanklineDisable
 augroup END
 "<==
 
