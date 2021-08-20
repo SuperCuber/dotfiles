@@ -126,19 +126,16 @@ au BufReadPost *.html.hbs set filetype=html
 nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
 
 "==> Rust
+Plug 'simrat39/rust-tools.nvim'
 au BufReadPost *.rs call SetRustMappings()
 au BufEnter *.rs call SetRustMappings()
 
-function SetRustMappings()
-  nnoremap <buffer> <silent> <leader>m :Dispatch cargo clippy<cr>
-  nnoremap <buffer> <silent> <leader>t :Dispatch cargo test<cr>
-  execute "nnoremap <silent> <leader>r :Cargo run -- "
-  {{~#if (eq dotter.os "unix")}}
-  nnoremap <buffer> <leader>d :silent !cargo build<cr>:VBGstartGDB target/debug/
-  {{~/if}}
-endfunction
-
 command! -nargs=* Cargo :Dispatch cargo <args>
+function SetRustMappings()
+  nnoremap <buffer> <silent> <leader>m :Cargo clippy<cr>
+  nnoremap <buffer> <silent> <leader>t :Cargo test<cr>
+  execute "nnoremap <silent> <leader>r :FloatermNew cargo run -- "
+endfunction
 "<==
 
 "==> Python
@@ -149,19 +146,6 @@ function SetPythonMappings()
   execute "nnoremap <leader>r :!python3 % -- "
 endfunction
 "<==
-
-{{#if (eq dotter.os "unix")~}}
-"==> Vebugger
-Plug 'idanarye/vim-vebugger'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-nnoremap <f8> :VBGtoggleBreakpointThisLine<cr>
-nnoremap <f9> :VBGcontinue<cr>
-nnoremap <f10> :VBGstepIn<cr>
-nnoremap <f11> :VBGstepOver<cr>
-nnoremap <f12> :VBGstepOut<cr>
-"<==
-{{/if~}}
 "<==
 
 "==> Custom motions/actions
@@ -262,12 +246,13 @@ call plug#end()
 
 "==> Post-plugend configuration
 colorscheme Tomorrow-Night
+
 lua require('orgmode').setup({})
+lua require('rust-tools').setup({})
 
 "==> LSP
 lua << EOF
 local nvim_lsp = require('lspconfig')
-nvim_lsp.rust_analyzer.setup{}
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -305,7 +290,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer' }
+local servers = { 'rust_analyzer', 'tsserver' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -336,6 +321,9 @@ require'compe'.setup {
     nvim_lsp = true;
   };
 }
+
+-- required for compe
+vim.o.completeopt = "menuone,noselect"
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
