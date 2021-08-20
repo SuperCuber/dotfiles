@@ -104,8 +104,16 @@ noremap L $
 "<==
 
 "==> Completion/Language
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'ray-x/lsp_signature.nvim'
+
 " Support for various languages
 Plug 'sheerun/vim-polyglot'
+
+" Highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Async compiling/testing
 Plug 'tpope/vim-dispatch'
@@ -116,9 +124,6 @@ au BufReadPost *.html.hbs set filetype=html
 
 " Make (only used when no language-specific binding is found) (execute is needed)
 nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
-
-" Format
-nnoremap <leader>f :Format<cr>
 
 "==> Rust
 au BufReadPost *.rs call SetRustMappings()
@@ -156,81 +161,7 @@ nnoremap <f10> :VBGstepIn<cr>
 nnoremap <f11> :VBGstepOver<cr>
 nnoremap <f12> :VBGstepOut<cr>
 "<==
-
 {{/if~}}
-"==> Coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" :CocDiagnostics to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-" Stronger `K` - specific to rust
-nnoremap <C-k> :CocCommand rust-analyzer.openDocs<cr>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>a  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>F  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-"<==
 "<==
 
 "==> Custom motions/actions
@@ -242,27 +173,36 @@ Plug 'wellle/targets.vim'
 "<==
 
 "==> Navigation/filesystem
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " FZF
-nnoremap <silent> <leader>e :call fzf#run(fzf#wrap({'source': 'fd --type f'}))<cr>
-nnoremap <silent> <leader>cd :call fzf#run(fzf#wrap({'source': 'fd -H -I --type d', 'sink': 'cd', 'dir': {{#if vim_root_dir}}"{{vim_root_dir}}"{{else}}$HOME{{/if}}}))<cr>
+nnoremap <silent> <leader>e <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>/ <cmd>Telescope live_grep<cr>
+nnoremap <silent> <leader>* <cmd>Telescope grep_string<cr>
+nnoremap <silent> <leader>b <cmd>Telescope buffers<cr>
+nnoremap <silent> <leader>cd <cmd>call v:lua.cd_picker()<cr>
 
-" Swap to a buffer
-nnoremap <leader>b :Buffers<cr>
+lua << EOF
+_G.cd_picker = function()
+  require("telescope.pickers").new({}, {
+    prompt_title = "Change Directory",
+	finder = require("telescope.finders").new_oneshot_job({"fd", "-H", "-I", "--type", "d"}, {}),
+    previewer = nil,
+    sorter = require("telescope.config").values.file_sorter(opts),
+	attach_mappings = function(prompt_bufnr, map)
+		function change_directory()
+			require("telescope.actions").close(prompt_bufnr)
+			vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
+		end
+		map("i", "<cr>", change_directory)
+		return true
+	end
+  }):find()
+end
+EOF
 
-" Stronger search
-{{#if (is_executable "rg")~}}
-nnoremap <silent> <leader>/ :Rg<cr>
-set grepprg=rg\ --vimgrep
-set grepformat=%f:%l:%c:%m
-{{else~}}
-nnoremap <silent> <leader>/ :echoerr "no rg"<cr>
-{{/if~}}
-
-nnoremap <silent> <leader>* :grep <cword><cr>:cw<cr>
+Plug 'tpope/vim-eunuch'
 "<==
 
 "==> Terminal
@@ -286,10 +226,6 @@ augroup OpenTerminal
     au!
     au TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup END
-
-" In fzf windows, esc should go through to the fzf binary
-" and close the window (instead of being mapped to going to normal mode)
-au FileType fzf tnoremap <buffer> <esc> <esc>
 "<==
 
 "==> Org mode
@@ -336,14 +272,133 @@ nnoremap <leader>g <cmd>Git<cr>
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+Plug 'chriskempson/vim-tomorrow-theme'
 "<==
 
-"==> Colorscheme (+ plug#end)
-Plug 'chriskempson/vim-tomorrow-theme'
 call plug#end()
-" This has to happen after plug#end
+
+"==> Post-plugend configuration
 colorscheme Tomorrow-Night
 lua require('orgmode').setup({})
+
+"==> LSP
+lua << EOF
+local nvim_lsp = require('lspconfig')
+nvim_lsp.rust_analyzer.setup{}
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  --buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  --buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  --buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<leader>y', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  --buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  --buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Show signatures
+  require "lsp_signature".on_attach()
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches
+local servers = { 'rust_analyzer' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+
+-- Compe setup
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    nvim_lsp = true;
+  };
+}
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+--This line is important for auto-import
+vim.api.nvim_set_keymap('i', '<cr>', 'compe#confirm("<cr>")', { expr = true })
+vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', { expr = true })
+EOF
+"<==
 "<==
 
 " vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
