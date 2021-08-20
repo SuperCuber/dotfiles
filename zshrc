@@ -103,7 +103,7 @@ function preexec() {
 }
 
 PS1_EXIT_CODE="%F{0}%(?.%K{15}.%K{1}) %? "
-PS1_USERNAME="%F{8}%K{ {{user_color}}} %n "
+PS1_USERNAME="%F{8}%K{ {{user_color}}} %n@%F "
 PS1_PATH="%F{7}%K{8} %(5~@.../%3~@%~) "
 PS1_PROMPT="%F{15}%B%(!.%K{1} # .%K{0} $ )%f%k%b "
 
@@ -132,7 +132,7 @@ function precmd() {
 {{else~}}
 #==> Bash Prompt
 PS1_EXIT_CODE='\[\033[38;5;0m\]\[\033[48;5;15m\] $? '
-PS1_USERNAME='\[\033[38;5;8m\]\[\033[48;5;7m\] \u '
+PS1_USERNAME='\[\033[38;5;8m\]\[\033[48;5;7m\] \u@\h '
 PS1_PATH='\[\033[38;5;7m\]\[\033[48;5;8m\] \w '
 
 PS1_PRE="$PS1_EXIT_CODE$PS1_USERNAME$PS1_PATH"
