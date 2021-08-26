@@ -233,8 +233,8 @@ let g:lightline.tab = {
 
 "==> Misc Plugins
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'tpope/vim-fugitive'
-nnoremap <leader>g <cmd>Git<cr>
+Plug 'TimUntersberger/neogit'
+nnoremap <leader>g <cmd>Neogit kind=split<cr>
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-unimpaired'
 Plug 'kevinhwang91/nvim-bqf'
@@ -250,6 +250,7 @@ colorscheme Tomorrow-Night
 
 lua require('orgmode').setup({})
 lua require('rust-tools').setup({})
+lua require('neogit').setup({})
 
 "==> LSP
 lua << EOF
@@ -291,7 +292,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'tsserver' }
+local servers = { 'rust_analyzer', 'tsserver', 'vimls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
