@@ -56,7 +56,7 @@ set mouse=nvc
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
 " Set font for Nvy
-au VimEnter * if g:nvy==1
+au VimEnter * if exists("g:nvy")
             \ | exe 'set guifont=Hack:h14'
             \ | endif
 "<==
