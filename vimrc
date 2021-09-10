@@ -96,6 +96,11 @@ nnoremap <silent> <leader>k :q!<cr>
 
 " [S]plit line (sister to [J]oin lines)
 nnoremap <silent> S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+" Execute macro over each line of selection
+xnoremap Q :'<,'>:normal @q<CR>
+
+" Change doesn't overwrite clipboard
+nnoremap c "_c
 
 " Easier to type, and I never use the default behavior.
 noremap H ^
