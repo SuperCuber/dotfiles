@@ -113,5 +113,5 @@ white        = "dddddd"
 
 [graphics.variables.font]
 regular = "Ubuntu"
-monospace = "Fira Mono"
+monospace = "Fira Code"
 size = 12
