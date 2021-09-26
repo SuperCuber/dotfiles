@@ -74,6 +74,9 @@ alias gs="git status -sb"
 alias e="exit"
 alias eb="exec {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}}"
 alias vsp="vi -O"
+function did() {
+  sudo $(fc -ln -1)
+}
 #<==
 
 # Prompt git integration
