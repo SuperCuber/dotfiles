@@ -55,9 +55,10 @@ set clipboard=unnamed,unnamedplus
 set mouse=nvc
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 
-" Set font for Nvy
-au VimEnter * if exists("g:nvy")
-            \ | exe 'set guifont=Hack:h14'
+" Turn off ugly gui popupmenu on windows neovim and setup font
+au VimEnter * if exists('g:GuiLoaded')
+            \ | exe 'GuiPopupmenu 0'
+            \ | exe 'GuiFont Hack:h14'
             \ | endif
 "<==
 
