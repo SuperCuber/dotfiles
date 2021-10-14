@@ -1,6 +1,7 @@
 [bar/default]
 fixed-center = true
 bottom = true
+monitor = "{{primary_screen}}"
 
 background = #00000000
 foreground = #{{colors.text}}
