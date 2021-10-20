@@ -151,6 +151,8 @@ function SetPythonMappings()
   execute "nnoremap <leader>r :!python3 % -- "
 endfunction
 "<==
+
+Plug 'leafoftree/vim-vue-plugin'
 "<==
 
 "==> Custom motions/actions
