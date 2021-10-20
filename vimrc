@@ -195,12 +195,7 @@ tnoremap <A-l> <C-\><C-N><C-w>l
 augroup OpenTerminal
     au!
     au TermOpen * setlocal nonumber norelativenumber signcolumn=no
-    au TermOpen * IndentBlanklineDisable
 augroup END
-"<==
-
-"==> Org mode
-Plug 'kristijanhusak/orgmode.nvim'
 "<==
 
 "==> Statusline
@@ -238,12 +233,11 @@ let g:lightline.tab = {
 
 "==> Misc Plugins
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'TimUntersberger/neogit'
-nnoremap <leader>g <cmd>Neogit kind=split<cr>
-Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+nnoremap <leader>g <cmd>Git<cr>
+au FileType fugitive nmap <buffer> <tab> =
 Plug 'tpope/vim-unimpaired'
 Plug 'kevinhwang91/nvim-bqf'
-Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'chriskempson/vim-tomorrow-theme'
 "<==
@@ -253,9 +247,7 @@ call plug#end()
 "==> Post-plugend configuration
 colorscheme Tomorrow-Night
 
-lua require('orgmode').setup({})
 lua require('rust-tools').setup({})
-lua require('neogit').setup({})
 
 "==> LSP
 lua << EOF
