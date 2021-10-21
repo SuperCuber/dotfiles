@@ -153,6 +153,8 @@ endfunction
 "<==
 
 Plug 'leafoftree/vim-vue-plugin'
+Plug 'mattn/emmet-vim'
+imap <C-Tab> <plug>(emmet-expand-abbr)
 "<==
 
 "==> Custom motions/actions
