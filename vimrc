@@ -136,6 +136,7 @@ nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
 Plug 'simrat39/rust-tools.nvim'
 au BufReadPost *.rs call SetRustMappings()
 au BufEnter *.rs call SetRustMappings()
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 
 command! -nargs=* Cargo :Dispatch cargo <args>
 function SetRustMappings()
@@ -284,7 +285,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'rust_analyzer', 'tsserver', 'vimls', 'tsserver' }
+local servers = { 'tsserver', 'vimls', 'tsserver', 'vuels' }
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -295,6 +296,31 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+require('rust-tools').setup {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+        inlay_hints = {
+            show_parameter_hints = true,
+            --parameter_hints_prefix = "",
+            --other_hints_prefix = "",
+        },
+    },
+
+    server = {
+        on_attach = on_attach,
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        }
+    },
+}
 
 local cmp = require'cmp'
 
