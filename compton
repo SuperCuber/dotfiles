@@ -7,7 +7,7 @@ fade-out-step = 0.03;
 use-ewmh-active-win = true;
 blur-background = false;
 blur-kern = "5x5box"
-backend = "glx";
+backend = "xrender";
 blur-background-exclude = [
     "focused",
     "name ~= 'slop'"
