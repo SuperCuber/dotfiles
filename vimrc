@@ -115,6 +115,7 @@ Plug 'neovim/nvim-lspconfig' " Make LSP servers work well
 Plug 'hrsh7th/nvim-cmp' " Autocompletion framework
 Plug 'hrsh7th/cmp-nvim-lsp' " Completion framework <-> LSP
 Plug 'hrsh7th/cmp-buffer' " Completion framework <-> buffer
+Plug 'L3MON4D3/LuaSnip' " Snippets support (mainly for completion)
 
 " Support for various languages
 Plug 'sheerun/vim-polyglot'
@@ -326,14 +327,22 @@ lsp_installer.on_server_ready(function(server)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
+local luasnip = require 'luasnip'
 
 local cmp = require'cmp'
 
 cmp.setup{
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
   mapping = {
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-expand-or-jump', true, true, true), '')
       else
         fallback()
       end
@@ -341,13 +350,15 @@ cmp.setup{
     ['<S-Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>luasnip-jump-prev', true, true, true), '')
       else
         fallback()
       end
     end,
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
   },
   sources = {
     { name = 'nvim_lsp' },
