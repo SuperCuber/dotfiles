@@ -1,0 +1,67 @@
+{
+  "bttv_darkenedMode": true,
+  "bttv_highlightKeywords": "{xxsupercuberxx}",
+  "bttv_settings": {
+    "anonChat": false,
+    "autoTheatreMode": true,
+    "channelPoints": [
+      7,
+      2
+    ],
+    "splitChat": false,
+    "reverseChatDirection": false,
+    "pinnedHighlights": false,
+    "timeoutHighlights": true,
+    "highlightFeedback": false,
+    "chatLayout": 2,
+    "tabCompletionTooltip": false,
+    "tabCompletionEmotePriority": true,
+    "whispers": true,
+    "showDirectoryLiveTab": true,
+    "channelPointsMessageHighlights": true,
+    "clickTwitchEmotes": true,
+    "darkenedMode": true,
+    "friends": true,
+    "primePromotions": false,
+    "hostButton": true,
+    "playerExtensions": false,
+    "clickToPlay": true,
+    "muteInvisiblePlayer": false,
+    "scrollVolumeControl": false,
+    "deletedMessages": 1,
+    "blacklistKeywords": {},
+    "highlightKeywords": {
+      "0": {
+        "id": 0,
+        "type": 0,
+        "status": null,
+        "keyword": "xxsupercuberxx"
+      }
+    },
+    "sidebar": [
+      16,
+      31
+    ],
+    "emotes": [
+      7,
+      0
+    ],
+    "chat": [
+      127,
+      64
+    ],
+    "autoPlay": [
+      0,
+      7
+    ],
+    "usernames": [
+      7,
+      0
+    ],
+    "version": "7.4.14"
+  },
+  "bttv_emotes": {
+    "usageHistory": {},
+    "favorites": []
+  }
+}
