@@ -128,13 +128,13 @@ bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 {{#if primary_screen~}}
 workspace $work1 output {{ primary_screen }}
 workspace "-1" output {{ primary_screen }}
-{{~else~}}
-workspace $work1
 {{~/if}}
 {{#if secondary_screen~}}
 workspace $work3 output {{ secondary_screen }}
 workspace "-2" output {{ secondary_screen }}
 {{~/if}}
+
+$exec i3-msg workspace 1
 
 # oh no someone's looking at my screen
 {{#if (and primary_screen secondary_screen)~}}
