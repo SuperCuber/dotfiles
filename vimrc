@@ -220,7 +220,7 @@ let g:lightline.active = {
 let g:lightline.inactive = {
      \ 'left': [ [ 'relativepath' ] ],
      \ 'right': [ [ 'lineinfo' ] ] }
-let g:lightline.colorscheme = 'Tomorrow_Night'
+let g:lightline.colorscheme = 'kanagawa'
 let g:lightline.mode_map = {
      \ 'n'      : 'N',
      \ 'c'      : 'N',
@@ -248,12 +248,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'kevinhwang91/nvim-bqf'
 
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'rebelot/kanagawa.nvim'
 "<==
 
 call plug#end()
 
 "==> Post-plugend configuration
-colorscheme Tomorrow-Night
+colorscheme kanagawa
 
 lua << EOF
 local nvim_lsp = require('lspconfig')
