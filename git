@@ -9,12 +9,12 @@
 {{/if~}}
 [core]
     autocrlf = input
-    {{~#if (is_executable "delta")}}
+    {{#if (is_executable "delta")}}
     pager = delta
-    {{~/if}}
-    {{~#if (eq dotter.os "windows")}}
+    {{/if}}
+    {{#if (eq dotter.os "windows")}}
     symlinks = true
-    {{~/if}}
+    {{/if}}
 
 {{#if (is_executable "delta")~}}
 [delta]
@@ -24,7 +24,7 @@
     file-style = bold yellow ul
     file-decoration-style = none
 
-{{/if~}}
+{{/if}}
 [help]
     autocorrect = 20
 
