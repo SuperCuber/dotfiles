@@ -1,6 +1,59 @@
-" Plug
-set runtimepath+=~/.vim
-call plug#begin("~/.local/share/nvim/plugged")
+"==> Packer
+lua << EOF
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+
+  -- LSP
+  use 'williamboman/nvim-lsp-installer' -- Install LSP servers
+  use 'neovim/nvim-lspconfig' -- Make LSP servers work well
+  use 'hrsh7th/nvim-cmp' -- Autocompletion framework
+  use 'hrsh7th/cmp-nvim-lsp' -- Completion framework <-> LSP
+  use 'hrsh7th/cmp-buffer' -- Completion framework <-> buffer
+  use 'L3MON4D3/LuaSnip' -- Snippets support (mainly for completion)
+
+  -- Languages
+  use 'sheerun/vim-polyglot'
+  use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
+  use 'tpope/vim-dispatch'
+  use 'radenling/vim-dispatch-neovim'
+  use 'simrat39/rust-tools.nvim'
+  use 'leafoftree/vim-vue-plugin'
+  use 'mattn/emmet-vim'
+
+  -- Motions
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-commentary'
+  use 'tommcdo/vim-lion'
+  use 'wellle/targets.vim'
+
+  -- Bells & Whistles
+  use 'nvim-lua/plenary.nvim'
+  use 'nvim-telescope/telescope.nvim'
+  use 'tpope/vim-eunuch'
+  use 'voldikss/vim-floaterm'
+  use 'itchyny/lightline.vim'
+  use 'yuttie/comfortable-motion.vim'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-unimpaired'
+  use 'kevinhwang91/nvim-bqf'
+
+  -- Colors
+  use 'chriskempson/vim-tomorrow-theme'
+  use 'rebelot/kanagawa.nvim'
+
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
+EOF
+"<==
 
 "==> Non-Plugin Settings
 syntax enable
@@ -109,24 +162,6 @@ noremap L $
 "<==
 
 "==> Completion/Language
-" LSP
-Plug 'williamboman/nvim-lsp-installer' " Install LSP servers
-Plug 'neovim/nvim-lspconfig' " Make LSP servers work well
-Plug 'hrsh7th/nvim-cmp' " Autocompletion framework
-Plug 'hrsh7th/cmp-nvim-lsp' " Completion framework <-> LSP
-Plug 'hrsh7th/cmp-buffer' " Completion framework <-> buffer
-Plug 'L3MON4D3/LuaSnip' " Snippets support (mainly for completion)
-
-" Support for various languages
-Plug 'sheerun/vim-polyglot'
-
-" Highlighting
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-" Async compiling/testing
-Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
-
 " Handlebars
 au BufReadPost *.html.hbs set filetype=html
 
@@ -134,7 +169,6 @@ au BufReadPost *.html.hbs set filetype=html
 nnoremap <leader>m :execute "Make" \| redraw! \| cc<CR>
 
 "==> Rust
-Plug 'simrat39/rust-tools.nvim'
 au BufReadPost *.rs call SetRustMappings()
 au BufEnter *.rs call SetRustMappings()
 autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
@@ -156,35 +190,18 @@ function SetPythonMappings()
 endfunction
 "<==
 
-Plug 'leafoftree/vim-vue-plugin'
-Plug 'mattn/emmet-vim'
 imap <C-Tab> <plug>(emmet-expand-abbr)
 "<==
 
-"==> Custom motions/actions
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tommcdo/vim-lion'
-Plug 'wellle/targets.vim'
-"<==
-
-"==> Navigation/filesystem
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" FZF
+"==> Telescope
 nnoremap <silent> <leader>e <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>/ <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>* <cmd>Telescope grep_string<cr>
 nnoremap <silent> <leader>b <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>cd <cmd>call v:lua.cd_picker()<cr>
-
-Plug 'tpope/vim-eunuch'
 "<==
 
 "==> Terminal
-Plug 'voldikss/vim-floaterm'
 let g:floaterm_wintype="vsplit"
 let g:floaterm_width=0.3
 let g:floaterm_autohide=0
@@ -207,7 +224,6 @@ augroup END
 "<==
 
 "==> Statusline
-Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {}
 let g:lightline.active = {
@@ -240,18 +256,9 @@ let g:lightline.tab = {
 "<==
 
 "==> Misc Plugins
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'tpope/vim-fugitive'
 nnoremap <leader>g <cmd>Git<cr>
 au FileType fugitive nmap <buffer> <tab> =
-Plug 'tpope/vim-unimpaired'
-Plug 'kevinhwang91/nvim-bqf'
-
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'rebelot/kanagawa.nvim'
 "<==
-
-call plug#end()
 
 "==> Post-plugend configuration
 colorscheme kanagawa
