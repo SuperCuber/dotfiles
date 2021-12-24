@@ -36,11 +36,11 @@ vim.g.mapleader = ","
 nnoremap("<Leader><Cr>", "<Cmd>noh<Cr>")
 
 -- Open vimrc editing workspace
-{{#if (eq dotter.os "unix")~}}
+--{{#if (eq dotter.os "unix")}}
 nmap("<Leader>vrc", ":tabedit ~/.dotfiles/nvim/init.lua<Cr><C-t>cd ~/.dotfiles; c; ./dotter watch -v<Cr><A-h>")
-{{else~}}
+--{{else}}
 nmap("<Leader>vrc", ":tabedit ~/.dotfiles/nvim/init.lua<Cr><C-t>" .. vim.env.HOMEDRIVE .. "<Cr>cd " .. vim.env.HOMEPATH .. "\\.dotfiles<Cr>dotter watch -v<Cr><A-h>")
-{{/if~}}
+--{{/if}}
 -- Source vimrc
 nnoremap("<Leader>src", ":luafile $MYVIMRC<cr>")
 
@@ -311,7 +311,7 @@ _G.cd_picker = function()
     previewer = nil,
     sorter = require("telescope.config").values.file_sorter(opts),
     attach_mappings = function(prompt_bufnr, map)
-      function change_directory()
+      local function change_directory()
         actions.close(prompt_bufnr)
         vim.api.nvim_command("cd " .. require("telescope.actions.state").get_selected_entry()[1])
       end
