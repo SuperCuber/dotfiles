@@ -78,7 +78,6 @@ xfce4_terminal_accels = "~/.config/xfce4/terminal/accels.scm"
 
 [vim.files]
 vimrc = "~/.config/nvim/init.vim"
-coc_settings = "~/.config/nvim/coc-settings.json"
 
 [graphics.variables.colors]
 background = "222222"

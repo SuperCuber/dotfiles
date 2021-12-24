@@ -1,4 +1,0 @@
-{
-    "rust-analyzer.checkOnSave.command": "clippy",
-    "coc.preferences.useQuickfixForLocations": true
-}
