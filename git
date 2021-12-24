@@ -12,6 +12,9 @@
     {{~#if (is_executable "delta")}}
     pager = delta
     {{~/if}}
+    {{~#if (eq dotter.os "windows")}}
+    symlinks = true
+    {{~/if}}
 
 {{#if (is_executable "delta")~}}
 [delta]

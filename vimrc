@@ -317,7 +317,7 @@ lsp_installer.on_server_ready(function(server)
     server:setup {
       on_attach = on_attach,
       flags = {
-        debounce_text_changes = 150,
+        debounce_text_changes = server.name == "volar" and 500 or 150,
       },
       capabilities = capabilities,
     }
