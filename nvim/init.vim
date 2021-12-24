@@ -135,9 +135,9 @@ let g:mapleader = ","
 nnoremap <silent> <leader><cr> :noh<cr>
 " Open vimrc editing workspace
 {{#if (eq dotter.os "unix")~}}
-nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
+nmap <silent> <leader>vrc :tabedit ~/.dotfiles/nvim/init.vim<cr><c-t>cd ~/.dotfiles; c; ./dotter watch -v<cr><A-h>
 {{else~}}
-execute "nmap <silent> <leader>vrc :tabedit ~/.dotfiles/vimrc<cr><c-t>" . $HOMEDRIVE . "<cr>cd " . $HOMEPATH . "\\.dotfiles<cr>dotter watch -v<cr><A-h>"
+execute "nmap <silent> <leader>vrc :tabedit ~/.dotfiles/nvim/init.vim<cr><c-t>" . $HOMEDRIVE . "<cr>cd " . $HOMEPATH . "\\.dotfiles<cr>dotter watch -v<cr><A-h>"
 {{/if~}}
 nnoremap <silent> <leader>src :source $MYVIMRC<cr>
 " Save

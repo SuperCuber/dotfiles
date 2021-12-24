@@ -1,5 +1,5 @@
 [vim.files]
-vimrc = "~/AppData/Local/nvim/init.vim"
+nvim = "~/AppData/Local/nvim"
 
 [bash.files.zprofile]
 target = "~/.bash_profile"
