@@ -5,8 +5,8 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 
 command! -nargs=* Cargo :Dispatch cargo <args>
 function SetRustMappings()
-  nnoremap <buffer> <silent> <leader>m :Cargo clippy<cr>
-  nnoremap <buffer> <silent> <leader>t :Cargo test<cr>
-  execute "nnoremap <silent> <leader>r :FloatermNew cargo run -- "
+  nnoremap <buffer> <silent> ,m :Cargo clippy<cr>
+  nnoremap <buffer> <silent> ,t :Cargo test<cr>
+  execute "nnoremap <silent> ,r :FloatermNew cargo run -- "
 endfunction
 ]]
