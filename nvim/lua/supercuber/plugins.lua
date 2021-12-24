@@ -51,3 +51,8 @@ require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+require("supercuber.plugins.telescope")
+require("supercuber.plugins.floaterm")
+require("supercuber.plugins.lightline")
+require("supercuber.plugins.lsp")
