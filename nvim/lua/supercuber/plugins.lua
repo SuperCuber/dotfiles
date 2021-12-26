@@ -53,6 +53,10 @@ require('packer').startup(function(use)
   end
 end)
 
+
+-- Fugitive
+vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
+
 require("supercuber.plugins.telescope")
 require("supercuber.plugins.floaterm")
 require("supercuber.plugins.lightline")
