@@ -42,6 +42,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
   use 'kevinhwang91/nvim-bqf'
+  use 'junegunn/goyo.vim'
 
   -- Colors
   use 'chriskempson/vim-tomorrow-theme'

@@ -19,6 +19,10 @@ vim.g.lightline = {
             { "lineinfo" },
         },
     },
+    tabline = {
+        left = { { "tabs" } },
+        right = { },
+    },
     colorscheme = "kanagawa",
     mode_map = {
     ["n"    ]  = "N",
@@ -34,11 +38,7 @@ vim.g.lightline = {
     ["<C-s>"]  = "SB",
     },
     tab = {
-        active = {
-            { "filename", "modified" },
-        },
-        inactive = {
-            { "filename", "modified" },
-        },
+        active ={ "filename", "modified" },
+        inactive = { "filename", "modified" },
     },
 }
