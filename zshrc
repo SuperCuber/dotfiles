@@ -1,4 +1,4 @@
-{{#if dotter.packages.zsh~}}
+{{#if dotter.packages.zsh}}
 #==> Zsh options
 # Prompt
 setopt PROMPT_SUBST
@@ -15,18 +15,18 @@ SAVEHIST=1000000000
 setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 #<==
 
-{{/if~}}
+{{/if}}
 #==> Aliases
 # ls
-{{#if (is_executable "exa")~}}
+{{#if (is_executable "exa")}}
 alias l="exa --time-style long-iso --color=auto -F"
 alias ll="l -Fahl"
 alias la="l -a"
-{{else~}}
+{{else}}
 alias l="ls --color=auto -F"
 alias ll="l -Ahl"
 alias la="l -a"
-{{/if~}}
+{{/if}}
 
 # Clearing screen
 alias c="echo -ne '\033c';"
@@ -86,7 +86,7 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM=verbose
 . ~/.git_prompt
 
-{{#if dotter.packages.zsh~}}
+{{#if dotter.packages.zsh}}
 #==> ZSH Prompt
 function displaytime {
   local T=$1
@@ -132,7 +132,7 @@ function precmd() {
 }
 #<==
 
-{{else~}}
+{{else}}
 #==> Bash Prompt
 PS1_EXIT_CODE='\[\033[38;5;0m\]\[\033[48;5;15m\] $? '
 PS1_USERNAME='\[\033[38;5;8m\]\[\033[48;5;7m\] \u@\h '
@@ -145,49 +145,49 @@ PS1_POST='\[$(tput bold)\]\[\033[48;5;0m\] \\$ \[$(tput sgr0)\]'
 PROMPT_COMMAND="__git_ps1 '$PS1_PRE' '$PS1_POST' '$PS1_GIT'"
 #<==
 
-{{/if~}}
+{{/if}}
 #==> Misc
 # Dircolors
 eval `dircolors ~/.dir_colors`
 
 # CD
-{{#if (is_executable "zoxide")~}}
+{{#if (is_executable "zoxide")}}
 eval "$(zoxide init {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}})"
-{{/if~}}
+{{/if}}
 cd ()
 {
     # Pass all arguments to cd
     {{#if (is_executable "zoxide")}}z{{else}}builtin cd{{/if}} "$@" || return $?
     # If everything OK, print ls and todo
     l
-    {{#if (is_executable "todo")~}}
+    {{#if (is_executable "todo")}}
     todo
-    {{/if~}}
+    {{/if}}
 }
 
-{{#if (is_executable "bat")~}}
+{{#if (is_executable "bat")}}
 alias cat="bat"
 
-{{/if~}}
-{{#if (is_executable "fzf")~}}
+{{/if}}
+{{#if (is_executable "fzf")}}
 j ()  # Navigate with fzf
 {
-    {{#if (is_executable fd)~}}
+    {{#if (is_executable fd)}}
     find_command='fd . ~ --type d'
-    {{else~}}
+    {{else}}
     # Settle for not hiding gitignored stuff
     find_command='find ~ -type d'
-    {{/if~}}
+    {{/if}}
     dir=$(eval $find_command | fzf --preview 'tree -CF -L 2 {+1}')
     fzf_return=$?
     [ $fzf_return = 0 ] && cd $dir || return $fzf_return
 }
 
-{{/if~}}
-{{#if (is_executable "thefuck")~}}
+{{/if}}
+{{#if (is_executable "thefuck")}}
 eval $(thefuck --alias)
 
-{{/if~}}
+{{/if}}
 # Terminal color
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH

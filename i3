@@ -14,11 +14,11 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d $exec "rofi -show run"
 
 # Screenshot
-{{#if owo_key~}}
+{{#if owo_key}}
 bindsym Print $exec "owo --screenshot --clipboard --associated-uploads --key {{owo_key}}"
-{{~else~}}
+{{else}}
 bindsym Print $exec "i3-nagbar -m 'No owo key configured'"
-{{~/if}}
+{{/if}}
 
 # Terminal
 bindsym $mod+Return $exec "{{ terminal }}"
@@ -125,23 +125,23 @@ bindsym $mod+Shift+8 move container to workspace $work8; workspace $work8
 bindsym $mod+Shift+9 move container to workspace $work9; workspace $work9
 
 # initial workspace configuration
-{{#if primary_screen~}}
+{{#if primary_screen}}
 workspace $work1 output {{ primary_screen }}
 workspace "-1" output {{ primary_screen }}
-{{~/if}}
-{{#if secondary_screen~}}
+{{/if}}
+{{#if secondary_screen}}
 workspace $work3 output {{ secondary_screen }}
 workspace "-2" output {{ secondary_screen }}
-{{~/if}}
+{{/if}}
 
 $exec i3-msg workspace 1
 
 # oh no someone's looking at my screen
-{{#if (and primary_screen secondary_screen)~}}
+{{#if (and primary_screen secondary_screen)}}
 bindsym $mod+q workspace "-1"; workspace "-2"
-{{~else~}}
+{{else}}
 bindsym $mod+q workspace "-1"
-{{~/if}}
+{{/if}}
 #<==
 
 #==> Assigns

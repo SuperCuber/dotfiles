@@ -1,4 +1,4 @@
-{{#if (and email git_username)~}}
+{{#if (and email git_username)}}
 [user]
     email = {{email}}
     name = {{git_username}}
@@ -6,7 +6,7 @@
 [credential]
     helper = store
 
-{{/if~}}
+{{/if}}
 [core]
     autocrlf = input
     {{#if (is_executable "delta")}}
@@ -16,7 +16,7 @@
     symlinks = true
     {{/if}}
 
-{{#if (is_executable "delta")~}}
+{{#if (is_executable "delta")}}
 [delta]
     line-numbers = true
     hunk-header-style = omit
