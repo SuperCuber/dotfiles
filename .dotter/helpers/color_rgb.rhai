@@ -31,7 +31,7 @@ fn hexToNum(hex) {
 
     let power = 0;
     let num = 0;
-    for char in reverse(hex) {
+    for char in reverse(hex).chars() {
         num += hexValue[char.to_string()] * (base**power);
         power += 1;
     }
