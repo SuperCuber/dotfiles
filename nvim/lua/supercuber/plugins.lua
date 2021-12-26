@@ -53,6 +53,7 @@ require('packer').startup(function(use)
   end
 end)
 
+vim.cmd [[au BufWritePost plugins.lua execute "luafile %" | PackerSync]]
 
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
