@@ -3,6 +3,6 @@ au BufReadPost *.py call SetPythonMappings()
 au BufEnter *.py call SetPythonMappings()
 
 function SetPythonMappings()
-  execute "nnoremap <leader>r :!python3 % -- "
+  execute "nnoremap ,r :!python3 % -- "
 endfunction
 ]]
