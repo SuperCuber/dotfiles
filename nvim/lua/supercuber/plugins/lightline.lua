@@ -23,7 +23,7 @@ vim.g.lightline = {
         left = { { "tabs" } },
         right = { },
     },
-    colorscheme = "kanagawa",
+    colorscheme = "Tomorrow_Night",
     mode_map = {
     ["n"    ]  = "N",
     ["c"    ]  = "N",

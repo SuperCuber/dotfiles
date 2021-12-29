@@ -3,7 +3,7 @@ require('kanagawa').setup({
     keywordStyle = "bold",
     statementStyle = "bold",
     variablebuiltinStyle = "bold",
-    specialReturn = false,       -- special highlight for the return keyword
-    specialException = false,    -- special highlight for exception handling keywords
+    specialReturn = false,
+    specialException = false,
 })
 vim.cmd [[colorscheme kanagawa]]
