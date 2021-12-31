@@ -37,7 +37,7 @@ require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'tpope/vim-eunuch'
   use 'voldikss/vim-floaterm'
-  use 'itchyny/lightline.vim'
+  use 'nvim-lualine/lualine.nvim'
   use 'yuttie/comfortable-motion.vim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
@@ -45,7 +45,6 @@ require('packer').startup(function(use)
   use 'junegunn/goyo.vim'
 
   -- Colors
-  use 'chriskempson/vim-tomorrow-theme'
   use 'rebelot/kanagawa.nvim'
 
   if packer_bootstrap then
@@ -58,7 +57,7 @@ vim.cmd [[au BufWritePost plugins.lua execute "luafile %" | PackerSync]]
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
-require("supercuber.plugins.telescope")
 require("supercuber.plugins.floaterm")
-require("supercuber.plugins.lightline")
 require("supercuber.plugins.lsp")
+require("supercuber.plugins.lualine")
+require("supercuber.plugins.telescope")

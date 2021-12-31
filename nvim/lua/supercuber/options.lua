@@ -19,7 +19,6 @@ vim.opt.errorbells = false
 vim.opt.belloff = "all"
 vim.opt.showcmd = true
 vim.opt.scrolloff = 7
-vim.opt.statusline = "%f %y%1*%m%*"
 vim.opt.laststatus = 2
 vim.opt.title = true
 vim.opt.titlestring = "NVIM: %F"
