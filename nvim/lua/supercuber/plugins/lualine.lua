@@ -49,8 +49,6 @@ function pretty_filename:init(options)
       self.options
     ),
   }
-  print(vim.inspect(self.highlight_groups))
-
 end
 
 function pretty_filename:draw(_)
