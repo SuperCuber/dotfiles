@@ -1,23 +1,18 @@
 local util = require("supercuber.util")
-local nvim_lsp = require('lspconfig')
 
 -- Enable completion triggered by <c-x><c-o>
 vim.opt.omnifunc = 'v:lua.vim.lsp.omnifunc'
-
--- Mappings.
-local opts = { noremap=true, silent=true }
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 util.nnoremap('gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
 util.nnoremap('K', '<cmd>lua vim.lsp.buf.hover()<CR>')
 util.nnoremap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 util.nnoremap('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-util.nnoremap(',y', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
 util.nnoremap(',rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 util.nnoremap(',a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
 util.nnoremap('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-util.nnoremap('[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-util.nnoremap(']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+util.nnoremap('[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+util.nnoremap(']g', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 util.nnoremap(',f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -62,10 +57,17 @@ lsp_installer.on_server_ready(function(server)
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
 
+-- Popup on cursor hold
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = false,
+    float = { border = "single" },
+    update_in_insert = true,
+})
+
+-- Completion
 local luasnip = require 'luasnip'
-
 local cmp = require'cmp'
-
 cmp.setup{
   snippet = {
     expand = function(args)

@@ -52,7 +52,8 @@ require('packer').startup(function(use)
   end
 end)
 
-vim.cmd [[au BufWritePost plugins.lua execute "luafile %" | PackerSync]]
+vim.cmd [[command! PackerConfigReload execute "luafile %" | PackerSync]]
+vim.cmd [[au BufEnter plugins.lua nnoremap <F5> <cmd>PackerConfigReload<CR>]]
 
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
