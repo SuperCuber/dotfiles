@@ -8,12 +8,14 @@
 
 {{/if}}
 [core]
-    autocrlf = true
     {{#if (is_executable "delta")}}
     pager = delta
     {{/if}}
     {{#if (eq dotter.os "windows")}}
     symlinks = true
+    autocrlf = true
+    {{else}}
+    autocrlf = input
     {{/if}}
 
 {{#if (is_executable "delta")}}
