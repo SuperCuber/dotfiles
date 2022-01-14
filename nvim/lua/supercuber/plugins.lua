@@ -22,7 +22,6 @@ require('packer').startup(function(use)
   use 'radenling/vim-dispatch-neovim'
   use 'simrat39/rust-tools.nvim'
   use 'leafoftree/vim-vue-plugin'
-  use 'mattn/emmet-vim'
   use "folke/lua-dev.nvim"
 
   -- Motions
