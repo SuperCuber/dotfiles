@@ -17,7 +17,7 @@ require('packer').startup(function(use)
 
   -- Languages
   use 'sheerun/vim-polyglot'
-  use 'nvim-treesitter/nvim-treesitter' --, {'do': ':TSUpdate'}
+  use 'nvim-treesitter/nvim-treesitter'
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
   use 'simrat39/rust-tools.nvim'
@@ -28,7 +28,7 @@ require('packer').startup(function(use)
   -- Motions
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  use 'tpope/vim-commentary'
+  use 'numToStr/Comment.nvim'
   use 'tommcdo/vim-lion'
   use 'wellle/targets.vim'
 
@@ -58,6 +58,9 @@ vim.cmd [[au BufEnter plugins.lua nnoremap <F5> <cmd>PackerConfigReload<CR>]]
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
+require("Comment").setup()
+
+require("supercuber.plugins.treesitter")
 require("supercuber.plugins.floaterm")
 require("supercuber.plugins.lsp")
 require("supercuber.plugins.lualine")

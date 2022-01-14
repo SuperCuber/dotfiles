@@ -8,7 +8,7 @@
 
 {{/if}}
 [core]
-    autocrlf = input
+    autocrlf = true
     {{#if (is_executable "delta")}}
     pager = delta
     {{/if}}
