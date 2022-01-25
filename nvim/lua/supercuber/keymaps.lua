@@ -1,11 +1,5 @@
 local util = require("supercuber.util")
 
--- Escape from insert
-util.inoremap("jk", "<Esc>")
-util.inoremap("JK", "<Esc>")
-util.inoremap("kj", "<Esc>")
-util.inoremap("KJ", "<Esc>")
-
 -- Move around windows
 util.nnoremap("<A-h>", "<C-w>h")
 util.nnoremap("<A-j>", "<C-w>j")
