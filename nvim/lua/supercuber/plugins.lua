@@ -41,7 +41,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
   use 'kevinhwang91/nvim-bqf'
-  use 'junegunn/goyo.vim'
+  use 'j-hui/fidget.nvim'
 
   -- Colors
   use 'rebelot/kanagawa.nvim'
@@ -57,8 +57,11 @@ vim.cmd [[au BufEnter plugins.lua nnoremap <F5> <cmd>PackerConfigReload<CR>]]
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
+-- Setup
+require"fidget".setup{text = {spinner = "dots"}}
 require("Comment").setup()
 
+-- Included
 require("supercuber.plugins.treesitter")
 require("supercuber.plugins.floaterm")
 require("supercuber.plugins.lsp")
