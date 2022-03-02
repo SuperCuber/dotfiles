@@ -51,6 +51,17 @@ require('packer').startup(function(use)
   end
 end)
 
+-- Lua plugin dev
+P = function(v)
+  print(vim.inspect(v))
+  return v
+end
+
+R = function(name)
+  require("plenary.reload").reload_module(name)
+  return require(name)
+end
+
 vim.cmd [[command! PackerConfigReload execute "luafile %" | PackerSync]]
 vim.cmd [[au BufEnter plugins.lua nnoremap <F5> <cmd>PackerConfigReload<CR>]]
 
