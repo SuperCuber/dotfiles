@@ -8,12 +8,15 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- LSP
-  use 'williamboman/nvim-lsp-installer' -- Install LSP servers
-  use 'neovim/nvim-lspconfig' -- Make LSP servers work well
-  use 'hrsh7th/nvim-cmp' -- Autocompletion framework
-  use 'hrsh7th/cmp-nvim-lsp' -- Completion framework <-> LSP
-  use 'hrsh7th/cmp-buffer' -- Completion framework <-> buffer
-  use 'L3MON4D3/LuaSnip' -- Snippets support (mainly for completion)
+  use 'williamboman/nvim-lsp-installer'
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-path'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
 
   -- Languages
   use 'sheerun/vim-polyglot'
@@ -22,7 +25,7 @@ require('packer').startup(function(use)
   use 'radenling/vim-dispatch-neovim'
   use 'simrat39/rust-tools.nvim'
   use 'leafoftree/vim-vue-plugin'
-  use "folke/lua-dev.nvim"
+  use 'folke/lua-dev.nvim'
 
   -- Motions
   use 'tpope/vim-repeat'
@@ -63,7 +66,12 @@ R = function(name)
 end
 
 vim.cmd [[command! PackerConfigReload execute "luafile %" | PackerSync]]
-vim.cmd [[au BufEnter plugins.lua nnoremap <F5> <cmd>PackerConfigReload<CR>]]
+vim.cmd [[
+augroup SupercuberPlugins
+  au!
+  au BufEnter plugins.lua nnoremap <buffer> <F5> <cmd>PackerConfigReload<CR>
+augroup END
+]]
 
 -- Fugitive
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
@@ -78,3 +86,4 @@ require("supercuber.plugins.floaterm")
 require("supercuber.plugins.lsp")
 require("supercuber.plugins.lualine")
 require("supercuber.plugins.telescope")
+require("supercuber.plugins.luasnip")
