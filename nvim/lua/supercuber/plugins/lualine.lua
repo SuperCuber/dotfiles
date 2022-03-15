@@ -28,7 +28,7 @@ function pretty_filename:init(options)
   pretty_filename.super.init(self, options)
   local stem = utils.extract_color_from_hllist(
     'fg',
-    { 'Normal' },
+    { 'Bold' },
     '#ffffff'
   )
   local rest = utils.extract_color_from_hllist(

@@ -45,6 +45,14 @@ require('packer').startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'kevinhwang91/nvim-bqf'
   use 'j-hui/fidget.nvim'
+  use { 'echasnovski/mini.nvim', branch = 'stable' }
+  use { 'elihunter173/dirbuf.nvim',
+    setup = function()
+      vim.g.loaded_netrwPlugin = 1
+      vim.g.loaded_netrw = 1
+    end
+  }
+  use 'tversteeg/registers.nvim'
 
   -- Colors
   use 'rebelot/kanagawa.nvim'
@@ -65,6 +73,7 @@ R = function(name)
   return require(name)
 end
 
+-- Easily reload this file
 vim.cmd [[command! PackerConfigReload execute "luafile %" | PackerSync]]
 vim.cmd [[
 augroup SupercuberPlugins
@@ -77,13 +86,14 @@ augroup END
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
 -- Setup
-require"fidget".setup{text = {spinner = "dots"}}
+require("fidget").setup{text = {spinner = "dots"}}
 require("Comment").setup()
 
 -- Included
-require("supercuber.plugins.treesitter")
 require("supercuber.plugins.floaterm")
 require("supercuber.plugins.lsp")
 require("supercuber.plugins.lualine")
-require("supercuber.plugins.telescope")
 require("supercuber.plugins.luasnip")
+require("supercuber.plugins.mini")
+require("supercuber.plugins.telescope")
+require("supercuber.plugins.treesitter")
