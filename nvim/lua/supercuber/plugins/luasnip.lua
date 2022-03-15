@@ -27,7 +27,7 @@ function M.prev()
 end
 
 function M.list()
-    if ls.choice_active(-1) then
+    if ls.choice_active() then
         ls.change_choice(1)
     end
 end
@@ -44,8 +44,6 @@ util.nnoremap(",,s", "<cmd>lua R('supercuber.plugins.luasnip')<cr>")
 
 ls.snippets = {
     all = {
-    },
-    lua = {
     },
 }
 
