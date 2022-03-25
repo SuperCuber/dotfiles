@@ -1,7 +1,9 @@
 vim.cmd [[
-au BufReadPost *.rs call SetRustMappings()
-au BufEnter *.rs call SetRustMappings()
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+augroup SupercuberRust
+  au!
+  au BufReadPost *.rs call SetRustMappings()
+  au BufEnter *.rs call SetRustMappings()
+augroup END
 
 command! -nargs=* Cargo :Dispatch cargo <args>
 function SetRustMappings()
