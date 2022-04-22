@@ -60,7 +60,8 @@ vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
 vim.cmd [[
 au VimEnter * if exists('g:GuiLoaded')
             \ | exe 'GuiPopupmenu 0'
-            \ | exe 'GuiFont Hack:h14'
+            \ | exe 'GuiTabline 0'
+            \ | exe 'GuiFont Iosevka:h14'
             \ | endif
 ]]
 

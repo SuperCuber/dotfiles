@@ -8,6 +8,7 @@ ls.config.set_config {
     updateevents = "TextChanged, TextChangedI",
 }
 
+
 -- Expand/jump
 util.inoremap("<c-j>", "<cmd>lua require'supercuber.plugins.luasnip'.next()<cr>")
 util.inoremap("<c-k>", "<cmd>lua require'supercuber.plugins.luasnip'.prev()<cr>")
@@ -37,14 +38,32 @@ util.nnoremap(",,s", "<cmd>lua R('supercuber.plugins.luasnip')<cr>")
 
 -- Snippets
 
--- local s = ls.s
--- local fmt = require "luasnip.extras.fmt".fmt
+local s = ls.s
+local i = ls.insert_node
+local t = ls.text_node
+local c = ls.choice_node
+local fmt = require "luasnip.extras.fmt".fmt
 -- local i = ls.insert_node
 -- local xs = require "luasnip.extras"
 
-ls.snippets = {
-    all = {
-    },
-}
+-- https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
+ls.add_snippets("vue", {
+    s("vue", fmt([[
+        <template>
+        {}
+        </template>
+
+        <script{}>
+        </script>
+        ]],
+        {
+            i(0),
+            c(1, {
+                t(' setup lang="ts"'),
+                t(''),
+            })
+        }
+    ))
+})
 
 return M
