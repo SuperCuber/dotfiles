@@ -17,45 +17,40 @@ util.nnoremap(',f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  if server.name == "rust_analyzer" then
-    require("rust-tools").setup {
-      tools = {
-          autoSetHints = true,
-          hover_with_actions = true,
-          inlay_hints = {
-              show_parameter_hints = true,
-          },
-      },
-
-      server = {
-          cmd = server:get_default_options().cmd,
-          settings = {
-              -- to enable rust-analyzer settings visit:
-              -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-              ["rust-analyzer"] = {
-                  checkOnSave = {
-                      command = "clippy"
-                  },
-              }
-          }
-      },
-    }
-  elseif server.name == "sumneko_lua" then
-      server:setup(require("lua-dev").setup())
-  else
-    server:setup {
+require("nvim-lsp-installer").setup{}
+local lspconfig = require("lspconfig")
+local servers = { 'pyright', 'tsserver', 'vimls', 'volar' }
+for _, lsp in pairs(servers) do
+  lspconfig[lsp].setup {
       flags = {
-        debounce_text_changes = server.name == "volar" and 500 or 150,
+        debounce_text_changes = 150,
       },
       capabilities = capabilities,
+  }
+end
+-- Rust
+require("rust-tools").setup {
+  tools = {
+    autoSetHints = true,
+    hover_with_actions = true,
+    inlay_hints = {
+      show_parameter_hints = true,
+    },
+  },
+  server = {
+    settings = {
+      -- to enable rust-analyzer settings visit:
+      -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy"
+        },
+      }
     }
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
+  },
+}
+-- Lua
+lspconfig.sumneko_lua.setup(require('lua-dev').setup())
 
 -- Popup on cursor hold
 vim.diagnostic.config({
