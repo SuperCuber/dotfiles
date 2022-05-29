@@ -30,7 +30,6 @@ require('packer').startup(function(use)
   -- Motions
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  use 'numToStr/Comment.nvim'
   use 'tommcdo/vim-lion'
   use 'wellle/targets.vim'
 
@@ -46,6 +45,7 @@ require('packer').startup(function(use)
   use 'kevinhwang91/nvim-bqf'
   use 'j-hui/fidget.nvim'
   use { 'echasnovski/mini.nvim', branch = 'stable' }
+  use 'JoosepAlviste/nvim-ts-context-commentstring' -- for mini.nvim's commenting
   use { 'elihunter173/dirbuf.nvim',
     setup = function()
       vim.g.loaded_netrwPlugin = 1
@@ -87,7 +87,6 @@ vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
 -- Setup
 require("fidget").setup{text = {spinner = "dots"}}
-require("Comment").setup()
 
 -- Included
 require("supercuber.plugins.floaterm")

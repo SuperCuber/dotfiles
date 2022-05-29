@@ -53,13 +53,13 @@ ls.add_snippets("vue", {
         {}
         </template>
 
-        <script{}>
+        <script setup{}>
         </script>
         ]],
         {
             i(0),
             c(1, {
-                t(' setup lang="ts"'),
+                t(' lang="ts"'),
                 t(''),
             })
         }
