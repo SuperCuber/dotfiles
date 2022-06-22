@@ -1,7 +1,7 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 require('packer').startup(function(use)
@@ -26,6 +26,7 @@ require('packer').startup(function(use)
   use 'simrat39/rust-tools.nvim'
   use 'leafoftree/vim-vue-plugin'
   use 'folke/lua-dev.nvim'
+  use 'windwp/nvim-ts-autotag'
 
   -- Motions
   use 'tpope/vim-repeat'
@@ -86,7 +87,7 @@ augroup END
 vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
 
 -- Setup
-require("fidget").setup{text = {spinner = "dots"}}
+require("fidget").setup { text = { spinner = "dots" } }
 
 -- Included
 require("supercuber.plugins.floaterm")

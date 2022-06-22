@@ -1,8 +1,8 @@
 require('kanagawa').setup({
-    commentStyle = "NONE",
-    keywordStyle = "bold",
-    statementStyle = "bold",
-    variablebuiltinStyle = "bold",
+    commentStyle = {},
+    keywordStyle = { bold = true },
+    statementStyle = { bold = true },
+    variablebuiltinStyle = { bold = true },
     specialReturn = false,
     specialException = false,
 })
