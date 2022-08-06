@@ -34,7 +34,7 @@ function M.list()
 end
 
 -- Reload
-util.nnoremap(",,s", "<cmd>lua R('supercuber.plugins.luasnip')<cr>")
+util.nnoremap(",,s", "<cmd>lua R('luasnip');R('supercuber.plugins.luasnip')<cr>")
 
 -- Snippets
 
@@ -42,6 +42,7 @@ local s = ls.s
 local i = ls.insert_node
 local t = ls.text_node
 local c = ls.choice_node
+local f = ls.function_node
 local fmt = require "luasnip.extras.fmt".fmt
 -- local i = ls.insert_node
 -- local xs = require "luasnip.extras"
@@ -62,6 +63,22 @@ ls.add_snippets("vue", {
                 t(' lang="ts"'),
                 t(''),
             })
+        }
+    ))
+})
+
+ls.add_snippets("typescriptreact", {
+    s("state", fmt([[
+            const [{}, set{}] = useState<{}>({}){}
+        ]],
+        {
+            i(1),
+            f(function(args, snip)
+                return args[1][1]:gsub("^.", string.upper)
+            end, {1}),
+            i(2),
+            i(3),
+            i(0),
         }
     ))
 })

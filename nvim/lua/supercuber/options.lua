@@ -31,6 +31,7 @@ vim.opt.relativenumber = true
 -- Inserting
 vim.opt.backspace = "eol,indent,start,nostop"
 vim.opt.whichwrap = ""
+
 -- Backups
 vim.opt.backup = false
 vim.opt.writebackup = false
