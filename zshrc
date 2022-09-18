@@ -148,7 +148,7 @@ PROMPT_COMMAND="__git_ps1 '$PS1_PRE' '$PS1_POST' '$PS1_GIT'"
 {{/if}}
 #==> Misc
 # Dircolors
-eval `dircolors ~/.dir_colors`
+eval `{{#if (is_executable "dircolors")}}dircolors{{else}}gdircolors{{/if}} ~/.dir_colors`
 
 # CD
 {{#if (is_executable "zoxide")}}
@@ -192,5 +192,8 @@ eval $(thefuck --alias)
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
 #<==
+
+# Local zshrc
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
