@@ -25,6 +25,7 @@
     syntax-theme = zenburn
     file-style = bold yellow ul
     file-decoration-style = none
+    side-by-side = true
 
 {{/if}}
 [help]
