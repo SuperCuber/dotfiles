@@ -48,10 +48,13 @@ STICKY                30;43
 STICKY_OTHER_WRITABLE 30;43
 
 # Technical plaintext
+*go.mod               00;31
 .cfg                  00;31
 .conf                 00;31
 .diff                 00;31
+.gitignore            00;31
 .ini                  00;31
+.properties           00;31
 .json                 00;31
 .log                  00;31
 .nix                  00;31
@@ -144,7 +147,6 @@ STICKY_OTHER_WRITABLE 30;43
 .alz                  38;5;202
 .arc                  38;5;202
 .arj                  38;5;202
-.bak                  38;5;202
 .bz2                  38;5;202
 .bz                   38;5;202
 .cab                  38;5;202
@@ -208,6 +210,7 @@ STICKY_OTHER_WRITABLE 30;43
 *CHANGES              38;5;226;1
 *changes.md           38;5;226;1
 *CHANGES.md           38;5;226;1
+*CODEOWNERS           38;5;226;1
 *code_of_conduct      38;5;226;1
 *CODE_OF_CONDUCT      38;5;226;1
 *code_of_conduct.md   38;5;226;1
@@ -257,9 +260,11 @@ STICKY_OTHER_WRITABLE 30;43
 .c                    38;5;81
 .c++                  38;5;81
 .cc                   38;5;81
+.clj                  38;5;75
 .cpp                  38;5;81
 .css                  38;5;186
 .exe                  32
+.go                   38;5;117
 .h                    38;5;110
 .h++                  38;5;110
 .hh                   38;5;110
@@ -287,8 +292,9 @@ STICKY_OTHER_WRITABLE 30;43
 
 # Unimportant
 *#                    38;5;243
-*~                    38;5;243
 *-bak                 38;5;243
+*~                    38;5;243
+.bak                  38;5;243
 .bk                   38;5;243
 .d                    38;5;243
 .egg                  38;5;243
@@ -296,5 +302,6 @@ STICKY_OTHER_WRITABLE 30;43
 .lock                 38;5;243
 .o                    38;5;243
 .pyc                  38;5;243
+*go.sum               38;5;243
 
 # vim: ft=dircolors:
