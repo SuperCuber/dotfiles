@@ -19,7 +19,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 require("nvim-lsp-installer").setup{}
 local lspconfig = require("lspconfig")
-local servers = { 'pyright', 'tsserver', 'vimls', 'volar' }
+local servers = { 'pyright', 'tsserver', 'vimls', 'volar', 'gopls', 'clojure_lsp' }
 for _, lsp in pairs(servers) do
   lspconfig[lsp].setup {
       flags = {

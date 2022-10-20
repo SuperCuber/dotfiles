@@ -6,3 +6,5 @@ vim.api.nvim_set_keymap("n", ",m", [[:execute "Make" \| redraw! \| cc<CR>]], { n
 
 require("supercuber.languages.rust")
 require("supercuber.languages.python")
+require("supercuber.languages.go")
+require("supercuber.languages.clojure")

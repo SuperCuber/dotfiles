@@ -28,6 +28,10 @@ require('packer').startup(function(use)
   use 'leafoftree/vim-vue-plugin'
   use 'folke/lua-dev.nvim'
   use 'windwp/nvim-ts-autotag'
+  -- Clojure
+  use 'Olical/conjure'
+  use 'clojure-vim/vim-jack-in'
+  use 'tpope/vim-fireplace'
 
   -- Motions
   use 'tpope/vim-repeat'

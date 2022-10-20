@@ -31,4 +31,7 @@
 [help]
     autocorrect = 20
 
+[alias]
+        changes = "log -M -L"
+
 # vim:ft=gitconfig
