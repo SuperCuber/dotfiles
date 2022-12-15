@@ -26,12 +26,7 @@ require('packer').startup(function(use)
   use 'radenling/vim-dispatch-neovim'
   use 'simrat39/rust-tools.nvim'
   use 'leafoftree/vim-vue-plugin'
-  use 'folke/lua-dev.nvim'
   use 'windwp/nvim-ts-autotag'
-  -- Clojure
-  use 'Olical/conjure'
-  use 'clojure-vim/vim-jack-in'
-  use 'tpope/vim-fireplace'
 
   -- Motions
   use 'tpope/vim-repeat'

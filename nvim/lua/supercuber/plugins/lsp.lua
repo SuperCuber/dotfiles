@@ -15,7 +15,7 @@ util.nnoremap('[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 util.nnoremap(']g', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 util.nnoremap(',f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require("nvim-lsp-installer").setup{}
 local lspconfig = require("lspconfig")
@@ -32,7 +32,6 @@ end
 require("rust-tools").setup {
   tools = {
     autoSetHints = true,
-    hover_with_actions = true,
     inlay_hints = {
       show_parameter_hints = true,
     },
@@ -49,8 +48,6 @@ require("rust-tools").setup {
     }
   },
 }
--- Lua
-lspconfig.sumneko_lua.setup(require('lua-dev').setup())
 
 -- Popup on cursor hold
 vim.diagnostic.config({
