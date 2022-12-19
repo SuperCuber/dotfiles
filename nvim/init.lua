@@ -1,5 +1,1 @@
-require("supercuber.plugins")
-require("supercuber.options")
-require("supercuber.keymaps")
-require("supercuber.language")
-require("supercuber.colors")
+require("supercuber")

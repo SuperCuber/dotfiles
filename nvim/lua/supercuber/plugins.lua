@@ -1,101 +1,65 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-    install_path })
-end
+vim.cmd [[packadd packer.nvim]]
 
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+return require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
 
-  -- LSP
-  use 'williamboman/nvim-lsp-installer'
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-path'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use 'mbbill/undotree'
 
-  -- Languages
-  use 'sheerun/vim-polyglot'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'tpope/vim-dispatch'
-  use 'radenling/vim-dispatch-neovim'
-  use 'simrat39/rust-tools.nvim'
-  use 'leafoftree/vim-vue-plugin'
-  use 'windwp/nvim-ts-autotag'
+    use 'rebelot/kanagawa.nvim'
 
-  -- Motions
-  use 'tpope/vim-repeat'
-  use { "kylechui/nvim-surround", config = function()
-    require("nvim-surround").setup {}
-  end }
-  use 'tommcdo/vim-lion'
-  use 'wellle/targets.vim'
+    -- LSP
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},
+            {'williamboman/mason.nvim'},
+            {'williamboman/mason-lspconfig.nvim'},
 
-  -- Bells & Whistles
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
-  use 'tpope/vim-eunuch'
-  use 'voldikss/vim-floaterm'
-  use 'nvim-lualine/lualine.nvim'
-  use 'yuttie/comfortable-motion.vim'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-unimpaired'
-  use 'kevinhwang91/nvim-bqf'
-  use 'j-hui/fidget.nvim'
-  use { 'echasnovski/mini.nvim', branch = 'stable' }
-  use 'JoosepAlviste/nvim-ts-context-commentstring' -- for mini.nvim's commenting
-  use { 'elihunter173/dirbuf.nvim',
-    setup = function()
-      vim.g.loaded_netrwPlugin = 1
-      vim.g.loaded_netrw = 1
-    end
-  }
-  use 'tversteeg/registers.nvim'
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-buffer'},
+            {'hrsh7th/cmp-path'},
+            {'saadparwaiz1/cmp_luasnip'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-nvim-lua'},
 
-  -- Colors
-  use 'rebelot/kanagawa.nvim'
+            -- Snippets
+            {'L3MON4D3/LuaSnip'},
+            {'rafamadriz/friendly-snippets'},
+        }
+    }
+    use 'j-hui/fidget.nvim'
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+    -- Languages
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'sheerun/vim-polyglot'
+    use 'tpope/vim-dispatch'
+    use 'radenling/vim-dispatch-neovim'
+    --use 'simrat39/rust-tools.nvim'
+    --use 'leafoftree/vim-vue-plugin'
+    --use 'windwp/nvim-ts-autotag'
+
+    -- Motions
+    use 'tpope/vim-repeat'
+    use { 'kylechui/nvim-surround', config = function()
+        require('nvim-surround').setup {}
+    end }
+    use 'tommcdo/vim-lion'
+    use 'wellle/targets.vim'
+    use { 'numToStr/Comment.nvim', config = function()
+        require('Comment').setup()
+    end }
+
+    -- Bells & Whistles
+    use 'tpope/vim-eunuch'
+    use 'tpope/vim-fugitive'
+    use 'tpope/vim-unimpaired'
+    use 'nvim-lualine/lualine.nvim'
+    use 'yuttie/comfortable-motion.vim'
+    use 'tversteeg/registers.nvim'
 end)
-
--- Lua plugin dev
-P = function(v)
-  print(vim.inspect(v))
-  return v
-end
-
-R = function(name)
-  require("plenary.reload").reload_module(name)
-  return require(name)
-end
-
--- Easily reload this file
-vim.cmd [[command! PackerConfigReload execute "luafile %" | PackerSync]]
-vim.cmd [[
-augroup SupercuberPlugins
-  au!
-  au BufEnter plugins.lua nnoremap <buffer> <F5> <cmd>PackerConfigReload<CR>
-augroup END
-]]
-
--- Fugitive
-vim.cmd [[au FileType fugitive nmap <buffer> <tab> =]]
-
--- Setup
-require("fidget").setup { text = { spinner = "dots" } }
-
--- Included
-require("supercuber.plugins.floaterm")
-require("supercuber.plugins.lsp")
-require("supercuber.plugins.lualine")
-require("supercuber.plugins.luasnip")
-require("supercuber.plugins.mini")
-require("supercuber.plugins.telescope")
-require("supercuber.plugins.treesitter")

@@ -32,17 +32,18 @@ vim.opt.relativenumber = true
 vim.opt.backspace = "eol,indent,start,nostop"
 vim.opt.whichwrap = ""
 
--- Backups
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.swapfile = false
-
 -- Tabs
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+
+-- Backups
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
 
 -- List
 vim.opt.list = true
@@ -52,17 +53,5 @@ vim.opt.listchars = "tab:»·,trail:·"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Interact with X
-vim.opt.clipboard = "unnamed,unnamedplus"
 vim.opt.mouse = "nvc"
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
-
--- Turn off ugly gui popupmenu on windows neovim and setup font
-vim.cmd [[
-au VimEnter * if exists('g:GuiLoaded')
-            \ | exe 'GuiPopupmenu 0'
-            \ | exe 'GuiTabline 0'
-            \ | exe 'GuiFont Iosevka:h14'
-            \ | endif
-]]
-
