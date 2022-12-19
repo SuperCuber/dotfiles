@@ -148,7 +148,7 @@ PROMPT_COMMAND="__git_ps1 '$PS1_PRE' '$PS1_POST' '$PS1_GIT'"
 {{/if}}
 #==> Misc
 # Dircolors
-eval `{{#if (is_executable "dircolors")}}dircolors{{else}}gdircolors{{/if}} ~/.dir_colors`
+eval `{{#if (is_executable "gdircolors")}}gdircolors{{else}}dircolors{{/if}} ~/.dir_colors`
 
 # CD
 {{#if (is_executable "zoxide")}}
