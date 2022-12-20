@@ -1,4 +1,4 @@
-local grp = vim.api.nvim_create_augroup("SuperCuberFugitive")
+local grp = vim.api.nvim_create_augroup("SuperCuberFugitive", {})
 vim.api.nvim_create_autocmd("FileType", {
     group = grp,
     pattern = "fugitive",

@@ -61,7 +61,7 @@ vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j")
 vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k")
 vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
-local group = vim.api.nvim_create_augroup("SuperCuberTerminal")
+local group = vim.api.nvim_create_augroup("SuperCuberTerminal", {})
 vim.api.nvim_create_autocmd("TermOpen", {
     group = group,
     callback = function()
