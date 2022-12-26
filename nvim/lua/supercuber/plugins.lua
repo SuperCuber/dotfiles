@@ -43,6 +43,7 @@ return require('packer').startup(function(use)
     --use 'simrat39/rust-tools.nvim'
     --use 'leafoftree/vim-vue-plugin'
     --use 'windwp/nvim-ts-autotag'
+    use 'guns/vim-sexp'
 
     -- Motions
     use 'tpope/vim-repeat'
