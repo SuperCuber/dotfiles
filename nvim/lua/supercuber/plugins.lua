@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
@@ -66,3 +66,5 @@ return require('packer').startup(function(use)
     use 'editorconfig/editorconfig-vim'
     use 'stevearc/oil.nvim'
 end)
+
+vim.g.dispatch_no_maps = 1

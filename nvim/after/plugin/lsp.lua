@@ -4,24 +4,40 @@ lsp.preset('recommended')
 
 local cmp = require("cmp")
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
 })
 
 lsp.set_preferences {
     sign_icons = {},
+    set_lsp_keymaps = { omit = { '<F2>', '<F4>', 'gr', 'gd' } }
 }
 
 lsp.setup_nvim_cmp {
     mapping = cmp_mappings
 }
 
+local function on_list(options)
+    vim.fn.setqflist({}, ' ', options)
+    vim.cmd("botright cwindow") -- always take full width
+    vim.cmd("cfirst") -- jump back to previous window and on first match
+end
+
 lsp.on_attach(function(_client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "<Leader>rn", function() vim.lsp.rename() end, opts)
     vim.keymap.set("n", "<Leader>ca", function() vim.lsp.code_action() end, opts)
     vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
+    vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
+
+    vim.cmd [[
+        autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    ]]
 end)
+
 
 lsp.setup()

@@ -18,7 +18,7 @@ vim.keymap.set("n", "<Leader>j", "<Cmd>lnext<Enter>zz")
 vim.keymap.set("n", "<Leader>k", "<Cmd>lprev<Enter>zz")
 
 -- Open vimrc editing workspace
-vim.keymap.set("n", "<Leader>vrc", [[<Cmd>cd ~/.dotfiles<Enter><Cmd>tabedit nvim/init.lua<Enter><Cmd>vsp +term<Enter>{{#if (eq dotter.os "unix")}}./{{/if}}dotter watch -v<Cr><A-h>]])
+vim.keymap.set("n", "<Leader>vrc", [[<Cmd>tabnew<Enter><Cmd>tcd ~/.dotfiles<Enter><Cmd>edit nvim/init.lua<Enter><Cmd>vsp +term<Enter>{{#if (eq dotter.os "unix")}}./{{/if}}dotter watch -v<Cr><A-h>]])
 -- Source vimrc
 vim.keymap.set("n", "<Leader>src", ":luafile $MYVIMRC<cr>")
 -- Remove highlights
