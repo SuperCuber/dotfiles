@@ -50,9 +50,6 @@ vim.keymap.set({"n", "v"}, "<Leader>P", "\"+P")
 
 vim.keymap.set("n", "Q", "<Nop>")
 
--- Netrw
-vim.keymap.set("n", "-", vim.cmd.Ex)
-
 -- Terminal
 vim.keymap.set("n", "<C-t>", "<Cmd>vsp +term<Enter>")
 vim.keymap.set("t", "<C-d>", "<Cmd>q!<Cr>")
