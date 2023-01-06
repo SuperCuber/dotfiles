@@ -37,7 +37,7 @@ return require('packer').startup(function(use)
 
     -- Languages
     use 'nvim-treesitter/nvim-treesitter'
-    use 'sheerun/vim-polyglot'
+    -- use 'sheerun/vim-polyglot'
     use 'tpope/vim-dispatch'
     use 'radenling/vim-dispatch-neovim'
     --use 'simrat39/rust-tools.nvim'
@@ -63,4 +63,5 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'yuttie/comfortable-motion.vim'
     use 'tversteeg/registers.nvim'
+    use 'editorconfig/editorconfig-vim'
 end)
