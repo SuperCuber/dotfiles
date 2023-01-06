@@ -27,6 +27,7 @@ vim.opt.virtualedit = "block"
 vim.opt.signcolumn = "number"
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.updatetime = 500
 
 -- Inserting
 vim.opt.backspace = "eol,indent,start,nostop"

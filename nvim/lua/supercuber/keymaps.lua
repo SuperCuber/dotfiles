@@ -1,9 +1,9 @@
 vim.g.mapleader = ","
 
 -- Save
-vim.keymap.set("n", "<space>", vim.cmd.w)
+vim.keymap.set("n", "<Space>", vim.cmd.w)
 -- Quit
-vim.keymap.set("n", ",q", vim.cmd.q)
+vim.keymap.set("n", "<Leader>q", vim.cmd.q)
 
 -- Move between windows
 vim.keymap.set("n", "<A-h>", "<C-w>h")
@@ -21,8 +21,11 @@ vim.keymap.set("n", "<Leader>k", "<Cmd>lprev<Enter>zz")
 vim.keymap.set("n", "<Leader>vrc", [[<Cmd>tabnew<Enter><Cmd>tcd ~/.dotfiles<Enter><Cmd>edit nvim/init.lua<Enter><Cmd>vsp +term<Enter>{{#if (eq dotter.os "unix")}}./{{/if}}dotter watch -v<Cr><A-h>]])
 -- Source vimrc
 vim.keymap.set("n", "<Leader>src", ":luafile $MYVIMRC<cr>")
+
 -- Remove highlights
 vim.keymap.set("n", "<Leader><Enter>", vim.cmd.nohlsearch)
+vim.keymap.set("n", "*", "g*")
+vim.keymap.set("n", "#", "g#")
 
 -- Easier to type, and I never use the default behavior.
 vim.keymap.set("n", "H", "^")
