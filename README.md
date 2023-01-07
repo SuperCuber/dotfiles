@@ -35,8 +35,8 @@
 - fzf: fuzzy file finder
 - fd-find
 - bat: cat with wings
-- delta: better git diff viewer
 - difftastic: better git diff calculator
+- delta: better git diff viewer (difftastic is prioritized)
 
 ---
 
