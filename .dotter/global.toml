@@ -13,7 +13,6 @@ compton = "~/.compton.conf"
 conky = "~/.conkyrc"
 i3 = "~/.i3/config"
 polybar = "~/.config/polybar/config"
-tonky = "~/.conkyrc2"
 
 [i3.variables]
 # Rofi
@@ -27,7 +26,6 @@ battery_uevent = "/sys/class/power_supply/BAT0/uevent"
 
 [shell.files]
 # Optional local variables: email+git_username
-todorc = "~/.todorc"
 tmux = "~/.tmux.conf"
 scripts = "~/.scripts"
 dir_colors = "~/.dir_colors"

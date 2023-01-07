@@ -158,11 +158,7 @@ cd ()
 {
     # Pass all arguments to cd
     {{#if (is_executable "zoxide")}}z{{else}}builtin cd{{/if}} "$@" || return $?
-    # If everything OK, print ls and todo
     l
-    {{#if (is_executable "todo")}}
-    todo
-    {{/if}}
 }
 
 {{#if (is_executable "bat")}}
