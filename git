@@ -8,7 +8,7 @@
 
 {{/if}}
 [core]
-    {{#if (is_executable "delta")}}
+    {{#if (and (not (is_executable "difft")) (is_executable "delta"))}}
     pager = delta
     {{/if}}
     {{#if (eq dotter.os "windows")}}
@@ -18,7 +18,7 @@
     autocrlf = input
     {{/if}}
 
-{{#if (is_executable "delta")}}
+{{#if (and (not (is_executable "difft")) (is_executable "delta"))}}
 [delta]
     line-numbers = true
     hunk-header-style = omit
@@ -32,6 +32,11 @@
     autocorrect = 20
 
 [alias]
-        changes = "log -M -L"
+    changes = "log -M -L"
+
+{{#if (is_executable "difft")}}
+[diff]
+    external = "difft"
+{{/if}}
 
 # vim:ft=gitconfig
