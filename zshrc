@@ -187,6 +187,10 @@ eval $(thefuck --alias)
 # Terminal color
 TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
+
+{{#if (is_executable "atuin")}}
+eval "$(atuin init {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}})"
+{{/if}}
 #<==
 
 # Local zshrc
