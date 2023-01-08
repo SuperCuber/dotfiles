@@ -1,0 +1,14 @@
+# date format used, either "us" or "uk"
+dialect = "uk"
+
+# which search mode to use
+# possible values: prefix, fulltext, fuzzy
+search_mode = "fuzzy"
+
+# which style to use
+# possible values: auto, full, compact
+style = "compact"
+
+# what to do when the escape key is pressed when searching
+# possible values: return-original, return-query
+exit_mode = "return-query"

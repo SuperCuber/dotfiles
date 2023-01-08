@@ -189,7 +189,10 @@ TERM=xterm-256color
 export PATH=$HOME/.scripts:$PATH
 
 {{#if (is_executable "atuin")}}
+export ATUIN_NOBIND="true"
 eval "$(atuin init {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}})"
+bindkey '^r' _atuin_search_widget
+
 {{/if}}
 #<==
 
