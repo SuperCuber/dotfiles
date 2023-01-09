@@ -23,7 +23,7 @@ local function on_list(options)
     vim.cmd("cfirst") -- jump back to previous window and on first match
 end
 
-lsp.on_attach(function(_client, bufnr)
+lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "<Leader>rn", function() vim.lsp.rename() end, opts)
@@ -32,11 +32,13 @@ lsp.on_attach(function(_client, bufnr)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
 
-    vim.cmd [[
-        autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    ]]
+    if client.server_capabilities.documentHighlightProvider then
+        vim.cmd [[
+            autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        ]]
+    end
 end)
 
 
