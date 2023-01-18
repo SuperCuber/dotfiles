@@ -19,8 +19,10 @@ lsp.setup_nvim_cmp {
 
 local function on_list(options)
     vim.fn.setqflist({}, ' ', options)
-    vim.cmd("botright cwindow") -- always take full width
-    vim.cmd("cfirst") -- jump back to previous window and on first match
+    if #options.items > 1 then
+        vim.cmd("botright cwindow") -- always take full width
+    end
+    vim.cmd("silent cfirst") -- jump back to previous window and on first match
 end
 
 lsp.on_attach(function(client, bufnr)
