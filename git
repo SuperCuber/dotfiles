@@ -34,6 +34,9 @@
 [alias]
     changes = "log -M -L"
 
+[push]
+    autoSetupRemote = true
+
 {{#if (is_executable "difft")}}
 [diff]
     external = "difft"
