@@ -3,10 +3,17 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 local cmp = require("cmp")
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-})
+local cmp_mappings = {
+    ["<C-n>"]     = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+    ["<Tab>"]     = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+    ["<C-p>"]     = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    ["<S-Tab>"]   = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    ["<C-d>"]     = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"]     = cmp.mapping.scroll_docs(4),
+    ["<C-e>"]     = cmp.mapping.abort(),
+    ["<C-y>"]     = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
+    ["<C-Space>"] = cmp.mapping.complete(),
+}
 
 lsp.set_preferences {
     sign_icons = {},
