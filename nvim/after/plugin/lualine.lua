@@ -55,7 +55,7 @@ function pretty_filename:draw(_)
   local bold = highlight.component_format_highlight(self.highlight_groups.stem)
   local normal = highlight.component_format_highlight(self.highlight_groups.rest)
 
-  local dir = vim.fn.expand("%:h:~:.")
+  local dir = vim.fn.expand("%:p:~:.:h")
   local stem = vim.fn.expand("%:t:r")
   local extension = vim.fn.expand("%:e")
   local path_separator = package.config:sub(1,1)
