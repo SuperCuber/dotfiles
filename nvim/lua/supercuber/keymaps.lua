@@ -1,3 +1,7 @@
+function feedkeys(keys)
+    return vim.fn.feedkeys(vim.api.nvim_replace_termcodes(keys, true, true, true))
+end
+
 vim.g.mapleader = ","
 
 -- Save
@@ -6,16 +10,20 @@ vim.keymap.set("n", "<Space>", vim.cmd.w)
 vim.keymap.set("n", "<Leader>q", vim.cmd.q)
 
 -- Move between windows
-vim.keymap.set("n", "<A-h>", "<C-w>h")
-vim.keymap.set("n", "<A-j>", "<C-w>j")
-vim.keymap.set("n", "<A-k>", "<C-w>k")
-vim.keymap.set("n", "<A-l>", "<C-w>l")
+for _, key in ipairs({"h", "j", "k", "l"}) do
+    vim.keymap.set({ "n", "t" }, "<A-" .. key .. ">", function ()
+        vim.cmd("stopinsert")
+        vim.cmd("wincmd " .. key)
+        local name = vim.api.nvim_buf_get_name(0)
+        if string.find(name, "term://") then
+            vim.cmd("startinsert")
+        end
+    end)
+end
 
 -- Navigate lists
 vim.keymap.set("n", "<C-j>", "<Cmd>cnext<Enter>zz")
 vim.keymap.set("n", "<C-k>", "<Cmd>cprev<Enter>zz")
-vim.keymap.set("n", "<Leader>j", "<Cmd>lnext<Enter>zz")
-vim.keymap.set("n", "<Leader>k", "<Cmd>lprev<Enter>zz")
 
 -- Open vimrc editing workspace
 local dotter_exe = [[{{#if (eq dotter.os "unix")}}./{{/if}}dotter{{#if arm}}.arm{{/if}}]]
@@ -25,8 +33,9 @@ vim.keymap.set("n", "<Leader>vrc",
         vim.cmd("tcd ~/.dotfiles")
         vim.cmd("edit nvim/init.lua")
         vim.cmd("vsp +term")
-        vim.fn.feedkeys(dotter_exe .. " watch -v")
-        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Cr><Esc><A-h>", true, true, true))
+        feedkeys(dotter_exe .. " watch -v<Cr>")
+        vim.cmd("stopinsert")
+        vim.cmd("wincmd h")
     end)
 
 -- Source vimrc
@@ -66,11 +75,8 @@ vim.keymap.set("n", "Q", "<Nop>")
 -- Terminal
 vim.keymap.set("n", "<C-t>", "<Cmd>vsp +term<Enter>")
 vim.keymap.set("t", "<C-d>", "<Cmd>q!<Cr>")
+vim.keymap.set("t", "<C-v><C-d>", "<C-d>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
-vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j")
-vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
 local group = vim.api.nvim_create_augroup("SuperCuberTerminal", {})
 vim.api.nvim_create_autocmd("TermOpen", {
     group = group,
@@ -80,9 +86,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
         vim.wo.signcolumn = "no"
         vim.cmd("startinsert")
     end,
-})
-vim.api.nvim_create_autocmd("WinEnter", {
-    group = group,
-    pattern = "term://*",
-    command = "startinsert",
 })
