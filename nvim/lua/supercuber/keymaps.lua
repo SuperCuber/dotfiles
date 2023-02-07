@@ -18,7 +18,11 @@ vim.keymap.set("n", "<Leader>j", "<Cmd>lnext<Enter>zz")
 vim.keymap.set("n", "<Leader>k", "<Cmd>lprev<Enter>zz")
 
 -- Open vimrc editing workspace
-vim.keymap.set("n", "<Leader>vrc", [[<Cmd>tabnew<Enter><Cmd>tcd ~/.dotfiles<Enter><Cmd>edit nvim/init.lua<Enter><Cmd>vsp +term<Enter>{{#if (eq dotter.os "unix")}}./{{/if}}dotter watch -v<Cr><A-h>]])
+local dotter_exe = [[{{#if (eq dotter.os "unix")}}./{{/if}}dotter{{#if arm}}.arm{{/if}}]]
+vim.keymap.set("n", "<Leader>vrc",
+    [[<Cmd>tabnew<Enter><Cmd>tcd ~/.dotfiles<Enter><Cmd>edit nvim/init.lua<Enter><Cmd>vsp +term<Enter>]]
+    .. dotter_exe
+    .. [[ watch -v<Cr><A-h>]])
 -- Source vimrc
 vim.keymap.set("n", "<Leader>src", ":luafile $MYVIMRC<cr>")
 
@@ -43,13 +47,13 @@ vim.keymap.set("n", "S", "i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w")
 vim.keymap.set("n", "c", [["_c]])
 -- Paste over & delete without overwriting clipboard
 vim.keymap.set("v", "p", "\"_dP")
-vim.keymap.set("v", "<Leader>p", "p", {remap=false})
+vim.keymap.set("v", "<Leader>p", "p", { remap = false })
 vim.keymap.set("n", "<Leader>d", "\"_d")
 vim.keymap.set("v", "<Leader>d", "\"_d")
 -- OS Clipboard
-vim.keymap.set({"n", "v"}, "<Leader>y", "\"+y")
-vim.keymap.set({"n", "v"}, "<Leader>p", "\"+p")
-vim.keymap.set({"n", "v"}, "<Leader>P", "\"+P")
+vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y")
+vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p")
+vim.keymap.set({ "n", "v" }, "<Leader>P", "\"+P")
 
 vim.keymap.set("n", "Q", "<Nop>")
 
