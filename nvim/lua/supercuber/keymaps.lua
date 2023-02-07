@@ -20,9 +20,15 @@ vim.keymap.set("n", "<Leader>k", "<Cmd>lprev<Enter>zz")
 -- Open vimrc editing workspace
 local dotter_exe = [[{{#if (eq dotter.os "unix")}}./{{/if}}dotter{{#if arm}}.arm{{/if}}]]
 vim.keymap.set("n", "<Leader>vrc",
-    [[<Cmd>tabnew<Enter><Cmd>tcd ~/.dotfiles<Enter><Cmd>edit nvim/init.lua<Enter><Cmd>vsp +term<Enter>]]
-    .. dotter_exe
-    .. [[ watch -v<Cr><A-h>]])
+    function()
+        vim.cmd("tabnew")
+        vim.cmd("tcd ~/.dotfiles")
+        vim.cmd("edit nvim/init.lua")
+        vim.cmd("vsp +term")
+        vim.fn.feedkeys(dotter_exe .. " watch -v")
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Cr><Esc><A-h>", true, true, true))
+    end)
+
 -- Source vimrc
 vim.keymap.set("n", "<Leader>src", ":luafile $MYVIMRC<cr>")
 
