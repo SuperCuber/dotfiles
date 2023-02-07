@@ -37,6 +37,9 @@
 [push]
     autoSetupRemote = true
 
+[pull]
+    rebase = true
+
 {{#if (is_executable "difft")}}
 [diff]
     external = "difft"
