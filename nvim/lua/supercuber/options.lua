@@ -11,7 +11,7 @@ vim.opt.smartcase = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.gdefault = true
-vim.cmd("nohlsearch")
+vim.cmd.nohlsearch()
 
 -- Drawing
 vim.opt.lazyredraw = true

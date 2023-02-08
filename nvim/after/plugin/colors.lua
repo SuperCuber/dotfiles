@@ -6,4 +6,4 @@ require('kanagawa').setup({
     specialReturn = false,
     specialException = false,
 })
-vim.cmd [[colorscheme kanagawa]]
+vim.cmd.colorscheme("kanagawa")

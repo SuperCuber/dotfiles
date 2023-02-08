@@ -1,8 +1,5 @@
-function feedkeys(keys)
-    return vim.fn.feedkeys(vim.api.nvim_replace_termcodes(keys, true, true, true))
-end
-
 vim.g.mapleader = ","
+vim.g.maplocalleader = "\\"
 
 -- Save
 vim.keymap.set("n", "<Space>", vim.cmd.w)
@@ -12,11 +9,11 @@ vim.keymap.set("n", "<Leader>q", vim.cmd.q)
 -- Move between windows
 for _, key in ipairs({"h", "j", "k", "l"}) do
     vim.keymap.set({ "n", "t" }, "<A-" .. key .. ">", function ()
-        vim.cmd("stopinsert")
-        vim.cmd("wincmd " .. key)
+        vim.cmd.stopinsert()
+        vim.cmd.wincmd(key)
         local name = vim.api.nvim_buf_get_name(0)
         if string.find(name, "term://") then
-            vim.cmd("startinsert")
+            vim.cmd.startinsert()
         end
     end)
 end
@@ -29,13 +26,13 @@ vim.keymap.set("n", "<C-k>", "<Cmd>cprev<Enter>zz")
 local dotter_exe = [[{{#if (eq dotter.os "unix")}}./{{/if}}dotter{{#if arm}}.arm{{/if}}]]
 vim.keymap.set("n", "<Leader>vrc",
     function()
-        vim.cmd("tabnew")
-        vim.cmd("tcd ~/.dotfiles")
-        vim.cmd("edit nvim/init.lua")
-        vim.cmd("vsp +term")
-        feedkeys(dotter_exe .. " watch -v<Cr>")
-        vim.cmd("stopinsert")
-        vim.cmd("wincmd h")
+        vim.cmd.tabnew()
+        vim.cmd.tcd("~/.dotfiles")
+        vim.cmd.edit("nvim/init.lua")
+        vim.cmd.vsp()
+        vim.cmd.term(dotter_exe .. " watch -v")
+        vim.cmd.stopinsert()
+        vim.cmd.wincmd("h")
     end)
 
 -- Source vimrc
@@ -84,6 +81,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
         vim.wo.number = false
         vim.wo.relativenumber = false
         vim.wo.signcolumn = "no"
-        vim.cmd("startinsert")
+        vim.cmd.startinsert()
     end,
 })
