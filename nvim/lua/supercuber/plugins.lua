@@ -59,6 +59,7 @@ require('packer').startup(function(use)
     -- Bells & Whistles
     use 'tpope/vim-eunuch'
     use 'tpope/vim-fugitive'
+    use 'shumphrey/fugitive-gitlab.vim'
     use 'tpope/vim-unimpaired'
     use 'nvim-lualine/lualine.nvim'
     use 'yuttie/comfortable-motion.vim'

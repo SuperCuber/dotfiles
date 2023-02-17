@@ -7,3 +7,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 vim.keymap.set("n", "<Leader>g", vim.cmd.Git)
+vim.g.fugitive_gitlab_domains = { "https://gitlab.appsflyer.com" }
