@@ -44,13 +44,14 @@ require('packer').startup(function(use)
     --use 'leafoftree/vim-vue-plugin'
     --use 'windwp/nvim-ts-autotag'
     use 'guns/vim-sexp'
+    use { 'Olical/conjure', ft = { "clojure" } }
 
     -- Motions
     use 'tpope/vim-repeat'
     use { 'kylechui/nvim-surround', config = function()
         require('nvim-surround').setup {}
     end }
-    use 'tommcdo/vim-lion'
+    -- use 'tommcdo/vim-lion'
     use 'wellle/targets.vim'
     use { 'numToStr/Comment.nvim', config = function()
         require('Comment').setup()
