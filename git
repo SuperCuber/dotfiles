@@ -40,6 +40,9 @@
 [pull]
     rebase = true
 
+[merge]
+    conflictstyle = diff3
+
 {{#if (is_executable "difft")}}
 [diff]
     external = "difft"

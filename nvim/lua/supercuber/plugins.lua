@@ -67,6 +67,7 @@ require('packer').startup(function(use)
     use 'tversteeg/registers.nvim'
     use 'editorconfig/editorconfig-vim'
     use 'stevearc/oil.nvim'
+    use 'godlygeek/tabular'
 end)
 
 vim.g.dispatch_no_maps = 1

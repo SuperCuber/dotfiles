@@ -74,12 +74,3 @@ vim.keymap.set("n", "<C-t>", "<Cmd>vsp +term<Enter>i")
 vim.keymap.set("t", "<C-d>", "<Cmd>q!<Cr>")
 vim.keymap.set("t", "<C-v><C-d>", "<C-d>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-local group = vim.api.nvim_create_augroup("SuperCuberTerminal", {})
-vim.api.nvim_create_autocmd("TermOpen", {
-    group = group,
-    callback = function()
-        vim.wo.number = false
-        vim.wo.relativenumber = false
-        vim.wo.signcolumn = "no"
-    end,
-})

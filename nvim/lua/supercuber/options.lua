@@ -3,7 +3,7 @@ vim.opt.modelineexpr = true
 -- Wildmenu
 vim.opt.wildmenu = true
 vim.opt.wildignore = "*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock"
-vim.opt.path=".,**,,"
+vim.opt.path = ".,**,,"
 
 -- Searching
 vim.opt.ignorecase = true
@@ -56,3 +56,15 @@ vim.opt.splitbelow = true
 
 vim.opt.mouse = "nvc"
 vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+
+-- Folds
+vim.cmd [[
+function! SuperCuberFoldText()
+    let line = getline(v:foldstart)
+    let foldedlinecount = v:foldend - v:foldstart
+    return line . '     (' . foldedlinecount . ' lines)'
+endfunction
+]]
+vim.opt.foldtext = "SuperCuberFoldText()"
+vim.opt.fillchars = "fold: "
+vim.opt.foldcolumn = "auto"
