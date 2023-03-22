@@ -65,10 +65,10 @@ alias gcm="git commit -m"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias glg="git log --all --oneline --graph --decorate"
-alias go="git checkout"
 alias gpl="git pull --prune"
 alias gps="git push"
 alias gs="git status -sb"
+alias gm="git merge"
 
 # Misc
 alias e="exit"
