@@ -45,6 +45,7 @@ require('packer').startup(function(use)
     --use 'windwp/nvim-ts-autotag'
     use 'guns/vim-sexp'
     use { 'Olical/conjure', ft = { "clojure" } }
+    use { 'clojure-vim/vim-jack-in', ft = { "clojure" } }
 
     -- Motions
     use 'tpope/vim-repeat'
