@@ -64,11 +64,12 @@ require('packer').startup(function(use)
     use 'shumphrey/fugitive-gitlab.vim'
     use 'tpope/vim-unimpaired'
     use 'nvim-lualine/lualine.nvim'
-    use 'yuttie/comfortable-motion.vim'
+    use '/psliwka/vim-smoothie'
     use 'tversteeg/registers.nvim'
     use 'editorconfig/editorconfig-vim'
     use 'stevearc/oil.nvim'
     use 'godlygeek/tabular'
 end)
 
+vim.g.smoothie_experimental_mappings = 1
 vim.g.dispatch_no_maps = 1
