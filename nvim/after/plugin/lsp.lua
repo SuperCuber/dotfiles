@@ -17,7 +17,7 @@ local cmp_mappings = {
 
 lsp.set_preferences {
     sign_icons = {},
-    set_lsp_keymaps = { omit = { '<F2>', '<F4>', 'gr', 'gd' } }
+    set_lsp_keymaps = { omit = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } }
 }
 
 lsp.setup_nvim_cmp {
@@ -29,7 +29,7 @@ local function on_list(options)
     if #options.items > 1 then
         vim.cmd("botright cwindow") -- always take full width
     end
-    vim.cmd("silent cfirst") -- jump back to previous window and on first match
+    vim.cmd("silent cfirst")        -- jump back to previous window and on first match
 end
 
 lsp.on_attach(function(client, bufnr)
@@ -40,6 +40,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
+    vim.keymap.set("n", "gD", function()
+        vim.cmd "vsplit"
+        vim.lsp.buf.definition({ on_list = on_list })
+    end)
 
     if client.server_capabilities.documentHighlightProvider then
         vim.cmd [[
