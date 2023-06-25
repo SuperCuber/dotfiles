@@ -48,7 +48,7 @@ vim.opt.undofile = true
 
 -- List
 vim.opt.list = true
-vim.opt.listchars = "tab:»·,trail:·"
+vim.opt.listchars = "tab:»·,trail:·,extends:>"
 
 -- Splits
 vim.opt.splitright = true

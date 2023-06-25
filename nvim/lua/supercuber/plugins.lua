@@ -33,7 +33,7 @@ require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
         }
     }
-    use 'j-hui/fidget.nvim'
+    use { 'j-hui/fidget.nvim', branch = "legacy" }
 
     -- Languages
     use 'nvim-treesitter/nvim-treesitter'
