@@ -71,6 +71,12 @@ function pretty_filename:draw(_)
     self.status = bold .. "[No Name]"
   elseif dir == "." then
     self.status = filename
+  elseif string.sub(dir, 1, 7) == "term://" then
+      local path = string.sub(vim.fn.expand("%:p:~:."), 8)
+      local separator_idx = string.find(path, ':')
+      local part1 = string.sub(path, 1, separator_idx - 1)
+      local part2 = string.sub(path, separator_idx + 1)
+      self.status = bold .. "term" .. normal .. "://" .. part1 .. ":" .. bold .. part2
   else
     self.status = normal .. dir .. path_separator .. filename
   end
