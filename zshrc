@@ -67,8 +67,16 @@ alias gds="git diff --staged"
 alias glg="git log --all --oneline --graph --decorate"
 alias gpl="git pull --prune"
 alias gps="git push"
-alias gs="git status -sb"
 alias gm="git merge"
+
+function gs() {
+    if [ $# -eq 0 ]; then
+        git status -sb
+    else
+        git switch "$@"
+    fi
+    return $?
+}
 
 # Misc
 alias e="exit"
