@@ -39,6 +39,10 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<Leader>ca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
+    vim.keymap.set("n", "gR", function()
+        vim.cmd "vsplit"
+        vim.lsp.buf.references(nil, { on_list = on_list })
+    end)
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
     vim.keymap.set("n", "gD", function()
         vim.cmd "vsplit"
