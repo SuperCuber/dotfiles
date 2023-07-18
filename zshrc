@@ -68,12 +68,17 @@ alias glg="git log --all --oneline --graph --decorate"
 alias gpl="git pull --prune"
 alias gps="git push"
 alias gm="git merge"
+alias gs="git status -sb"
 
-function gs() {
-    if [ $# -eq 0 ]; then
-        git status -sb
+
+function gsb() {
+    query_and_branch=$(git branch | tr -d ' *' | fzf --print-query)
+    fzf_exit=$?
+    branch=$(tail -1 <<<"$query_and_branch")
+    if (( fzf_exit == 0 )); then
+        git switch $branch
     else
-        git switch "$@"
+        git switch -c $branch
     fi
     return $?
 }
