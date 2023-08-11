@@ -1,6 +1,9 @@
 [vim.files]
 nvim = "~/AppData/Local/nvim"
 
+[vim.variables]
+vim_root_dir = "~/Desktop"
+
 [bash.files.zprofile]
 target = "~/.bash_profile"
 type = "template"
