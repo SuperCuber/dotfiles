@@ -77,7 +77,7 @@ function gsb() {
     branch=$(tail -1 <<<"$query_and_branch")
     if (( fzf_exit == 0 )); then
         git switch $branch
-    else
+    elif (( fzf_exit == 1)); then
         git switch -c $branch
     fi
     return $?

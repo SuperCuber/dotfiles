@@ -3,6 +3,7 @@ vim.opt.modelineexpr = true
 -- Wildmenu
 vim.opt.wildmenu = true
 vim.opt.wildignore = "*.o,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/Cargo.lock"
+vim.opt.wildmode = "list:longest,full"
 vim.opt.path = ".,**,,"
 
 -- Searching
