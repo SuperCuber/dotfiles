@@ -19,6 +19,7 @@ local i = ls.insert_node
 local t = ls.text_node
 local c = ls.choice_node
 local f = ls.function_node
+local rep = require "luasnip.extras".rep
 local fmt = require "luasnip.extras.fmt".fmt
 
 -- local i = ls.insert_node
@@ -56,6 +57,17 @@ function define_snippets()
                 i(2),
                 i(3),
                 i(0),
+            }
+        ))
+    })
+
+    ls.add_snippets("clojure", {
+        s("caparg", fmt([[
+                (def ^:dynamic *{}* {})
+            ]],
+            {
+                rep(1),
+                i(1),
             }
         ))
     })
