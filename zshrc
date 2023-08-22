@@ -69,7 +69,7 @@ alias gpl="git pull --prune"
 alias gps="git push"
 alias gm="git merge"
 alias gs="git status -sb"
-
+alias gs-="git switch -"
 
 function gsb() {
     query_and_branch=$(git branch | tr -d ' *' | fzf --print-query)
