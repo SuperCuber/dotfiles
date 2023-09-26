@@ -18,15 +18,14 @@ setopt INC_APPEND_HISTORY_TIME EXTENDED_HISTORY HIST_IGNORE_DUPS
 {{/if}}
 #==> Aliases
 # ls
-{{#if (is_executable "exa")}}
-alias l="exa --time-style long-iso --color=auto -F"
-alias ll="l -Fahl"
-alias la="l -a"
+{{#if (is_executable "eza")}}
+alias l="eza --time-style long-iso --color=auto -F"
+alias ll="l -ahl"
 {{else}}
 alias l="ls --color=auto -F"
 alias ll="l -Ahl"
-alias la="l -a"
 {{/if}}
+alias la="l -a"
 
 # Clearing screen
 alias c="echo -ne '\033c';"
