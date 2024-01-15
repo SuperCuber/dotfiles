@@ -58,5 +58,23 @@ lsp.on_attach(function(client, bufnr)
     end
 end)
 
+-- Add vim stdlib to lua lsp
+require('lspconfig').lua_ls.setup({
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT'
+      },
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME,
+        }
+      }
+    }
+  }
+})
 
 lsp.setup()
