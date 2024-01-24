@@ -14,6 +14,9 @@ local cmp_mappings = {
     ["<C-Cr>"]    = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
     ["<C-Space>"] = cmp.mapping.complete(),
 }
+vim.keymap.set('i', '<C-;>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
+vim.g.copilot_no_tab_map = true
+
 
 lsp.set_preferences {
     sign_icons = {},
