@@ -54,9 +54,9 @@ lsp.on_attach(function(client, bufnr)
 
     if client.server_capabilities.documentHighlightProvider then
         vim.cmd [[
-            autocmd CursorHold  <buffer> lua pcall(vim.lsp.buf.document_highlight)
-            autocmd CursorHoldI <buffer> lua pcall(vim.lsp.buf.document_highlight)
-            autocmd CursorMoved <buffer> lua pcall(vim.lsp.buf.clear_references)
+            autocmd CursorHold  <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
+            autocmd CursorHoldI <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
+            autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
         ]]
     end
 end)

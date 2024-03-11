@@ -86,6 +86,7 @@ function gsb() {
 alias e="exit"
 alias eb="exec {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}}"
 alias vsp="vi -O"
+alias pv="pv -pterb"
 #<==
 
 # Prompt git integration
