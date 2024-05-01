@@ -70,6 +70,7 @@ require('packer').startup(function(use)
     use 'stevearc/oil.nvim'
     use 'godlygeek/tabular'
     use 'github/copilot.vim'
+    use 'chentoast/marks.nvim'
 end)
 
 -- vim.g.smoothie_experimental_mappings = 1

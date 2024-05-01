@@ -51,6 +51,7 @@ lsp.on_attach(function(client, bufnr)
         vim.cmd "vsplit"
         vim.lsp.buf.definition({ on_list = on_list })
     end)
+    vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
 
     if client.server_capabilities.documentHighlightProvider then
         vim.cmd [[
