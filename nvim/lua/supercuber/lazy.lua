@@ -37,8 +37,8 @@ require("lazy").setup({
     --'simrat39/rust-tools.nvim',
     --'leafoftree/vim-vue-plugin',
     --'windwp/nvim-ts-autotag',
-    { 'Olical/conjure',          ft = { "clojure" } },
-    { 'clojure-vim/vim-jack-in', ft = { "clojure" } },
+    { 'Olical/conjure',             ft = { "clojure" } },
+    { 'clojure-vim/vim-jack-in',    ft = { "clojure" } },
 
     -- Motions
     'tpope/vim-repeat',
@@ -55,15 +55,6 @@ require("lazy").setup({
         config = function()
             require('Comment').setup()
         end
-    },
-
-    -- Org
-    {
-        "nvim-neorg/neorg",
-        rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
-        config = function()
-            require("neorg").setup()
-        end,
     },
 
     -- Bells & Whistles
