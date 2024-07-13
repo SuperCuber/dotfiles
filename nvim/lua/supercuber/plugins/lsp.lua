@@ -1,9 +1,4 @@
 local function config()
-    -- lsp.set_preferences {
-    --     sign_icons = {},
-    --     set_lsp_keymaps = { omit = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } }
-    -- }
-
     local lsp_zero = require('lsp-zero')
 
     local function on_list(options)
@@ -16,6 +11,7 @@ local function config()
 
     lsp_zero.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
+        lsp_zero.default_keymaps({ buffer=bufnr, exclude = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } })
 
         vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set("n", "<Leader>ca", function() vim.lsp.buf.code_action() end, opts)
@@ -41,19 +37,16 @@ local function config()
         end
     end)
 
-    --- if you want to know more about lsp-zero and mason.nvim
-    --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+    vim.diagnostic.config({ signs = false })
+
     require('mason').setup({})
     require('mason-lspconfig').setup({
         ensure_installed = {},
         handlers = {
-            -- this first function is the "default handler"
-            -- it applies to every language server without a "custom handler"
             function(server_name)
                 require('lspconfig')[server_name].setup({})
             end,
 
-            -- this is the "custom handler" for `lua_ls`
             lua_ls = function()
                 local lua_opts = lsp_zero.nvim_lua_ls()
                 require('lspconfig').lua_ls.setup(lua_opts)
@@ -116,11 +109,7 @@ return {
     {
         'j-hui/fidget.nvim',
         config = function()
-            require("fidget").setup {
-                text = {
-                    spinner = "dots"
-                }
-            }
+            require("fidget").setup { }
         end
     },
 }
