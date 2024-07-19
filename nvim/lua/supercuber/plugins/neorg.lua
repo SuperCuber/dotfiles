@@ -28,7 +28,7 @@ local function config()
         }
     })
 
-    vim.keymap.set("n", ",nt", function()
+    vim.keymap.set("n", "<Leader>nt", function()
         vim.cmd.tabnew()
         vim.cmd [[Neorg journal today]]
         vim.cmd.tcd("~/neorg")

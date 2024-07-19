@@ -11,30 +11,30 @@ local function config()
 
     lsp_zero.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
-        lsp_zero.default_keymaps({ buffer=bufnr, exclude = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } })
+        lsp_zero.default_keymaps({ buffer = bufnr, exclude = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } })
 
         vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set("n", "<Leader>ca", function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
         vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
         vim.keymap.set("n", "gR", function()
-            vim.cmd "vsplit"
+            vim.cmd.vsplit()
             vim.lsp.buf.references(nil, { on_list = on_list })
         end)
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
         vim.keymap.set("n", "gD", function()
-            vim.cmd "vsplit"
+            vim.cmd.vsplit()
             vim.lsp.buf.definition({ on_list = on_list })
         end)
         vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
 
-        if client.server_capabilities.documentHighlightProvider then
-            vim.cmd [[
-            autocmd CursorHold  <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
-            autocmd CursorHoldI <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
-            autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
-        ]]
-        end
+        -- if client.server_capabilities.documentHighlightProvider then
+        --     vim.cmd [[
+        --         autocmd CursorHold  <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
+        --         autocmd CursorHoldI <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
+        --         autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
+        --     ]]
+        -- end
     end)
 
     vim.diagnostic.config({ signs = false })
@@ -70,7 +70,6 @@ local function config()
     vim.keymap.set('i', '<C-;>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
     vim.g.copilot_no_tab_map = true
 
-
     cmp.setup({
         formatting = cmp_format,
         mapping = cmp_mappings,
@@ -105,11 +104,5 @@ return {
             { 'rafamadriz/friendly-snippets' },
         },
         config = config,
-    },
-    {
-        'j-hui/fidget.nvim',
-        config = function()
-            require("fidget").setup { }
-        end
     },
 }

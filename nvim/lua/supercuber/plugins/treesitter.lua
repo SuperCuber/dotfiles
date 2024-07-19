@@ -14,9 +14,8 @@ end
 
 return {
     {
-        'nvim-treesitter/nvim-treesitter',
         -- PITA to update this. Run :TSUpdate, on windows needs to be from x64 native build tools command prompt
-        tag = "v0.9.2",
+        'nvim-treesitter/nvim-treesitter',
         config = config,
     }
 }
