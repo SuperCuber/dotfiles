@@ -15,7 +15,6 @@ vim.opt.gdefault = true
 vim.cmd.nohlsearch()
 
 -- Drawing
-vim.opt.lazyredraw = true
 vim.opt.errorbells = false
 vim.opt.belloff = "all"
 vim.opt.showcmd = true

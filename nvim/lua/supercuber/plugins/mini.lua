@@ -13,10 +13,6 @@ return {
             local trailspace = require("mini.trailspace")
             trailspace.setup()
             vim.keymap.set("n", "<Leader>f", function() trailspace.trim() end)
-
-            local notify = require("mini.notify")
-            notify.setup()
-            vim.notify = notify.make_notify()
         end
     },
 }
