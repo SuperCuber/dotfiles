@@ -1,7 +1,13 @@
 local function config()
     require("neorg").setup({
         load = {
-            ["core.defaults"] = {},
+            ["core.defaults"] = {
+                config = {
+                    disable = {
+                        "core.todo-introspector",
+                    },
+                },
+            },
             ["core.dirman"] = {
                 config = {
                     workspaces = {
