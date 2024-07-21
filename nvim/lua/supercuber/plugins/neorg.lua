@@ -23,6 +23,17 @@ local function config()
                     workspace = "main",
                 },
             },
+            ["core.qol.todo_items"] = {
+                config = {
+                    create_todo_parents = false,
+                    create_todo_items = false,
+                    order = {
+                        {"undone", " "},
+                        {"pending", "-"},
+                        {"done", "x"},
+                    }
+                },
+            },
             ["core.concealer"] = {
                 config = {
                     folds = false,
