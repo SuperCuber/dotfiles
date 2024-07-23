@@ -6,6 +6,7 @@ return {
             require("mini.pairs").setup()
             require("mini.jump2d").setup({ mappings = { start_jumping = "s", } })
             require("mini.comment").setup()
+            require("mini.align").setup()
 
             require("mini.indentscope").setup({
                 draw = {
