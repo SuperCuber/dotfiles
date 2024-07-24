@@ -18,8 +18,8 @@ for _, key in ipairs({ "h", "j", "k", "l" }) do
 end
 
 -- Navigate lists
-vim.keymap.set("n", "<C-j>", function() vim.notify("use ]q", vim.log.levels.ERROR) end)
-vim.keymap.set("n", "<C-k>", function() vim.notify("use [q", vim.log.levels.ERROR) end)
+vim.keymap.set("n", "<C-j>", "<Cmd>cnext<Enter>zz")
+vim.keymap.set("n", "<C-k>", "<Cmd>cprev<Enter>zz")
 
 -- Open vimrc editing workspace
 local dotter_exe = [[{{#if (eq dotter.os "unix")}}./{{/if}}dotter{{#if arm}}.arm{{/if}}]]
