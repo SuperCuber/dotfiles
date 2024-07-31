@@ -49,6 +49,7 @@ local function config()
         vim.cmd.tabnew()
         vim.cmd [[Neorg journal today]]
         vim.cmd.tcd("~/neorg")
+        vim.cmd.tabmove("0")
     end)
 end
 
