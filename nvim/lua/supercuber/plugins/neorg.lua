@@ -36,7 +36,6 @@ local function config()
             },
             ["core.concealer"] = {
                 config = {
-                    folds = false,
                     icons = {
                         todo = false,
                     },
