@@ -5,6 +5,7 @@ local function config()
                 config = {
                     disable = {
                         "core.todo-introspector",
+                        "core.concealer",
                     },
                 },
             },
@@ -34,13 +35,13 @@ local function config()
                     }
                 },
             },
-            ["core.concealer"] = {
-                config = {
-                    icons = {
-                        todo = false,
-                    },
-                },
-            },
+            -- ["core.concealer"] = {
+            --     config = {
+            --         icons = {
+            --             todo = false,
+            --         },
+            --     },
+            -- },
         }
     })
 
