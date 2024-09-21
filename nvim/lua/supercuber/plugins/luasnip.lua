@@ -1,20 +1,5 @@
-local function config()
+local function define_snippets()
     local ls = require("luasnip")
-
-    -- Maps
-
-    local function reload()
-        ls = require("plenary.reload").reload_module("luasnip")
-        define_snippets()
-    end
-
-    vim.keymap.set("i", "<C-j>", function() ls.jump(1) end)
-    vim.keymap.set("i", "<C-k>", function() ls.jump(-1) end)
-    vim.keymap.set("i", "<C-l>", "<Plug>luasnip-next-choice")
-    vim.keymap.set("n", "<Leader><Leader>s", reload)
-
-    -- Custom Snippets
-
     local s = ls.s
     local i = ls.insert_node
     local t = ls.text_node
@@ -22,7 +7,6 @@ local function config()
     local f = ls.function_node
     local rep = require "luasnip.extras".rep
     local fmt = require "luasnip.extras.fmt".fmt
-
     -- local i = ls.insert_node
     -- local xs = require "luasnip.extras"
 
@@ -61,6 +45,7 @@ local function config()
         ))
     })
 
+    -- TODO: using treesitter magic, add a version that actually gets the list of args
     ls.add_snippets("clojure", {
         s("caparg", fmt([[
                 (def ^:dynamic *{}* {})
@@ -71,6 +56,22 @@ local function config()
             }
         ))
     })
+end
+
+local function config()
+    local ls = require("luasnip")
+
+    local function reload()
+        ls = require("plenary.reload").reload_module("luasnip")
+        define_snippets()
+    end
+
+    vim.keymap.set("i", "<C-j>", function() ls.jump(1) end)
+    vim.keymap.set("i", "<C-k>", function() ls.jump(-1) end)
+    vim.keymap.set("i", "<C-l>", "<Plug>luasnip-next-choice")
+    vim.keymap.set("n", "<Leader><Leader>s", reload)
+
+    define_snippets()
 end
 
 return {

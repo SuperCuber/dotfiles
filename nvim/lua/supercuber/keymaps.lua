@@ -1,8 +1,7 @@
--- Save
-vim.keymap.set("n", "<Space>", function() vim.notify("its leader now", vim.log.levels.ERROR) end)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.keymap.set("n", "<Leader>w", vim.cmd.w)
-vim.keymap.set("n", ",", function() vim.notify("use <space> for leader", vim.log.levels.ERROR) end)
--- Quit
 vim.keymap.set("n", "<Leader>q", vim.cmd.q)
 
 -- Move between windows
@@ -34,7 +33,6 @@ vim.keymap.set("n", "<Leader>vrc",
         vim.cmd.wincmd("h")
     end)
 
--- Remove highlights
 vim.keymap.set("n", "<Leader><Enter>", vim.cmd.nohlsearch)
 vim.keymap.set("n", "*", "g*")
 vim.keymap.set("n", "#", "g#")
@@ -55,10 +53,8 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", "\"+y")
 vim.keymap.set({ "n", "v" }, "<Leader>p", "\"+p")
 vim.keymap.set({ "n", "v" }, "<Leader>P", "\"+P")
 
-vim.keymap.set("n", "Q", "<Nop>")
-
 -- Terminal
-vim.keymap.set("n", "<C-t>", "<Cmd>vsp +term<Enter>i")
-vim.keymap.set("t", "<C-d>", "<Cmd>q!<Cr>")
+vim.keymap.set("n", "<C-t>", "<Cmd>botright horizontal 20sp +term<Enter>i")
+vim.keymap.set("t", "<C-d>", "<Cmd>close<Enter>")
 vim.keymap.set("t", "<C-v><C-d>", "<C-d>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")

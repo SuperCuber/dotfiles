@@ -18,6 +18,7 @@ local function config()
         { nargs = 1 }
     )
 end
+-- TODO: find a way to combo `:Gvdiffsplit` with `:G mergetool`
 
 return {
     { 'tpope/vim-fugitive', config = config },

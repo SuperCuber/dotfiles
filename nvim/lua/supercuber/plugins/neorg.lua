@@ -29,9 +29,9 @@ local function config()
                     create_todo_parents = false,
                     create_todo_items = false,
                     order = {
-                        {"undone", " "},
-                        {"pending", "-"},
-                        {"done", "x"},
+                        { "undone",  " " },
+                        { "pending", "-" },
+                        { "done",    "x" },
                     }
                 },
             },
@@ -51,6 +51,9 @@ local function config()
         vim.cmd.tcd("~/neorg")
         vim.cmd.tabmove("0")
     end)
+
+    vim.keymap.set("n", "<Leader>ni", function() vim.cmd [[Neorg index]] end)
+    vim.keymap.set("n", "<Leader>nr", function() vim.cmd [[Neorg return]] end)
 end
 
 return {

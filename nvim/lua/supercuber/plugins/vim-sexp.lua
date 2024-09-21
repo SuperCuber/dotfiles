@@ -43,6 +43,7 @@ local function config()
         sexp_insert_at_list_head = "",
         sexp_insert_at_list_tail = "",
     }
+    vim.keymap.set("i", "<C-S-k>", "<C-o><Plug>(sexp_capture_next_element)", { remap = true })
 end
 
 return {

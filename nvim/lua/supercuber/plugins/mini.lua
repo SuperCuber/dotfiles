@@ -18,7 +18,7 @@ return {
             local g = vim.api.nvim_create_augroup('MyMiniIndentscope', { clear = true })
             vim.api.nvim_create_autocmd({ "TermOpen" }, {
                 group = g,
-                callback = function(ev)
+                callback = function(_)
                     vim.b.minicursorword_disable = true
                 end,
             })

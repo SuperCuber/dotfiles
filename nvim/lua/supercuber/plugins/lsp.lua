@@ -14,7 +14,7 @@ local function config()
         lsp_zero.default_keymaps({ buffer = bufnr, exclude = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } })
 
         vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("n", "<Leader>ca", function() vim.lsp.buf.code_action() end, opts)
+        vim.keymap.set("n", "<Leader>a", function() vim.lsp.buf.code_action() end, opts)
         vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
         vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
         vim.keymap.set("n", "gR", function()
@@ -28,13 +28,12 @@ local function config()
         end)
         vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
 
-        -- if client.server_capabilities.documentHighlightProvider then
-        --     vim.cmd [[
-        --         autocmd CursorHold  <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
-        --         autocmd CursorHoldI <buffer> silent! lua pcall(vim.lsp.buf.document_highlight)
-        --         autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
-        --     ]]
-        -- end
+        if client.server_capabilities.documentHighlightProvider then
+            vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end, opts)
+            vim.cmd [[
+                autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
+            ]]
+        end
     end)
 
     vim.diagnostic.config({ signs = false })
@@ -61,8 +60,8 @@ local function config()
         ["<Tab>"]     = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-p>"]     = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
         ["<S-Tab>"]   = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-d>"]     = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
+        ["<C-d>"]     = cmp.mapping.scroll_docs(4),
+        ["<C-u>"]     = cmp.mapping.scroll_docs(-4),
         ["<C-e>"]     = cmp.mapping.abort(),
         ["<C-Cr>"]    = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
         ["<C-Space>"] = cmp.mapping.complete(),

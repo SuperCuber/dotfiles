@@ -1,3 +1,5 @@
+vim.g.dispatch_no_maps = 1
+
 return {
     {
         "vhyrro/luarocks.nvim",
@@ -15,12 +17,10 @@ return {
     'tpope/vim-repeat',
     {
         'kylechui/nvim-surround',
-        config = function()
-            require('nvim-surround').setup {}
-        end
+        config = function() require('nvim-surround').setup {} end
     },
     'wellle/targets.vim',
-    { 'AndrewRadev/splitjoin.vim' },
+    'AndrewRadev/splitjoin.vim',
 
     -- Bells & Whistles
     'tpope/vim-eunuch',

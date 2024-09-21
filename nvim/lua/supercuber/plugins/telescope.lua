@@ -2,18 +2,12 @@ local function config()
     local builtin = require('telescope.builtin')
     local actions = require('telescope.actions')
 
-    vim.keymap.set('n', '<Leader>e', builtin.find_files, {})
-    vim.keymap.set('n', '<Leader>/', builtin.live_grep, {})
-    vim.keymap.set('n', '<Leader>*', builtin.grep_string, {})
-    vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
-    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-
     local cd_picker = require("telescope.pickers").new({}, {
         prompt_title = "Change Directory",
         finder = require("telescope.finders").new_oneshot_job({ "fd", "-a", "--type", "d" },
             { cwd = "{{#if vim_root_dir}}{{vim_root_dir}}{{else}}~{{/if}}" }),
         previewer = nil,
-        sorter = require("telescope.config").values.file_sorter(opts),
+        sorter = require("telescope.config").values.file_sorter({}),
         attach_mappings = function(prompt_bufnr, map)
             local function change_directory()
                 actions.close(prompt_bufnr)
@@ -24,6 +18,13 @@ local function config()
             return true
         end
     })
+
+    vim.keymap.set('n', '<Leader>e', builtin.find_files, {})
+    vim.keymap.set('n', '<C-p>', function() builtin.find_files { no_ignore = true } end, {})
+    vim.keymap.set('n', '<Leader>/', builtin.live_grep, {})
+    vim.keymap.set('n', '<Leader>*', builtin.grep_string, {})
+    vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
+    vim.keymap.set('n', '<Leader>he', builtin.help_tags, {})
     vim.keymap.set('n', '<Leader>cd', function() cd_picker:find() end, {})
 
     require("telescope").setup {
