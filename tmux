@@ -42,9 +42,6 @@ set -g default-terminal "screen-256color"
 set-option -g status-position top
 set -g status-bg black
 set -g status-fg white
-set -g window-status-current-bg white
-set -g window-status-current-fg black
-set -g window-status-current-attr bold
 set -g status-interval 60
 set -g status-left-length 30
 set -g status-left ''
