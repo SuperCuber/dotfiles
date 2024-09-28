@@ -36,7 +36,6 @@
 - fd-find
 - bat: cat with wings
 - difftastic: better git diff calculator
-- delta: better git diff viewer (difftastic is prioritized)
 - atuin: better shell history
 
 ---

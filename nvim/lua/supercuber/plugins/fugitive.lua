@@ -23,4 +23,5 @@ end
 return {
     { 'tpope/vim-fugitive', config = config },
     'shumphrey/fugitive-gitlab.vim',
+    'sindrets/diffview.nvim',
 }

@@ -8,9 +8,6 @@
 
 {{/if}}
 [core]
-    {{#if (and (not (is_executable "difft")) (is_executable "delta"))}}
-    pager = delta
-    {{/if}}
     {{#if (eq dotter.os "windows")}}
     symlinks = true
     autocrlf = true
@@ -18,16 +15,6 @@
     autocrlf = input
     {{/if}}
 
-{{#if (and (not (is_executable "difft")) (is_executable "delta"))}}
-[delta]
-    line-numbers = true
-    hunk-header-style = omit
-    syntax-theme = zenburn
-    file-style = bold yellow ul
-    file-decoration-style = none
-    side-by-side = true
-
-{{/if}}
 [help]
     autocorrect = 20
 

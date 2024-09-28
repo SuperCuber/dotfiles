@@ -58,6 +58,7 @@ depends = ["shell"]
 # conflicts with "zsh"
 zprofile = "~/.bash_profile"
 zshrc = "~/.bashrc"
+minttyrc = "" # overridden in include/windows.toml
 
 [cargo.files]
 cargo = "~/.cargo/config"

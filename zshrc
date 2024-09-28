@@ -43,10 +43,6 @@ alias cp="cp -i"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias .5="cd ../../../.."
-alias .6="cd ../../../../.."
-alias .7="cd ../../../../../.."
-alias .8="cd ../../../../../../.."
 
 # Package management
 alias install='{{ install }}'
@@ -57,9 +53,9 @@ alias autoremove='{{ autoremove }}'
 # Git
 alias ga="git add"
 alias gb="git branch"
-alias gca="git commit -a"
-alias gcam="git commit -am"
 alias gc="git commit"
+alias gca="git commit --amend"
+alias gcam="git commit -am"
 alias gcm="git commit -m"
 alias gd="git diff"
 alias gds="git diff --staged"
@@ -68,19 +64,7 @@ alias gpl="git pull --prune"
 alias gps="git push"
 alias gm="git merge"
 alias gs="git status -sb"
-alias gs-="git switch -"
-
-function gsb() {
-    query_and_branch=$(git branch | tr -d ' *' | fzf --print-query)
-    fzf_exit=$?
-    branch=$(tail -1 <<<"$query_and_branch")
-    if (( fzf_exit == 0 )); then
-        git switch $branch
-    elif (( fzf_exit == 1)); then
-        git switch -c $branch
-    fi
-    return $?
-}
+alias gsw="git switch"
 
 # Misc
 alias e="exit"
@@ -173,21 +157,6 @@ cd ()
 
 {{#if (is_executable "bat")}}
 alias cat="bat"
-
-{{/if}}
-{{#if (is_executable "fzf")}}
-j ()  # Navigate with fzf
-{
-    {{#if (is_executable fd)}}
-    find_command='fd . ~ --type d'
-    {{else}}
-    # Settle for not hiding gitignored stuff
-    find_command='find ~ -type d'
-    {{/if}}
-    dir=$(eval $find_command | fzf --preview 'tree -CF -L 2 {+1}')
-    fzf_return=$?
-    [ $fzf_return = 0 ] && cd $dir || return $fzf_return
-}
 
 {{/if}}
 {{#if (is_executable "thefuck")}}
