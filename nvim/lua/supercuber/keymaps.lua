@@ -55,6 +55,6 @@ vim.keymap.set({ "n", "v" }, "<Leader>P", "\"+P")
 
 -- Terminal
 vim.keymap.set("n", "<C-t>", "<Cmd>botright horizontal 20sp +term<Enter>i")
-vim.keymap.set("t", "<C-d>", "<Cmd>close<Enter>")
+vim.keymap.set("t", "<C-d>", "<Cmd>q!<Enter>")
 vim.keymap.set("t", "<C-v><C-d>", "<C-d>")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
