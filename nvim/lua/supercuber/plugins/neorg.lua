@@ -5,7 +5,6 @@ local function config()
                 config = {
                     disable = {
                         "core.todo-introspector",
-                        "core.concealer",
                     },
                 },
             },
@@ -27,7 +26,6 @@ local function config()
             ["core.qol.todo_items"] = {
                 config = {
                     create_todo_parents = false,
-                    create_todo_items = false,
                     order = {
                         { "undone",  " " },
                         { "pending", "-" },
@@ -35,13 +33,13 @@ local function config()
                     }
                 },
             },
-            -- ["core.concealer"] = {
-            --     config = {
-            --         icons = {
-            --             todo = false,
-            --         },
-            --     },
-            -- },
+            ["core.concealer"] = {
+                config = {
+                    icons = {
+                        todo = false,
+                    },
+                },
+            },
         }
     })
 
