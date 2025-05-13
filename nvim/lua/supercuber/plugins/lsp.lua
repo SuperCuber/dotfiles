@@ -9,32 +9,37 @@ local function config()
         vim.cmd("silent cfirst")        -- jump back to previous window and on first match
     end
 
-    lsp_zero.on_attach(function(client, bufnr)
-        local opts = { buffer = bufnr, remap = false }
-        lsp_zero.default_keymaps({ buffer = bufnr, exclude = { '<F2>', '<F4>', 'gr', 'gd', 'gD' } })
+    -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "vim.lsp.buf.hover()" })
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end,
+        { desc = "vim.lsp.buf.definition()" })
+    vim.keymap.set("n", "gD", function()
+        vim.cmd.vsplit()
+        vim.lsp.buf.definition({ on_list = on_list })
+    end, { desc = "vsplit -> vim.lsp.buf.definition()" })
+    -- vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation({ on_list = on_list }) end, { desc = "vim.lsp.buf.implementation()" })
+    vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
+    vim.keymap.set("n", "gR", function()
+        vim.cmd.vsplit()
+        vim.lsp.buf.references(nil, { on_list = on_list })
+    end, { desc = "vsplit -> vim.lsp.buf.references()" })
+    vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, { desc = "vim.diagnostic.open_float()" })
+    vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, { desc = "vim.lsp.buf.rename()" })
+    vim.keymap.set("n", "<Leader>a", function() vim.lsp.buf.code_action() end, { desc = "vim.lsp.buf.code_action()" })
+    vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, { desc = "vim.lsp.buf.format()" })
+    vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end, opts)
 
-        vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("n", "<Leader>a", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, opts)
-        vim.keymap.set("n", "gr", function() vim.lsp.buf.references(nil, { on_list = on_list }) end)
-        vim.keymap.set("n", "gR", function()
-            vim.cmd.vsplit()
-            vim.lsp.buf.references(nil, { on_list = on_list })
-        end)
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition({ on_list = on_list }) end)
-        vim.keymap.set("n", "gD", function()
-            vim.cmd.vsplit()
-            vim.lsp.buf.definition({ on_list = on_list })
-        end)
-        vim.keymap.set("i", "<C-s>", function() vim.lsp.buf.signature_help() end, opts)
-
-        if client.server_capabilities.documentHighlightProvider then
-            vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end, opts)
-            vim.cmd [[
-                autocmd CursorMoved <buffer> silent! lua pcall(vim.lsp.buf.clear_references)
-            ]]
+    -- default nvim keybinds
+    for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO"}) do
+        for _, mode in ipairs({ "n", "x" }) do
+            if vim.fn.mapcheck(key, mode) ~= "" then
+                vim.keymap.del(mode, key)
+            end
         end
-    end)
+    end
+
+    vim.cmd [[
+        autocmd CursorMoved silent! lua pcall(vim.lsp.buf.clear_references)
+    ]]
 
     vim.diagnostic.config({ signs = false })
 
