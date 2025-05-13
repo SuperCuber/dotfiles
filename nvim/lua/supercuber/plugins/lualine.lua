@@ -122,7 +122,7 @@ local function config()
             lualine_z = {}
         },
         tabline = {},
-        extensions = {},
+        extensions = {'quickfix'},
     }
 end
 

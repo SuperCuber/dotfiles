@@ -5,7 +5,6 @@ return {
         config = function()
             require("mini.pairs").setup()
             require("mini.jump2d").setup({ mappings = { start_jumping = "s", } })
-            require("mini.comment").setup()
             require("mini.align").setup()
 
             require("mini.indentscope").setup({
@@ -16,10 +15,10 @@ return {
             })
             vim.cmd [[highlight! link MiniIndentscopeSymbol Comment]]
             local g = vim.api.nvim_create_augroup('MyMiniIndentscope', { clear = true })
-            vim.api.nvim_create_autocmd({ "TermOpen" }, {
+            vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
                 group = g,
                 callback = function(_)
-                    vim.b.minicursorword_disable = true
+                    vim.b.miniindentscope_disable = true
                 end,
             })
 
