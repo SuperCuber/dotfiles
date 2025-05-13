@@ -24,7 +24,6 @@ return {
 
             local trailspace = require("mini.trailspace")
             trailspace.setup()
-            vim.keymap.set("n", "<Leader>f", function() trailspace.trim() end)
         end
     },
 }

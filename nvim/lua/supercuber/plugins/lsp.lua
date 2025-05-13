@@ -4,9 +4,11 @@ local function config()
     local function on_list(options)
         vim.fn.setqflist({}, ' ', options)
         if #options.items > 1 then
-            vim.cmd("botright cwindow") -- always take full width
+            -- always take full width
+            vim.cmd("botright cwindow")
         end
-        vim.cmd("silent cfirst")        -- jump back to previous window and on first match
+        -- jump back to previous window and on first match
+        vim.cmd("silent cfirst")
     end
 
     -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "vim.lsp.buf.hover()" })
@@ -26,10 +28,11 @@ local function config()
     vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, { desc = "vim.lsp.buf.rename()" })
     vim.keymap.set("n", "<Leader>a", function() vim.lsp.buf.code_action() end, { desc = "vim.lsp.buf.code_action()" })
     vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, { desc = "vim.lsp.buf.format()" })
-    vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end, opts)
+    vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end,
+        { desc = "vim.lsp.buf.document_highlight()" })
 
     -- default nvim keybinds
-    for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO"}) do
+    for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO" }) do
         for _, mode in ipairs({ "n", "x" }) do
             if vim.fn.mapcheck(key, mode) ~= "" then
                 vim.keymap.del(mode, key)
@@ -40,6 +43,15 @@ local function config()
     vim.cmd [[
         autocmd CursorMoved silent! lua pcall(vim.lsp.buf.clear_references)
     ]]
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(args)
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            if client ~= nil and client:supports_method('textDocument/inlayHint') then
+                vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+            end
+        end,
+    })
 
     vim.diagnostic.config({ signs = false })
 
@@ -85,6 +97,9 @@ local function config()
         sources = cmp.config.sources({
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
+            { name = 'buffer' },
+            { name = 'path' },
+            { name = 'nvim_lua' },
         })
     })
 end
