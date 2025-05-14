@@ -1,6 +1,4 @@
 local function config()
-    local lsp_zero = require('lsp-zero')
-
     local function on_list(options)
         vim.fn.setqflist({}, ' ', options)
         if #options.items > 1 then
@@ -59,19 +57,14 @@ local function config()
     require('mason-lspconfig').setup({
         ensure_installed = {},
         handlers = {
+            -- TODO: remove this, seems stupid but vim.stuff's help text doesnt work without it
             function(server_name)
                 require('lspconfig')[server_name].setup({})
-            end,
-
-            lua_ls = function()
-                local lua_opts = lsp_zero.nvim_lua_ls()
-                require('lspconfig').lua_ls.setup(lua_opts)
             end,
         }
     })
 
     local cmp = require('cmp')
-    local cmp_format = lsp_zero.cmp_format()
     local cmp_mappings = {
         ["<C-n>"]     = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<Tab>"]     = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
@@ -87,7 +80,6 @@ local function config()
     vim.g.copilot_no_tab_map = true
 
     cmp.setup({
-        formatting = cmp_format,
         mapping = cmp_mappings,
         snippet = {
             expand = function(args)
@@ -106,26 +98,21 @@ end
 
 return {
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = "v3.x",
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+        -- LSP Support
+        { 'neovim/nvim-lspconfig', config=config },
+        { 'williamboman/mason.nvim' },
+        { 'williamboman/mason-lspconfig.nvim' },
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+        -- Autocompletion
+        { 'hrsh7th/nvim-cmp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-nvim-lua' },
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        },
-        config = config,
+        -- Snippets
+        { 'L3MON4D3/LuaSnip' },
+        { 'rafamadriz/friendly-snippets' },
     },
 }
