@@ -61,7 +61,7 @@ zshrc = "~/.bashrc"
 minttyrc = "" # overridden in include/windows.toml
 
 [cargo.files]
-cargo = "~/.cargo/config"
+cargo = "~/.cargo/config.toml"
 
 [termite]
 depends = ["graphics"]
