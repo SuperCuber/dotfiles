@@ -30,7 +30,7 @@ local function config()
         { desc = "vim.lsp.buf.document_highlight()" })
 
     -- default nvim keybinds
-    for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO" }) do
+    for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO", "grt" }) do
         for _, mode in ipairs({ "n", "x" }) do
             if vim.fn.mapcheck(key, mode) ~= "" then
                 vim.keymap.del(mode, key)
