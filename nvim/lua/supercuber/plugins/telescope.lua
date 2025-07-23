@@ -19,8 +19,8 @@ local function config()
         end
     })
 
-    vim.keymap.set('n', '<Leader>e', builtin.find_files, {})
-    vim.keymap.set('n', '<C-p>', function() builtin.find_files { no_ignore = true } end, {})
+    vim.keymap.set('n', '<Leader>e', function() builtin.find_files { no_ignore = false, hidden = true } end, {})
+    vim.keymap.set('n', '<C-p>', function() builtin.find_files { no_ignore = true, hidden = true } end, {})
     vim.keymap.set('n', '<Leader>/', builtin.live_grep, {})
     vim.keymap.set('n', '<Leader>*', builtin.grep_string, {})
     vim.keymap.set('n', '<Leader>b', builtin.buffers, {})
