@@ -32,7 +32,7 @@ local function config()
     -- default nvim keybinds
     for _, key in ipairs({ "grn", "gra", "grr", "n", "gri", "gO", "grt" }) do
         for _, mode in ipairs({ "n", "x" }) do
-            if vim.fn.mapcheck(key, mode) ~= "" then
+            if vim.fn.maparg(key, mode) ~= "" then
                 vim.keymap.del(mode, key)
             end
         end
