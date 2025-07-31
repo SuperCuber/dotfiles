@@ -15,6 +15,9 @@
     autocrlf = input
     {{/if}}
 
+[advice]
+    ignoredHook = false
+
 [help]
     autocorrect = 20
 
