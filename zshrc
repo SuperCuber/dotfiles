@@ -1,4 +1,8 @@
 {{#if dotter.packages.zsh}}
+
+# Local zshrc
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
+
 #==> Zsh options
 # Prompt
 setopt PROMPT_SUBST
@@ -174,8 +178,5 @@ bindkey '^r' _atuin_search_widget
 
 {{/if}}
 #<==
-
-# Local zshrc
-[ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]
