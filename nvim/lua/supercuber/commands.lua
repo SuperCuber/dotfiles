@@ -9,6 +9,11 @@ vim.api.nvim_create_user_command("NS", function(opts)
         vim.cmd("r !http get 'http://n8s-api-default.euw1.n8s.appsflyer.engineering:8080/v2/namespaces/" ..
         namespace .. "' | jq .")
     else
-        vim.api.nvim_err_writeln("Invalid command '" .. rw .. "'")
+        vim.api.nvim_echo({ {"Invalid command '" .. rw .. "'"} }, true, { err = true })
     end
 end, { nargs = "*", force = true })
+
+vim.api.nvim_create_user_command("Json", function(_)
+    vim.o.filetype = "json"
+    vim.cmd("%!jq .")
+end, { nargs = 0, force = true })
