@@ -24,7 +24,7 @@ local function config()
     end, { desc = "vsplit -> vim.lsp.buf.references()" })
     vim.keymap.set("n", "gl", function() vim.diagnostic.open_float() end, { desc = "vim.diagnostic.open_float()" })
     vim.keymap.set("n", "<Leader>rn", function() vim.lsp.buf.rename() end, { desc = "vim.lsp.buf.rename()" })
-    vim.keymap.set("n", "<Leader>a", function() vim.lsp.buf.code_action() end, { desc = "vim.lsp.buf.code_action()" })
+    vim.keymap.set("n", "<Leader>ca", function() vim.lsp.buf.code_action() end, { desc = "vim.lsp.buf.code_action()" })
     vim.keymap.set("n", "<Leader>f", function() vim.lsp.buf.format() end, { desc = "vim.lsp.buf.format()" })
     vim.keymap.set("n", "gh", function() pcall(vim.lsp.buf.document_highlight) end,
         { desc = "vim.lsp.buf.document_highlight()" })
