@@ -177,6 +177,15 @@ eval "$(atuin init {{#if dotter.packages.zsh}}zsh{{else}}bash{{/if}})"
 bindkey '^r' _atuin_search_widget
 
 {{/if}}
+function boop() {
+  local exit_code=$?
+  if [ $exit_code -eq 0 ]; then
+    afplay /System/Library/Sounds/Glass.aiff &|
+  else
+    afplay /System/Library/Sounds/Sosumi.aiff &|
+  fi
+  return $exit_code
+}
 #<==
 
 # vim:foldmethod=marker:foldmarker=\=\=>,<\=\=:foldtext=v\:folddashes.getline(v\:foldstart)[3\:]

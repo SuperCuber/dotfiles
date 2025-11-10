@@ -1,0 +1,35 @@
+plugins:
+  jfr_dump:
+    shortCut: Ctrl-J
+    confirm: true
+    description: "JFR"
+    scopes:
+      - containers
+    command: zsh
+    background: false
+    args:
+      - -c
+      - |
+        # create jfr
+        DURATION=60s
+        DELAY=1s
+        FILENAME="$POD.jfr"
+        echo "Creating recording $FILENAME"
+        kubectl exec -it --context $CONTEXT -n $NAMESPACE $POD -- jcmd 1 JFR.start delay=$DELAY stackdepth=256 duration=$DURATION filename=/tmp/$FILENAME exceptions=all
+        sleep 65
+        echo "Downloading recording"
+        kubectl cp --context $CONTEXT -n $NAMESPACE $POD:/tmp/$FILENAME $HOME/$FILENAME
+        echo "Done!"
+        sleep 5
+  datadog_log:
+    shortCut: Ctrl-L
+    confirm: false
+    description: "Datadog Log"
+    scopes:
+      - pods
+    command: zsh
+    background: true
+    args:
+      - -c
+      - |
+        open "https://app.datadoghq.eu/logs?query=kube_namespace%3A$NAMESPACE"

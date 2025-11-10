@@ -34,6 +34,7 @@ git_prompt = "~/.git_prompt"
 bat = "~/.config/bat/config"
 ripgrep = { type = "symbolic", target = "~/.ripgreprc", if = '(is_executable "rg")'}
 "atuin.toml" = { type = "symbolic", target = "~/.config/atuin/config.toml", if = '(is_executable "atuin")'}
+"k9s_plugins.yaml" = { type = "symbolic", target = "~/.config/k9s/plugins.yaml", if = '(is_executable "k9s")'}
 
 [shell.variables]
 # Local variables: install, uninstall, update, autoremove, user_color
