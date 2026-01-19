@@ -42,6 +42,7 @@ local function config()
         sexp_curly_tail_wrap_element = "",
         sexp_insert_at_list_head = "",
         sexp_insert_at_list_tail = "",
+        sexp_clone_list = "",
     }
     vim.keymap.set("i", "<C-S-k>", "<C-o><Plug>(sexp_capture_next_element)", { remap = true })
 end

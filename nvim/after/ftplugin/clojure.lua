@@ -8,3 +8,4 @@ vim.api.nvim_create_user_command("Lein", function(_)
     vim.cmd.tabprevious()
 end, {})
 {{/if}}
+vim.api.nvim_set_keymap("n", "<localleader>cc", ":Lein!<CR>", { noremap = true, silent = true })

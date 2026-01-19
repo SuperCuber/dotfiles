@@ -27,7 +27,6 @@ return {
     'tpope/vim-unimpaired',
     'psliwka/vim-smoothie',
     'github/copilot.vim',
-    'Ramilito/kubectl.nvim',
 
     {
         "coder/claudecode.nvim",

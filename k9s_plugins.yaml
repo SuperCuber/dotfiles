@@ -11,14 +11,16 @@ plugins:
       - -c
       - |
         # create jfr
-        DURATION=60s
+        DURATION=30
         DELAY=1s
         FILENAME="$POD.jfr"
         echo "Creating recording $FILENAME"
-        kubectl exec -it --context $CONTEXT -n $NAMESPACE $POD -- jcmd 1 JFR.start delay=$DELAY stackdepth=256 duration=$DURATION filename=/tmp/$FILENAME exceptions=all
-        sleep 65
+        kubectl exec -it --context $CONTEXT -n $NAMESPACE $POD -- jcmd 1 JFR.configure stackdepth=2048
+        kubectl exec -it --context $CONTEXT -n $NAMESPACE $POD -- jcmd 1 JFR.start delay=$DELAY duration=${DURATION}s settings=profile exceptions=all filename=/tmp/$FILENAME
+        sleep $DURATION
+        sleep 5
         echo "Downloading recording"
-        kubectl cp --context $CONTEXT -n $NAMESPACE $POD:/tmp/$FILENAME $HOME/$FILENAME
+        kubectl exec -it --context $CONTEXT -n $NAMESPACE $POD -- base64 -w 0 /tmp/$FILENAME | base64 --decode >$HOME/$FILENAME
         echo "Done!"
         sleep 5
   datadog_log:
@@ -33,3 +35,15 @@ plugins:
       - -c
       - |
         open "https://app.datadoghq.eu/logs?query=kube_namespace%3A$NAMESPACE"
+  redpanda:
+    shortCut: Ctrl-O
+    confirm: false
+    description: "Redpanda Console"
+    scopes:
+      - pods
+    command: zsh
+    background: true
+    args:
+      - -c
+      - |
+        open "http://redpanda-console-msp.$NAMESPACE.euw1.n8s.appsflyer.engineering:9001/"
