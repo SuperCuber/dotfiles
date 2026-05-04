@@ -28,6 +28,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.updatetime = 500
+vim.opt.splitkeep = "screen"
 
 -- Inserting
 vim.opt.backspace = "eol,indent,start,nostop"

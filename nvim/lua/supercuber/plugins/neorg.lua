@@ -54,8 +54,9 @@ local function config()
     vim.keymap.set("n", "<Leader>nr", function() vim.cmd [[Neorg return]] end)
 end
 
-return {
-    "nvim-neorg/neorg",
-    rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
-    config = config,
-}
+return {}
+-- return {
+--     "nvim-neorg/neorg",
+--     rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
+--     config = config,
+-- }
