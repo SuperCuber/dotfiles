@@ -37,6 +37,7 @@
 - bat: cat with wings
 - difftastic: better git diff calculator
 - atuin: better shell history
+- zoxide: cd history
 
 ---
 
