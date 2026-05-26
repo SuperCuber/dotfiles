@@ -1,5 +1,6 @@
 [helpers]
 color_rgb = ".dotter/helpers/color_rgb.rhai"
+color_iterm = ".dotter/helpers/color_iterm.rhai"
 
 [i3]
 depends = ["graphics"]
@@ -76,6 +77,13 @@ depends = ["graphics"]
 [xfce4_terminal.files]
 xfce4_terminal = "~/.config/xfce4/terminal/terminalrc"
 xfce4_terminal_accels = "~/.config/xfce4/terminal/accels.scm"
+
+[iterm]
+depends = ["graphics"]
+
+[iterm.files]
+# Import from iterm profiles->colors then select
+"iterm.itermcolors" = "~/.config/iterm2/colors.itermcolors"
 
 [vim.files]
 # Optional local variables: arm

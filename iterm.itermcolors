@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Shades: Dark -> Light -->
+	<key>Ansi 0 Color</key>
+	{{color_iterm colors16.black}}
+	<key>Ansi 8 Color</key>
+	{{color_iterm colors16.dark_gray}}
+	<key>Ansi 7 Color</key>
+	{{color_iterm colors16.light_gray}}
+	<key>Ansi 15 Color</key>
+	{{color_iterm colors16.white}}
+
+	<!-- Reds -->
+	<key>Ansi 1 Color</key>
+	{{color_iterm colors16.red}}
+	<key>Ansi 9 Color</key>
+	{{color_iterm colors16.light_red}}
+
+	<!-- Greens -->
+	<key>Ansi 2 Color</key>
+	{{color_iterm colors16.green}}
+	<key>Ansi 10 Color</key>
+	{{color_iterm colors16.light_green}}
+
+	<!-- Yellows -->
+	<key>Ansi 3 Color</key>
+	{{color_iterm colors16.yellow}}
+	<key>Ansi 11 Color</key>
+	{{color_iterm colors16.light_yellow}}
+
+	<!-- Blues -->
+	<key>Ansi 4 Color</key>
+	{{color_iterm colors16.blue}}
+	<key>Ansi 12 Color</key>
+	{{color_iterm colors16.light_blue}}
+
+	<!-- Purples -->
+	<key>Ansi 5 Color</key>
+	{{color_iterm colors16.purple}}
+	<key>Ansi 13 Color</key>
+	{{color_iterm colors16.light_purple}}
+
+	<!-- Cyans -->
+	<key>Ansi 6 Color</key>
+	{{color_iterm colors16.cyan}}
+	<key>Ansi 14 Color</key>
+	{{color_iterm colors16.light_cyan}}
+
+	<!-- UI colors -->
+	<key>Background Color</key>
+	{{color_iterm colors16.background}}
+	<key>Foreground Color</key>
+	{{color_iterm colors16.foreground}}
+	<key>Bold Color</key>
+	{{color_iterm colors.text_bright}}
+	<key>Cursor Color</key>
+	{{color_iterm colors16.cursor}}
+	<key>Cursor Text Color</key>
+	{{color_iterm colors16.background}}
+	<key>Selection Color</key>
+	{{color_iterm colors.background_bright}}
+	<key>Selected Text Color</key>
+	{{color_iterm colors16.foreground}}
+	<key>Link Color</key>
+	{{color_iterm colors16.light_blue}}
+</dict>
+</plist>
