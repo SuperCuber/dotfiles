@@ -25,6 +25,7 @@
 - wicd-patched/connman: for wifi
 - zathura, zathura-djvu, zathura-pdf-mupdf, zathura-ps: pdf viewer
 - owo, xclip: fast screenshot upload
+- raycast: better cmd+space. config in raycast.rayconfig
 
 ## Shell/Development
 - zsh
